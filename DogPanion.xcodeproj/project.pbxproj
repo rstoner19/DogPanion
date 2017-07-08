@@ -15,6 +15,7 @@
 		D7ADB5811F0BFCBC0054F345 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7ADB5801F0BFCBC0054F345 /* Assets.xcassets */; };
 		D7ADB5841F0BFCBC0054F345 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7ADB5821F0BFCBC0054F345 /* LaunchScreen.storyboard */; };
 		D7ADB58C1F0C0DEF0054F345 /* PetImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ADB58B1F0C0DEF0054F345 /* PetImageCell.swift */; };
+		D7F0B0EE1F11579D006FEA6C /* AddImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F0B0ED1F11579D006FEA6C /* AddImageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		D7ADB5831F0BFCBC0054F345 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D7ADB5851F0BFCBC0054F345 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7ADB58B1F0C0DEF0054F345 /* PetImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetImageCell.swift; sourceTree = "<group>"; };
+		D7F0B0ED1F11579D006FEA6C /* AddImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddImageViewController.swift; path = DogPanion/Controller/AddImageViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +84,8 @@
 			isa = PBXGroup;
 			children = (
 				D7ADB5781F0BFCBC0054F345 /* MainViewController.swift */,
-				D7BF6B031F0C118B000F6C03 /* Xib Controllers */,
+				D7F0B0ED1F11579D006FEA6C /* AddImageViewController.swift */,
+				D7BF6B031F0C118B000F6C03 /* Xib/Cell Controllers */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -104,13 +107,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		D7BF6B031F0C118B000F6C03 /* Xib Controllers */ = {
+		D7BF6B031F0C118B000F6C03 /* Xib/Cell Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				D7ADB58B1F0C0DEF0054F345 /* PetImageCell.swift */,
 				D76EDDEE1F10935100A8170E /* PetNameCell.swift */,
 			);
-			name = "Xib Controllers";
+			name = "Xib/Cell Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,6 +189,7 @@
 			files = (
 				D7ADB57F1F0BFCBC0054F345 /* DogPanion.xcdatamodeld in Sources */,
 				D7ADB58C1F0C0DEF0054F345 /* PetImageCell.swift in Sources */,
+				D7F0B0EE1F11579D006FEA6C /* AddImageViewController.swift in Sources */,
 				D7ADB5791F0BFCBC0054F345 /* MainViewController.swift in Sources */,
 				D7ADB5771F0BFCBC0054F345 /* AppDelegate.swift in Sources */,
 				D76EDDEF1F10935100A8170E /* PetNameCell.swift in Sources */,
