@@ -297,6 +297,10 @@
                             <constraint firstItem="skB-LY-jTW" firstAttribute="leading" secondItem="etn-Cc-NoI" secondAttribute="leading" id="ttV-7K-PVu"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cameraButton" destination="j2i-ks-doj" id="j0d-PJ-eiG"/>
+                        <outlet property="photoLibraryButton" destination="WYS-Sy-H0k" id="c3T-KT-Ewj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iiq-dl-bnK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
