@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D70D1C141F1440C300FFAD15 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70D1C131F1440C300FFAD15 /* CoreDataManager.swift */; };
+		D70D1C161F14617C00FFAD15 /* ImageCustomFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70D1C151F14617C00FFAD15 /* ImageCustomFlowLayout.swift */; };
 		D76EDDEF1F10935100A8170E /* PetNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76EDDEE1F10935100A8170E /* PetNameCell.swift */; };
 		D79D3A291F12A7EF008CBA69 /* GeneralExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79D3A281F12A7EF008CBA69 /* GeneralExtensions.swift */; };
+		D79D3A461F1405C0008CBA69 /* PetImages+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79D3A421F1405C0008CBA69 /* PetImages+CoreDataClass.swift */; };
+		D79D3A471F1405C0008CBA69 /* PetImages+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79D3A431F1405C0008CBA69 /* PetImages+CoreDataProperties.swift */; };
+		D79D3A481F1405C0008CBA69 /* Pet+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79D3A441F1405C0008CBA69 /* Pet+CoreDataClass.swift */; };
+		D79D3A491F1405C0008CBA69 /* Pet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79D3A451F1405C0008CBA69 /* Pet+CoreDataProperties.swift */; };
 		D7ADB5771F0BFCBC0054F345 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ADB5761F0BFCBB0054F345 /* AppDelegate.swift */; };
 		D7ADB5791F0BFCBC0054F345 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ADB5781F0BFCBC0054F345 /* MainViewController.swift */; };
 		D7ADB57C1F0BFCBC0054F345 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7ADB57A1F0BFCBC0054F345 /* Main.storyboard */; };
@@ -17,12 +23,17 @@
 		D7ADB5841F0BFCBC0054F345 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7ADB5821F0BFCBC0054F345 /* LaunchScreen.storyboard */; };
 		D7ADB58C1F0C0DEF0054F345 /* PetImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ADB58B1F0C0DEF0054F345 /* PetImageCell.swift */; };
 		D7F0B0EE1F11579D006FEA6C /* AddImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F0B0ED1F11579D006FEA6C /* AddImageViewController.swift */; };
-		D7F0B0F01F12A34F006FEA6C /* PetImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F0B0EF1F12A34F006FEA6C /* PetImages.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D70D1C131F1440C300FFAD15 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		D70D1C151F14617C00FFAD15 /* ImageCustomFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCustomFlowLayout.swift; sourceTree = "<group>"; };
 		D76EDDEE1F10935100A8170E /* PetNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetNameCell.swift; sourceTree = "<group>"; };
 		D79D3A281F12A7EF008CBA69 /* GeneralExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralExtensions.swift; sourceTree = "<group>"; };
+		D79D3A421F1405C0008CBA69 /* PetImages+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PetImages+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D79D3A431F1405C0008CBA69 /* PetImages+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PetImages+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D79D3A441F1405C0008CBA69 /* Pet+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pet+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D79D3A451F1405C0008CBA69 /* Pet+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pet+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D7ADB5731F0BFCBB0054F345 /* DogPanion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogPanion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7ADB5761F0BFCBB0054F345 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7ADB5781F0BFCBC0054F345 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -33,7 +44,6 @@
 		D7ADB5851F0BFCBC0054F345 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7ADB58B1F0C0DEF0054F345 /* PetImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetImageCell.swift; sourceTree = "<group>"; };
 		D7F0B0ED1F11579D006FEA6C /* AddImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddImageViewController.swift; path = DogPanion/Controller/AddImageViewController.swift; sourceTree = SOURCE_ROOT; };
-		D7F0B0EF1F12A34F006FEA6C /* PetImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetImages.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,8 +117,12 @@
 		D7BF6B021F0C117B000F6C03 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D7F0B0EF1F12A34F006FEA6C /* PetImages.swift */,
 				D79D3A281F12A7EF008CBA69 /* GeneralExtensions.swift */,
+				D79D3A421F1405C0008CBA69 /* PetImages+CoreDataClass.swift */,
+				D79D3A431F1405C0008CBA69 /* PetImages+CoreDataProperties.swift */,
+				D70D1C131F1440C300FFAD15 /* CoreDataManager.swift */,
+				D79D3A441F1405C0008CBA69 /* Pet+CoreDataClass.swift */,
+				D79D3A451F1405C0008CBA69 /* Pet+CoreDataProperties.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -117,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				D7ADB58B1F0C0DEF0054F345 /* PetImageCell.swift */,
+				D70D1C151F14617C00FFAD15 /* ImageCustomFlowLayout.swift */,
 				D76EDDEE1F10935100A8170E /* PetNameCell.swift */,
 			);
 			name = "Xib/Cell Controllers";
@@ -194,12 +209,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				D79D3A291F12A7EF008CBA69 /* GeneralExtensions.swift in Sources */,
+				D70D1C161F14617C00FFAD15 /* ImageCustomFlowLayout.swift in Sources */,
 				D7ADB57F1F0BFCBC0054F345 /* DogPanion.xcdatamodeld in Sources */,
+				D79D3A471F1405C0008CBA69 /* PetImages+CoreDataProperties.swift in Sources */,
 				D7ADB58C1F0C0DEF0054F345 /* PetImageCell.swift in Sources */,
+				D79D3A461F1405C0008CBA69 /* PetImages+CoreDataClass.swift in Sources */,
 				D7F0B0EE1F11579D006FEA6C /* AddImageViewController.swift in Sources */,
-				D7F0B0F01F12A34F006FEA6C /* PetImages.swift in Sources */,
+				D70D1C141F1440C300FFAD15 /* CoreDataManager.swift in Sources */,
 				D7ADB5791F0BFCBC0054F345 /* MainViewController.swift in Sources */,
+				D79D3A481F1405C0008CBA69 /* Pet+CoreDataClass.swift in Sources */,
 				D7ADB5771F0BFCBC0054F345 /* AppDelegate.swift in Sources */,
+				D79D3A491F1405C0008CBA69 /* Pet+CoreDataProperties.swift in Sources */,
 				D76EDDEF1F10935100A8170E /* PetNameCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

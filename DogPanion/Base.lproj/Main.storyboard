@@ -151,7 +151,7 @@
                                     <color key="titleColor" red="0.0003403453156" green="0.32340699429999997" blue="0.29478102919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="noe-iY-GbI" kind="showDetail" id="muT-4t-pXX"/>
+                                    <segue destination="noe-iY-GbI" kind="showDetail" identifier="addImageVC" id="muT-4t-pXX"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Imc-l8-bsY">
@@ -270,15 +270,33 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="petImagesCell" id="5Q1-Fi-UW9">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="petImagesCell" id="5Q1-Fi-UW9" customClass="PetImageCell" customModule="DogPanion" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6ek-Me-44e">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                </imageView>
+                                            </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="6ek-Me-44e" secondAttribute="bottom" id="2QS-4A-O5f"/>
+                                            <constraint firstAttribute="trailing" secondItem="6ek-Me-44e" secondAttribute="trailing" id="E3r-5q-GlZ"/>
+                                            <constraint firstItem="6ek-Me-44e" firstAttribute="leading" secondItem="5Q1-Fi-UW9" secondAttribute="leading" id="lnS-4q-sIR"/>
+                                            <constraint firstItem="6ek-Me-44e" firstAttribute="top" secondItem="5Q1-Fi-UW9" secondAttribute="top" id="so3-HG-Vrm"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="petImage" destination="6ek-Me-44e" id="VKs-kH-06n"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="noe-iY-GbI" id="WcF-4F-yxR"/>
+                                    <outlet property="delegate" destination="noe-iY-GbI" id="2Eu-fD-VLe"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -299,12 +317,13 @@
                     </view>
                     <connections>
                         <outlet property="cameraButton" destination="j2i-ks-doj" id="j0d-PJ-eiG"/>
+                        <outlet property="imageCollectionView" destination="skB-LY-jTW" id="jeE-F0-KfG"/>
                         <outlet property="photoLibraryButton" destination="WYS-Sy-H0k" id="c3T-KT-Ewj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iiq-dl-bnK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="950" y="100"/>
+            <point key="canvasLocation" x="949.60000000000002" y="99.400299850074973"/>
         </scene>
     </scenes>
 </document>
