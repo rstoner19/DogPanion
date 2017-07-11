@@ -218,9 +218,18 @@
                                         <color key="textColor" red="0.0003403453156" green="0.32340699429999997" blue="0.29478102919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b6S-kY-Pk7">
+                                        <rect key="frame" x="326" y="39" width="37" height="30"/>
+                                        <state key="normal" title="Done"/>
+                                        <connections>
+                                            <action selector="doneButtonPressed:" destination="noe-iY-GbI" eventType="touchUpInside" id="xD3-GS-gr6"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.36705344919999999" green="0.63596099620000002" blue="0.66587257389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="b6S-kY-Pk7" firstAttribute="centerY" secondItem="fER-jg-z68" secondAttribute="centerY" id="AQe-7N-nqi"/>
+                                    <constraint firstAttribute="trailing" secondItem="b6S-kY-Pk7" secondAttribute="trailing" constant="12" id="JFx-pc-zet"/>
                                     <constraint firstAttribute="bottom" secondItem="fER-jg-z68" secondAttribute="bottom" id="MVv-Cc-Aa9"/>
                                     <constraint firstItem="fER-jg-z68" firstAttribute="centerX" secondItem="oTe-Hz-nxv" secondAttribute="centerX" id="fC4-h9-AOv"/>
                                     <constraint firstItem="fER-jg-z68" firstAttribute="top" secondItem="oTe-Hz-nxv" secondAttribute="top" constant="8" id="mAK-TZ-M0u"/>

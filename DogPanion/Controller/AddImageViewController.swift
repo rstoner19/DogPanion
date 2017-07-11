@@ -12,6 +12,7 @@ import AVFoundation
 
 class AddImageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
     
+    weak var delegate: DismissVCDelegate? = nil
     lazy var imagePicker = UIImagePickerController()
     var petInfo: Pet? = nil
     
@@ -80,6 +81,10 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
     
     @IBAction func cameraButtonPressed(_ sender: UIButton) {
         checkAccess()
+    }
+    
+    @IBAction func doneButtonPressed(_ sender: UIButton) {
+        self.delegate?.dismissVC()
     }
     
     // MARK: UICollectionView
