@@ -9,13 +9,13 @@
 import UIKit
 import AVFoundation
 
-
 class AddImageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
     
     weak var delegate: DismissVCDelegate? = nil
     lazy var imagePicker = UIImagePickerController()
     var petInfo: Pet? = nil
     
+    @IBOutlet weak var petNameLabel: UILabel!
     
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var photoLibraryButton: UIButton!
@@ -35,8 +35,9 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
     
     func setup() {
         isAvailable()
+        self.petNameLabel.text = petInfo?.name
         if let images = petInfo?.images {
-             petImages = PetImages.orderImagesByDate(images: images)
+            petImages = PetImages.orderImagesByDate(images: images)
         }
     }
     
@@ -105,13 +106,11 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "petImagesCell", for: indexPath) as! PetImageCell
-        if let teset = petInfo?.images?.allObjects[indexPath.row] as? PetImages {
-            if let value = teset.image as Data? {
-                guard let image = UIImage.init(data: value) else { return cell }
-                cell.petImage.image = image
-                cell.petImage.contentMode = .scaleAspectFill
-            }
-            
+        if let petImage = petInfo?.images?.allObjects[indexPath.row] as? PetImages {
+            let value = petImage.image as Data
+            guard let image = UIImage.init(data: value) else { return cell }
+            cell.petImage.image = image
+            cell.petImage.contentMode = .scaleAspectFill
             cell.petImage.contentMode = .scaleAspectFill
         }
         return cell
