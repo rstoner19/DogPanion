@@ -9,19 +9,23 @@
 import UIKit
 import AVFoundation
 
-
-class AddImageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class AddImageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
     
+    weak var delegate: DismissVCDelegate? = nil
     lazy var imagePicker = UIImagePickerController()
+    var petInfo: Pet? = nil
+    
+    @IBOutlet weak var petNameLabel: UILabel!
     
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var photoLibraryButton: UIButton!
+    @IBOutlet weak var imageCollectionView: UICollectionView!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        
+        setupCollectionView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,6 +35,10 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
     
     func setup() {
         isAvailable()
+        self.petNameLabel.text = petInfo?.name
+        if let images = petInfo?.images {
+            petImages = PetImages.renderImage(imageDate: PetImages.orderImagesByDate(images: images))
+        }
     }
     
     func isAvailable() {
@@ -38,9 +46,16 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera) ? true : false
     }
     
+    var petImages: [UIImage]? = nil {
+        didSet {
+            imageCollectionView.reloadData()
+        }
+    }
+    
     // MARK: - Navigation
     
     func presentImagePicker(_ sourceType: UIImagePickerControllerSourceType) {
+        self.imagePicker.allowsEditing = true
         self.imagePicker.delegate = self
         self.imagePicker.sourceType = sourceType
         self.present(self.imagePicker, animated: true, completion: nil)
@@ -55,7 +70,9 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
             self.alert(message: "Access to Camera Denied. To allow access go to Setting > DogPanion allow access to camera.", title: "Access Denied")
         case .notDetermined:
             AVCaptureDevice.requestAccess(for: .video, completionHandler: { (_) in
-                self.checkAccess()
+                DispatchQueue.main.async {
+                    self.checkAccess()
+                }
             })
         case .restricted:
             self.alert(message: "Access to Camera is Restricted", title: "Restricted")
@@ -70,8 +87,55 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
         checkAccess()
     }
     
+    @IBAction func doneButtonPressed(_ sender: UIButton) {
+        self.delegate?.dismissVC()
+    }
+    
+    // MARK: UICollectionView
+    func setupCollectionView() {
+        imageCollectionView.collectionViewLayout = ImageCustomFlowLayout(columns: 4, space: 2)
+        imageCollectionView.layer.borderColor = UIColor.black.cgColor
+        imageCollectionView.layer.borderWidth = 1
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return petInfo?.images?.count ?? 0
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "petImagesCell", for: indexPath) as! PetImageCell
+        if let petImage = petInfo?.images?.allObjects[indexPath.row] as? PetImages {
+            let value = petImage.image as Data
+            guard let image = UIImage.init(data: value) else { return cell }
+            cell.petImage.image = image
+            cell.petImage.contentMode = .scaleAspectFill
+        }
+        return cell
+    }
+    
     // MARK: UIImagePickerControllerDelegate
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        guard let context = self.petInfo?.managedObjectContext else { return }
+        let images = PetImages(context: context)
+        images.date = Date() as NSDate
+        guard let selectedImage = info[UIImagePickerControllerEditedImage] as? UIImage else { return }
+        images.image = UIImageJPEGRepresentation(selectedImage, 1.0)! as NSData
+        if let pet = self.petInfo {
+            pet.addToImages(images)
+            do {
+                try context.save()
+            } catch {
+                self.alert(message: "Error Saving", title: "Sorry, there was an error saving the image, please tray again.")
+            }
+        } // TODO: Ensure to fix issues with camera returning sideways shots
+        if let newImages = CoreDataManager.shared.fetchImages(context: context) {
+            self.petImages = PetImages.renderImage(imageDate: newImages)
+        }
         self.dismiss(animated: true, completion: nil)
     }
     
