@@ -37,7 +37,7 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
         isAvailable()
         self.petNameLabel.text = petInfo?.name
         if let images = petInfo?.images {
-            petImages = PetImages.orderImagesByDate(images: images)
+            petImages = PetImages.renderImage(imageDate: PetImages.orderImagesByDate(images: images))
         }
     }
     
@@ -46,7 +46,7 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera) ? true : false
     }
     
-    var petImages: [PetImages]? = nil {
+    var petImages: [UIImage]? = nil {
         didSet {
             imageCollectionView.reloadData()
         }
@@ -55,6 +55,7 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
     // MARK: - Navigation
     
     func presentImagePicker(_ sourceType: UIImagePickerControllerSourceType) {
+        self.imagePicker.allowsEditing = true
         self.imagePicker.delegate = self
         self.imagePicker.sourceType = sourceType
         self.present(self.imagePicker, animated: true, completion: nil)
@@ -69,7 +70,9 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
             self.alert(message: "Access to Camera Denied. To allow access go to Setting > DogPanion allow access to camera.", title: "Access Denied")
         case .notDetermined:
             AVCaptureDevice.requestAccess(for: .video, completionHandler: { (_) in
-                self.checkAccess()
+                DispatchQueue.main.async {
+                    self.checkAccess()
+                }
             })
         case .restricted:
             self.alert(message: "Access to Camera is Restricted", title: "Restricted")
@@ -111,27 +114,27 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
             guard let image = UIImage.init(data: value) else { return cell }
             cell.petImage.image = image
             cell.petImage.contentMode = .scaleAspectFill
-            cell.petImage.contentMode = .scaleAspectFill
         }
         return cell
     }
     
     // MARK: UIImagePickerControllerDelegate
-    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        guard let context = petInfo?.managedObjectContext else { return }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        guard let context = self.petInfo?.managedObjectContext else { return }
         let images = PetImages(context: context)
         images.date = Date() as NSDate
-        images.image = UIImagePNGRepresentation(image)! as NSData 
-        if let pet = petInfo {
+        guard let selectedImage = info[UIImagePickerControllerEditedImage] as? UIImage else { return }
+        images.image = UIImageJPEGRepresentation(selectedImage, 1.0)! as NSData
+        if let pet = self.petInfo {
             pet.addToImages(images)
             do {
                 try context.save()
             } catch {
                 self.alert(message: "Error Saving", title: "Sorry, there was an error saving the image, please tray again.")
             }
-        }
+        } // TODO: Ensure to fix issues with camera returning sideways shots
         if let newImages = CoreDataManager.shared.fetchImages(context: context) {
-            self.petImages = newImages
+            self.petImages = PetImages.renderImage(imageDate: newImages)
         }
         self.dismiss(animated: true, completion: nil)
     }

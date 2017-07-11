@@ -158,7 +158,7 @@ Images</string>
                                     <color key="titleColor" red="0.0003403453156" green="0.32340699429999997" blue="0.29478102919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="noe-iY-GbI" kind="showDetail" identifier="addImageVC" id="muT-4t-pXX"/>
+                                    <segue destination="noe-iY-GbI" kind="show" identifier="addImageVC" action="showDetailViewController:sender:" id="muT-4t-pXX"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Imc-l8-bsY">

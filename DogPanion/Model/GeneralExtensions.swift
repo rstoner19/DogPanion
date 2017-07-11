@@ -17,3 +17,19 @@ extension UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
 }
+
+//extension UIImage {
+//    enum JPEGQuality: CGFloat {
+//        case lowest  = 0
+//        case low     = 0.25
+//        case medium  = 0.5
+//        case high    = 0.75
+//        case highest = 1
+//    }
+//    
+//    var png: Data? { return UIImagePNGRepresentation(self) }
+//    func jpeg(_ quality: JPEGQuality) -> Data? {
+//        return UIImageJPEGRepresentation(self, quality.rawValue)
+//    }
+//}
+

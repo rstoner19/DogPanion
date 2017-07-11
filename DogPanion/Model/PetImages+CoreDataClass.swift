@@ -19,4 +19,12 @@ public class PetImages: NSManagedObject {
         return petImages
     }
     
+    class func renderImage(imageDate: [PetImages]) -> [UIImage] {
+        var images: [UIImage] = []
+        for image in imageDate {
+            images.append(UIImage(data: image.image as Data)!)
+        }
+        return images
+    }
+    
 }
