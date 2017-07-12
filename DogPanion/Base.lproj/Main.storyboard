@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.19" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.16"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -37,6 +38,9 @@
                                         <state key="normal" title="+">
                                             <color key="titleColor" red="0.64331406354904175" green="0.64588218927383423" blue="0.69189822673797607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="tcG-kk-esB" kind="showDetail" identifier="addPetVC" id="UfZ-YE-X52"/>
+                                        </connections>
                                     </button>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4pa-ui-yZ4">
                                         <rect key="frame" x="94.5" y="8" width="187.5" height="72"/>
@@ -214,6 +218,100 @@ Images</string>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
         </scene>
+        <!--Add Pet View Controller-->
+        <scene sceneID="Sqd-Ax-Y2C">
+            <objects>
+                <viewController id="tcG-kk-esB" customClass="AddPetViewController" customModule="DogPanion" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wrf-fb-mB6"/>
+                        <viewControllerLayoutGuide type="bottom" id="36G-Y6-mAD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Szm-Ld-bKI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xnf-yM-mPK">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="OlS-of-HTr">
+                                        <rect key="frame" x="104" y="8" width="168.5" height="72"/>
+                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="32"/>
+                                        <color key="textColor" red="0.0003403453156" green="0.32340699429999997" blue="0.29478102919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tuc-Az-T6M">
+                                        <rect key="frame" x="104" y="8" width="168.5" height="72"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="petNameTextField:" destination="tcG-kk-esB" eventType="editingChanged" id="CUs-di-Nt4"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="0.60373550649999996" green="0.82722961900000003" blue="0.88634788990000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Tuc-Az-T6M" firstAttribute="centerX" secondItem="OlS-of-HTr" secondAttribute="centerX" id="9tm-uI-036"/>
+                                    <constraint firstItem="Tuc-Az-T6M" firstAttribute="height" secondItem="OlS-of-HTr" secondAttribute="height" id="Aox-mo-yjr"/>
+                                    <constraint firstItem="Tuc-Az-T6M" firstAttribute="centerY" secondItem="OlS-of-HTr" secondAttribute="centerY" id="Ige-9X-Ou8"/>
+                                    <constraint firstItem="OlS-of-HTr" firstAttribute="centerX" secondItem="Xnf-yM-mPK" secondAttribute="centerX" id="Qkh-cI-HJC"/>
+                                    <constraint firstAttribute="bottom" secondItem="OlS-of-HTr" secondAttribute="bottom" id="UAz-qL-Aqr"/>
+                                    <constraint firstItem="OlS-of-HTr" firstAttribute="top" secondItem="Xnf-yM-mPK" secondAttribute="top" constant="8" id="drh-Hk-ttS"/>
+                                    <constraint firstItem="Tuc-Az-T6M" firstAttribute="width" secondItem="OlS-of-HTr" secondAttribute="width" id="vJN-qT-d1K"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Breed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHu-La-PZS">
+                                <rect key="frame" x="36" y="100" width="45.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Dog Breed" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z3t-Yq-HFK">
+                                <rect key="frame" x="131.5" y="95" width="128" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kmU-6G-qqA">
+                                <rect key="frame" x="147" y="318.5" width="81" height="30"/>
+                                <state key="normal" title="Add Images"/>
+                                <connections>
+                                    <action selector="nextStepButtonClicked:" destination="tcG-kk-esB" eventType="touchUpInside" id="FZF-m4-u7q"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PM4-He-Oaa">
+                                <rect key="frame" x="169" y="513.5" width="37" height="30"/>
+                                <state key="normal" title="Done"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kmU-6G-qqA" firstAttribute="centerY" secondItem="Szm-Ld-bKI" secondAttribute="centerY" id="41p-B7-K82"/>
+                            <constraint firstItem="Xnf-yM-mPK" firstAttribute="top" secondItem="Szm-Ld-bKI" secondAttribute="top" id="5V4-Kj-a2S"/>
+                            <constraint firstItem="Z3t-Yq-HFK" firstAttribute="centerY" secondItem="hHu-La-PZS" secondAttribute="centerY" id="6ub-ii-cQ9"/>
+                            <constraint firstItem="PM4-He-Oaa" firstAttribute="top" secondItem="kmU-6G-qqA" secondAttribute="bottom" constant="165" id="6vF-Rc-2jj"/>
+                            <constraint firstItem="hHu-La-PZS" firstAttribute="top" secondItem="Xnf-yM-mPK" secondAttribute="bottom" constant="20" id="7VQ-Bn-p3s"/>
+                            <constraint firstItem="PM4-He-Oaa" firstAttribute="centerX" secondItem="Szm-Ld-bKI" secondAttribute="centerX" id="8dg-jK-vC6"/>
+                            <constraint firstItem="Xnf-yM-mPK" firstAttribute="leading" secondItem="Szm-Ld-bKI" secondAttribute="leading" id="AH3-xl-fUp"/>
+                            <constraint firstItem="Xnf-yM-mPK" firstAttribute="height" secondItem="Szm-Ld-bKI" secondAttribute="height" multiplier="0.12" id="D1N-pd-7nH"/>
+                            <constraint firstItem="kmU-6G-qqA" firstAttribute="centerX" secondItem="Szm-Ld-bKI" secondAttribute="centerX" id="W9f-m8-B3u"/>
+                            <constraint firstItem="hHu-La-PZS" firstAttribute="leading" secondItem="Szm-Ld-bKI" secondAttribute="leadingMargin" constant="20" id="eOl-wi-rlO"/>
+                            <constraint firstAttribute="trailing" secondItem="Xnf-yM-mPK" secondAttribute="trailing" id="hiA-N2-P6b"/>
+                            <constraint firstItem="Z3t-Yq-HFK" firstAttribute="leading" secondItem="hHu-La-PZS" secondAttribute="trailing" constant="50" id="ihl-Vz-H7S"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="addImageButton" destination="kmU-6G-qqA" id="MnB-26-sFW"/>
+                        <outlet property="dogBreedTextField" destination="Z3t-Yq-HFK" id="VXf-7b-onA"/>
+                        <outlet property="petNameLabel" destination="OlS-of-HTr" id="K1Z-Kc-PrW"/>
+                        <outlet property="petNameTextField" destination="Tuc-Az-T6M" id="hcP-ry-npb"/>
+                        <segue destination="noe-iY-GbI" kind="show" identifier="addImageVC" id="yw6-Zh-UCm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nIh-Bi-gP3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="949.60000000000002" y="-518.59070464767615"/>
+        </scene>
         <!--Add Image View Controller-->
         <scene sceneID="8CQ-ad-CEz">
             <objects>
@@ -350,11 +448,14 @@ Images</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iiq-dl-bnK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="951" y="139"/>
+            <point key="canvasLocation" x="950" y="200"/>
         </scene>
     </scenes>
     <resources>
         <image name="bottomSecBG1" width="1242" height="883"/>
         <image name="welcomeBG" width="1242" height="883"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="yw6-Zh-UCm"/>
+    </inferredMetricsTieBreakers>
 </document>
