@@ -38,12 +38,17 @@ class AddPetViewController: UIViewController, UITextFieldDelegate {
     
     func setup() {
         self.petNameTextField.becomeFirstResponder()
+        self.petNameTextField.delegate = self
+        self.dogBreedTextField.delegate = self
     }
     
     @IBAction func petNameTextField(_ sender: UITextField) {
         self.petNameLabel.text = sender.text
     }
     
+    @IBAction func editButtonClicked(_ sender: UIButton) {
+        self.petNameTextField.becomeFirstResponder()
+    }
     @IBAction func nextStepButtonClicked(_ sender: UIButton) {
         let context = appDelegate.persistentContainer.viewContext
         newPet = Pet(context: context)
@@ -69,8 +74,14 @@ class AddPetViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: - TextField Delegate
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        self.resignFirstResponder()
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return self.view.endEditing(true)
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == self.petNameTextField {
+            textField.addBarToKeyboard(message: "Enter Pet Name", viewController: self)
+        }
     }
     
 

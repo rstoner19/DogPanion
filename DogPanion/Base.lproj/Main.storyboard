@@ -243,11 +243,20 @@ Images</string>
                                         <rect key="frame" x="104" y="8" width="168.5" height="72"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
                                             <action selector="petNameTextField:" destination="tcG-kk-esB" eventType="editingChanged" id="CUs-di-Nt4"/>
                                         </connections>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gWB-Vl-anG">
+                                        <rect key="frame" x="274.5" y="8" width="30" height="30"/>
+                                        <state key="normal" title="Edit">
+                                            <color key="titleColor" red="0.13173744082450867" green="0.32583054900169373" blue="0.30205950140953064" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="editButtonClicked:" destination="tcG-kk-esB" eventType="touchUpInside" id="OVP-5H-hT7"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.60373550649999996" green="0.82722961900000003" blue="0.88634788990000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -256,7 +265,9 @@ Images</string>
                                     <constraint firstItem="Tuc-Az-T6M" firstAttribute="centerY" secondItem="OlS-of-HTr" secondAttribute="centerY" id="Ige-9X-Ou8"/>
                                     <constraint firstItem="OlS-of-HTr" firstAttribute="centerX" secondItem="Xnf-yM-mPK" secondAttribute="centerX" id="Qkh-cI-HJC"/>
                                     <constraint firstAttribute="bottom" secondItem="OlS-of-HTr" secondAttribute="bottom" id="UAz-qL-Aqr"/>
+                                    <constraint firstItem="gWB-Vl-anG" firstAttribute="top" secondItem="Tuc-Az-T6M" secondAttribute="top" id="aii-fj-uU8"/>
                                     <constraint firstItem="OlS-of-HTr" firstAttribute="top" secondItem="Xnf-yM-mPK" secondAttribute="top" constant="8" id="drh-Hk-ttS"/>
+                                    <constraint firstItem="gWB-Vl-anG" firstAttribute="leading" secondItem="Tuc-Az-T6M" secondAttribute="trailing" constant="2" id="eMO-lX-V78"/>
                                     <constraint firstItem="Tuc-Az-T6M" firstAttribute="width" secondItem="OlS-of-HTr" secondAttribute="width" id="vJN-qT-d1K"/>
                                 </constraints>
                             </view>
@@ -270,7 +281,7 @@ Images</string>
                                 <rect key="frame" x="131.5" y="95" width="128" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kmU-6G-qqA">
                                 <rect key="frame" x="147" y="318.5" width="81" height="30"/>
