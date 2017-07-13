@@ -33,7 +33,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kj2-PS-cQ8">
-                                        <rect key="frame" x="332" y="9" width="31" height="70"/>
+                                        <rect key="frame" x="332" y="7" width="31" height="70"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="48"/>
                                         <state key="normal" title="+">
                                             <color key="titleColor" red="0.64331406354904175" green="0.64588218927383423" blue="0.69189822673797607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -42,8 +42,15 @@
                                             <segue destination="tcG-kk-esB" kind="showDetail" identifier="addPetVC" id="UfZ-YE-X52"/>
                                         </connections>
                                     </button>
+                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="dNJ-c4-nF9">
+                                        <rect key="frame" x="276" y="32.5" width="50" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="Jdy-sZ-BVz"/>
+                                            <constraint firstAttribute="width" secondItem="dNJ-c4-nF9" secondAttribute="height" multiplier="2:1" id="njA-4C-fbu"/>
+                                        </constraints>
+                                    </imageView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4pa-ui-yZ4">
-                                        <rect key="frame" x="94.5" y="8" width="187.5" height="72"/>
+                                        <rect key="frame" x="112.5" y="8" width="150" height="72"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="h4Q-pr-NBw">
                                             <size key="itemSize" width="131" height="97"/>
@@ -85,15 +92,34 @@
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="Sbs-4z-2nE"/>
                                         </connections>
                                     </collectionView>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightArrow" translatesAutoresizingMaskIntoConstraints="NO" id="zqI-N1-DW3">
+                                        <rect key="frame" x="262.5" y="24" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="zqI-N1-DW3" secondAttribute="height" multiplier="1:1" id="usK-Lb-Yzw"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leftArrow" translatesAutoresizingMaskIntoConstraints="NO" id="WAJ-q4-W4N">
+                                        <rect key="frame" x="76.5" y="26" width="36" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="WAJ-q4-W4N" secondAttribute="height" multiplier="1:1" id="GF5-e3-AxI"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.36705344915390015" green="0.63596099615097046" blue="0.66587257385253906" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="4pa-ui-yZ4" secondAttribute="bottom" id="8Lp-BR-626"/>
-                                    <constraint firstItem="4pa-ui-yZ4" firstAttribute="width" secondItem="Ewn-ky-nw7" secondAttribute="width" multiplier="0.5" id="Ero-fx-7hN"/>
+                                    <constraint firstItem="Kj2-PS-cQ8" firstAttribute="leading" secondItem="dNJ-c4-nF9" secondAttribute="trailing" constant="6" id="Daz-6x-fqe"/>
+                                    <constraint firstItem="4pa-ui-yZ4" firstAttribute="width" secondItem="Ewn-ky-nw7" secondAttribute="width" multiplier="0.4" id="Ero-fx-7hN"/>
+                                    <constraint firstItem="4pa-ui-yZ4" firstAttribute="leading" secondItem="WAJ-q4-W4N" secondAttribute="trailing" id="P9S-LU-R49"/>
                                     <constraint firstItem="4pa-ui-yZ4" firstAttribute="centerX" secondItem="Ewn-ky-nw7" secondAttribute="centerX" id="UrS-D6-N5J"/>
+                                    <constraint firstItem="dNJ-c4-nF9" firstAttribute="centerY" secondItem="Kj2-PS-cQ8" secondAttribute="centerY" constant="3" id="Xdy-z5-lAj"/>
                                     <constraint firstItem="4pa-ui-yZ4" firstAttribute="top" secondItem="Ewn-ky-nw7" secondAttribute="top" constant="8" id="ZEb-VH-REK"/>
-                                    <constraint firstItem="Kj2-PS-cQ8" firstAttribute="centerY" secondItem="4pa-ui-yZ4" secondAttribute="centerY" id="bIC-Ll-MOI"/>
+                                    <constraint firstItem="Kj2-PS-cQ8" firstAttribute="centerY" secondItem="4pa-ui-yZ4" secondAttribute="centerY" constant="-2" id="bIC-Ll-MOI"/>
+                                    <constraint firstItem="WAJ-q4-W4N" firstAttribute="height" secondItem="4pa-ui-yZ4" secondAttribute="height" multiplier="0.5" id="dEU-Wt-m2o"/>
                                     <constraint firstAttribute="trailing" secondItem="Kj2-PS-cQ8" secondAttribute="trailing" constant="12" id="iSh-un-mg9"/>
+                                    <constraint firstItem="WAJ-q4-W4N" firstAttribute="centerY" secondItem="4pa-ui-yZ4" secondAttribute="centerY" id="npr-Pd-eFx"/>
+                                    <constraint firstItem="zqI-N1-DW3" firstAttribute="centerY" secondItem="4pa-ui-yZ4" secondAttribute="centerY" id="pv7-gl-TJf"/>
+                                    <constraint firstItem="zqI-N1-DW3" firstAttribute="leading" secondItem="4pa-ui-yZ4" secondAttribute="trailing" id="wAP-gT-Fp8"/>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcomeBG" translatesAutoresizingMaskIntoConstraints="NO" id="9qr-pj-Iqn">
@@ -206,13 +232,16 @@ Images</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="arrow" destination="dNJ-c4-nF9" id="xyQ-wQ-SRp"/>
                         <outlet property="bottomSecBG" destination="IAd-7C-6fl" id="872-9B-jZy"/>
                         <outlet property="collectionViewBG" destination="9qr-pj-Iqn" id="UJG-MU-BTH"/>
                         <outlet property="healthButton" destination="aqx-WY-yt9" id="DZN-6t-p8X"/>
                         <outlet property="imageCollectionView" destination="q2k-L2-TUV" id="1X5-Hi-l78"/>
                         <outlet property="imagesButton" destination="DSR-yx-Wjs" id="Rgh-TO-Dnj"/>
+                        <outlet property="leftArrow" destination="WAJ-q4-W4N" id="1sc-Pz-ih3"/>
                         <outlet property="mapButton" destination="Imc-l8-bsY" id="Tvb-ae-4qy"/>
                         <outlet property="petCollectionView" destination="4pa-ui-yZ4" id="snh-hq-jPu"/>
+                        <outlet property="rightArrow" destination="zqI-N1-DW3" id="6FO-jw-3fG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -464,7 +493,10 @@ Images</string>
         </scene>
     </scenes>
     <resources>
+        <image name="arrow" width="386" height="266"/>
         <image name="bottomSecBG1" width="1242" height="883"/>
+        <image name="leftArrow" width="40" height="40"/>
+        <image name="rightArrow" width="40" height="40"/>
         <image name="welcomeBG" width="1242" height="883"/>
     </resources>
     <inferredMetricsTieBreakers>
