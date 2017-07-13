@@ -166,7 +166,7 @@
                                 <rect key="frame" x="0.0" y="413" width="375" height="253.5"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aqx-WY-yt9">
-                                <rect key="frame" x="147" y="425" width="80" height="80"/>
+                                <rect key="frame" x="147.5" y="473" width="80" height="80"/>
                                 <color key="backgroundColor" red="0.33891743421554565" green="0.73911410570144653" blue="0.56432884931564331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="JsA-u7-8mW"/>
@@ -177,7 +177,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="DSR-yx-Wjs">
-                                <rect key="frame" x="260" y="425" width="80" height="80"/>
+                                <rect key="frame" x="260.5" y="473" width="80" height="80"/>
                                 <color key="backgroundColor" red="0.4209844172000885" green="0.48472744226455688" blue="0.55603092908859253" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="9x6-S5-hGw"/>
@@ -193,7 +193,7 @@ Images</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Imc-l8-bsY">
-                                <rect key="frame" x="35" y="425" width="80" height="80"/>
+                                <rect key="frame" x="35" y="473" width="80.5" height="80"/>
                                 <color key="backgroundColor" red="0.64331406349999998" green="0.64588218929999996" blue="0.69189822670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Map">
                                     <color key="titleColor" red="0.0003403453156" green="0.32340699429999997" blue="0.29478102919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -208,6 +208,7 @@ Images</string>
                             <constraint firstItem="q2k-L2-TUV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3oq-Dq-hLM"/>
                             <constraint firstItem="Imc-l8-bsY" firstAttribute="centerY" secondItem="aqx-WY-yt9" secondAttribute="centerY" id="5e3-eX-hdf"/>
                             <constraint firstItem="Ewn-ky-nw7" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.12" id="7fQ-DL-4qp"/>
+                            <constraint firstItem="aqx-WY-yt9" firstAttribute="centerY" secondItem="IAd-7C-6fl" secondAttribute="centerY" multiplier="0.95" id="8dz-FG-jAc"/>
                             <constraint firstItem="Ewn-ky-nw7" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="BrC-FG-sW0"/>
                             <constraint firstAttribute="trailing" secondItem="IAd-7C-6fl" secondAttribute="trailing" id="CbF-eD-Fze"/>
                             <constraint firstItem="Imc-l8-bsY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="0.4" id="GRV-6H-ax4"/>
@@ -221,7 +222,6 @@ Images</string>
                             <constraint firstItem="Imc-l8-bsY" firstAttribute="width" secondItem="aqx-WY-yt9" secondAttribute="width" id="fKx-7j-0lY"/>
                             <constraint firstItem="q2k-L2-TUV" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="fds-KB-Ao7"/>
                             <constraint firstAttribute="trailing" secondItem="Ewn-ky-nw7" secondAttribute="trailing" id="frJ-Kn-YUM"/>
-                            <constraint firstItem="aqx-WY-yt9" firstAttribute="top" secondItem="q2k-L2-TUV" secondAttribute="bottom" constant="12" id="gDm-YA-gKd"/>
                             <constraint firstItem="DSR-yx-Wjs" firstAttribute="width" secondItem="DSR-yx-Wjs" secondAttribute="height" multiplier="1:1" id="gKF-HR-kvP"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="IAd-7C-6fl" secondAttribute="bottom" id="jxv-E1-i4m"/>
                             <constraint firstItem="aqx-WY-yt9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="l4J-6V-t45"/>
