@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1DA6DAAA1F15C4B500B6FE32 /* AddPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA6DAA91F15C4B500B6FE32 /* AddPetViewController.swift */; };
 		D70D1C141F1440C300FFAD15 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70D1C131F1440C300FFAD15 /* CoreDataManager.swift */; };
 		D70D1C161F14617C00FFAD15 /* ImageCustomFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70D1C151F14617C00FFAD15 /* ImageCustomFlowLayout.swift */; };
 		D70D1C181F1546D600FFAD15 /* GeneralProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70D1C171F1546D600FFAD15 /* GeneralProtocols.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1DA6DAA91F15C4B500B6FE32 /* AddPetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddPetViewController.swift; path = DogPanion/Controller/AddPetViewController.swift; sourceTree = SOURCE_ROOT; };
 		D70D1C131F1440C300FFAD15 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		D70D1C151F14617C00FFAD15 /* ImageCustomFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCustomFlowLayout.swift; sourceTree = "<group>"; };
 		D70D1C171F1546D600FFAD15 /* GeneralProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralProtocols.swift; sourceTree = "<group>"; };
@@ -110,8 +112,9 @@
 		D7BF6B001F0C1130000F6C03 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D7ADB5781F0BFCBC0054F345 /* MainViewController.swift */,
 				D7F0B0ED1F11579D006FEA6C /* AddImageViewController.swift */,
+				1DA6DAA91F15C4B500B6FE32 /* AddPetViewController.swift */,
+				D7ADB5781F0BFCBC0054F345 /* MainViewController.swift */,
 				D7BF6B031F0C118B000F6C03 /* Xib/Cell Controllers */,
 			);
 			path = Controller;
@@ -231,6 +234,7 @@
 				D7AF8BAB1F1550C1003E11F0 /* PetImages+CoreDataProperties.swift in Sources */,
 				D7AF8BAA1F1550C1003E11F0 /* PetImages+CoreDataClass.swift in Sources */,
 				D7ADB5771F0BFCBC0054F345 /* AppDelegate.swift in Sources */,
+				1DA6DAAA1F15C4B500B6FE32 /* AddPetViewController.swift in Sources */,
 				D76EDDEF1F10935100A8170E /* PetNameCell.swift in Sources */,
 				D7AF8BA91F1550C1003E11F0 /* Pet+CoreDataProperties.swift in Sources */,
 			);

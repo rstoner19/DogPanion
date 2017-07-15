@@ -14,14 +14,19 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
     weak var delegate: DismissVCDelegate? = nil
     lazy var imagePicker = UIImagePickerController()
     var petInfo: Pet? = nil
+    var selectedIndex: Int? = nil
     
     @IBOutlet weak var petNameLabel: UILabel!
     
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var photoLibraryButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var imageCollectionView: UICollectionView!
     
+    @IBOutlet weak var displayImage: UIImageView!
 
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -36,8 +41,9 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
     func setup() {
         isAvailable()
         self.petNameLabel.text = petInfo?.name
+        self.displayImage.layer.borderWidth = 1
         if let images = petInfo?.images {
-            petImages = PetImages.renderImage(imageDate: PetImages.orderImagesByDate(images: images))
+            petImages = PetImages.orderImagesByDate(images: images)
         }
     }
     
@@ -46,7 +52,7 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera) ? true : false
     }
     
-    var petImages: [UIImage]? = nil {
+    var petImages: [PetImages] = [] {
         didSet {
             imageCollectionView.reloadData()
         }
@@ -109,34 +115,71 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "petImagesCell", for: indexPath) as! PetImageCell
-        if let petImage = petInfo?.images?.allObjects[indexPath.row] as? PetImages {
-            let value = petImage.image as Data
-            guard let image = UIImage.init(data: value) else { return cell }
-            cell.petImage.image = image
-            cell.petImage.contentMode = .scaleAspectFill
-        }
+        let value = petImages[indexPath.row].image as Data
+        guard let image = UIImage.init(data: value) else { return cell }
+        cell.petImage.image = image
+        cell.petImage.contentMode = .scaleAspectFill
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.saveButton.isEnabled = false
+        self.selectedIndex = indexPath.row
+        guard let cell = collectionView.cellForItem(at: indexPath) as? PetImageCell else {return}
+        self.displayImage.image = cell.petImage.image
     }
     
     // MARK: UIImagePickerControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        guard let context = self.petInfo?.managedObjectContext else { return }
-        let images = PetImages(context: context)
-        images.date = Date() as NSDate
+        self.saveButton.isEnabled = true
         guard let selectedImage = info[UIImagePickerControllerEditedImage] as? UIImage else { return }
-        images.image = UIImageJPEGRepresentation(selectedImage, 1.0)! as NSData
-        if let pet = self.petInfo {
-            pet.addToImages(images)
-            do {
-                try context.save()
-            } catch {
-                self.alert(message: "Error Saving", title: "Sorry, there was an error saving the image, please tray again.")
-            }
-        } // TODO: Ensure to fix issues with camera returning sideways shots
-        if let newImages = CoreDataManager.shared.fetchImages(context: context) {
-            self.petImages = PetImages.renderImage(imageDate: newImages)
-        }
+        self.displayImage.image = selectedImage
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func saveButtonSelected(_ sender: UIButton) {
+        self.activityIndicator.isHidden = false
+        self.activityIndicator.startAnimating()
+        guard let context = self.petInfo?.managedObjectContext else { return }
+        if let image = self.displayImage.image {
+            let images = PetImages(context: context)
+            images.date = Date() as NSDate
+            guard let imageData = UIImageJPEGRepresentation(image
+                , 1.0) as NSData? else {return}
+            images.image = imageData
+            if let pet = self.petInfo {
+                pet.addToImages(images)
+                do {
+                    try context.save()
+                    self.activityIndicator.stopAnimating()
+                } catch {
+                    self.alert(message: "Error Saving", title: "Sorry, there was an error saving the image, please tray again.")
+                    self.activityIndicator.stopAnimating()
+                }
+            }
+            self.petImages.append(images)
+            self.saveButton.isEnabled = false
+        }
+    }
+    
+    @IBAction func deleteButtonSelected(_ sender: UIButton) {
+        if !saveButton.isEnabled {
+            if let index = selectedIndex {
+                guard let context = self.petInfo?.managedObjectContext else { return }
+                let imageToDelete = petImages.remove(at: index)
+                context.delete(imageToDelete)
+                do {
+                    try context.save()
+                    self.selectedIndex = nil
+                    self.displayImage.image = nil
+                    self.imageCollectionView.reloadData()
+                } catch {
+                    print("Error saving deletion")
+                }
+            }
+        } else {
+            self.displayImage.image = nil
+        }
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
