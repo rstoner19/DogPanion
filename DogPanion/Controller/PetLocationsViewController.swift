@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import MapKit
 
 class PetLocationsViewController: UIViewController {
-
+    
+    @IBOutlet weak var petNameLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
