@@ -17,6 +17,69 @@
         </array>
     </customFonts>
     <scenes>
+        <!--Pet Locations View Controller-->
+        <scene sceneID="tCk-nc-HYG">
+            <objects>
+                <viewController id="xQJ-23-ygn" customClass="PetLocationsViewController" customModule="DogPanion" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tcj-R2-yWS"/>
+                        <viewControllerLayoutGuide type="bottom" id="GFH-7D-HbF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="G0S-2f-FlD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Vy-5f-iVQ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="g0p-hk-M2K">
+                                        <rect key="frame" x="104" y="8" width="168.5" height="72"/>
+                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="32"/>
+                                        <color key="textColor" red="0.0003403453156" green="0.32340699429999997" blue="0.29478102919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JVc-oi-O5z">
+                                        <rect key="frame" x="104" y="8" width="168.5" height="72"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES"/>
+                                        <connections>
+                                            <action selector="petNameTextField:" destination="tcG-kk-esB" eventType="editingChanged" id="2nB-Ru-f1d"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="0.60373550649999996" green="0.82722961900000003" blue="0.88634788990000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="g0p-hk-M2K" firstAttribute="top" secondItem="8Vy-5f-iVQ" secondAttribute="top" constant="8" id="T5P-KU-hZj"/>
+                                    <constraint firstItem="JVc-oi-O5z" firstAttribute="centerX" secondItem="g0p-hk-M2K" secondAttribute="centerX" id="glE-Bf-szB"/>
+                                    <constraint firstItem="JVc-oi-O5z" firstAttribute="height" secondItem="g0p-hk-M2K" secondAttribute="height" id="mNP-Sz-RJ4"/>
+                                    <constraint firstItem="JVc-oi-O5z" firstAttribute="centerY" secondItem="g0p-hk-M2K" secondAttribute="centerY" id="pKY-mL-PBu"/>
+                                    <constraint firstItem="JVc-oi-O5z" firstAttribute="width" secondItem="g0p-hk-M2K" secondAttribute="width" id="qtq-l9-xjW"/>
+                                    <constraint firstItem="g0p-hk-M2K" firstAttribute="centerX" secondItem="8Vy-5f-iVQ" secondAttribute="centerX" id="rO3-Ew-kmJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="g0p-hk-M2K" secondAttribute="bottom" id="zVy-rD-kTV"/>
+                                </constraints>
+                            </view>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="x7y-vM-rz1">
+                                <rect key="frame" x="0.0" y="200" width="375" height="467"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="8Vy-5f-iVQ" firstAttribute="top" secondItem="G0S-2f-FlD" secondAttribute="top" id="030-br-tNb"/>
+                            <constraint firstItem="x7y-vM-rz1" firstAttribute="leading" secondItem="G0S-2f-FlD" secondAttribute="leading" id="0ci-st-c9O"/>
+                            <constraint firstItem="GFH-7D-HbF" firstAttribute="top" secondItem="x7y-vM-rz1" secondAttribute="bottom" id="2Re-Sh-QzI"/>
+                            <constraint firstItem="8Vy-5f-iVQ" firstAttribute="height" secondItem="G0S-2f-FlD" secondAttribute="height" multiplier="0.12" id="QsO-Fg-9bs"/>
+                            <constraint firstItem="x7y-vM-rz1" firstAttribute="height" secondItem="G0S-2f-FlD" secondAttribute="height" multiplier="0.7" id="YLg-bc-jGY"/>
+                            <constraint firstAttribute="trailing" secondItem="x7y-vM-rz1" secondAttribute="trailing" id="ezr-Q8-sKP"/>
+                            <constraint firstItem="8Vy-5f-iVQ" firstAttribute="leading" secondItem="G0S-2f-FlD" secondAttribute="leading" id="mk0-t2-Mal"/>
+                            <constraint firstAttribute="trailing" secondItem="8Vy-5f-iVQ" secondAttribute="trailing" id="pQa-lL-rgF"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Td-YW-ufO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-743" y="896"/>
+        </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -198,6 +261,9 @@ Images</string>
                                 <state key="normal" title="Map">
                                     <color key="titleColor" red="0.0003403453156" green="0.32340699429999997" blue="0.29478102919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="xQJ-23-ygn" kind="showDetail" id="8gX-ZQ-EDc"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.46100741624832153" green="0.79293555021286011" blue="0.83135658502578735" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -351,7 +417,7 @@ Images</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nIh-Bi-gP3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="949.60000000000002" y="-518.59070464767615"/>
+            <point key="canvasLocation" x="964" y="139"/>
         </scene>
         <!--Add Image View Controller-->
         <scene sceneID="8CQ-ad-CEz">
@@ -518,7 +584,7 @@ Image</string>
                                     <constraint firstItem="bt7-qg-ibt" firstAttribute="height" secondItem="cfM-4i-yJ3" secondAttribute="height" multiplier="0.8" id="sMM-0o-NCW"/>
                                 </constraints>
                             </view>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="f5o-0e-jAO">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="f5o-0e-jAO">
                                 <rect key="frame" x="157" y="303" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="NDl-PR-SOg"/>
@@ -561,7 +627,7 @@ Image</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iiq-dl-bnK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="949.60000000000002" y="199.25037481259372"/>
+            <point key="canvasLocation" x="927" y="902"/>
         </scene>
     </scenes>
     <resources>
@@ -574,6 +640,6 @@ Image</string>
         <image name="welcomeBG" width="1242" height="883"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="muT-4t-pXX"/>
+        <segue reference="yw6-Zh-UCm"/>
     </inferredMetricsTieBreakers>
 </document>
