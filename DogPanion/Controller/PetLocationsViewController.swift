@@ -8,14 +8,17 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 class PetLocationsViewController: UIViewController {
+    
+    let locationManager = CLLocationManager()
     
     @IBOutlet weak var petNameLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setup()
         // Do any additional setup after loading the view.
     }
 
@@ -25,14 +28,16 @@ class PetLocationsViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func setup() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
     }
-    */
-
+    
+    @IBAction func dogParkButtonPressed(_ sender: UIButton) {
+        let request = MKLocalSearchRequest()
+        request.naturalLanguageQuery = "dog park"
+        
+    }
+    
 }
