@@ -23,7 +23,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Take a picture of your pet</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Display various locations for your dog nearby.</string>
+	<string>Allows for displaying dog parks, vets, or various other pet related locations nearby.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Add Pet Images</string>
 	<key>UILaunchStoryboardName</key>

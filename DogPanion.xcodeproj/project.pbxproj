@@ -25,6 +25,7 @@
 		D7AF8BA91F1550C1003E11F0 /* Pet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF8BA51F1550C1003E11F0 /* Pet+CoreDataProperties.swift */; };
 		D7AF8BAA1F1550C1003E11F0 /* PetImages+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF8BA61F1550C1003E11F0 /* PetImages+CoreDataClass.swift */; };
 		D7AF8BAB1F1550C1003E11F0 /* PetImages+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF8BA71F1550C1003E11F0 /* PetImages+CoreDataProperties.swift */; };
+		D7C629971F1D3C37004C45F4 /* MapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C629961F1D3C37004C45F4 /* MapAnnotation.swift */; };
 		D7F0B0EE1F11579D006FEA6C /* AddImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F0B0ED1F11579D006FEA6C /* AddImageViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		D7AF8BA51F1550C1003E11F0 /* Pet+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pet+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D7AF8BA61F1550C1003E11F0 /* PetImages+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PetImages+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D7AF8BA71F1550C1003E11F0 /* PetImages+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PetImages+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D7C629961F1D3C37004C45F4 /* MapAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotation.swift; sourceTree = "<group>"; };
 		D7F0B0ED1F11579D006FEA6C /* AddImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddImageViewController.swift; path = DogPanion/Controller/AddImageViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -140,6 +142,7 @@
 				D70D1C131F1440C300FFAD15 /* CoreDataManager.swift */,
 				D79D3A281F12A7EF008CBA69 /* GeneralExtensions.swift */,
 				D70D1C171F1546D600FFAD15 /* GeneralProtocols.swift */,
+				D7C629961F1D3C37004C45F4 /* MapAnnotation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 				D7ADB58C1F0C0DEF0054F345 /* PetImageCell.swift in Sources */,
 				D70D1C181F1546D600FFAD15 /* GeneralProtocols.swift in Sources */,
 				D7F0B0EE1F11579D006FEA6C /* AddImageViewController.swift in Sources */,
+				D7C629971F1D3C37004C45F4 /* MapAnnotation.swift in Sources */,
 				D70D1C141F1440C300FFAD15 /* CoreDataManager.swift in Sources */,
 				D7ADB5791F0BFCBC0054F345 /* MainViewController.swift in Sources */,
 				D7AF8BAB1F1550C1003E11F0 /* PetImages+CoreDataProperties.swift in Sources */,

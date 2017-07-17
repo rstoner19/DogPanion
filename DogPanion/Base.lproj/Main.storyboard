@@ -48,6 +48,9 @@
                             </view>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="x7y-vM-rz1">
                                 <rect key="frame" x="0.0" y="200" width="375" height="467"/>
+                                <connections>
+                                    <outlet property="delegate" destination="xQJ-23-ygn" id="tea-7M-Mca"/>
+                                </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uTL-Wh-rei">
                                 <rect key="frame" x="62.5" y="145" width="63" height="30"/>
@@ -73,6 +76,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="mapView" destination="x7y-vM-rz1" id="e7j-Dw-bjU"/>
                         <outlet property="petNameLabel" destination="g0p-hk-M2K" id="Wdh-WE-i1M"/>
                     </connections>
                 </viewController>
