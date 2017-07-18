@@ -12,8 +12,6 @@ import CoreLocation
 
 class PetLocationsViewController: UIViewController, MKMapViewDelegate {
     
-    let locationManager = CLLocationManager()
-    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var petNameLabel: UILabel!
     
@@ -22,20 +20,21 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var vetButton: UIButton!
     @IBOutlet weak var petStoreButton: UIButton!
     
-    // TODO: Need to implement dismiss delegate
-    // TODO: Change pin colors
+    let locationManager = CLLocationManager()
+    var delegate: DismissVCDelegate? = nil
+    var pinColor: PinColor? = nil
+    
     // TODO: Make Buttons have graphics
+    // TODO: Implement Search Bar if current location
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        // Do any additional setup after loading the view.
     }
 
     func setup() {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         checkAuthorizationStatus(checked: false)
-        
         func setBorder(button: UIButton) {
             button.layer.borderColor = UIColor.gray.cgColor
             button.layer.borderWidth = 1.0
@@ -46,6 +45,10 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate {
         setBorder(button: self.dogParkButton)
     }
     
+    @IBAction func doneButtonPressed(_ sender: UIButton) {
+        delegate?.dismissVC()
+    }
+    
     @IBAction func setSearchButtonPressed(_ sender: UIButton) {
         removeAnnotations()
         shadeButtons()
@@ -53,13 +56,17 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate {
         
         switch sender {
         case self.dogParkButton:
+            pinColor = .greenPin
             searchRequest(queryRequest: "dog park")
         case self.groomingButton:
+            pinColor = .purplePin
             searchRequest(queryRequest: "pet groomer")
         case self.vetButton:
+            pinColor = .redPin
             searchRequest(queryRequest: "veterinarians")
         case self.petStoreButton:
-            searchRequest(queryRequest: "pet stores")
+            pinColor = .bluePin
+            searchRequest(queryRequest: "Pet Stores")
         default:
             break
         }
@@ -77,9 +84,7 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate {
         mapView.removeAnnotations(annotations)
     }
     
-    
     // MARK: MapView
-    
     func searchRequest(queryRequest: String) {
         let request = MKLocalSearchRequest()
         request.naturalLanguageQuery = queryRequest
@@ -104,23 +109,42 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if (annotation is MKUserLocation) { return nil }
-        
-        let reuseID = "pin"
+        var reuseID = "pin"
+        if let pinColor = pinColor {
+            reuseID = pinColor.rawValue
+        }
         var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseID ) as? MKPinAnnotationView
         if pinView == nil {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseID)
             pinView?.canShowCallout = true
             pinView?.animatesDrop = true
-            pinView?.pinTintColor = MKPinAnnotationView.greenPinColor()
+            if let pinColor = pinColor {
+                pinView?.pinTintColor = setPinColor(pinColor: pinColor)
+            }
             let button = UIButton(type: .custom)
             button.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
-            let image = UIImage(named: "rightArrow") // TODO: Make this a car icon
+            let image = UIImage(named: "carIcon")
             button.setImage(image, for: .normal)
             pinView?.rightCalloutAccessoryView = button
         } else {
             pinView?.annotation = annotation
         }
         return pinView
+    }
+    
+    func setPinColor(pinColor: PinColor) -> UIColor {
+        let color: UIColor
+        switch pinColor {
+        case .bluePin:
+            color = UIColor.blue
+        case .greenPin:
+            color = MKPinAnnotationView.greenPinColor()
+        case .purplePin:
+            color = MKPinAnnotationView.purplePinColor()
+        case .redPin:
+            color = MKPinAnnotationView.redPinColor()
+        }
+        return color
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
@@ -135,16 +159,13 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate {
         MKMapItem.openMaps(with: mapItems, launchOptions: launchOptions)
     }
     
-    
-    
-    
     // MARK: Location Manager
     func checkAuthorizationStatus(checked: Bool) {
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             mapView.showsUserLocation = true
             if let location = locationManager.location {
                 print(location)
-                centerOnLocation(location: location, regionRadius: 8000)
+                centerOnLocation(location: location, regionRadius: 6000)
             }
         } else {
             if !checked {
@@ -158,5 +179,4 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate {
         let region = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
         mapView.setRegion(region, animated: true)
     }
-    
 }

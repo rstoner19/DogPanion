@@ -32,18 +32,28 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Vy-5f-iVQ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="g0p-hk-M2K">
-                                        <rect key="frame" x="104" y="8" width="168.5" height="72"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet Locations" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="g0p-hk-M2K">
+                                        <rect key="frame" x="65" y="8" width="245.5" height="72"/>
                                         <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="32"/>
                                         <color key="textColor" red="0.0003403453156" green="0.32340699429999997" blue="0.29478102919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xWX-LV-PqQ">
+                                        <rect key="frame" x="330" y="29" width="37" height="30"/>
+                                        <state key="normal" title="Done"/>
+                                        <connections>
+                                            <action selector="doneButtonPressed:" destination="xQJ-23-ygn" eventType="touchUpInside" id="Rkz-RE-nYu"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.60373550649999996" green="0.82722961900000003" blue="0.88634788990000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="xWX-LV-PqQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="g0p-hk-M2K" secondAttribute="trailing" constant="8" id="Dn8-Sr-mP2"/>
                                     <constraint firstItem="g0p-hk-M2K" firstAttribute="top" secondItem="8Vy-5f-iVQ" secondAttribute="top" constant="8" id="T5P-KU-hZj"/>
+                                    <constraint firstAttribute="trailing" secondItem="xWX-LV-PqQ" secondAttribute="trailing" constant="8" id="h5q-7L-NWh"/>
                                     <constraint firstItem="g0p-hk-M2K" firstAttribute="centerX" secondItem="8Vy-5f-iVQ" secondAttribute="centerX" id="rO3-Ew-kmJ"/>
                                     <constraint firstAttribute="bottom" secondItem="g0p-hk-M2K" secondAttribute="bottom" id="zVy-rD-kTV"/>
+                                    <constraint firstItem="xWX-LV-PqQ" firstAttribute="centerY" secondItem="g0p-hk-M2K" secondAttribute="centerY" id="zaa-6k-yeS"/>
                                 </constraints>
                             </view>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="x7y-vM-rz1">
@@ -52,7 +62,7 @@
                                     <outlet property="delegate" destination="xQJ-23-ygn" id="tea-7M-Mca"/>
                                 </connections>
                             </mapView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="X49-oW-QZk">
+                            <searchBar contentMode="redraw" placeholder="Enter Other Starting Point" translatesAutoresizingMaskIntoConstraints="NO" id="X49-oW-QZk">
                                 <rect key="frame" x="0.0" y="80" width="375" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="RPX-If-UQl"/>
@@ -331,7 +341,7 @@ Images</string>
                                     <color key="titleColor" red="0.0003403453156" green="0.32340699429999997" blue="0.29478102919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="xQJ-23-ygn" kind="showDetail" id="8gX-ZQ-EDc"/>
+                                    <segue destination="xQJ-23-ygn" kind="showDetail" identifier="petLocations" id="8gX-ZQ-EDc"/>
                                 </connections>
                             </button>
                         </subviews>

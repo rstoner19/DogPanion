@@ -11,3 +11,10 @@ import Foundation
 protocol DismissVCDelegate : class {
     func dismissVC()
 }
+
+enum PinColor : String {
+    case redPin;
+    case bluePin;
+    case greenPin;
+    case purplePin;
+}
