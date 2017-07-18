@@ -26,7 +26,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var arrow: UIImageView!
     
     
-    // TODO: If there are no pets, need to disable button, highlight button to add pet
+    // TODO: Need default image is user hasn't added any.
     lazy var appDelegate = UIApplication.shared.delegate as! AppDelegate
     var petImages: [PetImages] = []
     var currentIndexPath: IndexPath = IndexPath(row: 1, section: 0)

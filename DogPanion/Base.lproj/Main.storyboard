@@ -47,42 +47,107 @@
                                 </constraints>
                             </view>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="x7y-vM-rz1">
-                                <rect key="frame" x="0.0" y="200" width="375" height="467"/>
+                                <rect key="frame" x="0.0" y="233.5" width="375" height="433.5"/>
                                 <connections>
                                     <outlet property="delegate" destination="xQJ-23-ygn" id="tea-7M-Mca"/>
                                 </connections>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uTL-Wh-rei">
-                                <rect key="frame" x="62.5" y="145" width="63" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Dog Park"/>
-                                <connections>
-                                    <action selector="dogParkButtonPressed:" destination="xQJ-23-ygn" eventType="touchUpInside" id="Two-Iu-wrb"/>
-                                </connections>
-                            </button>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="X49-oW-QZk">
+                                <rect key="frame" x="0.0" y="80" width="375" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="RPX-If-UQl"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tyY-Wg-B0t">
+                                <rect key="frame" x="0.0" y="130" width="375" height="103.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCg-ao-nTr">
+                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="52"/>
+                                        <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Grooming"/>
+                                        <connections>
+                                            <action selector="setSearchButtonPressed:" destination="xQJ-23-ygn" eventType="touchUpInside" id="Cti-CW-0VY"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MGw-Vx-tuo">
+                                        <rect key="frame" x="187.5" y="52" width="187.5" height="51.5"/>
+                                        <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Pet Store"/>
+                                        <connections>
+                                            <action selector="setSearchButtonPressed:" destination="xQJ-23-ygn" eventType="touchUpInside" id="Z0i-Pj-286"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cs-NY-pdE">
+                                        <rect key="frame" x="187.5" y="0.0" width="187.5" height="51.5"/>
+                                        <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Vet"/>
+                                        <connections>
+                                            <action selector="setSearchButtonPressed:" destination="xQJ-23-ygn" eventType="touchUpInside" id="gag-fj-f3f"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uTL-Wh-rei">
+                                        <rect key="frame" x="0.0" y="52" width="187.5" height="51.5"/>
+                                        <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Dog Park"/>
+                                        <connections>
+                                            <action selector="setSearchButtonPressed:" destination="xQJ-23-ygn" eventType="touchUpInside" id="xJX-j1-SYZ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.55200421810150146" green="0.73164361715316772" blue="0.83246535062789917" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="YCg-ao-nTr" firstAttribute="top" secondItem="tyY-Wg-B0t" secondAttribute="top" id="2vm-qf-hG4"/>
+                                    <constraint firstAttribute="bottom" secondItem="uTL-Wh-rei" secondAttribute="bottom" id="3bY-nu-Qkg"/>
+                                    <constraint firstItem="uTL-Wh-rei" firstAttribute="leading" secondItem="tyY-Wg-B0t" secondAttribute="leading" id="5hZ-Nt-LQ8"/>
+                                    <constraint firstItem="3cs-NY-pdE" firstAttribute="top" secondItem="tyY-Wg-B0t" secondAttribute="top" id="5nv-sq-ASN"/>
+                                    <constraint firstItem="3cs-NY-pdE" firstAttribute="width" secondItem="uTL-Wh-rei" secondAttribute="width" id="9yz-7E-gm1"/>
+                                    <constraint firstAttribute="bottom" secondItem="MGw-Vx-tuo" secondAttribute="bottom" id="ByP-c0-dbH"/>
+                                    <constraint firstAttribute="trailing" secondItem="MGw-Vx-tuo" secondAttribute="trailing" id="IDG-cM-JYX"/>
+                                    <constraint firstItem="MGw-Vx-tuo" firstAttribute="width" secondItem="uTL-Wh-rei" secondAttribute="width" id="IOL-45-nHh"/>
+                                    <constraint firstItem="YCg-ao-nTr" firstAttribute="height" secondItem="uTL-Wh-rei" secondAttribute="height" id="P4P-gH-t9D"/>
+                                    <constraint firstItem="uTL-Wh-rei" firstAttribute="width" secondItem="tyY-Wg-B0t" secondAttribute="width" multiplier="0.5" id="b6Z-Wo-tQz"/>
+                                    <constraint firstItem="YCg-ao-nTr" firstAttribute="width" secondItem="uTL-Wh-rei" secondAttribute="width" id="dbZ-rl-fze"/>
+                                    <constraint firstAttribute="trailing" secondItem="3cs-NY-pdE" secondAttribute="trailing" id="lnR-Fv-Xqs"/>
+                                    <constraint firstItem="uTL-Wh-rei" firstAttribute="height" secondItem="tyY-Wg-B0t" secondAttribute="height" multiplier="0.5" id="qJK-Ol-yGu"/>
+                                    <constraint firstItem="3cs-NY-pdE" firstAttribute="height" secondItem="uTL-Wh-rei" secondAttribute="height" id="uqW-Vo-zsb"/>
+                                    <constraint firstItem="YCg-ao-nTr" firstAttribute="leading" secondItem="tyY-Wg-B0t" secondAttribute="leading" id="vL9-lL-kYW"/>
+                                    <constraint firstItem="MGw-Vx-tuo" firstAttribute="height" secondItem="uTL-Wh-rei" secondAttribute="height" id="xce-oc-L5l"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="8Vy-5f-iVQ" firstAttribute="top" secondItem="G0S-2f-FlD" secondAttribute="top" id="030-br-tNb"/>
                             <constraint firstItem="x7y-vM-rz1" firstAttribute="leading" secondItem="G0S-2f-FlD" secondAttribute="leading" id="0ci-st-c9O"/>
-                            <constraint firstItem="GFH-7D-HbF" firstAttribute="top" secondItem="x7y-vM-rz1" secondAttribute="bottom" id="2Re-Sh-QzI"/>
-                            <constraint firstItem="x7y-vM-rz1" firstAttribute="top" secondItem="uTL-Wh-rei" secondAttribute="bottom" constant="25" id="Bzh-kO-Jvy"/>
+                            <constraint firstAttribute="trailing" secondItem="X49-oW-QZk" secondAttribute="trailing" id="6HW-j0-Vn4"/>
+                            <constraint firstItem="tyY-Wg-B0t" firstAttribute="leading" secondItem="G0S-2f-FlD" secondAttribute="leading" id="D5o-ef-0k3"/>
+                            <constraint firstItem="x7y-vM-rz1" firstAttribute="top" secondItem="tyY-Wg-B0t" secondAttribute="bottom" id="J8F-Yd-NUc"/>
                             <constraint firstItem="8Vy-5f-iVQ" firstAttribute="height" secondItem="G0S-2f-FlD" secondAttribute="height" multiplier="0.12" id="QsO-Fg-9bs"/>
-                            <constraint firstItem="x7y-vM-rz1" firstAttribute="height" secondItem="G0S-2f-FlD" secondAttribute="height" multiplier="0.7" id="YLg-bc-jGY"/>
+                            <constraint firstItem="tyY-Wg-B0t" firstAttribute="top" secondItem="X49-oW-QZk" secondAttribute="bottom" id="RWc-zb-peA"/>
+                            <constraint firstItem="x7y-vM-rz1" firstAttribute="height" secondItem="G0S-2f-FlD" secondAttribute="height" multiplier="0.65" id="YLg-bc-jGY"/>
+                            <constraint firstItem="X49-oW-QZk" firstAttribute="leading" secondItem="G0S-2f-FlD" secondAttribute="leading" id="Zk5-eW-zWv"/>
+                            <constraint firstItem="X49-oW-QZk" firstAttribute="top" secondItem="8Vy-5f-iVQ" secondAttribute="bottom" id="dzG-ZM-dJb"/>
                             <constraint firstAttribute="trailing" secondItem="x7y-vM-rz1" secondAttribute="trailing" id="ezr-Q8-sKP"/>
+                            <constraint firstItem="GFH-7D-HbF" firstAttribute="top" secondItem="x7y-vM-rz1" secondAttribute="bottom" id="mGv-ud-J4k"/>
                             <constraint firstItem="8Vy-5f-iVQ" firstAttribute="leading" secondItem="G0S-2f-FlD" secondAttribute="leading" id="mk0-t2-Mal"/>
-                            <constraint firstItem="uTL-Wh-rei" firstAttribute="centerX" secondItem="G0S-2f-FlD" secondAttribute="centerX" multiplier="0.5" id="p2s-VL-MCm"/>
                             <constraint firstAttribute="trailing" secondItem="8Vy-5f-iVQ" secondAttribute="trailing" id="pQa-lL-rgF"/>
+                            <constraint firstItem="tyY-Wg-B0t" firstAttribute="top" secondItem="X49-oW-QZk" secondAttribute="bottom" id="qNl-QL-lji"/>
+                            <constraint firstAttribute="trailing" secondItem="tyY-Wg-B0t" secondAttribute="trailing" id="uJb-8E-QGI"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="dogParkButton" destination="uTL-Wh-rei" id="eRL-eb-DR8"/>
+                        <outlet property="groomingButton" destination="YCg-ao-nTr" id="kuB-Vm-Nb9"/>
                         <outlet property="mapView" destination="x7y-vM-rz1" id="e7j-Dw-bjU"/>
                         <outlet property="petNameLabel" destination="g0p-hk-M2K" id="Wdh-WE-i1M"/>
+                        <outlet property="petStoreButton" destination="MGw-Vx-tuo" id="Zb3-Ja-I9p"/>
+                        <outlet property="vetButton" destination="3cs-NY-pdE" id="oUP-2R-C1P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Td-YW-ufO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-743" y="896"/>
+            <point key="canvasLocation" x="-839.20000000000005" y="884.70764617691157"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">

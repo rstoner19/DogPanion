@@ -17,26 +17,72 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var petNameLabel: UILabel!
     
+    @IBOutlet weak var groomingButton: UIButton!
+    @IBOutlet weak var dogParkButton: UIButton!
+    @IBOutlet weak var vetButton: UIButton!
+    @IBOutlet weak var petStoreButton: UIButton!
+    
+    // TODO: Need to implement dismiss delegate
+    // TODO: Change pin colors
+    // TODO: Make Buttons have graphics
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
     func setup() {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         checkAuthorizationStatus(checked: false)
+        
+        func setBorder(button: UIButton) {
+            button.layer.borderColor = UIColor.gray.cgColor
+            button.layer.borderWidth = 1.0
+        }
+        setBorder(button: self.groomingButton)
+        setBorder(button: self.vetButton)
+        setBorder(button: self.petStoreButton)
+        setBorder(button: self.dogParkButton)
     }
     
-    @IBAction func dogParkButtonPressed(_ sender: UIButton) {
+    @IBAction func setSearchButtonPressed(_ sender: UIButton) {
+        removeAnnotations()
+        shadeButtons()
+        sender.backgroundColor? = UIColor.clear
+        
+        switch sender {
+        case self.dogParkButton:
+            searchRequest(queryRequest: "dog park")
+        case self.groomingButton:
+            searchRequest(queryRequest: "pet groomer")
+        case self.vetButton:
+            searchRequest(queryRequest: "veterinarians")
+        case self.petStoreButton:
+            searchRequest(queryRequest: "pet stores")
+        default:
+            break
+        }
+    }
+    
+    func shadeButtons() {
+        self.groomingButton.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+        self.vetButton.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+        self.petStoreButton.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+        self.dogParkButton.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+    }
+    
+    func removeAnnotations() {
+        let annotations = mapView.annotations
+        mapView.removeAnnotations(annotations)
+    }
+    
+    
+    // MARK: MapView
+    
+    func searchRequest(queryRequest: String) {
         let request = MKLocalSearchRequest()
-        request.naturalLanguageQuery = "dog park"
+        request.naturalLanguageQuery = queryRequest
         request.region = mapView.region
         let search = MKLocalSearch(request: request)
         search.start { (response, _) in
@@ -48,10 +94,7 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate {
                 print("no items returned")
             }
         }
-        
     }
-    
-    // MARK: MapView
     
     func addPinToMap(mapItem: MKMapItem) {
         let location = mapItem.placemark.coordinate
@@ -69,11 +112,30 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate {
             pinView?.canShowCallout = true
             pinView?.animatesDrop = true
             pinView?.pinTintColor = MKPinAnnotationView.greenPinColor()
+            let button = UIButton(type: .custom)
+            button.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
+            let image = UIImage(named: "rightArrow") // TODO: Make this a car icon
+            button.setImage(image, for: .normal)
+            pinView?.rightCalloutAccessoryView = button
         } else {
             pinView?.annotation = annotation
         }
         return pinView
     }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        let selectedLocation = view.annotation
+        let currentLocationItem = MKMapItem.forCurrentLocation()
+        
+        let selectedPlaceMark = MKPlacemark(coordinate: (selectedLocation?.coordinate)!)
+        let selectMapItem = MKMapItem(placemark: selectedPlaceMark)
+        selectMapItem.name = (view.annotation?.title)!
+        let mapItems = [currentLocationItem, selectMapItem]
+        let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDefault]
+        MKMapItem.openMaps(with: mapItems, launchOptions: launchOptions)
+    }
+    
+    
     
     
     // MARK: Location Manager
@@ -82,7 +144,7 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate {
             mapView.showsUserLocation = true
             if let location = locationManager.location {
                 print(location)
-                centerOnLocation(location: location, regionRadius: 16090)
+                centerOnLocation(location: location, regionRadius: 8000)
             }
         } else {
             if !checked {
