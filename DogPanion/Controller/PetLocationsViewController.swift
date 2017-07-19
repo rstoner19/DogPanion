@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
+class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var petNameLabel: UILabel!
@@ -30,6 +30,7 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchB
     var pinColor: PinColor? = nil
     var searchMapItems: [MKMapItem]? = nil
     var currentLocationItem: MKMapItem? = nil
+    var didUpdateLocation: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +39,9 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchB
     }
 
     func setup() {
+        locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        checkAuthorizationStatus(checked: false)
+        checkAuthorizationStatus()
         func setBorder(button: UIButton) {
             button.layer.borderColor = UIColor.black.cgColor
             button.layer.borderWidth = 0.5
@@ -68,7 +70,6 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchB
     
     @IBAction func setSearchButtonPressed(_ sender: UIButton) {
         removeAnnotations()
-        
         switch sender {
         case self.dogParkButton:
             pinColor = .greenPin
@@ -183,7 +184,8 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchB
     }
     
     // MARK: Location Manager
-    func checkAuthorizationStatus(checked: Bool) {
+    func checkAuthorizationStatus() {
+        locationManager.startUpdatingLocation()
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             self.currentLocationItem = MKMapItem.forCurrentLocation()
             mapView.showsUserLocation = true
@@ -191,10 +193,7 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchB
                 centerOnLocation(location: location, regionRadius: 6000)
             }
         } else {
-            if !checked {
-                locationManager.requestWhenInUseAuthorization()
-                checkAuthorizationStatus(checked: true)
-            }
+            locationManager.requestWhenInUseAuthorization()
         }
     }
     
@@ -244,5 +243,4 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchB
         let cell = tableView.cellForRow(at: indexPath)
         self.searchController.searchBar.text = cell?.textLabel?.text
     }
-    
 }

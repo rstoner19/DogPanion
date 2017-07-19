@@ -32,14 +32,20 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Vy-5f-iVQ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet Locations" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="g0p-hk-M2K">
-                                        <rect key="frame" x="65" y="8" width="245.5" height="72"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet Locations" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="g0p-hk-M2K">
+                                        <rect key="frame" x="65" y="30" width="245.5" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="wXx-Df-TEW"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="32"/>
                                         <color key="textColor" red="0.0003403453156" green="0.32340699429999997" blue="0.29478102919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xWX-LV-PqQ">
-                                        <rect key="frame" x="330" y="29.5" width="37" height="30"/>
+                                        <rect key="frame" x="330" y="40.5" width="37" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="37" id="R1Y-o2-Kv8"/>
+                                        </constraints>
                                         <state key="normal" title="Done"/>
                                         <connections>
                                             <action selector="doneButtonPressed:" destination="xQJ-23-ygn" eventType="touchUpInside" id="Rkz-RE-nYu"/>
@@ -49,7 +55,6 @@
                                 <color key="backgroundColor" red="0.60373550649999996" green="0.82722961900000003" blue="0.88634788990000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="xWX-LV-PqQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="g0p-hk-M2K" secondAttribute="trailing" constant="8" id="Dn8-Sr-mP2"/>
-                                    <constraint firstItem="g0p-hk-M2K" firstAttribute="top" secondItem="8Vy-5f-iVQ" secondAttribute="top" constant="8" id="T5P-KU-hZj"/>
                                     <constraint firstAttribute="trailing" secondItem="xWX-LV-PqQ" secondAttribute="trailing" constant="8" id="h5q-7L-NWh"/>
                                     <constraint firstItem="g0p-hk-M2K" firstAttribute="centerX" secondItem="8Vy-5f-iVQ" secondAttribute="centerX" id="rO3-Ew-kmJ"/>
                                     <constraint firstAttribute="bottom" secondItem="g0p-hk-M2K" secondAttribute="bottom" id="zVy-rD-kTV"/>
@@ -78,7 +83,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCg-ao-nTr">
                                         <rect key="frame" x="0.0" y="0.0" width="187.5" height="53.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <state key="normal" title="Grooming" backgroundImage="groomingBG">
                                             <color key="titleColor" red="0.4872157786407485" green="0.029368533188546264" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -88,7 +93,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MGw-Vx-tuo">
                                         <rect key="frame" x="187.5" y="53.5" width="187.5" height="54"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <state key="normal" title="Pet Store" backgroundImage="petStoreBG">
                                             <color key="titleColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -98,9 +103,9 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cs-NY-pdE">
                                         <rect key="frame" x="187.5" y="0.0" width="187.5" height="54"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <state key="normal" title="Vet" backgroundImage="vetBG">
-                                            <color key="titleColor" red="0.67005076142131981" green="0.1002334367352098" blue="0.0057890935272513801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" red="0.88600491751269039" green="0.016938284882447186" blue="0.00864332217689112" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
                                             <action selector="setSearchButtonPressed:" destination="xQJ-23-ygn" eventType="touchUpInside" id="gag-fj-f3f"/>
@@ -108,7 +113,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uTL-Wh-rei">
                                         <rect key="frame" x="0.0" y="53.5" width="187.5" height="54"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <state key="normal" title="Dog Park" backgroundImage="dogParkBG">
                                             <color key="titleColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -231,7 +236,7 @@
                                         <rect key="frame" x="332" y="7.5" width="31" height="70"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="48"/>
                                         <state key="normal" title="+">
-                                            <color key="titleColor" red="0.69777977466583252" green="0.85756087303161621" blue="0.96082162857055664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <segue destination="tcG-kk-esB" kind="showDetail" identifier="addPetVC" id="UfZ-YE-X52"/>
@@ -300,7 +305,7 @@
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.36705344915390015" green="0.63596099615097046" blue="0.66587257385253906" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.65086454153060913" green="0.82287794351577759" blue="0.87847030162811279" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="4pa-ui-yZ4" secondAttribute="bottom" id="8Lp-BR-626"/>
                                     <constraint firstItem="Kj2-PS-cQ8" firstAttribute="leading" secondItem="dNJ-c4-nF9" secondAttribute="trailing" constant="6" id="Daz-6x-fqe"/>
@@ -838,6 +843,6 @@ Image</string>
         <image name="welcomeBG" width="1242" height="883"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yw6-Zh-UCm"/>
+        <segue reference="muT-4t-pXX"/>
     </inferredMetricsTieBreakers>
 </document>
