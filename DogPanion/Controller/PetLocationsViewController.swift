@@ -10,39 +10,57 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class PetLocationsViewController: UIViewController, MKMapViewDelegate {
+class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var petNameLabel: UILabel!
+    @IBOutlet weak var buttonView: UIView!
     
     @IBOutlet weak var groomingButton: UIButton!
     @IBOutlet weak var dogParkButton: UIButton!
     @IBOutlet weak var vetButton: UIButton!
     @IBOutlet weak var petStoreButton: UIButton!
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchTableView: UITableView!
+    
     let locationManager = CLLocationManager()
     var delegate: DismissVCDelegate? = nil
+    let searchController = UISearchController(searchResultsController: nil)
     var pinColor: PinColor? = nil
+    var searchMapItems: [MKMapItem]? = nil
+    var currentLocationItem: MKMapItem? = nil
     
-    // TODO: Make Buttons have graphics
     // TODO: Implement Search Bar if current location
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        setupSearch()
     }
 
     func setup() {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         checkAuthorizationStatus(checked: false)
         func setBorder(button: UIButton) {
-            button.layer.borderColor = UIColor.gray.cgColor
-            button.layer.borderWidth = 1.0
+            button.layer.borderColor = UIColor.black.cgColor
+            button.layer.borderWidth = 0.5
         }
         setBorder(button: self.groomingButton)
         setBorder(button: self.vetButton)
         setBorder(button: self.petStoreButton)
         setBorder(button: self.dogParkButton)
+        searchBar.delegate = self
+    }
+    
+    func setupSearch() {
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.barTintColor = searchBar.barTintColor
+        let searchBarSize = searchBar.frame.size
+        searchController.searchBar.sizeThatFits(searchBarSize)
+        definesPresentationContext = true
+        searchTableView.tableHeaderView = searchController.searchBar
+        searchController.searchBar.delegate = self
     }
     
     @IBAction func doneButtonPressed(_ sender: UIButton) {
@@ -51,8 +69,6 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate {
     
     @IBAction func setSearchButtonPressed(_ sender: UIButton) {
         removeAnnotations()
-        shadeButtons()
-        sender.backgroundColor? = UIColor.clear
         
         switch sender {
         case self.dogParkButton:
@@ -72,16 +88,23 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    func shadeButtons() {
-        self.groomingButton.backgroundColor = UIColor.black.withAlphaComponent(0.1)
-        self.vetButton.backgroundColor = UIColor.black.withAlphaComponent(0.1)
-        self.petStoreButton.backgroundColor = UIColor.black.withAlphaComponent(0.1)
-        self.dogParkButton.backgroundColor = UIColor.black.withAlphaComponent(0.1)
-    }
-    
     func removeAnnotations() {
         let annotations = mapView.annotations
         mapView.removeAnnotations(annotations)
+    }
+    
+    func getSearchResults(searchText: String) {
+        let request = MKLocalSearchRequest()
+        request.naturalLanguageQuery = searchText
+        let search = MKLocalSearch(request: request)
+        search.start { (response, _) in
+            guard let response = response else { return }
+            self.searchMapItems = response.mapItems
+            self.searchTableView.reloadData()
+            if response.mapItems.count == 0 {
+                print("no items returned")
+            }
+        }
     }
     
     // MARK: MapView
@@ -149,12 +172,13 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         let selectedLocation = view.annotation
-        let currentLocationItem = MKMapItem.forCurrentLocation()
-        
+        if currentLocationItem == nil {
+            currentLocationItem = MKMapItem.forCurrentLocation()
+        }
         let selectedPlaceMark = MKPlacemark(coordinate: (selectedLocation?.coordinate)!)
         let selectMapItem = MKMapItem(placemark: selectedPlaceMark)
         selectMapItem.name = (view.annotation?.title)!
-        let mapItems = [currentLocationItem, selectMapItem]
+        let mapItems = [currentLocationItem!, selectMapItem]
         let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDefault]
         MKMapItem.openMaps(with: mapItems, launchOptions: launchOptions)
     }
@@ -162,9 +186,9 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate {
     // MARK: Location Manager
     func checkAuthorizationStatus(checked: Bool) {
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            self.currentLocationItem = MKMapItem.forCurrentLocation()
             mapView.showsUserLocation = true
             if let location = locationManager.location {
-                print(location)
                 centerOnLocation(location: location, regionRadius: 6000)
             }
         } else {
@@ -179,4 +203,47 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate {
         let region = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
         mapView.setRegion(region, animated: true)
     }
+    
+    // MARK: SearchBar
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        currentLocationItem = searchMapItems?.first
+        if let location = currentLocationItem?.placemark.location {
+            centerOnLocation(location: location, regionRadius: 6000)
+        }
+        self.searchController.searchBar.text = ""
+        self.searchTableView.isHidden = true
+        self.view.endEditing(true)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.searchController.searchBar.text = ""
+        self.searchTableView.isHidden = true
+        self.view.endEditing(true)
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.searchTableView.isHidden = false
+        self.resignFirstResponder()
+        searchController.searchBar.becomeFirstResponder()
+    }
+    
+    //MARK: TableView
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return searchMapItems?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath)
+        if let items = searchMapItems {
+            cell.textLabel?.text = items[indexPath.row].name
+            cell.detailTextLabel?.text = items[indexPath.row].placemark.title
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        self.searchController.searchBar.text = cell?.textLabel?.text
+    }
+    
 }

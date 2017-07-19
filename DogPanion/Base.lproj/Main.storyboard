@@ -62,50 +62,62 @@
                                     <outlet property="delegate" destination="xQJ-23-ygn" id="tea-7M-Mca"/>
                                 </connections>
                             </mapView>
-                            <searchBar contentMode="redraw" placeholder="Enter Other Starting Point" translatesAutoresizingMaskIntoConstraints="NO" id="X49-oW-QZk">
-                                <rect key="frame" x="0.0" y="80" width="375" height="50"/>
+                            <searchBar contentMode="redraw" placeholder="Change Start Location" translatesAutoresizingMaskIntoConstraints="NO" id="X49-oW-QZk">
+                                <rect key="frame" x="0.0" y="80" width="375" height="46"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="RPX-If-UQl"/>
+                                    <constraint firstAttribute="height" constant="46" id="RPX-If-UQl"/>
                                 </constraints>
+                                <color key="barTintColor" red="0.5914043188" green="0.72831261160000005" blue="0.81966030599999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="xQJ-23-ygn" id="ktU-qP-dXU"/>
+                                </connections>
                             </searchBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tyY-Wg-B0t">
-                                <rect key="frame" x="0.0" y="130" width="375" height="103.5"/>
+                                <rect key="frame" x="0.0" y="126" width="375" height="107.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCg-ao-nTr">
-                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="52"/>
-                                        <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Grooming"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="54"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Grooming" backgroundImage="groomingBG">
+                                            <color key="titleColor" red="0.4872157786407485" green="0.029368533188546264" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="setSearchButtonPressed:" destination="xQJ-23-ygn" eventType="touchUpInside" id="Cti-CW-0VY"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MGw-Vx-tuo">
-                                        <rect key="frame" x="187.5" y="52" width="187.5" height="51.5"/>
-                                        <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Pet Store"/>
+                                        <rect key="frame" x="187.5" y="54" width="187.5" height="53.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Pet Store" backgroundImage="petStoreBG">
+                                            <color key="titleColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="setSearchButtonPressed:" destination="xQJ-23-ygn" eventType="touchUpInside" id="Z0i-Pj-286"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cs-NY-pdE">
-                                        <rect key="frame" x="187.5" y="0.0" width="187.5" height="51.5"/>
-                                        <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Vet"/>
+                                        <rect key="frame" x="187.5" y="0.0" width="187.5" height="53.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Vet" backgroundImage="vetBG">
+                                            <color key="titleColor" red="0.67005076142131981" green="0.1002334367352098" blue="0.0057890935272513801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="setSearchButtonPressed:" destination="xQJ-23-ygn" eventType="touchUpInside" id="gag-fj-f3f"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uTL-Wh-rei">
-                                        <rect key="frame" x="0.0" y="52" width="187.5" height="51.5"/>
-                                        <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Dog Park"/>
+                                        <rect key="frame" x="0.0" y="54" width="187.5" height="53.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Dog Park" backgroundImage="dogParkBG">
+                                            <color key="titleColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="setSearchButtonPressed:" destination="xQJ-23-ygn" eventType="touchUpInside" id="xJX-j1-SYZ"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.55200421810150146" green="0.73164361715316772" blue="0.83246535062789917" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.55200421810150146" green="0.73164361715316772" blue="0.83246535062789917" alpha="0.28601241438356162" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="YCg-ao-nTr" firstAttribute="top" secondItem="tyY-Wg-B0t" secondAttribute="top" id="2vm-qf-hG4"/>
                                     <constraint firstAttribute="bottom" secondItem="uTL-Wh-rei" secondAttribute="bottom" id="3bY-nu-Qkg"/>
@@ -125,14 +137,52 @@
                                     <constraint firstItem="MGw-Vx-tuo" firstAttribute="height" secondItem="uTL-Wh-rei" secondAttribute="height" id="xce-oc-L5l"/>
                                 </constraints>
                             </view>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gXF-ws-v7W">
+                                <rect key="frame" x="0.0" y="80" width="375" height="99"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" textLabel="c9y-Do-MK3" detailTextLabel="iNX-jj-erP" style="IBUITableViewCellStyleSubtitle" id="O9R-4U-qCs">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O9R-4U-qCs" id="Wsw-0x-naf">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="c9y-Do-MK3">
+                                                    <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iNX-jj-erP">
+                                                    <rect key="frame" x="15" y="25.5" width="44" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="xQJ-23-ygn" id="Bsd-yV-4Wz"/>
+                                    <outlet property="delegate" destination="xQJ-23-ygn" id="8RP-dE-N7P"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="8Vy-5f-iVQ" firstAttribute="top" secondItem="G0S-2f-FlD" secondAttribute="top" id="030-br-tNb"/>
                             <constraint firstItem="x7y-vM-rz1" firstAttribute="leading" secondItem="G0S-2f-FlD" secondAttribute="leading" id="0ci-st-c9O"/>
+                            <constraint firstItem="gXF-ws-v7W" firstAttribute="top" secondItem="X49-oW-QZk" secondAttribute="top" id="3Cz-5N-Auu"/>
                             <constraint firstAttribute="trailing" secondItem="X49-oW-QZk" secondAttribute="trailing" id="6HW-j0-Vn4"/>
                             <constraint firstItem="tyY-Wg-B0t" firstAttribute="leading" secondItem="G0S-2f-FlD" secondAttribute="leading" id="D5o-ef-0k3"/>
+                            <constraint firstItem="gXF-ws-v7W" firstAttribute="leading" secondItem="G0S-2f-FlD" secondAttribute="leading" id="Fuy-vv-PA7"/>
+                            <constraint firstItem="gXF-ws-v7W" firstAttribute="height" secondItem="X49-oW-QZk" secondAttribute="height" multiplier="2.15" id="HPL-CR-XMF"/>
                             <constraint firstItem="x7y-vM-rz1" firstAttribute="top" secondItem="tyY-Wg-B0t" secondAttribute="bottom" id="J8F-Yd-NUc"/>
+                            <constraint firstAttribute="trailing" secondItem="gXF-ws-v7W" secondAttribute="trailing" id="O6M-J4-TR5"/>
                             <constraint firstItem="8Vy-5f-iVQ" firstAttribute="height" secondItem="G0S-2f-FlD" secondAttribute="height" multiplier="0.12" id="QsO-Fg-9bs"/>
                             <constraint firstItem="tyY-Wg-B0t" firstAttribute="top" secondItem="X49-oW-QZk" secondAttribute="bottom" id="RWc-zb-peA"/>
                             <constraint firstItem="x7y-vM-rz1" firstAttribute="height" secondItem="G0S-2f-FlD" secondAttribute="height" multiplier="0.65" id="YLg-bc-jGY"/>
@@ -147,11 +197,14 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="buttonView" destination="tyY-Wg-B0t" id="7cS-BA-zkX"/>
                         <outlet property="dogParkButton" destination="uTL-Wh-rei" id="eRL-eb-DR8"/>
                         <outlet property="groomingButton" destination="YCg-ao-nTr" id="kuB-Vm-Nb9"/>
                         <outlet property="mapView" destination="x7y-vM-rz1" id="e7j-Dw-bjU"/>
                         <outlet property="petNameLabel" destination="g0p-hk-M2K" id="Wdh-WE-i1M"/>
                         <outlet property="petStoreButton" destination="MGw-Vx-tuo" id="Zb3-Ja-I9p"/>
+                        <outlet property="searchBar" destination="X49-oW-QZk" id="Jla-kZ-em5"/>
+                        <outlet property="searchTableView" destination="gXF-ws-v7W" id="HJJ-Of-HCj"/>
                         <outlet property="vetButton" destination="3cs-NY-pdE" id="oUP-2R-C1P"/>
                     </connections>
                 </viewController>
@@ -713,9 +766,13 @@ Image</string>
         <image name="arrow" width="386" height="266"/>
         <image name="bottomSecBG1" width="1242" height="883"/>
         <image name="deleteIcon" width="50" height="50"/>
+        <image name="dogParkBG" width="728" height="200"/>
+        <image name="groomingBG" width="728" height="200"/>
         <image name="leftArrow" width="40" height="40"/>
+        <image name="petStoreBG" width="728" height="200"/>
         <image name="rightArrow" width="40" height="40"/>
         <image name="saveIcon" width="500" height="500"/>
+        <image name="vetBG" width="728" height="200"/>
         <image name="welcomeBG" width="1242" height="883"/>
     </resources>
     <inferredMetricsTieBreakers>

@@ -30,3 +30,8 @@ extension UITextField {
     }
 }
 
+extension PetLocationsViewController : UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        getSearchResults(searchText: searchController.searchBar.text!)
+    }
+}
