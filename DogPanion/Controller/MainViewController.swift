@@ -114,6 +114,9 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         } else if segue.identifier == "addPetVC" {
             guard let addPetVC = segue.destination as? AddPetViewController else { return }
             addPetVC.delegate = self
+        } else if segue.identifier == "petLocations" {
+            guard let petLocationsVC = segue.destination as? PetLocationsViewController else { return }
+            petLocationsVC.delegate = self
         }
     }
     
