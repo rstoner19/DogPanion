@@ -231,7 +231,7 @@
                                         <rect key="frame" x="332" y="7.5" width="31" height="70"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="48"/>
                                         <state key="normal" title="+">
-                                            <color key="titleColor" red="0.64331406354904175" green="0.64588218927383423" blue="0.69189822673797607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" red="0.69777977466583252" green="0.85756087303161621" blue="0.96082162857055664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
                                             <segue destination="tcG-kk-esB" kind="showDetail" identifier="addPetVC" id="UfZ-YE-X52"/>
@@ -370,6 +370,9 @@
                                 <state key="normal" title="Health">
                                     <color key="titleColor" red="0.0003403453156" green="0.32340699429999997" blue="0.29478102919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="eyY-L1-k6d" kind="showDetail" identifier="healthVC" id="dWD-5U-rbB"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="DSR-yx-Wjs">
                                 <rect key="frame" x="260" y="473.5" width="80" height="80"/>
@@ -523,6 +526,9 @@ Images</string>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PM4-He-Oaa">
                                 <rect key="frame" x="169" y="513.5" width="37" height="30"/>
                                 <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="nextStepButtonClicked:" destination="tcG-kk-esB" eventType="touchUpInside" id="wdv-1Z-PIB"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.59140431880950928" green="0.72831261157989502" blue="0.81966030597686768" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -553,10 +559,10 @@ Images</string>
             </objects>
             <point key="canvasLocation" x="964" y="139"/>
         </scene>
-        <!--View Controller-->
+        <!--Health View Controller-->
         <scene sceneID="0kZ-EP-cKe">
             <objects>
-                <viewController id="eyY-L1-k6d" sceneMemberID="viewController">
+                <viewController id="eyY-L1-k6d" customClass="HealthViewController" customModule="DogPanion" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Zjq-Fv-eN4"/>
                         <viewControllerLayoutGuide type="bottom" id="tXJ-Xa-nHT"/>
@@ -564,12 +570,48 @@ Images</string>
                     <view key="view" contentMode="scaleToFill" id="daK-OQ-eAf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0nS-Ef-VLF">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="aEd-3G-698">
+                                        <rect key="frame" x="104" y="8" width="168.5" height="72"/>
+                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="32"/>
+                                        <color key="textColor" red="0.0003403453156" green="0.32340699429999997" blue="0.29478102919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6F-G1-Z5m">
+                                        <rect key="frame" x="330" y="29" width="37" height="30"/>
+                                        <state key="normal" title="Done"/>
+                                        <connections>
+                                            <action selector="doneButtonPressed:" destination="eyY-L1-k6d" eventType="touchUpInside" id="Dig-Zm-Sqc"/>
+                                            <action selector="doneButtonPressed:" destination="xQJ-23-ygn" eventType="touchUpInside" id="hJh-5y-ZpV"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.60373550649999996" green="0.82722961900000003" blue="0.88634788990000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="q6F-G1-Z5m" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aEd-3G-698" secondAttribute="trailing" constant="8" id="8aQ-6d-YXp"/>
+                                    <constraint firstItem="aEd-3G-698" firstAttribute="centerX" secondItem="0nS-Ef-VLF" secondAttribute="centerX" id="NLy-i4-Ju4"/>
+                                    <constraint firstItem="q6F-G1-Z5m" firstAttribute="centerY" secondItem="aEd-3G-698" secondAttribute="centerY" id="g84-J9-16D"/>
+                                    <constraint firstAttribute="bottom" secondItem="aEd-3G-698" secondAttribute="bottom" id="hpU-7M-o4F"/>
+                                    <constraint firstItem="aEd-3G-698" firstAttribute="top" secondItem="0nS-Ef-VLF" secondAttribute="top" constant="8" id="kwY-jk-26a"/>
+                                    <constraint firstAttribute="trailing" secondItem="q6F-G1-Z5m" secondAttribute="trailing" constant="8" id="vYh-fl-e3y"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0nS-Ef-VLF" firstAttribute="top" secondItem="daK-OQ-eAf" secondAttribute="top" id="3cd-ZN-5rh"/>
+                            <constraint firstItem="0nS-Ef-VLF" firstAttribute="leading" secondItem="daK-OQ-eAf" secondAttribute="leading" id="4r9-at-Bqq"/>
+                            <constraint firstAttribute="trailing" secondItem="0nS-Ef-VLF" secondAttribute="trailing" id="Xhi-Fp-Jfz"/>
+                            <constraint firstItem="0nS-Ef-VLF" firstAttribute="height" secondItem="daK-OQ-eAf" secondAttribute="height" multiplier="0.12" id="kLB-RK-jom"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t85-W1-fZe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="123" y="905"/>
+            <point key="canvasLocation" x="137" y="902"/>
         </scene>
         <!--Add Image View Controller-->
         <scene sceneID="8CQ-ad-CEz">
@@ -796,6 +838,6 @@ Image</string>
         <image name="welcomeBG" width="1242" height="883"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="muT-4t-pXX"/>
+        <segue reference="yw6-Zh-UCm"/>
     </inferredMetricsTieBreakers>
 </document>

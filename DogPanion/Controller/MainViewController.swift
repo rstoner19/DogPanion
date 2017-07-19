@@ -117,11 +117,13 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         } else if segue.identifier == "petLocations" {
             guard let petLocationsVC = segue.destination as? PetLocationsViewController else { return }
             petLocationsVC.delegate = self
+        } else if segue.identifier == "healthVC" {
+            guard let healthVC = segue.destination as? HealthViewController else { return }
+            healthVC.delegate = self
         }
     }
     
     // MARK: Dismiss Delegate
-    
     func dismissVC() {
         self.dismiss(animated: true) {
             self.pet = CoreDataManager.shared.fetchPets()
@@ -164,7 +166,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == imageCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "petImageCell", for: indexPath) as! PetImageCell
-            cell.petImage.image = petImages.count > 0 ? UIImage(data: petImages[indexPath.row % petImages.count].image as Data) : UIImage(named: "welcomeBG")
+            cell.petImage.image = petImages.count > 0 ? UIImage(data: petImages[indexPath.row % petImages.count].image as Data) : pet?.count == 0 ? UIImage(named: "welcomeBG") : UIImage(named: "addImageBG")
             cell.petImage.contentMode = .scaleAspectFill
             return cell
         } else {
