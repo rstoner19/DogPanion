@@ -31,7 +31,6 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchB
     var searchMapItems: [MKMapItem]? = nil
     var currentLocationItem: MKMapItem? = nil
     
-    // TODO: Implement Search Bar if current location
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
