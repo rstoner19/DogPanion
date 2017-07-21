@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D119CD41F216D0D00CD317D /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D119CD31F216D0D00CD317D /* PopUpViewController.swift */; };
 		1DA6DAAA1F15C4B500B6FE32 /* AddPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA6DAA91F15C4B500B6FE32 /* AddPetViewController.swift */; };
 		1DEE8BF71F1F0805001D632F /* HealthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEE8BF61F1F0805001D632F /* HealthViewController.swift */; };
 		D700BB561F1B2CB600822AD6 /* ImageCustomFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D700BB551F1B2CB600822AD6 /* ImageCustomFlowLayout.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D119CD31F216D0D00CD317D /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		1DA6DAA91F15C4B500B6FE32 /* AddPetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddPetViewController.swift; path = DogPanion/Controller/AddPetViewController.swift; sourceTree = SOURCE_ROOT; };
 		1DEE8BF61F1F0805001D632F /* HealthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthViewController.swift; sourceTree = "<group>"; };
 		D700BB551F1B2CB600822AD6 /* ImageCustomFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCustomFlowLayout.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				1DEE8BF61F1F0805001D632F /* HealthViewController.swift */,
 				D7ADB5781F0BFCBC0054F345 /* MainViewController.swift */,
 				D75E43381F1B26C10053E735 /* PetLocationsViewController.swift */,
+				1D119CD31F216D0D00CD317D /* PopUpViewController.swift */,
 				D7BF6B031F0C118B000F6C03 /* Xib/Cell Controllers */,
 			);
 			path = Controller;
@@ -245,6 +248,7 @@
 				D7AF8BAA1F1550C1003E11F0 /* PetImages+CoreDataClass.swift in Sources */,
 				D700BB561F1B2CB600822AD6 /* ImageCustomFlowLayout.swift in Sources */,
 				D7ADB5771F0BFCBC0054F345 /* AppDelegate.swift in Sources */,
+				1D119CD41F216D0D00CD317D /* PopUpViewController.swift in Sources */,
 				1DA6DAAA1F15C4B500B6FE32 /* AddPetViewController.swift in Sources */,
 				D76EDDEF1F10935100A8170E /* PetNameCell.swift in Sources */,
 				D75E43391F1B26C10053E735 /* PetLocationsViewController.swift in Sources */,

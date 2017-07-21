@@ -20,13 +20,22 @@ extension UIViewController {
 extension UITextField {
     func addBarToKeyboard(message: String, viewController: UIViewController) {
         let toolBar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: viewController.view.bounds.width, height: 40))
-        toolBar.barStyle = UIBarStyle.default
+        toolBar.barStyle = UIBarStyle.blackTranslucent
         let keyBoardMessage = UILabel(frame: CGRect(x: toolBar.layer.frame.midX - 100, y: toolBar.frame.midY - 10, width: 200, height: 20))
         keyBoardMessage.textAlignment = .center
+        keyBoardMessage.textColor = UIColor.white
         keyBoardMessage.text = message
         toolBar.addSubview(keyBoardMessage)
         toolBar.sizeToFit()
         self.inputAccessoryView = toolBar
+    }
+}
+
+extension UIButton {
+    func addBorder(color: UIColor, width: CGFloat, radius: CGFloat?) {
+        self.layer.borderColor = color.cgColor
+        self.layer.borderWidth = width
+        self.layer.cornerRadius = radius ?? 0
     }
 }
 
