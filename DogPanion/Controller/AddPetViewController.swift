@@ -11,6 +11,7 @@ import UIKit
 class AddPetViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var addImageButton: UIButton!
+    @IBOutlet weak var doneButton: UIButton!
     
     @IBOutlet weak var petNameLabel: UILabel!
     
@@ -40,6 +41,8 @@ class AddPetViewController: UIViewController, UITextFieldDelegate {
         self.petNameTextField.becomeFirstResponder()
         self.petNameTextField.delegate = self
         self.dogBreedTextField.delegate = self
+        self.doneButton.addBorder(color: .black, width: 0.5, radius: 3)
+        self.addImageButton.addBorder(color: .black, width: 0.5, radius: 3)
     }
     
     @IBAction func petNameTextField(_ sender: UITextField) {

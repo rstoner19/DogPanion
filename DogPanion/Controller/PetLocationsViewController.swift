@@ -42,14 +42,10 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchB
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         checkAuthorizationStatus()
-        func setBorder(button: UIButton) {
-            button.layer.borderColor = UIColor.black.cgColor
-            button.layer.borderWidth = 0.5
-        }
-        setBorder(button: self.groomingButton)
-        setBorder(button: self.vetButton)
-        setBorder(button: self.petStoreButton)
-        setBorder(button: self.dogParkButton)
+        self.groomingButton.addBorder(color: .black, width: 0.5, radius: nil)
+        self.vetButton.addBorder(color: .black, width: 0.5, radius: nil)
+        self.dogParkButton.addBorder(color: .black, width: 0.5, radius: nil)
+        self.petStoreButton.addBorder(color: .black, width: 0.5, radius: nil)
         searchBar.delegate = self
     }
     
