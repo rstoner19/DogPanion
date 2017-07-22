@@ -70,6 +70,10 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         }
     }
     
+    func dismissVC(object: Any) {
+        <#code#>
+    }
+    
     //Mark: UserNotification Center
     func notificationAuthorization() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge]) { (granted, error) in

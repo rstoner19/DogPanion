@@ -11,10 +11,11 @@ import UIKit
 class PopUpViewController: UIViewController {
     
     @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var datePicker: UIDatePicker!
     
     var delegate: DismissVCDelegate? = nil
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -31,6 +32,12 @@ class PopUpViewController: UIViewController {
         self.delegate?.dismissVC()
         removeAnimate()
     }
+    
+    @IBAction func doneButtonPressed(_ sender: Any) {
+        self.delegate?.dismissVC(object: self.datePicker.date)
+        removeAnimate()
+    }
+    
     
     func presentAnimation() {
         self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)

@@ -10,6 +10,13 @@ import Foundation
 
 protocol DismissVCDelegate : class {
     func dismissVC()
+    
+}
+
+extension DismissVCDelegate {
+    func dismissVC(object: Any) {
+        
+    }
 }
 
 enum PinColor : String {
