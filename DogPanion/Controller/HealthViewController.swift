@@ -11,17 +11,20 @@ import UserNotifications
 
 class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, UIPopoverPresentationControllerDelegate, DismissVCDelegate {
     
+    var pet: Pet? = nil
     var delegate: DismissVCDelegate? = nil
     var notificationStatus: Bool = false
-    var blurEffectView: UIVisualEffectView? = nil
+    lazy var blurEffectView: UIVisualEffectView? = nil
     lazy var popUpView: PopUpViewController? = nil
 
+    @IBOutlet weak var birthdayButton: UIButton!
+    
     @IBOutlet weak var notificationSwitch: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         notificationAuthorization()
-        // Do any additional setup after loading the view.
+        setup()
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,16 +32,14 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func setup() {
+        
+        if let health = pet?.health {
+            if let birthday = health.birthday as Date? {
+                self.birthdayButton.setTitle(birthday.toString(), for: .normal)
+            }
+        }
     }
-    */
     
     @IBAction func enterBirthdayButtonPressed(_ sender: UIButton) {
         let blurEffect = UIBlurEffect(style: .light
@@ -51,6 +52,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         popUpView = self.storyboard?.instantiateViewController(withIdentifier: "popUpDatePicker") as? PopUpViewController
         if let viewController = popUpView {
             viewController.delegate = self
+            if let birthday = pet?.health?.birthday as Date? { viewController.datePicker.date = birthday }
             self.addChildViewController(viewController)
             viewController.view.frame = self.view.frame
             self.view.addSubview(viewController.view)
@@ -65,13 +67,27 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
     // MARK: Dismiss Delegate
     
     func dismissVC() {
-        if let blurView = blurEffectView {
-            blurView.removeFromSuperview()
+        removeBlurView()
+    }
+    
+    func dismissVCtwo(object: Any) {
+        removeBlurView()
+        if let date = object as? NSDate {
+            self.birthdayButton.setTitle((date as Date).toString(), for: .normal)
+            pet?.health?.birthday = date
+            let context = pet?.managedObjectContext
+            do {
+                try context?.save()
+            } catch {
+                print("Error saving birthday ", error.localizedDescription)
+            }
         }
     }
     
-    func dismissVC(object: Any) {
-        <#code#>
+    func removeBlurView() {
+        if let blurView = blurEffectView {
+            blurView.removeFromSuperview()
+        }
     }
     
     //Mark: UserNotification Center

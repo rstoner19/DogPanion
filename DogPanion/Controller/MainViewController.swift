@@ -119,6 +119,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
             petLocationsVC.delegate = self
         } else if segue.identifier == "healthVC" {
             guard let healthVC = segue.destination as? HealthViewController else { return }
+            healthVC.pet = pet?[selectedPet]
             healthVC.delegate = self
         }
     }

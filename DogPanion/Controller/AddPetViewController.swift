@@ -57,9 +57,11 @@ class AddPetViewController: UIViewController, UITextFieldDelegate {
         newPet = Pet(context: context)
         newPet?.name = self.petNameLabel.text
         newPet?.breed = self.dogBreedTextField.text
+        newPet?.health = Health(context: context)
         do {
             try context.save()
         } catch {
+            print(error.localizedDescription)
             self.alert(message: "Error Saving Information", title: "Sorry, but there was an error saving your pet information.  Please try again")
             return
         }
@@ -78,11 +80,15 @@ class AddPetViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - TextField Delegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == self.petNameTextField {
+            self.dogBreedTextField.isEnabled = true
+        }
         return self.view.endEditing(true)
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == self.petNameTextField {
+            self.petNameLabel.text = ""
             textField.addBarToKeyboard(message: "Enter Pet Name", viewController: self)
         }
     }
