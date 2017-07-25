@@ -19,6 +19,8 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
 
     @IBOutlet weak var birthdayButton: UIButton!
     
+    @IBOutlet weak var petNameLabel: UILabel!
+    
     @IBOutlet weak var notificationSwitch: UISwitch!
     
     override func viewDidLoad() {
@@ -33,7 +35,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
     }
     
     func setup() {
-        
+        self.petNameLabel.text = pet?.name
         if let health = pet?.health {
             if let birthday = health.birthday as Date? {
                 self.birthdayButton.setTitle(birthday.toString(), for: .normal)
@@ -64,8 +66,25 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         self.delegate?.dismissVC()
     }
     
-    // MARK: Dismiss Delegate
+    @IBAction func deleteButtonPressed(_ sender: UIButton) {
+        let alertController = UIAlertController(title: "Delete Pet?", message: "Deleting the pet will delete all of its images and data.", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (action: UIAlertAction!) in
+            guard let context = self.pet?.managedObjectContext else { return }
+            context.delete(self.pet!)
+            do {
+                try context.save()
+                self.delegate?.dismissVCAfterDelete()
+            } catch {
+                print("Error deleting pet ", error.localizedDescription)
+                let message = "Sorry, there was an error deleting the pet information.  Please try to close the app and try again."
+                self.alert(message: message, title: "Error")
+            }
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
     
+    // MARK: Dismiss Delegate
     func dismissVC() {
         removeBlurView()
     }

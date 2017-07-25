@@ -10,11 +10,15 @@ import Foundation
 
 protocol DismissVCDelegate : class {
     func dismissVC()
-    func dismissVCtwo(object: Any) //optional
+    func dismissVCAfterDelete()
+    func dismissVC(object: Any) //optional
 }
 
 extension DismissVCDelegate {
-    func dismissVCtwo(object: Any) {
+    func dismissVCAfterDelete() {
+        
+    }
+    func dismissVC(object: Any) {
         
     }
 }

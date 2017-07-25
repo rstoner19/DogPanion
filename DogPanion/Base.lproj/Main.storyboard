@@ -773,6 +773,9 @@ Images</string>
                                                 <state key="normal" title="Delete">
                                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="deleteButtonPressed:" destination="eyY-L1-k6d" eventType="touchUpInside" id="Yj2-QH-JiJ"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.87955921889999999" green="0.93702125550000004" blue="0.95687747000000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -833,6 +836,7 @@ Images</string>
                     <connections>
                         <outlet property="birthdayButton" destination="vab-59-kmt" id="T1W-o8-x6l"/>
                         <outlet property="notificationSwitch" destination="hjw-l8-PHC" id="yeR-U2-tg3"/>
+                        <outlet property="petNameLabel" destination="aEd-3G-698" id="JRL-LI-OxU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t85-W1-fZe" userLabel="First Responder" sceneMemberID="firstResponder"/>

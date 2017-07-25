@@ -34,7 +34,7 @@ class PopUpViewController: UIViewController {
     }
     
     @IBAction func doneButtonPressed(_ sender: Any) {
-        self.delegate?.dismissVCtwo(object: self.datePicker.date)
+        self.delegate?.dismissVC(object: self.datePicker.date)
         removeAnimate()
     }
     
