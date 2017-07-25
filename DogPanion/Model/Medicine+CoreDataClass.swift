@@ -1,5 +1,5 @@
 //
-//  Pet+CoreDataClass.swift
+//  Medicine+CoreDataClass.swift
 //  DogPanion
 //
 //  Created by Rick Stoner on 7/21/17.
@@ -11,6 +11,6 @@ import Foundation
 import CoreData
 
 
-public class Pet: NSManagedObject {
+public class Medicine: NSManagedObject {
 
 }

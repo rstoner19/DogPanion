@@ -25,9 +25,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var rightArrow: UIImageView!
     @IBOutlet weak var arrow: UIImageView!
     
-    
-    // TODO: Need default image is user hasn't added any.
-    lazy var appDelegate = UIApplication.shared.delegate as! AppDelegate
+        lazy var appDelegate = UIApplication.shared.delegate as! AppDelegate
     var petImages: [PetImages] = []
     var currentIndexPath: IndexPath = IndexPath(row: 1, section: 0)
     var reverse: Bool = false
@@ -119,17 +117,26 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
             petLocationsVC.delegate = self
         } else if segue.identifier == "healthVC" {
             guard let healthVC = segue.destination as? HealthViewController else { return }
+            healthVC.pet = pet?[selectedPet]
             healthVC.delegate = self
         }
     }
     
     // MARK: Dismiss Delegate
     func dismissVC() {
-        self.dismiss(animated: true) {
-            self.pet = CoreDataManager.shared.fetchPets()
-            self.currentIndexPath.row = 0 
-            self.checkIfPet()
-        }
+        self.pet = CoreDataManager.shared.fetchPets()
+        self.currentIndexPath.row = 0
+        self.checkIfPet()
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func dismissVCAfterDelete() {
+        self.currentIndexPath.row = 0
+        self.selectedPet = 0
+        self.pet = CoreDataManager.shared.fetchPets()
+        self.checkIfPet()
+        self.petCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .centeredHorizontally, animated: false)
+        self.dismiss(animated: true, completion: nil)
     }
     
     // MARK: UICollectionView
@@ -219,6 +226,9 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
                 self.rightArrow.isHidden = false
                 self.leftArrow.isHidden = false
             }
+        } else {
+            self.rightArrow.isHidden = true
+            self.leftArrow.isHidden = true
         }
     }
     

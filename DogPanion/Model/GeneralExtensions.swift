@@ -8,6 +8,28 @@
 
 import UIKit
 
+extension Date {
+    func toString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        return formatter.string(from: self)
+    }
+}
+
+extension PetLocationsViewController : UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        getSearchResults(searchText: searchController.searchBar.text!)
+    }
+}
+
+extension UIButton {
+    func addBorder(color: UIColor, width: CGFloat, radius: CGFloat?) {
+        self.layer.borderColor = color.cgColor
+        self.layer.borderWidth = width
+        self.layer.cornerRadius = radius ?? 0
+    }
+}
+
 extension UIViewController {
     func alert(message: String, title: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -28,19 +50,5 @@ extension UITextField {
         toolBar.addSubview(keyBoardMessage)
         toolBar.sizeToFit()
         self.inputAccessoryView = toolBar
-    }
-}
-
-extension UIButton {
-    func addBorder(color: UIColor, width: CGFloat, radius: CGFloat?) {
-        self.layer.borderColor = color.cgColor
-        self.layer.borderWidth = width
-        self.layer.cornerRadius = radius ?? 0
-    }
-}
-
-extension PetLocationsViewController : UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        getSearchResults(searchText: searchController.searchBar.text!)
     }
 }

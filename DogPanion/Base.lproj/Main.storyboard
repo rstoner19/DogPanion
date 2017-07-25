@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.19" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.16"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -381,7 +381,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="DSR-yx-Wjs">
                                 <rect key="frame" x="260" y="473" width="80" height="80"/>
-                                <color key="backgroundColor" red="0.4209844172000885" green="0.48472744226455688" blue="0.55603092908859253" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.7443450037175432" green="0.86164295759326981" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="9x6-S5-hGw"/>
                                     <constraint firstAttribute="width" secondItem="DSR-yx-Wjs" secondAttribute="height" multiplier="1:1" id="UJK-pR-JOE"/>
@@ -477,7 +477,7 @@ Images</string>
                                         <color key="textColor" red="0.0003403453156" green="0.32340699429999997" blue="0.29478102919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tuc-Az-T6M">
+                                    <textField opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tuc-Az-T6M">
                                         <rect key="frame" x="104" y="8" width="168.5" height="72"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -515,7 +515,7 @@ Images</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Dog Breed" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z3t-Yq-HFK">
+                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Dog Breed" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z3t-Yq-HFK">
                                 <rect key="frame" x="131.5" y="95" width="128" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -531,7 +531,7 @@ Images</string>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PM4-He-Oaa">
                                 <rect key="frame" x="28" y="155" width="131.5" height="30"/>
-                                <color key="backgroundColor" red="0.49603261773941421" green="0.8088285505469075" blue="0.65000357485405669" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.37903764843940735" green="0.81787043809890747" blue="0.63904619216918945" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Done"/>
                                 <connections>
                                     <action selector="nextStepButtonClicked:" destination="tcG-kk-esB" eventType="touchUpInside" id="wdv-1Z-PIB"/>
@@ -744,6 +744,9 @@ Images</string>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hjw-l8-PHC">
                                                 <rect key="frame" x="314" y="14.5" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="notificationSwitchChanged:" destination="eyY-L1-k6d" eventType="valueChanged" id="AuR-ln-2He"/>
+                                                </connections>
                                             </switch>
                                         </subviews>
                                         <color key="backgroundColor" red="0.71354252100000004" green="0.87716776129999996" blue="0.98042702670000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -773,6 +776,9 @@ Images</string>
                                                 <state key="normal" title="Delete">
                                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="deleteButtonPressed:" destination="eyY-L1-k6d" eventType="touchUpInside" id="Yj2-QH-JiJ"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.87955921889999999" green="0.93702125550000004" blue="0.95687747000000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -831,7 +837,9 @@ Images</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="birthdayButton" destination="vab-59-kmt" id="T1W-o8-x6l"/>
                         <outlet property="notificationSwitch" destination="hjw-l8-PHC" id="yeR-U2-tg3"/>
+                        <outlet property="petNameLabel" destination="aEd-3G-698" id="JRL-LI-OxU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t85-W1-fZe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -865,6 +873,9 @@ Images</string>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4H-fs-EAY">
                                         <rect key="frame" x="288.5" y="8" width="37" height="30"/>
                                         <state key="normal" title="Done"/>
+                                        <connections>
+                                            <action selector="doneButtonPressed:" destination="ra5-dW-W5k" eventType="touchUpInside" id="EOo-e4-C63"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h9Z-uY-KaT">
                                         <rect key="frame" x="12" y="8" width="48" height="30"/>
@@ -898,6 +909,7 @@ Images</string>
                     </view>
                     <connections>
                         <outlet property="backgroundView" destination="iOC-nA-zCs" id="YC1-bt-Ihu"/>
+                        <outlet property="datePicker" destination="GH8-lD-J0Y" id="4Kr-tD-VjZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="THZ-EL-wsw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1130,6 +1142,6 @@ Image</string>
         <image name="welcomeBG" width="1242" height="883"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="muT-4t-pXX"/>
+        <segue reference="yw6-Zh-UCm"/>
     </inferredMetricsTieBreakers>
 </document>

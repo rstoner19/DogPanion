@@ -27,7 +27,7 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchB
     let locationManager = CLLocationManager()
     var delegate: DismissVCDelegate? = nil
     let searchController = UISearchController(searchResultsController: nil)
-    var pinColor: PinColor? = nil
+    var pinType: LocationType? = nil
     var searchMapItems: [MKMapItem]? = nil
     var currentLocationItem: MKMapItem? = nil
     var didUpdateLocation: Bool = false
@@ -68,16 +68,16 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchB
         removeAnnotations()
         switch sender {
         case self.dogParkButton:
-            pinColor = .greenPin
+            pinType = .dogPark
             searchRequest(queryRequest: "dog park")
         case self.groomingButton:
-            pinColor = .purplePin
+            pinType = .grooming
             searchRequest(queryRequest: "pet groomer")
         case self.vetButton:
-            pinColor = .redPin
+            pinType = .vet
             searchRequest(queryRequest: "veterinarians")
         case self.petStoreButton:
-            pinColor = .bluePin
+            pinType = .petStore
             searchRequest(queryRequest: "Pet Stores")
         default:
             break
@@ -129,17 +129,17 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchB
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if (annotation is MKUserLocation) { return nil }
         var reuseID = "pin"
-        if let pinColor = pinColor {
-            reuseID = pinColor.rawValue
+        if let pinType = pinType {
+            reuseID = pinType.rawValue
         }
-        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseID ) as? MKPinAnnotationView
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseID)
         if pinView == nil {
-            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseID)
+            pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseID)
             pinView?.canShowCallout = true
-            pinView?.animatesDrop = true
-            if let pinColor = pinColor {
-                pinView?.pinTintColor = setPinColor(pinColor: pinColor)
+            if let pinType = pinType {
+                pinView?.image = setPinImage(pinType: pinType)
             }
+            pinView?.centerOffset = CGPoint(x: 0, y: -25)
             let button = UIButton(type: .custom)
             button.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
             let image = UIImage(named: "carIcon")
@@ -151,19 +151,19 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchB
         return pinView
     }
     
-    func setPinColor(pinColor: PinColor) -> UIColor {
-        let color: UIColor
-        switch pinColor {
-        case .bluePin:
-            color = UIColor.blue
-        case .greenPin:
-            color = MKPinAnnotationView.greenPinColor()
-        case .purplePin:
-            color = MKPinAnnotationView.purplePinColor()
-        case .redPin:
-            color = MKPinAnnotationView.redPinColor()
+    func setPinImage(pinType: LocationType) -> UIImage {
+        let image: UIImage
+        switch pinType {
+        case .petStore:
+            image = UIImage(named: "storePin")!
+        case .dogPark:
+            image = UIImage(named: "parkPin")!
+        case .grooming:
+            image = UIImage(named: "groomingPin")!
+        case .vet:
+            image = UIImage(named: "vetPin")!
         }
-        return color
+        return image
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {

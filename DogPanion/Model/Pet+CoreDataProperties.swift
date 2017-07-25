@@ -2,7 +2,7 @@
 //  Pet+CoreDataProperties.swift
 //  DogPanion
 //
-//  Created by Rick Stoner on 7/11/17.
+//  Created by Rick Stoner on 7/21/17.
 //  Copyright © 2017 Rick Stoner. All rights reserved.
 //
 //
@@ -20,6 +20,7 @@ extension Pet {
     @NSManaged public var breed: String?
     @NSManaged public var name: String?
     @NSManaged public var images: NSSet?
+    @NSManaged public var health: Health?
 
 }
 

@@ -10,11 +10,22 @@ import Foundation
 
 protocol DismissVCDelegate : class {
     func dismissVC()
+    func dismissVCAfterDelete()
+    func dismissVC(object: Any) //optional
 }
 
-enum PinColor : String {
-    case redPin;
-    case bluePin;
-    case greenPin;
-    case purplePin;
+extension DismissVCDelegate {
+    func dismissVCAfterDelete() {
+        
+    }
+    func dismissVC(object: Any) {
+        
+    }
+}
+
+enum LocationType : String {
+    case vet;
+    case petStore;
+    case dogPark;
+    case grooming;
 }

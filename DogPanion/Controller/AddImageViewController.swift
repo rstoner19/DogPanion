@@ -73,7 +73,7 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
         case .authorized:
             presentImagePicker(.camera)
         case .denied:
-            self.alert(message: "Access to Camera Denied. To allow access go to Setting > DogPanion allow access to camera.", title: "Access Denied")
+            self.alert(message: "Access to Camera Denied. To allow access go to Setting > " + Constants.appName + " allow access to camera.", title: "Access Denied")
         case .notDetermined:
             AVCaptureDevice.requestAccess(for: .video, completionHandler: { (_) in
                 DispatchQueue.main.async {
