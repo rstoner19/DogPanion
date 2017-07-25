@@ -16,10 +16,8 @@ protocol DismissVCDelegate : class {
 
 extension DismissVCDelegate {
     func dismissVCAfterDelete() {
-        
     }
     func dismissVC(object: Any) {
-        
     }
 }
 

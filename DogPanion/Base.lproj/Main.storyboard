@@ -624,27 +624,46 @@ Images</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="psK-Fe-7O4">
                                         <rect key="frame" x="0.0" y="60" width="375" height="60"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dog Breed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2r-BK-pM8">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dog Breed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="c2r-BK-pM8">
                                                 <rect key="frame" x="12" y="19.5" width="86" height="21"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cup-f3-WDe">
-                                                <rect key="frame" x="183" y="15" width="180" height="30"/>
+                                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cup-f3-WDe">
+                                                <rect key="frame" x="182.5" y="15" width="10" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="10" id="fKA-aL-UA5"/>
+                                                </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="textDidChange:" destination="eyY-L1-k6d" eventType="editingChanged" id="cSg-fQ-Ajr"/>
+                                                    <outlet property="delegate" destination="eyY-L1-k6d" id="Mxk-ym-QPZ"/>
+                                                </connections>
                                             </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQk-J2-cPt">
+                                                <rect key="frame" x="268" y="14" width="95" height="33"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                <state key="normal" title="Enter Breed">
+                                                    <color key="titleColor" red="0.19241458180000001" green="0.34914329649999998" blue="0.3451943696" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="breedButtonPressed:" destination="eyY-L1-k6d" eventType="touchUpInside" id="1x0-f2-xA9"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.71354252099990845" green="0.87716776132583618" blue="0.98042702674865723" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstItem="Cup-f3-WDe" firstAttribute="centerY" secondItem="c2r-BK-pM8" secondAttribute="centerY" id="3II-E6-U0C"/>
-                                            <constraint firstItem="Cup-f3-WDe" firstAttribute="width" secondItem="psK-Fe-7O4" secondAttribute="width" multiplier="0.48" id="64a-Bk-inE"/>
                                             <constraint firstItem="c2r-BK-pM8" firstAttribute="leading" secondItem="psK-Fe-7O4" secondAttribute="leading" constant="12" id="6PP-3g-NdJ"/>
                                             <constraint firstItem="c2r-BK-pM8" firstAttribute="centerY" secondItem="psK-Fe-7O4" secondAttribute="centerY" id="BZP-p5-Sw2"/>
                                             <constraint firstAttribute="height" constant="60" id="Nv0-uh-ogN"/>
-                                            <constraint firstAttribute="trailing" secondItem="Cup-f3-WDe" secondAttribute="trailing" constant="12" id="Puj-el-3Kx"/>
+                                            <constraint firstItem="bQk-J2-cPt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="c2r-BK-pM8" secondAttribute="trailing" constant="8" id="Wqz-JI-hwv"/>
+                                            <constraint firstItem="Cup-f3-WDe" firstAttribute="centerX" secondItem="psK-Fe-7O4" secondAttribute="centerX" id="c6n-kF-J0k"/>
+                                            <constraint firstItem="bQk-J2-cPt" firstAttribute="centerY" secondItem="psK-Fe-7O4" secondAttribute="centerY" id="khd-aR-X5I"/>
+                                            <constraint firstAttribute="trailing" secondItem="bQk-J2-cPt" secondAttribute="trailing" constant="12" id="wcg-HE-WWX"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wDi-c3-Cnd">
@@ -693,11 +712,15 @@ Images</string>
                                             <constraint firstAttribute="height" constant="60" id="abf-WO-LQQ"/>
                                         </constraints>
                                     </view>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d9A-M1-EfI">
-                                        <rect key="frame" x="183" y="135" width="180" height="30"/>
+                                    <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d9A-M1-EfI">
+                                        <rect key="frame" x="182.5" y="135" width="10" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                        <connections>
+                                            <action selector="textDidChange:" destination="eyY-L1-k6d" eventType="editingChanged" id="CxO-ae-aLo"/>
+                                            <outlet property="delegate" destination="eyY-L1-k6d" id="nQe-ay-d2H"/>
+                                        </connections>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xAb-GM-poc">
                                         <rect key="frame" x="0.0" y="180" width="375" height="60"/>
@@ -736,7 +759,7 @@ Images</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ag-Wq-qgw">
                                         <rect key="frame" x="0.0" y="300" width="375" height="60"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifcation Reminders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmF-24-9WN">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifcation Reminders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gmF-24-9WN">
                                                 <rect key="frame" x="12" y="19.5" width="183" height="21"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -756,13 +779,14 @@ Images</string>
                                             <constraint firstItem="gmF-24-9WN" firstAttribute="centerY" secondItem="5ag-Wq-qgw" secondAttribute="centerY" id="Mtb-Jh-JdH"/>
                                             <constraint firstItem="gmF-24-9WN" firstAttribute="leading" secondItem="5ag-Wq-qgw" secondAttribute="leading" constant="12" id="fVJ-S0-pBJ"/>
                                             <constraint firstAttribute="trailing" secondItem="hjw-l8-PHC" secondAttribute="trailing" constant="12" id="jFy-y1-fjs"/>
+                                            <constraint firstItem="hjw-l8-PHC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gmF-24-9WN" secondAttribute="trailing" constant="8" id="oRv-kQ-Lni"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CkO-er-ddz">
                                         <rect key="frame" x="0.0" y="360" width="375" height="60"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete Pet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r1Y-6t-BHi">
-                                                <rect key="frame" x="12" y="19.5" width="84.5" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete All Pet Info." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="r1Y-6t-BHi">
+                                                <rect key="frame" x="12" y="19.5" width="150.5" height="21"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -787,9 +811,20 @@ Images</string>
                                             <constraint firstAttribute="height" constant="60" id="bKu-92-sm3"/>
                                             <constraint firstAttribute="trailing" secondItem="lR2-Cy-wpi" secondAttribute="trailing" constant="12" id="coU-xm-ZXK"/>
                                             <constraint firstItem="lR2-Cy-wpi" firstAttribute="centerY" secondItem="r1Y-6t-BHi" secondAttribute="centerY" id="lRV-Am-0oK"/>
+                                            <constraint firstItem="lR2-Cy-wpi" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="r1Y-6t-BHi" secondAttribute="trailing" constant="8" id="wmO-Cd-jP6"/>
                                             <constraint firstItem="r1Y-6t-BHi" firstAttribute="centerY" secondItem="CkO-er-ddz" secondAttribute="centerY" id="zAL-mp-dDK"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qUQ-vv-On9">
+                                        <rect key="frame" x="259" y="134" width="104" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <state key="normal" title="Enter Weight">
+                                            <color key="titleColor" red="0.19241458180000001" green="0.34914329649999998" blue="0.3451943696" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="weightButtonPressed:" destination="eyY-L1-k6d" eventType="touchUpInside" id="1mC-sM-AH0"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="d9A-M1-EfI" firstAttribute="centerY" secondItem="CBc-DP-7ES" secondAttribute="centerY" id="4f7-cq-lD8"/>
@@ -812,6 +847,7 @@ Images</string>
                                     <constraint firstItem="Yd7-Qo-7Gr" firstAttribute="top" secondItem="xAb-GM-poc" secondAttribute="bottom" id="gGy-FR-LW9"/>
                                     <constraint firstItem="CBc-DP-7ES" firstAttribute="top" secondItem="psK-Fe-7O4" secondAttribute="bottom" id="jLn-Q7-SGz"/>
                                     <constraint firstItem="Yd7-Qo-7Gr" firstAttribute="leading" secondItem="JIb-DQ-oe7" secondAttribute="leading" id="kQO-yM-hrU"/>
+                                    <constraint firstAttribute="trailing" secondItem="qUQ-vv-On9" secondAttribute="trailing" constant="12" id="mMi-A2-eeo"/>
                                     <constraint firstItem="d9A-M1-EfI" firstAttribute="centerX" secondItem="Cup-f3-WDe" secondAttribute="centerX" id="mUA-17-YoU"/>
                                     <constraint firstAttribute="trailing" secondItem="5ag-Wq-qgw" secondAttribute="trailing" id="oVJ-sL-60g"/>
                                     <constraint firstItem="xAb-GM-poc" firstAttribute="top" secondItem="CBc-DP-7ES" secondAttribute="bottom" id="orf-mR-Nbb"/>
@@ -819,6 +855,7 @@ Images</string>
                                     <constraint firstAttribute="bottom" secondItem="psK-Fe-7O4" secondAttribute="bottom" constant="467" id="tj9-xy-4fw"/>
                                     <constraint firstItem="CBc-DP-7ES" firstAttribute="leading" secondItem="JIb-DQ-oe7" secondAttribute="leading" id="tyL-Ak-ZPC"/>
                                     <constraint firstAttribute="trailing" secondItem="xAb-GM-poc" secondAttribute="trailing" id="uoH-rs-MgY"/>
+                                    <constraint firstItem="qUQ-vv-On9" firstAttribute="centerY" secondItem="CBc-DP-7ES" secondAttribute="centerY" id="xr7-Ud-kcB"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -838,8 +875,12 @@ Images</string>
                     </view>
                     <connections>
                         <outlet property="birthdayButton" destination="vab-59-kmt" id="T1W-o8-x6l"/>
+                        <outlet property="breedLabel" destination="bQk-J2-cPt" id="SQ8-g5-dqX"/>
+                        <outlet property="breedTextField" destination="Cup-f3-WDe" id="zZX-GR-6ZW"/>
                         <outlet property="notificationSwitch" destination="hjw-l8-PHC" id="yeR-U2-tg3"/>
                         <outlet property="petNameLabel" destination="aEd-3G-698" id="JRL-LI-OxU"/>
+                        <outlet property="weightLabel" destination="qUQ-vv-On9" id="5Ty-7U-DSp"/>
+                        <outlet property="weightTextField" destination="d9A-M1-EfI" id="IhJ-nO-hgB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t85-W1-fZe" userLabel="First Responder" sceneMemberID="firstResponder"/>
