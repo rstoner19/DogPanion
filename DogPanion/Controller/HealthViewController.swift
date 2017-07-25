@@ -159,7 +159,6 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
                 CoreDataManager.shared.saveItem(context: context, saveItem: "breed")
             }
         }
-        print(textField)
         return self.view.endEditing(true)
     }
     
@@ -182,7 +181,6 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
             self.weightLabel.setTitle(sender.text, for: .normal)
         }
     }
-    
     
     //Mark: UserNotification Center
     func notificationAuthorization() {
