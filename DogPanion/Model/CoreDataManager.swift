@@ -36,4 +36,12 @@ class CoreDataManager {
             return nil
         }
     }
+    
+    func saveItem(context: NSManagedObjectContext, saveItem: String) {
+        do {
+            try context.save()
+        } catch {
+            print("Error saving " + saveItem + ". ", error.localizedDescription)
+        }
+    }
 }

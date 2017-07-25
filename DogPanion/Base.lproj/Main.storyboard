@@ -744,6 +744,9 @@ Images</string>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hjw-l8-PHC">
                                                 <rect key="frame" x="314" y="14.5" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="notificationSwitchChanged:" destination="eyY-L1-k6d" eventType="valueChanged" id="AuR-ln-2He"/>
+                                                </connections>
                                             </switch>
                                         </subviews>
                                         <color key="backgroundColor" red="0.71354252100000004" green="0.87716776129999996" blue="0.98042702670000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

@@ -13,7 +13,6 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
     
     var pet: Pet? = nil
     var delegate: DismissVCDelegate? = nil
-    var notificationStatus: Bool = false
     lazy var blurEffectView: UIVisualEffectView? = nil
     lazy var popUpView: PopUpViewController? = nil
 
@@ -40,12 +39,12 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
             if let birthday = health.birthday as Date? {
                 self.birthdayButton.setTitle(birthday.toString(), for: .normal)
             }
+            self.notificationSwitch.isOn = health.notifications
         }
     }
     
     @IBAction func enterBirthdayButtonPressed(_ sender: UIButton) {
-        let blurEffect = UIBlurEffect(style: .light
-        )
+        let blurEffect = UIBlurEffect(style: .light)
         blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView?.frame = view.bounds
         blurEffectView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -83,16 +82,29 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(alertController, animated: true, completion: nil)
     }
+    // TODO: Need to add alert telling user all notifcations will be deleted if turned off
+    // TODO: Need to have method to delete all notification when turned off
+    // TODO: Need to create notification when turned on/alert user to turn back on for medicine/vaccine
+    @IBAction func notificationSwitchChanged(_ sender: UISwitch) {
+        self.pet?.health?.notifications = sender.isOn
+        guard let context = pet?.managedObjectContext else { return }
+        CoreDataManager.shared.saveItem(context: context, saveItem: "notifications")
+        if sender.isOn && pet?.health?.birthday != nil {
+            guard let birthday = pet?.health?.birthday as Date? else { return }
+            birthdayReminder(birthday: birthday)
+        }
+    }
     
     // MARK: Dismiss Delegate
     func dismissVC() {
         removeBlurView()
     }
     
-    func dismissVCtwo(object: Any) {
+    func dismissVC(object: Any) {
         removeBlurView()
         if let date = object as? NSDate {
             self.birthdayButton.setTitle((date as Date).toString(), for: .normal)
+            birthdayReminder(birthday: (date as Date))
             pet?.health?.birthday = date
             let context = pet?.managedObjectContext
             do {
@@ -113,13 +125,16 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
     func notificationAuthorization() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge]) { (granted, error) in
             DispatchQueue.main.async {
-                self.notificationSwitch.isOn = granted
-                self.notificationStatus = granted
+                if !granted {
+                    self.pet?.health?.notifications = granted
+                    self.notificationSwitch.isOn = granted
+                }
+                self.notificationSwitch.isEnabled = granted
             }
         }
     }
     
-    func scheduleNotification(title: String, body: String, identifier: String, dateToNotify: Date, dateCompenents: DateComponents, repeatNotifcation: Bool) {
+    func scheduleNotification(title: String, body: String, identifier: String, dateCompenents: DateComponents, repeatNotifcation: Bool) {
         let content = UNMutableNotificationContent()
         content.title = NSString.localizedUserNotificationString(forKey: title, arguments: nil)
         content.body = NSString.localizedUserNotificationString(forKey: body, arguments: nil)
@@ -129,6 +144,26 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
         let center = UNUserNotificationCenter.current()
         center.add(request, withCompletionHandler: nil)
+    }
+    
+    func birthdayReminder(birthday: Date) {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.day, .month], from: birthday)
+        var date = DateComponents()
+        date.hour = 12
+        date.day = components.day
+        date.month = components.month
+        let title = "Happy Birthday to " + (pet?.name ?? "your pet")
+        let body = Constants.appName + " wishes " + (pet?.name ?? "your pet") + " a happy birthday! 🐶🎂🎈🎁"
+        scheduleNotification(title: title, body: body, identifier: "birthday", dateCompenents: date, repeatNotifcation: true)
+    }
+    //TODO: Need to delete at some point
+    func test() {
+        UNUserNotificationCenter.current().getPendingNotificationRequests { (requests) in
+            for request in requests {
+                print(request.identifier)
+            }
+        }
     }
     
 }
