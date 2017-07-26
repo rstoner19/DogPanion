@@ -38,6 +38,7 @@
 		D7ADB5841F0BFCBC0054F345 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7ADB5821F0BFCBC0054F345 /* LaunchScreen.storyboard */; };
 		D7ADB58C1F0C0DEF0054F345 /* PetImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ADB58B1F0C0DEF0054F345 /* PetImageCell.swift */; };
 		D7C629971F1D3C37004C45F4 /* MapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C629961F1D3C37004C45F4 /* MapAnnotation.swift */; };
+		D7D1691A1F28426100EAAEB2 /* MedVacViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D169191F28426100EAAEB2 /* MedVacViewController.swift */; };
 		D7F0B0EE1F11579D006FEA6C /* AddImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F0B0ED1F11579D006FEA6C /* AddImageViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		D7ADB5851F0BFCBC0054F345 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7ADB58B1F0C0DEF0054F345 /* PetImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetImageCell.swift; sourceTree = "<group>"; };
 		D7C629961F1D3C37004C45F4 /* MapAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotation.swift; sourceTree = "<group>"; };
+		D7D169191F28426100EAAEB2 /* MedVacViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedVacViewController.swift; sourceTree = "<group>"; };
 		D7F0B0ED1F11579D006FEA6C /* AddImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddImageViewController.swift; path = DogPanion/Controller/AddImageViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -152,6 +154,7 @@
 				1DA6DAA91F15C4B500B6FE32 /* AddPetViewController.swift */,
 				1DEE8BF61F1F0805001D632F /* HealthViewController.swift */,
 				D7ADB5781F0BFCBC0054F345 /* MainViewController.swift */,
+				D7D169191F28426100EAAEB2 /* MedVacViewController.swift */,
 				D75E43381F1B26C10053E735 /* PetLocationsViewController.swift */,
 				1D119CD31F216D0D00CD317D /* PopUpViewController.swift */,
 				D7BF6B031F0C118B000F6C03 /* Xib/Cell Controllers */,
@@ -272,6 +275,7 @@
 				D70D1C181F1546D600FFAD15 /* GeneralProtocols.swift in Sources */,
 				D77211DB1F22CCE7004B4A1E /* PetImages+CoreDataProperties.swift in Sources */,
 				D7F0B0EE1F11579D006FEA6C /* AddImageViewController.swift in Sources */,
+				D7D1691A1F28426100EAAEB2 /* MedVacViewController.swift in Sources */,
 				D7C629971F1D3C37004C45F4 /* MapAnnotation.swift in Sources */,
 				D70D1C141F1440C300FFAD15 /* CoreDataManager.swift in Sources */,
 				D77211DC1F22CCE7004B4A1E /* Weight+CoreDataClass.swift in Sources */,
