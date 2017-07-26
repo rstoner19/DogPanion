@@ -245,4 +245,5 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         NotificationManager.scheduleNotification(title: title, body: body, identifier: "birthday", dateCompenents: date, repeatNotifcation: true)
     }
     
+    
 }

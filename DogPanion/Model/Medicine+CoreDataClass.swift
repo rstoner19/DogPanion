@@ -2,7 +2,7 @@
 //  Medicine+CoreDataClass.swift
 //  DogPanion
 //
-//  Created by Rick Stoner on 7/21/17.
+//  Created by Rick Stoner on 7/26/17.
 //  Copyright © 2017 Rick Stoner. All rights reserved.
 //
 //

@@ -976,16 +976,39 @@ Images</string>
                                     <constraint firstItem="X7C-Oa-dui" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="IQy-iD-aqT" secondAttribute="trailing" constant="8" id="hZ3-KD-yzg"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="a7k-6w-zau">
+                                <rect key="frame" x="0.0" y="80" width="375" height="587"/>
+                                <color key="backgroundColor" red="0.55619561672210693" green="0.73162287473678589" blue="0.83243793249130249" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="medVacCell" id="FSC-QM-6Xh" customClass="MedVacCell" customModule="DogPanion" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FSC-QM-6Xh" id="rxH-AM-8gH">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="3qe-rB-LAA" id="BGW-oc-aLe"/>
+                                    <outlet property="delegate" destination="3qe-rB-LAA" id="Me5-yS-Pmx"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="a7k-6w-zau" firstAttribute="top" secondItem="IDE-r3-iDK" secondAttribute="bottom" id="0If-At-mAK"/>
                             <constraint firstItem="IDE-r3-iDK" firstAttribute="height" secondItem="h5w-1n-D6n" secondAttribute="height" multiplier="0.12" id="3Ta-1N-QFo"/>
                             <constraint firstItem="IDE-r3-iDK" firstAttribute="leading" secondItem="h5w-1n-D6n" secondAttribute="leading" id="4aW-TU-FLA"/>
                             <constraint firstItem="IDE-r3-iDK" firstAttribute="top" secondItem="h5w-1n-D6n" secondAttribute="top" id="C1T-J8-naE"/>
+                            <constraint firstAttribute="trailing" secondItem="a7k-6w-zau" secondAttribute="trailing" id="GKP-OY-L1j"/>
+                            <constraint firstItem="y0u-Zd-RnG" firstAttribute="top" secondItem="a7k-6w-zau" secondAttribute="bottom" id="bz7-vm-zju"/>
                             <constraint firstAttribute="trailing" secondItem="IDE-r3-iDK" secondAttribute="trailing" id="dml-m3-x6B"/>
+                            <constraint firstItem="a7k-6w-zau" firstAttribute="leading" secondItem="h5w-1n-D6n" secondAttribute="leading" id="gVc-2X-P5h"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="medVacTableView" destination="a7k-6w-zau" id="PqR-Jn-9vc"/>
                         <outlet property="petNameLabel" destination="IQy-iD-aqT" id="CxY-ce-PEh"/>
                     </connections>
                 </viewController>

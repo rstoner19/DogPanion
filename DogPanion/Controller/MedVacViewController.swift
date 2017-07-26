@@ -8,10 +8,11 @@
 
 import UIKit
 
-class MedVacViewController: UIViewController {
+class MedVacViewController: UIViewController, UITableViewDataSource, UITabBarDelegate {
     
     @IBOutlet weak var petNameLabel: UILabel!
     
+    @IBOutlet weak var medVacTableView: UITableView!
     
     var pet: Pet? = nil
     var delegate: DismissVCDelegate? = nil
@@ -37,6 +38,12 @@ class MedVacViewController: UIViewController {
         }
     }
     
+    func setupTableView() {
+        self.medVacTableView.rowHeight = 100
+        let nib = UINib(nibName: "MedVacCell", bundle: nil)
+        self.medVacTableView.register(nib, forCellReuseIdentifier: "medVacCell")
+    }
+    
     @IBAction func backButtonPressed(_ sender: UIButton) {
         self.delegate?.dismissVC(object: true)
     }
@@ -49,5 +56,28 @@ class MedVacViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    // MARK: - TableView
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch medVac {
+        case .medicine:
+            return pet?.health?.medicine?.count ?? 0
+        case .vaccine:
+            return pet?.health?.vaccines?.count ?? 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "medVacCell", for: indexPath) as! MedVacCell
+        switch medVac {
+        case .medicine:
+            cell.medicine = pet?.health?.medicine?.allObjects[indexPath.row] as? Medicine
+        case .vaccine:
+            cell.vaccine = pet?.health?.vaccines?.allObjects[indexPath.row] as? Vaccines
+        }
+        
+        return cell
+    }
 
 }
