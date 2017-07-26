@@ -17,6 +17,8 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
     lazy var popUpView: PopUpViewController? = nil
 
     @IBOutlet weak var birthdayButton: UIButton!
+    @IBOutlet weak var medicationButton: UIButton!
+    @IBOutlet weak var vaccineButton: UIButton!
     
     @IBOutlet weak var breedLabel: UIButton!
     @IBOutlet weak var petNameLabel: UILabel!
@@ -61,6 +63,16 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
                 }
             }
             self.notificationSwitch.isOn = health.notifications
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "medVacVC" {
+            guard let medVacVC = segue.destination as? MedVacViewController else { return }
+            guard let type = sender as? MedVac else { return }
+            medVacVC.delegate = self
+            medVacVC.medVac = type
+            medVacVC.pet = self.pet
         }
     }
     
@@ -112,6 +124,18 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    @IBAction func medVacButtonPressed(_ sender: UIButton) {
+        let type: MedVac
+        if sender == self.medicationButton {
+            type = .medicine
+        } else {
+            type = .vaccine
+        }
+        self.performSegue(withIdentifier: "medVacVC", sender: type)
+    }
+    
+    
     // TODO: Need to add alert telling user all notifcations will be deleted if turned off
     // TODO: Need to have method to delete all notification when turned off
     // TODO: Need to create notification when turned on/alert user to turn back on for medicine/vaccine
@@ -143,7 +167,11 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
                 print("Error saving birthday ", error.localizedDescription)
             }
         }
+        if let _ = object as? Bool {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
+    
     
     func removeBlurView() {
         if let blurView = blurEffectView {

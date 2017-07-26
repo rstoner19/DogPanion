@@ -27,3 +27,8 @@ enum LocationType : String {
     case dogPark;
     case grooming;
 }
+
+enum MedVac {
+    case medicine
+    case vaccine
+}
