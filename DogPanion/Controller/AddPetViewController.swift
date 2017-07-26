@@ -89,7 +89,7 @@ class AddPetViewController: UIViewController, UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == self.petNameTextField {
             self.petNameLabel.text = ""
-            textField.addBarToKeyboard(message: "Enter Pet Name", viewController: self)
+            textField.addBarToKeyboard(message: "Enter Pet Name", viewController: self, buttons: false)
         }
     }
     

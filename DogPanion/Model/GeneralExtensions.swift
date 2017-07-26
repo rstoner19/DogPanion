@@ -37,16 +37,28 @@ extension UIViewController {
         alertController.addAction(action)
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    @objc func doneButtonPressed() {
+        print("hmmmm")
+        self.resignFirstResponder()
+    }
 }
 
 extension UITextField {
-    func addBarToKeyboard(message: String, viewController: UIViewController) {
+    func addBarToKeyboard(message: String, viewController: UIViewController, buttons: Bool) {
         let toolBar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: viewController.view.bounds.width, height: 40))
         toolBar.barStyle = UIBarStyle.blackTranslucent
         let keyBoardMessage = UILabel(frame: CGRect(x: toolBar.layer.frame.midX - 100, y: toolBar.frame.midY - 10, width: 200, height: 20))
         keyBoardMessage.textAlignment = .center
         keyBoardMessage.textColor = UIColor.white
         keyBoardMessage.text = message
+        if buttons == true {
+            let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+            let cancel = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(viewController.resignFirstResponder))
+            let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(viewController.view.endEditing(_:)))
+            let items = [cancel, flexSpace, done]
+            toolBar.items = items
+        }
         toolBar.addSubview(keyBoardMessage)
         toolBar.sizeToFit()
         self.inputAccessoryView = toolBar

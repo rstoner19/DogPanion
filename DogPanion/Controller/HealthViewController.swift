@@ -9,7 +9,7 @@
 import UIKit
 import UserNotifications
 
-class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, UIPopoverPresentationControllerDelegate, DismissVCDelegate {
+class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, UIPopoverPresentationControllerDelegate, UITextFieldDelegate, DismissVCDelegate {
     
     var pet: Pet? = nil
     var delegate: DismissVCDelegate? = nil
@@ -18,9 +18,14 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
 
     @IBOutlet weak var birthdayButton: UIButton!
     
+    @IBOutlet weak var breedLabel: UIButton!
     @IBOutlet weak var petNameLabel: UILabel!
+    @IBOutlet weak var weightLabel: UIButton!
     
     @IBOutlet weak var notificationSwitch: UISwitch!
+    
+    @IBOutlet weak var breedTextField: UITextField!
+    @IBOutlet weak var weightTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,12 +40,33 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
     
     func setup() {
         self.petNameLabel.text = pet?.name
+        if let breed = pet?.breed {
+            if !breed.isEmpty {
+                self.breedLabel.setTitle(breed, for: .normal)
+            }
+        }
+        setHealthItems()
+    }
+    
+    func setHealthItems() {
         if let health = pet?.health {
             if let birthday = health.birthday as Date? {
                 self.birthdayButton.setTitle(birthday.toString(), for: .normal)
             }
+            if let weight = pet?.health?.weight?.allObjects as? [Weight] {
+                if weight.count > 0 {
+                    let sortedWeight = weight.sorted(by: {($0.dateMeasured)?.compare(($1.dateMeasured! as Date)) == .orderedDescending })
+                    let stringWeight = String(format:"%.1f", (sortedWeight.first?.weight)!)
+                    self.weightLabel.setTitle(stringWeight, for: .normal)
+                }
+            }
             self.notificationSwitch.isOn = health.notifications
         }
+    }
+    
+    // MARK: Button Actions
+    @IBAction func doneButtonPressed(_ sender: UIButton) {
+        self.delegate?.dismissVC()
     }
     
     @IBAction func enterBirthdayButtonPressed(_ sender: UIButton) {
@@ -49,7 +75,6 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         blurEffectView?.frame = view.bounds
         blurEffectView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.view.addSubview(blurEffectView!)
-        
         popUpView = self.storyboard?.instantiateViewController(withIdentifier: "popUpDatePicker") as? PopUpViewController
         if let viewController = popUpView {
             viewController.delegate = self
@@ -61,8 +86,13 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         }
     }
     
-    @IBAction func doneButtonPressed(_ sender: UIButton) {
-        self.delegate?.dismissVC()
+    @IBAction func breedButtonPressed(_ sender: UIButton) {
+        self.breedTextField.becomeFirstResponder()
+    }
+    
+    @IBAction func weightButtonPressed(_ sender: UIButton) {
+        self.weightTextField.addBarToKeyboard(message: "Enter Pet Weight", viewController: self, buttons: true)
+        self.weightTextField.becomeFirstResponder()
     }
     
     @IBAction func deleteButtonPressed(_ sender: UIButton) {
@@ -121,6 +151,37 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         }
     }
     
+    // MARK: Text Delegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == breedTextField {
+            pet?.breed = textField.text
+            if let context = pet?.managedObjectContext {
+                CoreDataManager.shared.saveItem(context: context, saveItem: "breed")
+            }
+        }
+        return self.view.endEditing(true)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == self.weightTextField {
+            if let context = pet?.managedObjectContext {
+                let weight = Weight(context: context)
+                weight.dateMeasured = Date() as NSDate
+                weight.weight = Double(self.weightTextField.text!) ?? 0
+                pet?.health?.addToWeight(weight)
+                CoreDataManager.shared.saveItem(context: context, saveItem: "weight")
+            }
+        }
+    }
+    
+    @IBAction func textDidChange(_ sender: UITextField) {
+        if sender == self.breedTextField {
+            self.breedLabel.setTitle(sender.text, for: .normal)
+        } else if sender == self.weightTextField {
+            self.weightLabel.setTitle(sender.text, for: .normal)
+        }
+    }
+    
     //Mark: UserNotification Center
     func notificationAuthorization() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge]) { (granted, error) in
@@ -138,9 +199,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         let content = UNMutableNotificationContent()
         content.title = NSString.localizedUserNotificationString(forKey: title, arguments: nil)
         content.body = NSString.localizedUserNotificationString(forKey: body, arguments: nil)
-        
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateCompenents, repeats: repeatNotifcation)
-        
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
         let center = UNUserNotificationCenter.current()
         center.add(request, withCompletionHandler: nil)
@@ -155,15 +214,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         date.month = components.month
         let title = "Happy Birthday to " + (pet?.name ?? "your pet")
         let body = Constants.appName + " wishes " + (pet?.name ?? "your pet") + " a happy birthday! 🐶🎂🎈🎁"
-        scheduleNotification(title: title, body: body, identifier: "birthday", dateCompenents: date, repeatNotifcation: true)
-    }
-    //TODO: Need to delete at some point
-    func test() {
-        UNUserNotificationCenter.current().getPendingNotificationRequests { (requests) in
-            for request in requests {
-                print(request.identifier)
-            }
-        }
+        NotificationManager.scheduleNotification(title: title, body: body, identifier: "birthday", dateCompenents: date, repeatNotifcation: true)
     }
     
 }
