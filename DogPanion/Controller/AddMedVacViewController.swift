@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddMedVacViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, DismissVCDelegate {
+class AddMedVacViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, DismissVCDelegate {
     
     var delegate: DismissVCDelegate? = nil
     var pet: Pet? = nil
@@ -24,6 +24,8 @@ class AddMedVacViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     @IBOutlet weak var frequencyPicker: UIPickerView!
     
+    @IBOutlet weak var reminderSwitch: UISwitch!
+    
     @IBOutlet weak var nameTextField: UITextField!
     
     override func viewDidLoad() {
@@ -37,6 +39,17 @@ class AddMedVacViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
     
     func setup() {
+        setupLabels()
+        self.nameTextField.delegate = self
+        if let reminders = pet?.health?.notifications {
+            if !reminders {
+                self.reminderSwitch.isOn = false
+                self.reminderSwitch.isEnabled = false
+            }
+        }
+    }
+    
+    func setupLabels() {
         switch medOrVac {
         case .medicine:
             self.nameTextField.placeholder = "Medicine Name"
@@ -48,13 +61,12 @@ class AddMedVacViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             self.nameLabel.text = "Vaccination Name:"
         }
     }
-    
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
         self.delegate?.dismissVC()
     }
     
-    
     @IBAction func dateGivenPressed(_ sender: UIButton) {
+        self.view.endEditing(true)
         let blurEffect = UIBlurEffect(style: .light)
         blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView?.frame = view.bounds
@@ -73,17 +85,32 @@ class AddMedVacViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBAction func addButtonPressed(_ sender: UIButton) {
         if let date = medVacData.date, let name = medVacData.name {
             guard let context = pet?.managedObjectContext else { return }
+            let row = self.frequencyPicker.selectedRow(inComponent: 0)
+            let frequency = Constants.frequencyElements[row]
             switch medOrVac {
             case .medicine:
                 let medicine = Medicine(context: context)
                 medicine.dateGiven = date as NSDate
                 medicine.name = name
-                medicine.frequency = frequencyPicker.description
+                medicine.reminder = self.reminderSwitch.isOn
+                medicine.frequency = frequency
+                medicine.dateDue = date.addingTimeInterval(AddMedVac.timeToAdd(frequency: frequency)) as NSDate
+                pet?.health?.addToMedicine(medicine)
             case .vaccine:
                 let vaccine = Vaccines(context: context)
                 vaccine.dateGiven = date as NSDate
                 vaccine.name = name
-                vaccine.frequency = frequencyPicker.description
+                vaccine.reminder = self.reminderSwitch.isOn
+                vaccine.frequency = frequency
+                vaccine.dateDue = date.addingTimeInterval(AddMedVac.timeToAdd(frequency: frequency)) as NSDate
+                pet?.health?.addToVaccines(vaccine)
+            }
+            do {
+                try context.save()
+                self.delegate?.dismissVC()
+            } catch {
+                print("Error saving medicine or vaccine.", error.localizedDescription)
+                self.alert(message: "Sorry, there was an error, please try saving again. If problem persist close app and try again.", title: "Error Saving")
             }
         } else {
             let message = "Please ensure you include a name and date given."
@@ -124,7 +151,16 @@ class AddMedVacViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-        
+    
+    // MARK: - Textfield
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.medVacData.name = textField.text != "" ? textField.text : nil
+        return self.view.endEditing(true)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.medVacData.name = textField.text != "" ? textField.text : nil
+    }
     
     /*
     // MARK: - Navigation

@@ -21,7 +21,7 @@ class MedVacViewController: UIViewController, UITableViewDataSource, UITabBarDel
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        // Do any additional setup after loading the view.
+        setupTableView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -76,6 +76,7 @@ class MedVacViewController: UIViewController, UITableViewDataSource, UITabBarDel
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "medVacCell", for: indexPath) as! MedVacCell
         switch medVac {
         case .medicine:

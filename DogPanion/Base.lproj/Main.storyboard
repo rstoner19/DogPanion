@@ -32,7 +32,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Vy-5f-iVQ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet Locations" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="g0p-hk-M2K">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Pet Locations" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="g0p-hk-M2K">
                                         <rect key="frame" x="65" y="30" width="245.5" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="wXx-Df-TEW"/>
@@ -269,7 +269,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="131" height="97"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3DR-dh-fSw">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3DR-dh-fSw">
                                                             <rect key="frame" x="0.0" y="0.0" width="131" height="97"/>
                                                             <gestureRecognizers/>
                                                             <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="32"/>
@@ -478,7 +478,7 @@ Images</string>
                                         <color key="textColor" red="0.0003403453156" green="0.32340699429999997" blue="0.29478102919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tuc-Az-T6M">
+                                    <textField opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tuc-Az-T6M">
                                         <rect key="frame" x="104" y="8" width="168.5" height="72"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -596,7 +596,7 @@ Images</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0nS-Ef-VLF">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="aEd-3G-698">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Pet Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="aEd-3G-698">
                                         <rect key="frame" x="104" y="8" width="168.5" height="72"/>
                                         <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="32"/>
                                         <color key="textColor" red="0.0003403453156" green="0.32340699429999997" blue="0.29478102919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -703,7 +703,7 @@ Images</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CBc-DP-7ES">
                                         <rect key="frame" x="0.0" y="120" width="375" height="60"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vym-ED-l76">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Vym-ED-l76">
                                                 <rect key="frame" x="10" y="19.5" width="58" height="21"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -846,7 +846,7 @@ Images</string>
                                             <constraint firstItem="r1Y-6t-BHi" firstAttribute="centerY" secondItem="CkO-er-ddz" secondAttribute="centerY" id="zAL-mp-dDK"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qUQ-vv-On9">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qUQ-vv-On9">
                                         <rect key="frame" x="259" y="134" width="104" height="33"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <state key="normal" title="Enter Weight">
@@ -939,7 +939,7 @@ Images</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IDE-r3-iDK">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="IQy-iD-aqT">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Pet Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="IQy-iD-aqT">
                                         <rect key="frame" x="104" y="8" width="168.5" height="72"/>
                                         <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="32"/>
                                         <color key="textColor" red="0.0003403453156" green="0.32340699429999997" blue="0.29478102919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1034,7 +1034,7 @@ Images</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GT4-BY-Q6k">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2ea-Cd-0qL">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Pet Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="2ea-Cd-0qL">
                                         <rect key="frame" x="104" y="8" width="168.5" height="72"/>
                                         <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="32"/>
                                         <color key="textColor" red="0.0003403453156" green="0.32340699429999997" blue="0.29478102919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1070,12 +1070,6 @@ Images</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BaR-Ki-s0L">
-                                <rect key="frame" x="151.5" y="95" width="207.5" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Given:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BgG-3L-LIJ">
                                 <rect key="frame" x="16" y="151" width="92" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
@@ -1131,6 +1125,12 @@ Images</string>
                                     <action selector="addButtonPressed:" destination="q2i-qA-vnI" eventType="touchUpInside" id="tDP-gG-jPL"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BaR-Ki-s0L">
+                                <rect key="frame" x="151" y="95" width="209" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.8559412956237793" green="0.90956217050552368" blue="0.92942047119140625" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -1145,7 +1145,7 @@ Images</string>
                             <constraint firstItem="GT4-BY-Q6k" firstAttribute="leading" secondItem="PE5-FF-2nN" secondAttribute="leading" id="G3c-Qu-3Xd"/>
                             <constraint firstItem="eYR-2E-lxc" firstAttribute="centerX" secondItem="PE5-FF-2nN" secondAttribute="centerX" id="Izx-bi-jpF"/>
                             <constraint firstItem="GT4-BY-Q6k" firstAttribute="height" secondItem="PE5-FF-2nN" secondAttribute="height" multiplier="0.12" id="Jsr-9a-bKA"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="BaR-Ki-s0L" secondAttribute="trailing" id="MWZ-xx-KoS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BaR-Ki-s0L" secondAttribute="trailing" constant="-1" id="MWZ-xx-KoS"/>
                             <constraint firstItem="BgG-3L-LIJ" firstAttribute="leading" secondItem="PE5-FF-2nN" secondAttribute="leadingMargin" id="RjU-tv-Lzt"/>
                             <constraint firstItem="eYR-2E-lxc" firstAttribute="top" secondItem="RKE-u5-uGy" secondAttribute="bottom" id="XfU-Sb-D8E"/>
                             <constraint firstItem="tTl-OD-sQh" firstAttribute="top" secondItem="GT4-BY-Q6k" secondAttribute="bottom" constant="20" id="b3Q-P9-dLr"/>
@@ -1170,6 +1170,7 @@ Images</string>
                         <outlet property="headerLabel" destination="2ea-Cd-0qL" id="EWi-jk-Yc4"/>
                         <outlet property="nameLabel" destination="tTl-OD-sQh" id="M4O-6l-bhq"/>
                         <outlet property="nameTextField" destination="BaR-Ki-s0L" id="h4L-Ji-bB4"/>
+                        <outlet property="reminderSwitch" destination="DG8-9S-ejZ" id="cDZ-yb-aUV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g2x-nn-sg0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1262,7 +1263,7 @@ Images</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oTe-Hz-nxv">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fER-jg-z68">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fER-jg-z68">
                                         <rect key="frame" x="140.5" y="8" width="95" height="72"/>
                                         <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="32"/>
                                         <color key="textColor" red="0.0003403453156" green="0.32340699429999997" blue="0.29478102919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1475,6 +1476,6 @@ Image</string>
         <image name="welcomeBG" width="1242" height="883"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="muT-4t-pXX"/>
+        <segue reference="yw6-Zh-UCm"/>
     </inferredMetricsTieBreakers>
 </document>
