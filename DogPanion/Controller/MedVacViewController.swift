@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MedVacViewController: UIViewController, UITableViewDataSource, UITabBarDelegate {
+class MedVacViewController: UIViewController, UITableViewDataSource, UITabBarDelegate, DismissVCDelegate {
     
     @IBOutlet weak var petNameLabel: UILabel!
     
@@ -47,15 +47,22 @@ class MedVacViewController: UIViewController, UITableViewDataSource, UITabBarDel
     @IBAction func backButtonPressed(_ sender: UIButton) {
         self.delegate?.dismissVC(object: true)
     }
-    /*
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "addMedVacVC" {
+            guard let addMedVacVC = segue.destination as? AddMedVacViewController else {return}
+            addMedVacVC.delegate = self
+            addMedVacVC.medOrVac = medVac
+            addMedVacVC.pet = pet
+        }
     }
-    */
+    
+    // MARK: - DismissVC
+    func dismissVC() {
+        self.medVacTableView.reloadData()
+        self.dismiss(animated: true, completion: nil)
+    }
     
     // MARK: - TableView
     

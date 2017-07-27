@@ -172,7 +172,6 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         }
     }
     
-    
     func removeBlurView() {
         if let blurView = blurEffectView {
             blurView.removeFromSuperview()

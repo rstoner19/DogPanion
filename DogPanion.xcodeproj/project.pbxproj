@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1D119CD41F216D0D00CD317D /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D119CD31F216D0D00CD317D /* PopUpViewController.swift */; };
+		1D8C6DB41F2A7ED900325C55 /* AddMedVac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8C6DB31F2A7ED900325C55 /* AddMedVac.swift */; };
 		1DA6DAAA1F15C4B500B6FE32 /* AddPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA6DAA91F15C4B500B6FE32 /* AddPetViewController.swift */; };
 		1DEE8BF71F1F0805001D632F /* HealthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEE8BF61F1F0805001D632F /* HealthViewController.swift */; };
 		D700BB561F1B2CB600822AD6 /* ImageCustomFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D700BB551F1B2CB600822AD6 /* ImageCustomFlowLayout.swift */; };
@@ -41,11 +42,13 @@
 		D7D169241F291B4900EAAEB2 /* Vaccines+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D169201F291B4900EAAEB2 /* Vaccines+CoreDataProperties.swift */; };
 		D7D169251F291B4900EAAEB2 /* Medicine+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D169211F291B4900EAAEB2 /* Medicine+CoreDataClass.swift */; };
 		D7D169261F291B4900EAAEB2 /* Medicine+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D169221F291B4900EAAEB2 /* Medicine+CoreDataProperties.swift */; };
+		D7D169281F29590B00EAAEB2 /* AddMedVacViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D169271F29590B00EAAEB2 /* AddMedVacViewController.swift */; };
 		D7F0B0EE1F11579D006FEA6C /* AddImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F0B0ED1F11579D006FEA6C /* AddImageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1D119CD31F216D0D00CD317D /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		1D8C6DB31F2A7ED900325C55 /* AddMedVac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMedVac.swift; sourceTree = "<group>"; };
 		1DA6DAA91F15C4B500B6FE32 /* AddPetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddPetViewController.swift; path = DogPanion/Controller/AddPetViewController.swift; sourceTree = SOURCE_ROOT; };
 		1DEE8BF61F1F0805001D632F /* HealthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthViewController.swift; sourceTree = "<group>"; };
 		D700BB551F1B2CB600822AD6 /* ImageCustomFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCustomFlowLayout.swift; sourceTree = "<group>"; };
@@ -81,6 +84,7 @@
 		D7D169201F291B4900EAAEB2 /* Vaccines+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vaccines+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D7D169211F291B4900EAAEB2 /* Medicine+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Medicine+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D7D169221F291B4900EAAEB2 /* Medicine+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Medicine+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D7D169271F29590B00EAAEB2 /* AddMedVacViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddMedVacViewController.swift; path = DogPanion/Controller/AddMedVacViewController.swift; sourceTree = SOURCE_ROOT; };
 		D7F0B0ED1F11579D006FEA6C /* AddImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddImageViewController.swift; path = DogPanion/Controller/AddImageViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -155,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				D7F0B0ED1F11579D006FEA6C /* AddImageViewController.swift */,
+				D7D169271F29590B00EAAEB2 /* AddMedVacViewController.swift */,
 				1DA6DAA91F15C4B500B6FE32 /* AddPetViewController.swift */,
 				1DEE8BF61F1F0805001D632F /* HealthViewController.swift */,
 				D7ADB5781F0BFCBC0054F345 /* MainViewController.swift */,
@@ -181,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				D70D1C191F1546EE00FFAD15 /* Core Data Classes */,
+				1D8C6DB31F2A7ED900325C55 /* AddMedVac.swift */,
 				D71882B51F27C7BC001B94EF /* Constants.swift */,
 				D70D1C131F1440C300FFAD15 /* CoreDataManager.swift */,
 				D79D3A281F12A7EF008CBA69 /* GeneralExtensions.swift */,
@@ -275,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D79D3A291F12A7EF008CBA69 /* GeneralExtensions.swift in Sources */,
+				1D8C6DB41F2A7ED900325C55 /* AddMedVac.swift in Sources */,
 				D7ADB57F1F0BFCBC0054F345 /* DogPanion.xcdatamodeld in Sources */,
 				D7ADB58C1F0C0DEF0054F345 /* PetImageCell.swift in Sources */,
 				D70D1C181F1546D600FFAD15 /* GeneralProtocols.swift in Sources */,
@@ -290,6 +297,7 @@
 				D77211DA1F22CCE7004B4A1E /* PetImages+CoreDataClass.swift in Sources */,
 				D77211DD1F22CCE7004B4A1E /* Weight+CoreDataProperties.swift in Sources */,
 				D77211D51F22CCE7004B4A1E /* Health+CoreDataProperties.swift in Sources */,
+				D7D169281F29590B00EAAEB2 /* AddMedVacViewController.swift in Sources */,
 				1DEE8BF71F1F0805001D632F /* HealthViewController.swift in Sources */,
 				D700BB561F1B2CB600822AD6 /* ImageCustomFlowLayout.swift in Sources */,
 				D7D169261F291B4900EAAEB2 /* Medicine+CoreDataProperties.swift in Sources */,
