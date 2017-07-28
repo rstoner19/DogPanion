@@ -33,6 +33,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         super.viewDidLoad()
         notificationAuthorization()
         setup()
+        NotificationManager.printPendingNotificationRequests()
     }
 
     override func didReceiveMemoryWarning() {
@@ -90,11 +91,13 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         popUpView = self.storyboard?.instantiateViewController(withIdentifier: "popUpDatePicker") as? PopUpViewController
         if let viewController = popUpView {
             viewController.delegate = self
-            if let birthday = pet?.health?.birthday as Date? { viewController.datePicker.date = birthday }
             self.addChildViewController(viewController)
             viewController.view.frame = self.view.frame
             self.view.addSubview(viewController.view)
             viewController.didMove(toParentViewController: self)
+            if let birthday = pet?.health?.birthday as Date? {
+                viewController.datePicker.date = birthday
+            }
         }
     }
     

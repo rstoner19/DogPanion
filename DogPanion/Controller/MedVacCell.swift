@@ -35,8 +35,7 @@ class MedVacCell: UITableViewCell {
                 self.givenDateLabel.text = "Given: " + (medicine.dateGiven! as Date).toString()
                 //TODO: Need to modify it it's past due
                 self.dueDateLabel.text = "Due: " + (medicine.dateDue! as Date).toString()
-                self.frequencyLabel.text = medicine.frequency
-                
+                self.frequencyLabel.text = "Frequency: " + (medicine.frequency ?? "")
             }
         }
     }

@@ -85,8 +85,11 @@ class AddMedVacViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBAction func addButtonPressed(_ sender: UIButton) {
         if let date = medVacData.date, let name = medVacData.name {
             guard let context = pet?.managedObjectContext else { return }
-            let row = self.frequencyPicker.selectedRow(inComponent: 0)
-            let frequency = Constants.frequencyElements[row]
+            let frequencyrow = self.frequencyPicker.selectedRow(inComponent: 0)
+            let timeOfDayRow = self.frequencyPicker.selectedRow(inComponent: 1)
+            let frequency = Constants.frequencyElements[0][frequencyrow]
+            let timeOfDay = Constants.frequencyElements[1][timeOfDayRow]
+            let notificationIDs = self.setNotifications(medVacName: name, date: date, frequency: frequency, timeOfDay: timeOfDay)
             switch medOrVac {
             case .medicine:
                 let medicine = Medicine(context: context)
@@ -94,7 +97,16 @@ class AddMedVacViewController: UIViewController, UIPickerViewDelegate, UIPickerV
                 medicine.name = name
                 medicine.reminder = self.reminderSwitch.isOn
                 medicine.frequency = frequency
+                //TODO: FIX using components
                 medicine.dateDue = date.addingTimeInterval(AddMedVac.timeToAdd(frequency: frequency)) as NSDate
+                if let notifications = notificationIDs {
+                    medicine.notificationID = notifications[0]
+                    medicine.notificationIDTwo = notifications.count > 1 ? notifications[1] : nil
+                    if notifications.count > 2 {
+                        medicine.notificationIDThree = notifications[2]
+                        medicine.notificationIDFour = notifications[3]
+                    }
+                }
                 pet?.health?.addToMedicine(medicine)
             case .vaccine:
                 let vaccine = Vaccines(context: context)
@@ -102,7 +114,16 @@ class AddMedVacViewController: UIViewController, UIPickerViewDelegate, UIPickerV
                 vaccine.name = name
                 vaccine.reminder = self.reminderSwitch.isOn
                 vaccine.frequency = frequency
+                //TODO: FIX using components
                 vaccine.dateDue = date.addingTimeInterval(AddMedVac.timeToAdd(frequency: frequency)) as NSDate
+                if let notifications = notificationIDs {
+                    vaccine.notificationID = notifications[0]
+                    vaccine.notificationIDTwo = notifications.count > 1 ? notifications[1] : nil
+                    if notifications.count > 2 {
+                        vaccine.notificationIDThree = notifications[2]
+                        vaccine.notificationIDFour = notifications[3]
+                    }
+                }
                 pet?.health?.addToVaccines(vaccine)
             }
             do {
@@ -118,8 +139,29 @@ class AddMedVacViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         }
     }
     
-    // MARK: - DismissVC Delegate
+    func setNotifications(medVacName: String, date: Date, frequency: String, timeOfDay: String) -> [String]? {
+        if pet?.health?.notifications == true && self.reminderSwitch.isOn {
+            let dateComponents = NotificationManager.getDateComponents(startDate: date, frequency: frequency, timeofDay: timeOfDay)
+            var notificationIDs: [String] = [medVacName]
+            if dateComponents.count == 2 {
+                notificationIDs.append(medVacName + "two")
+            } else if dateComponents.count == 4 {
+                notificationIDs.append(medVacName + "two")
+                notificationIDs.append(medVacName + "three")
+                notificationIDs.append(medVacName + "four")
+            }
+            
+            let title = medVacName + " is due for " + (pet?.name)!
+            let body = "\(Constants.appName) reminds you to give \((pet?.name)!) his/her \(medVacName)."
+            for index in 0..<dateComponents.count {
+                NotificationManager.scheduleNotification(title: title, body: body, identifier: notificationIDs[index], dateCompenents: dateComponents[index], repeatNotifcation: true)
+            }
+            return notificationIDs
+        } else { return nil }
+    }
     
+    
+    // MARK: - DismissVC Delegate
     func dismissVC() {
         removeBlurView()
     }
@@ -139,17 +181,16 @@ class AddMedVacViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
     
     // MARK: - PickerView
-    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return Constants.frequencyElements.count
+        return Constants.frequencyElements[component].count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return Constants.frequencyElements[row]
+        return Constants.frequencyElements[component][row]
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+        return 2
     }
     
     // MARK: - Textfield
@@ -161,15 +202,4 @@ class AddMedVacViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     func textFieldDidEndEditing(_ textField: UITextField) {
         self.medVacData.name = textField.text != "" ? textField.text : nil
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

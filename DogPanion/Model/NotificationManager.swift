@@ -6,7 +6,7 @@
 //  Copyright © 2017 Rick Stoner. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import UserNotifications
 
 class NotificationManager {
@@ -19,6 +19,54 @@ class NotificationManager {
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
         let center = UNUserNotificationCenter.current()
         center.add(request, withCompletionHandler: nil)
+    }
+    
+    class func getDateComponents(startDate: Date, frequency: String, timeofDay: String) -> [DateComponents] {
+        var dateComponents: [DateComponents] = []
+        var components = DateComponents()
+        let startComponents = Calendar.current.dateComponents([.weekday,.day,.month], from: startDate)
+        
+        switch timeofDay {
+        case "Morning":
+            components.hour = 9
+        case "Afternoon":
+            components.hour = 12
+        case "Evening":
+            components.hour = 17
+        default:
+            components.hour = 18
+        }
+        
+        switch frequency {
+        case "Daily":
+            break
+        case "Weekly":
+            components.weekday = startComponents.weekday
+        case "Monthly":
+            components.day = (startComponents.day ?? 1) > 28 ? 28 : startComponents.day
+        case "Quarterly":
+            components.day = (startComponents.day ?? 1) > 28 ? 28 : startComponents.day
+            components.month = startComponents.month
+            for count in 0...2 {
+                var newComponent = DateComponents()
+                newComponent.day = (startComponents.day ?? 1) > 28 ? 28 : startComponents.day
+                newComponent.month = startComponents.month! + ((count + 1) * 3)
+                dateComponents.append(newComponent)
+            }
+        case "Semi-Annually":
+            components.day = (startComponents.day ?? 1) > 28 ? 28 : startComponents.day
+            components.month = startComponents.month
+            var newComponent = DateComponents()
+            newComponent.day = (startComponents.day ?? 1) > 28 ? 28 : startComponents.day
+            newComponent.month = startComponents.month! + 6
+        case "Annually":
+            components.day = (startComponents.day ?? 1) > 28 ? 28 : startComponents.day
+            components.month = startComponents.month
+        default:
+            print("Error, unrecognized case.")
+        }
+        dateComponents.insert(components, at: 0)
+        return dateComponents
     }
     
      //TODO: Need to delete at some point
