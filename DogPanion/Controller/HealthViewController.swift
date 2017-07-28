@@ -33,7 +33,6 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         super.viewDidLoad()
         notificationAuthorization()
         setup()
-        NotificationManager.printPendingNotificationRequests()
     }
 
     override func didReceiveMemoryWarning() {
