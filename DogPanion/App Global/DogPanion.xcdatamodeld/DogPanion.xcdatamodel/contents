@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13154.26" systemVersion="" minimumToolsVersion="Xcode 8.0" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13209.6" systemVersion="" minimumToolsVersion="Xcode 8.0" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Health" representedClassName=".Health" syncable="YES">
         <attribute name="birthday" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="notifications" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
@@ -9,9 +9,15 @@
         <relationship name="weight" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Weight" inverseName="health" inverseEntity="Weight" syncable="YES"/>
     </entity>
     <entity name="Medicine" representedClassName=".Medicine" syncable="YES">
+        <attribute name="dateDue" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="dateGiven" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="frequency" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="notificationIdentifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notificationID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notificationIDFour" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notificationIDThree" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notificationIDTwo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reminder" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="health" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Health" inverseName="medicine" inverseEntity="Health" syncable="YES"/>
     </entity>
     <entity name="Pet" representedClassName=".Pet" syncable="YES">
@@ -26,10 +32,15 @@
         <relationship name="pet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pet" inverseName="images" inverseEntity="Pet" syncable="YES"/>
     </entity>
     <entity name="Vaccines" representedClassName=".Vaccines" syncable="YES">
+        <attribute name="dateDue" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="dateGiven" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="frequency" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="frequency" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
-        <attribute name="notificationIdentifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notificationID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notificationIDFour" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notificationIDThree" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notificationIDTwo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reminder" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="health" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Health" inverseName="vaccines" inverseEntity="Health" syncable="YES"/>
     </entity>
     <entity name="Weight" representedClassName=".Weight" syncable="YES">
@@ -39,10 +50,10 @@
     </entity>
     <elements>
         <element name="Health" positionX="18" positionY="18" width="128" height="135"/>
-        <element name="Medicine" positionX="45" positionY="72" width="128" height="105"/>
+        <element name="Medicine" positionX="45" positionY="72" width="128" height="195"/>
         <element name="Pet" positionX="-81" positionY="-27" width="128" height="105"/>
         <element name="PetImages" positionX="108" positionY="11" width="128" height="90"/>
-        <element name="Vaccines" positionX="27" positionY="36" width="128" height="120"/>
+        <element name="Vaccines" positionX="27" positionY="36" width="128" height="195"/>
         <element name="Weight" positionX="36" positionY="63" width="128" height="90"/>
     </elements>
 </model>

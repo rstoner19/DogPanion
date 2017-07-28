@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1D119CD41F216D0D00CD317D /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D119CD31F216D0D00CD317D /* PopUpViewController.swift */; };
+		1D8C6DB41F2A7ED900325C55 /* AddMedVac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8C6DB31F2A7ED900325C55 /* AddMedVac.swift */; };
 		1DA6DAAA1F15C4B500B6FE32 /* AddPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA6DAA91F15C4B500B6FE32 /* AddPetViewController.swift */; };
 		1DEE8BF71F1F0805001D632F /* HealthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEE8BF61F1F0805001D632F /* HealthViewController.swift */; };
 		D700BB561F1B2CB600822AD6 /* ImageCustomFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D700BB551F1B2CB600822AD6 /* ImageCustomFlowLayout.swift */; };
@@ -21,14 +22,10 @@
 		D77211D51F22CCE7004B4A1E /* Health+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77211C91F22CCE7004B4A1E /* Health+CoreDataProperties.swift */; };
 		D77211D61F22CCE7004B4A1E /* Pet+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77211CA1F22CCE7004B4A1E /* Pet+CoreDataClass.swift */; };
 		D77211D71F22CCE7004B4A1E /* Pet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77211CB1F22CCE7004B4A1E /* Pet+CoreDataProperties.swift */; };
-		D77211D81F22CCE7004B4A1E /* Medicine+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77211CC1F22CCE7004B4A1E /* Medicine+CoreDataClass.swift */; };
-		D77211D91F22CCE7004B4A1E /* Medicine+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77211CD1F22CCE7004B4A1E /* Medicine+CoreDataProperties.swift */; };
 		D77211DA1F22CCE7004B4A1E /* PetImages+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77211CE1F22CCE7004B4A1E /* PetImages+CoreDataClass.swift */; };
 		D77211DB1F22CCE7004B4A1E /* PetImages+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77211CF1F22CCE7004B4A1E /* PetImages+CoreDataProperties.swift */; };
 		D77211DC1F22CCE7004B4A1E /* Weight+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77211D01F22CCE7004B4A1E /* Weight+CoreDataClass.swift */; };
 		D77211DD1F22CCE7004B4A1E /* Weight+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77211D11F22CCE7004B4A1E /* Weight+CoreDataProperties.swift */; };
-		D77211DE1F22CCE7004B4A1E /* Vaccines+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77211D21F22CCE7004B4A1E /* Vaccines+CoreDataClass.swift */; };
-		D77211DF1F22CCE7004B4A1E /* Vaccines+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77211D31F22CCE7004B4A1E /* Vaccines+CoreDataProperties.swift */; };
 		D79D3A291F12A7EF008CBA69 /* GeneralExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79D3A281F12A7EF008CBA69 /* GeneralExtensions.swift */; };
 		D7ADB5771F0BFCBC0054F345 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ADB5761F0BFCBB0054F345 /* AppDelegate.swift */; };
 		D7ADB5791F0BFCBC0054F345 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ADB5781F0BFCBC0054F345 /* MainViewController.swift */; };
@@ -39,11 +36,19 @@
 		D7ADB58C1F0C0DEF0054F345 /* PetImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ADB58B1F0C0DEF0054F345 /* PetImageCell.swift */; };
 		D7C629971F1D3C37004C45F4 /* MapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C629961F1D3C37004C45F4 /* MapAnnotation.swift */; };
 		D7D1691A1F28426100EAAEB2 /* MedVacViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D169191F28426100EAAEB2 /* MedVacViewController.swift */; };
+		D7D1691D1F290FED00EAAEB2 /* MedVacCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D1691B1F290FED00EAAEB2 /* MedVacCell.swift */; };
+		D7D1691E1F290FED00EAAEB2 /* MedVacCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7D1691C1F290FED00EAAEB2 /* MedVacCell.xib */; };
+		D7D169231F291B4900EAAEB2 /* Vaccines+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D1691F1F291B4900EAAEB2 /* Vaccines+CoreDataClass.swift */; };
+		D7D169241F291B4900EAAEB2 /* Vaccines+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D169201F291B4900EAAEB2 /* Vaccines+CoreDataProperties.swift */; };
+		D7D169251F291B4900EAAEB2 /* Medicine+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D169211F291B4900EAAEB2 /* Medicine+CoreDataClass.swift */; };
+		D7D169261F291B4900EAAEB2 /* Medicine+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D169221F291B4900EAAEB2 /* Medicine+CoreDataProperties.swift */; };
+		D7D169281F29590B00EAAEB2 /* AddMedVacViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D169271F29590B00EAAEB2 /* AddMedVacViewController.swift */; };
 		D7F0B0EE1F11579D006FEA6C /* AddImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F0B0ED1F11579D006FEA6C /* AddImageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1D119CD31F216D0D00CD317D /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		1D8C6DB31F2A7ED900325C55 /* AddMedVac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMedVac.swift; sourceTree = "<group>"; };
 		1DA6DAA91F15C4B500B6FE32 /* AddPetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddPetViewController.swift; path = DogPanion/Controller/AddPetViewController.swift; sourceTree = SOURCE_ROOT; };
 		1DEE8BF61F1F0805001D632F /* HealthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthViewController.swift; sourceTree = "<group>"; };
 		D700BB551F1B2CB600822AD6 /* ImageCustomFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCustomFlowLayout.swift; sourceTree = "<group>"; };
@@ -57,14 +62,10 @@
 		D77211C91F22CCE7004B4A1E /* Health+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Health+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D77211CA1F22CCE7004B4A1E /* Pet+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pet+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D77211CB1F22CCE7004B4A1E /* Pet+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pet+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		D77211CC1F22CCE7004B4A1E /* Medicine+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Medicine+CoreDataClass.swift"; sourceTree = "<group>"; };
-		D77211CD1F22CCE7004B4A1E /* Medicine+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Medicine+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D77211CE1F22CCE7004B4A1E /* PetImages+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PetImages+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D77211CF1F22CCE7004B4A1E /* PetImages+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PetImages+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D77211D01F22CCE7004B4A1E /* Weight+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Weight+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D77211D11F22CCE7004B4A1E /* Weight+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Weight+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		D77211D21F22CCE7004B4A1E /* Vaccines+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vaccines+CoreDataClass.swift"; sourceTree = "<group>"; };
-		D77211D31F22CCE7004B4A1E /* Vaccines+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vaccines+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D79D3A281F12A7EF008CBA69 /* GeneralExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralExtensions.swift; sourceTree = "<group>"; };
 		D7ADB5731F0BFCBB0054F345 /* DogPanion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogPanion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7ADB5761F0BFCBB0054F345 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +78,13 @@
 		D7ADB58B1F0C0DEF0054F345 /* PetImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetImageCell.swift; sourceTree = "<group>"; };
 		D7C629961F1D3C37004C45F4 /* MapAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotation.swift; sourceTree = "<group>"; };
 		D7D169191F28426100EAAEB2 /* MedVacViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedVacViewController.swift; sourceTree = "<group>"; };
+		D7D1691B1F290FED00EAAEB2 /* MedVacCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedVacCell.swift; sourceTree = "<group>"; };
+		D7D1691C1F290FED00EAAEB2 /* MedVacCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MedVacCell.xib; sourceTree = "<group>"; };
+		D7D1691F1F291B4900EAAEB2 /* Vaccines+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vaccines+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D7D169201F291B4900EAAEB2 /* Vaccines+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vaccines+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D7D169211F291B4900EAAEB2 /* Medicine+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Medicine+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D7D169221F291B4900EAAEB2 /* Medicine+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Medicine+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D7D169271F29590B00EAAEB2 /* AddMedVacViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddMedVacViewController.swift; path = DogPanion/Controller/AddMedVacViewController.swift; sourceTree = SOURCE_ROOT; };
 		D7F0B0ED1F11579D006FEA6C /* AddImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddImageViewController.swift; path = DogPanion/Controller/AddImageViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -96,16 +104,16 @@
 			children = (
 				D77211C81F22CCE7004B4A1E /* Health+CoreDataClass.swift */,
 				D77211C91F22CCE7004B4A1E /* Health+CoreDataProperties.swift */,
+				D7D169211F291B4900EAAEB2 /* Medicine+CoreDataClass.swift */,
+				D7D169221F291B4900EAAEB2 /* Medicine+CoreDataProperties.swift */,
 				D77211CA1F22CCE7004B4A1E /* Pet+CoreDataClass.swift */,
 				D77211CB1F22CCE7004B4A1E /* Pet+CoreDataProperties.swift */,
-				D77211CC1F22CCE7004B4A1E /* Medicine+CoreDataClass.swift */,
-				D77211CD1F22CCE7004B4A1E /* Medicine+CoreDataProperties.swift */,
 				D77211CE1F22CCE7004B4A1E /* PetImages+CoreDataClass.swift */,
 				D77211CF1F22CCE7004B4A1E /* PetImages+CoreDataProperties.swift */,
 				D77211D01F22CCE7004B4A1E /* Weight+CoreDataClass.swift */,
 				D77211D11F22CCE7004B4A1E /* Weight+CoreDataProperties.swift */,
-				D77211D21F22CCE7004B4A1E /* Vaccines+CoreDataClass.swift */,
-				D77211D31F22CCE7004B4A1E /* Vaccines+CoreDataProperties.swift */,
+				D7D1691F1F291B4900EAAEB2 /* Vaccines+CoreDataClass.swift */,
+				D7D169201F291B4900EAAEB2 /* Vaccines+CoreDataProperties.swift */,
 			);
 			name = "Core Data Classes";
 			sourceTree = "<group>";
@@ -151,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				D7F0B0ED1F11579D006FEA6C /* AddImageViewController.swift */,
+				D7D169271F29590B00EAAEB2 /* AddMedVacViewController.swift */,
 				1DA6DAA91F15C4B500B6FE32 /* AddPetViewController.swift */,
 				1DEE8BF61F1F0805001D632F /* HealthViewController.swift */,
 				D7ADB5781F0BFCBC0054F345 /* MainViewController.swift */,
@@ -166,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				D7ADB57A1F0BFCBC0054F345 /* Main.storyboard */,
+				D7D1691C1F290FED00EAAEB2 /* MedVacCell.xib */,
 				D7ADB5801F0BFCBC0054F345 /* Assets.xcassets */,
 				D7ADB5821F0BFCBC0054F345 /* LaunchScreen.storyboard */,
 			);
@@ -176,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				D70D1C191F1546EE00FFAD15 /* Core Data Classes */,
+				1D8C6DB31F2A7ED900325C55 /* AddMedVac.swift */,
 				D71882B51F27C7BC001B94EF /* Constants.swift */,
 				D70D1C131F1440C300FFAD15 /* CoreDataManager.swift */,
 				D79D3A281F12A7EF008CBA69 /* GeneralExtensions.swift */,
@@ -189,8 +200,9 @@
 		D7BF6B031F0C118B000F6C03 /* Xib/Cell Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D7ADB58B1F0C0DEF0054F345 /* PetImageCell.swift */,
 				D700BB551F1B2CB600822AD6 /* ImageCustomFlowLayout.swift */,
+				D7D1691B1F290FED00EAAEB2 /* MedVacCell.swift */,
+				D7ADB58B1F0C0DEF0054F345 /* PetImageCell.swift */,
 				D76EDDEE1F10935100A8170E /* PetNameCell.swift */,
 			);
 			name = "Xib/Cell Controllers";
@@ -257,6 +269,7 @@
 				D7ADB5841F0BFCBC0054F345 /* LaunchScreen.storyboard in Resources */,
 				D7ADB5811F0BFCBC0054F345 /* Assets.xcassets in Resources */,
 				D7ADB57C1F0BFCBC0054F345 /* Main.storyboard in Resources */,
+				D7D1691E1F290FED00EAAEB2 /* MedVacCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,12 +281,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D79D3A291F12A7EF008CBA69 /* GeneralExtensions.swift in Sources */,
-				D77211DF1F22CCE7004B4A1E /* Vaccines+CoreDataProperties.swift in Sources */,
-				D77211D81F22CCE7004B4A1E /* Medicine+CoreDataClass.swift in Sources */,
+				1D8C6DB41F2A7ED900325C55 /* AddMedVac.swift in Sources */,
 				D7ADB57F1F0BFCBC0054F345 /* DogPanion.xcdatamodeld in Sources */,
 				D7ADB58C1F0C0DEF0054F345 /* PetImageCell.swift in Sources */,
 				D70D1C181F1546D600FFAD15 /* GeneralProtocols.swift in Sources */,
 				D77211DB1F22CCE7004B4A1E /* PetImages+CoreDataProperties.swift in Sources */,
+				D7D1691D1F290FED00EAAEB2 /* MedVacCell.swift in Sources */,
 				D7F0B0EE1F11579D006FEA6C /* AddImageViewController.swift in Sources */,
 				D7D1691A1F28426100EAAEB2 /* MedVacViewController.swift in Sources */,
 				D7C629971F1D3C37004C45F4 /* MapAnnotation.swift in Sources */,
@@ -284,19 +297,22 @@
 				D77211DA1F22CCE7004B4A1E /* PetImages+CoreDataClass.swift in Sources */,
 				D77211DD1F22CCE7004B4A1E /* Weight+CoreDataProperties.swift in Sources */,
 				D77211D51F22CCE7004B4A1E /* Health+CoreDataProperties.swift in Sources */,
+				D7D169281F29590B00EAAEB2 /* AddMedVacViewController.swift in Sources */,
 				1DEE8BF71F1F0805001D632F /* HealthViewController.swift in Sources */,
 				D700BB561F1B2CB600822AD6 /* ImageCustomFlowLayout.swift in Sources */,
+				D7D169261F291B4900EAAEB2 /* Medicine+CoreDataProperties.swift in Sources */,
+				D7D169241F291B4900EAAEB2 /* Vaccines+CoreDataProperties.swift in Sources */,
 				D7ADB5771F0BFCBC0054F345 /* AppDelegate.swift in Sources */,
 				D77211D71F22CCE7004B4A1E /* Pet+CoreDataProperties.swift in Sources */,
+				D7D169251F291B4900EAAEB2 /* Medicine+CoreDataClass.swift in Sources */,
 				1D119CD41F216D0D00CD317D /* PopUpViewController.swift in Sources */,
-				D77211D91F22CCE7004B4A1E /* Medicine+CoreDataProperties.swift in Sources */,
 				1DA6DAAA1F15C4B500B6FE32 /* AddPetViewController.swift in Sources */,
-				D77211DE1F22CCE7004B4A1E /* Vaccines+CoreDataClass.swift in Sources */,
 				D76EDDEF1F10935100A8170E /* PetNameCell.swift in Sources */,
 				D75E43391F1B26C10053E735 /* PetLocationsViewController.swift in Sources */,
 				D77211D41F22CCE7004B4A1E /* Health+CoreDataClass.swift in Sources */,
 				D71882BA1F27EACA001B94EF /* NotificationManager.swift in Sources */,
 				D77211D61F22CCE7004B4A1E /* Pet+CoreDataClass.swift in Sources */,
+				D7D169231F291B4900EAAEB2 /* Vaccines+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

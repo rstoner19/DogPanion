@@ -10,4 +10,5 @@ import Foundation
 
 class Constants {
     static let appName = "DogPanion"
+    static let frequencyElements  = [["Daily", "Weekly", "Monthly", "Quarterly", "Semi-Annually", "Annually"],["Morning", "Afternoon", "Evening"]]
 }

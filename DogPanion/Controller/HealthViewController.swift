@@ -90,11 +90,13 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         popUpView = self.storyboard?.instantiateViewController(withIdentifier: "popUpDatePicker") as? PopUpViewController
         if let viewController = popUpView {
             viewController.delegate = self
-            if let birthday = pet?.health?.birthday as Date? { viewController.datePicker.date = birthday }
             self.addChildViewController(viewController)
             viewController.view.frame = self.view.frame
             self.view.addSubview(viewController.view)
             viewController.didMove(toParentViewController: self)
+            if let birthday = pet?.health?.birthday as Date? {
+                viewController.datePicker.date = birthday
+            }
         }
     }
     
@@ -172,7 +174,6 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         }
     }
     
-    
     func removeBlurView() {
         if let blurView = blurEffectView {
             blurView.removeFromSuperview()
@@ -244,5 +245,6 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         let body = Constants.appName + " wishes " + (pet?.name ?? "your pet") + " a happy birthday! 🐶🎂🎈🎁"
         NotificationManager.scheduleNotification(title: title, body: body, identifier: "birthday", dateCompenents: date, repeatNotifcation: true)
     }
+    
     
 }
