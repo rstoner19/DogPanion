@@ -14,11 +14,55 @@ extension Date {
         formatter.dateStyle = .medium
         return formatter.string(from: self)
     }
+    
+    func addDay() -> Date {
+        return self.addingTimeInterval(86400)
+    }
+    
+    func addWeek() -> Date {
+        return self.addingTimeInterval(604800)
+    }
+    
+    func addMonth() -> Date {
+        var components = DateComponents()
+        components.setValue(1, for: .month)
+        let calendar = Calendar.current
+        return calendar.date(byAdding: components, to: self)!
+    }
+    
+    func addQuarter() -> Date {
+        var components = DateComponents()
+        components.setValue(3, for: .month)
+        let calendar = Calendar.current
+        return calendar.date(byAdding: components, to: self)!
+    }
+    
+    func addHalfYear() -> Date {
+        var components = DateComponents()
+        components.setValue(6, for: .month)
+        let calendar = Calendar.current
+        return calendar.date(byAdding: components, to: self)!
+    }
+    
+    func addYear() -> Date {
+        var components = DateComponents()
+        components.setValue(1, for: .year)
+        let calendar = Calendar.current
+        return calendar.date(byAdding: components, to: self)!
+    }
 }
 
 extension PetLocationsViewController : UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         getSearchResults(searchText: searchController.searchBar.text!)
+    }
+}
+
+extension String {
+    func toDate() -> Date? {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .medium
+    return formatter.date(from: self)
     }
 }
 
