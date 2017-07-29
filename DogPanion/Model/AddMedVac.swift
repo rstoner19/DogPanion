@@ -27,18 +27,22 @@ class AddMedVac {
 //        
 //    }
     //TODO: Modify for components
-    class func timeToAdd(frequency: String) -> TimeInterval {
-        let timeInterval: Double
+    class func timeToAdd(frequency: String, date: Date) -> Date {
+        let dueDate: Date
         switch frequency {
             case "Daily":
-            timeInterval = 86400
+            dueDate = date.addDay()
             case "Weekly":
-            timeInterval = 86400 * 7
+            dueDate = date.addWeek()
             case "Monthly":
-            timeInterval = 86400 * 30
+            dueDate = date.addMonth()
+            case "Quarterly":
+            dueDate = date.addQuarter()
+            case "Semi-Annually":
+            dueDate = date.addHalfYear()
             default:
-            timeInterval = 86400 * 365
+            dueDate = date.addYear()
         }
-        return timeInterval
+        return dueDate
     }
 }

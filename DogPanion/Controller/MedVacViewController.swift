@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class MedVacViewController: UIViewController, UITableViewDataSource, UITabBarDelegate, DismissVCDelegate {
     
@@ -76,7 +77,6 @@ class MedVacViewController: UIViewController, UITableViewDataSource, UITabBarDel
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "medVacCell", for: indexPath) as! MedVacCell
         switch medVac {
         case .medicine:
@@ -84,8 +84,25 @@ class MedVacViewController: UIViewController, UITableViewDataSource, UITabBarDel
         case .vaccine:
             cell.vaccine = pet?.health?.vaccines?.allObjects[indexPath.row] as? Vaccines
         }
-        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            guard let context = pet?.managedObjectContext else { return }
+            switch medVac {
+            case .medicine:
+                guard let medicine = pet?.health?.medicine?.allObjects[indexPath.row] as? Medicine else { return }
+                if medicine.reminder { NotificationManager.deleteNotication(identifiers: medicine.getNotificationsIDs())}
+                context.delete(medicine)
+            case .vaccine:
+                guard let vaccine = pet?.health?.vaccines?.allObjects[indexPath.row] as? Vaccines else { return }
+                if vaccine.reminder { NotificationManager.deleteNotication(identifiers: vaccine.getNotificationsIDs())}
+                context.delete(vaccine)
+            }
+            CoreDataManager.shared.saveItem(context: context, saveItem: "Delete medvac item")
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
     }
 
 }

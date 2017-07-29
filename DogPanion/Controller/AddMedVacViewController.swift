@@ -97,8 +97,7 @@ class AddMedVacViewController: UIViewController, UIPickerViewDelegate, UIPickerV
                 medicine.name = name
                 medicine.reminder = self.reminderSwitch.isOn
                 medicine.frequency = frequency
-                //TODO: FIX using components
-                medicine.dateDue = date.addingTimeInterval(AddMedVac.timeToAdd(frequency: frequency)) as NSDate
+                medicine.dateDue =  AddMedVac.timeToAdd(frequency: frequency, date: date) as NSDate
                 if let notifications = notificationIDs {
                     medicine.notificationID = notifications[0]
                     medicine.notificationIDTwo = notifications.count > 1 ? notifications[1] : nil
@@ -114,8 +113,7 @@ class AddMedVacViewController: UIViewController, UIPickerViewDelegate, UIPickerV
                 vaccine.name = name
                 vaccine.reminder = self.reminderSwitch.isOn
                 vaccine.frequency = frequency
-                //TODO: FIX using components
-                vaccine.dateDue = date.addingTimeInterval(AddMedVac.timeToAdd(frequency: frequency)) as NSDate
+                vaccine.dateDue = AddMedVac.timeToAdd(frequency: frequency, date: date) as NSDate
                 if let notifications = notificationIDs {
                     vaccine.notificationID = notifications[0]
                     vaccine.notificationIDTwo = notifications.count > 1 ? notifications[1] : nil
@@ -152,7 +150,7 @@ class AddMedVacViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             }
             
             let title = medVacName + " is due for " + (pet?.name)!
-            let body = "\(Constants.appName) reminds you to give \((pet?.name)!) his/her \(medVacName)."
+            let body = "A quick reminder to give \((pet?.name)!) his/her \(medVacName)."
             for index in 0..<dateComponents.count {
                 NotificationManager.scheduleNotification(title: title, body: body, identifier: notificationIDs[index], dateCompenents: dateComponents[index], repeatNotifcation: true)
             }
