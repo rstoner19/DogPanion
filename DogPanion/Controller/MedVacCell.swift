@@ -23,9 +23,9 @@ class MedVacCell: UITableViewCell {
             if let vaccine = vaccine {
                 self.nameLabel.text = vaccine.name
                 self.givenDateLabel.text = "Given: " + (vaccine.dateGiven! as Date).toString()
-                //TODO: Need to modify it it's past due
                 self.dueDateLabel.text = isPastDue(date: vaccine.dateDue! as Date)
                 self.frequencyLabel.text = (vaccine.frequency ?? "")
+                self.reminderStatus.text = vaccine.reminder ? "On" : "Off"
             }
         }
     }
@@ -35,9 +35,10 @@ class MedVacCell: UITableViewCell {
             if let medicine = medicine {
                 self.nameLabel.text = medicine.name
                 self.givenDateLabel.text = "Given: " + (medicine.dateGiven! as Date).toString()
-                //TODO: Need to modify it it's past due
                 self.dueDateLabel.text = isPastDue(date: medicine.dateDue! as Date)
                 self.frequencyLabel.text = (medicine.frequency ?? "")
+                self.reminderStatus.text = medicine.reminder ? "On" : "Off"
+                
             }
         }
     }
@@ -63,7 +64,7 @@ class MedVacCell: UITableViewCell {
         if date < Date() {
             self.dueLabel.text = "Past Due: "
             self.dueDateLabel.textColor = .red
-            self.layer.backgroundColor = Constants.pastDueColor
+            self.contentView.backgroundColor = Constants.pastDueColor
             self.completeButton.isHidden = false
         }
         return date.toString()
@@ -95,7 +96,7 @@ class MedVacCell: UITableViewCell {
                 date = AddMedVac.timeToAdd(frequency: frequency, date: date)
             }
             //Update UI to reflect medicine/vaccine given
-            self.layer.backgroundColor = Constants.currentColor
+            self.contentView.backgroundColor = Constants.currentColor
             self.dueLabel.text = "Due: "
             self.dueDateLabel.textColor = Constants.blueDateColor
             let dueDate = date

@@ -137,17 +137,50 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         self.performSegue(withIdentifier: "medVacVC", sender: type)
     }
     
-    
-    // TODO: Need to add alert telling user all notifcations will be deleted if turned off
-    // TODO: Need to have method to delete all notification when turned off
-    // TODO: Need to create notification when turned on/alert user to turn back on for medicine/vaccine
     @IBAction func notificationSwitchChanged(_ sender: UISwitch) {
-        self.pet?.health?.notifications = sender.isOn
-        guard let context = pet?.managedObjectContext else { return }
-        CoreDataManager.shared.saveItem(context: context, saveItem: "notifications")
-        if sender.isOn && pet?.health?.birthday != nil {
-            guard let birthday = pet?.health?.birthday as Date? else { return }
-            birthdayReminder(birthday: birthday)
+        if !sender.isOn {
+            alertAboutDeletingNotifcations()
+        } else {
+            self.pet?.health?.notifications = sender.isOn
+            guard let context = pet?.managedObjectContext else { return }
+            CoreDataManager.shared.saveItem(context: context, saveItem: "notifications")
+            if pet?.health?.birthday != nil {
+                guard let birthday = pet?.health?.birthday as Date? else { return }
+                birthdayReminder(birthday: birthday)
+            }
+        }
+    }
+    
+    func alertAboutDeletingNotifcations() {
+        let alertController = UIAlertController(title: "Turn off Notifications?", message: "Turning off notifications will remove ALL notifications for this pet. Proceed?", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Turn Off", style: .destructive, handler: { (action: UIAlertAction!) in
+            self.pet?.health?.notifications = false
+            guard let context = self.pet?.managedObjectContext else { return }
+            self.deleteNotifications()
+            CoreDataManager.shared.saveItem(context: context, saveItem: "Delete notifications")
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+                self.notificationSwitch.isOn = true
+            }))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func deleteNotifications() {
+        if let vaccines = pet?.health?.vaccines?.allObjects as? [Vaccines] {
+            for vaccine in vaccines {
+                if vaccine.reminder {
+                    vaccine.reminder = false
+                    NotificationManager.deleteNotication(identifiers: vaccine.getNotificationsIDs())
+                }
+            }
+        }
+        if let medicines = pet?.health?.medicine?.allObjects as? [Medicine] {
+            for medicine in medicines {
+                if medicine.reminder {
+                    medicine.reminder = false
+                    NotificationManager.deleteNotication(identifiers: medicine.getNotificationsIDs())
+                }
+            }
         }
     }
     

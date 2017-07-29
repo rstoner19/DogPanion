@@ -69,6 +69,14 @@ class NotificationManager {
         return dateComponents
     }
     
+    class func deleteNotication(identifiers: [String]) {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: identifiers)
+    }
+    
+    class func deleteAllNotifications() {
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+    }
+    
      //TODO: Need to delete at some point
     class func printPendingNotificationRequests() {
         UNUserNotificationCenter.current().getPendingNotificationRequests { (requests) in
