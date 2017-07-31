@@ -33,6 +33,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         super.viewDidLoad()
         notificationAuthorization()
         setup()
+        NotificationManager.printPendingNotificationRequests()
     }
 
     override func didReceiveMemoryWarning() {
@@ -276,7 +277,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         date.month = components.month
         let title = "Happy Birthday to " + (pet?.name ?? "your pet")
         let body = Constants.appName + " wishes " + (pet?.name ?? "your pet") + " a happy birthday! 🐶🎂🎈🎁"
-        NotificationManager.scheduleNotification(title: title, body: body, identifier: "birthday", dateCompenents: date, repeatNotifcation: true)
+        NotificationManager.scheduleNotification(title: title, body: body, identifier: "\(pet?.name ?? "")birthday", dateCompenents: date, repeatNotifcation: true)
     }
     
     
