@@ -15,19 +15,17 @@ public class Medicine: NSManagedObject {
     
     func getNotificationsIDs() -> [String] {
         var identifiers: [String] = []
-        if self.reminder {
-            if let identifier = self.notificationID {
-                identifiers.append(identifier)
-            }
-            if let identifier = self.notificationIDTwo {
-                identifiers.append(identifier)
-            }
-            if let identifier = self.notificationIDThree {
-                identifiers.append(identifier)
-            }
-            if let identifier = self.notificationIDFour {
-                identifiers.append(identifier)
-            }
+        if let identifier = self.notificationID {
+            identifiers.append(identifier)
+        }
+        if let identifier = self.notificationIDTwo {
+            identifiers.append(identifier)
+        }
+        if let identifier = self.notificationIDThree {
+            identifiers.append(identifier)
+        }
+        if let identifier = self.notificationIDFour {
+               identifiers.append(identifier)
         }
         return identifiers
     }
