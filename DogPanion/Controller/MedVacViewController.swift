@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class MedVacViewController: UIViewController, UITableViewDataSource, UITabBarDelegate, DismissVCDelegate {
+class MedVacViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate, DismissVCDelegate {
     
     @IBOutlet weak var petNameLabel: UILabel!
     
@@ -53,6 +53,11 @@ class MedVacViewController: UIViewController, UITableViewDataSource, UITabBarDel
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addMedVacVC" {
             guard let addMedVacVC = segue.destination as? AddMedVacViewController else {return}
+            if let medicine = sender as? Medicine {
+                addMedVacVC.medicine = medicine
+            } else if let vaccine = sender as? Vaccines {
+                addMedVacVC.vaccine = vaccine
+            }
             addMedVacVC.delegate = self
             addMedVacVC.medOrVac = medVac
             addMedVacVC.pet = pet
@@ -102,6 +107,19 @@ class MedVacViewController: UIViewController, UITableViewDataSource, UITabBarDel
             }
             CoreDataManager.shared.saveItem(context: context, saveItem: "Delete medvac item")
             tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    //TODO: Add ability to edit exising medicine
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch medVac {
+        case .medicine:
+            guard let medicine = pet?.health?.medicine?.allObjects[indexPath.row] as? Medicine else { return }
+            self.performSegue(withIdentifier: "addMedVacVC", sender: medicine)
+        case .vaccine:
+            guard let vaccine = pet?.health?.vaccines?.allObjects[indexPath.row] as? Vaccines else { return }
+            self.performSegue(withIdentifier: "addMedVacVC", sender: vaccine)
+
         }
     }
 

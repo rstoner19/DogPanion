@@ -50,6 +50,25 @@ class AddMedVacViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
     
     func setupLabels() {
+        if medicine != nil {
+            self.nameTextField.text = medicine?.name
+            if let date = medicine?.dateGiven as Date? {
+                self.dateGivenButton.setTitle(date.toString(), for: .normal)
+            }
+            self.reminderSwitch.isOn = medicine?.reminder ?? false
+            if let frequency = medicine?.frequency {
+                self.frequencyPicker.selectRow(AddMedVac.pickerComponents(frequency: frequency), inComponent: 0, animated: false)
+            }
+        } else if vaccine != nil {
+            self.nameTextField.text = vaccine?.name
+            if let date = vaccine?.dateGiven as Date? {
+                self.dateGivenButton.setTitle(date.toString(), for: .normal)
+            }
+            self.reminderSwitch.isOn = vaccine?.reminder ?? false
+            if let frequency = vaccine?.frequency {
+                self.frequencyPicker.selectRow(AddMedVac.pickerComponents(frequency: frequency), inComponent: 0, animated: false)
+            }
+        }
         switch medOrVac {
         case .medicine:
             self.nameTextField.placeholder = "Medicine Name"
@@ -61,6 +80,21 @@ class AddMedVacViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             self.nameLabel.text = "Vaccination Name:"
         }
     }
+    
+    var medicine: Medicine? = nil {
+        didSet {
+            medVacData.name = medicine?.name
+            medVacData.date = medicine?.dateGiven as Date?
+        }
+    }
+    
+    var vaccine: Vaccines? = nil {
+        didSet {
+            medVacData.name = vaccine?.name
+            medVacData.date = vaccine?.dateGiven as Date?
+        }
+    }
+    
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
         self.delegate?.dismissVC()
     }
@@ -90,39 +124,29 @@ class AddMedVacViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             let frequency = Constants.frequencyElements[0][frequencyrow]
             let timeOfDay = Constants.frequencyElements[1][timeOfDayRow]
             let notificationIDs = self.setNotifications(medVacName: name, date: date, frequency: frequency, timeOfDay: timeOfDay)
-            switch medOrVac {
-            case .medicine:
-                let medicine = Medicine(context: context)
-                medicine.dateGiven = date as NSDate
-                medicine.name = name
-                medicine.reminder = self.reminderSwitch.isOn
-                medicine.frequency = frequency
-                medicine.dateDue =  AddMedVac.timeToAdd(frequency: frequency, date: date) as NSDate
-                if let notifications = notificationIDs {
-                    medicine.notificationID = notifications[0]
-                    medicine.notificationIDTwo = notifications.count > 1 ? notifications[1] : nil
-                    if notifications.count > 2 {
-                        medicine.notificationIDThree = notifications[2]
-                        medicine.notificationIDFour = notifications[3]
-                    }
+            if medicine != nil {
+                if let notificationToDelete = medicine?.getNotificationsIDs() {
+                    NotificationManager.deleteNotication(identifiers: notificationToDelete)
                 }
-                pet?.health?.addToMedicine(medicine)
-            case .vaccine:
-                let vaccine = Vaccines(context: context)
-                vaccine.dateGiven = date as NSDate
-                vaccine.name = name
-                vaccine.reminder = self.reminderSwitch.isOn
-                vaccine.frequency = frequency
-                vaccine.dateDue = AddMedVac.timeToAdd(frequency: frequency, date: date) as NSDate
-                if let notifications = notificationIDs {
-                    vaccine.notificationID = notifications[0]
-                    vaccine.notificationIDTwo = notifications.count > 1 ? notifications[1] : nil
-                    if notifications.count > 2 {
-                        vaccine.notificationIDThree = notifications[2]
-                        vaccine.notificationIDFour = notifications[3]
-                    }
+                medicine?.notificationID = nil; medicine?.notificationIDTwo = nil; medicine?.notificationIDThree = nil; medicine?.notificationIDFour = nil
+                medicine?.populateMedicine(frequency: frequency, name: name, date: date, timeOfDay: timeOfDay, reminder: self.reminderSwitch.isOn, notificationIDs: notificationIDs)
+            } else if vaccine != nil {
+                if let notificationToDelete = vaccine?.getNotificationsIDs() {
+                    NotificationManager.deleteNotication(identifiers: notificationToDelete)
                 }
-                pet?.health?.addToVaccines(vaccine)
+                vaccine?.notificationID = nil; vaccine?.notificationIDTwo = nil; vaccine?.notificationIDThree = nil; vaccine?.notificationIDFour = nil
+                vaccine?.populatVaccines(frequency: frequency, name: name, date: date, timeOfDay: timeOfDay, reminder: self.reminderSwitch.isOn, notificationIDs: notificationIDs)
+            } else {
+                switch medOrVac {
+                case .medicine:
+                    let medicine = Medicine(context: context)
+                    medicine.populateMedicine(frequency: frequency, name: name, date: date, timeOfDay: timeOfDay, reminder: self.reminderSwitch.isOn, notificationIDs: notificationIDs)
+                    pet?.health?.addToMedicine(medicine)
+                case .vaccine:
+                    let vaccine = Vaccines(context: context)
+                    vaccine.populatVaccines(frequency: frequency, name: name, date: date, timeOfDay: timeOfDay, reminder: self.reminderSwitch.isOn, notificationIDs: notificationIDs)
+                    pet?.health?.addToVaccines(vaccine)
+                }
             }
             do {
                 try context.save()

@@ -21,12 +21,7 @@ struct MedVacElements {
 }
 
 class AddMedVac {
-//    class func setNotifications(reminder: Bool, frequency: String, dateGiven: Date) -> (dueDate: Date, notifcationID: String?, notifcationIDTwo: String, notifcationIDThree: String?, notifcationIDFour: String?) {
-//        
-//        
-//        
-//    }
-    //TODO: Modify for components
+
     class func timeToAdd(frequency: String, date: Date) -> Date {
         let dueDate: Date
         switch frequency {
@@ -44,5 +39,26 @@ class AddMedVac {
             dueDate = date.addYear()
         }
         return dueDate
+    }
+    
+    class func pickerComponents(frequency: String) -> Int {
+        let component: Int
+        switch frequency {
+        case "Daily":
+            component = 0
+        case "Weekly":
+            component = 1
+        case "Monthly":
+            component = 2
+        case "Quarterly":
+            component = 3
+        case "Semi-Annually":
+            component = 4
+        case "Annually":
+            component = 5
+        default:
+            component = 0
+        }
+        return component
     }
 }
