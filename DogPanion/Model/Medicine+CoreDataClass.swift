@@ -29,5 +29,20 @@ public class Medicine: NSManagedObject {
         }
         return identifiers
     }
-
+    
+    func populateMedicine(frequency: String, name: String, date: Date, timeOfDay: String, reminder: Bool, notificationIDs: [String]?) {
+        self.dateGiven = date as NSDate
+        self.name = name
+        self.reminder = reminder
+        self.frequency = frequency
+        self.dateDue =  AddMedVac.timeToAdd(frequency: frequency, date: date) as NSDate
+        if let notifications = notificationIDs {
+            self.notificationID = notifications[0]
+            self.notificationIDTwo = notifications.count > 1 ? notifications[1] : nil
+            if notifications.count > 2 {
+                self.notificationIDThree = notifications[2]
+                self.notificationIDFour = notifications[3]
+            }
+        }
+    }
 }

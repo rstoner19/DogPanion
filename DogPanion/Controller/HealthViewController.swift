@@ -28,7 +28,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
     
     @IBOutlet weak var breedTextField: UITextField!
     @IBOutlet weak var weightTextField: UITextField!
-    
+    // TODO delete print pending
     override func viewDidLoad() {
         super.viewDidLoad()
         notificationAuthorization()

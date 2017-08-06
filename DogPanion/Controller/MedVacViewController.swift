@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class MedVacViewController: UIViewController, UITableViewDataSource, UITabBarDelegate, DismissVCDelegate {
+class MedVacViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate, DismissVCDelegate {
     
     @IBOutlet weak var petNameLabel: UILabel!
     
@@ -18,23 +18,26 @@ class MedVacViewController: UIViewController, UITableViewDataSource, UITabBarDel
     var pet: Pet? = nil
     var delegate: DismissVCDelegate? = nil
     var medVac: MedVac = .vaccine
-
+    var medicine: [Medicine]? = nil
+    var vaccine: [Vaccines]? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
         setupTableView()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func setup() {
         switch medVac {
         case .medicine:
+            if let medicine = pet?.health?.medicine?.allObjects as? [Medicine] {
+                self.medicine = medicine.sorted(by: {$1.dateDue! as Date > $0.dateDue! as Date})
+            }
             self.petNameLabel.text = (self.pet?.name ?? "Pet") + "'s Medicines"
         case .vaccine:
+            if let vaccine = pet?.health?.vaccines?.allObjects as? [Vaccines] {
+                self.vaccine = vaccine.sorted(by: {$1.dateDue! as Date > $0.dateDue! as Date})
+            }
             self.petNameLabel.text = (self.pet?.name ?? "Pet") + "'s Vaccines"
         }
     }
@@ -53,6 +56,11 @@ class MedVacViewController: UIViewController, UITableViewDataSource, UITabBarDel
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addMedVacVC" {
             guard let addMedVacVC = segue.destination as? AddMedVacViewController else {return}
+            if let medicine = sender as? Medicine {
+                addMedVacVC.medicine = medicine
+            } else if let vaccine = sender as? Vaccines {
+                addMedVacVC.vaccine = vaccine
+            }
             addMedVacVC.delegate = self
             addMedVacVC.medOrVac = medVac
             addMedVacVC.pet = pet
@@ -61,12 +69,12 @@ class MedVacViewController: UIViewController, UITableViewDataSource, UITabBarDel
     
     // MARK: - DismissVC
     func dismissVC() {
+        setup()
         self.medVacTableView.reloadData()
         self.dismiss(animated: true, completion: nil)
     }
     
     // MARK: - TableView
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch medVac {
         case .medicine:
@@ -80,9 +88,9 @@ class MedVacViewController: UIViewController, UITableViewDataSource, UITabBarDel
         let cell = tableView.dequeueReusableCell(withIdentifier: "medVacCell", for: indexPath) as! MedVacCell
         switch medVac {
         case .medicine:
-            cell.medicine = pet?.health?.medicine?.allObjects[indexPath.row] as? Medicine
+            cell.medicine = medicine?[indexPath.row]
         case .vaccine:
-            cell.vaccine = pet?.health?.vaccines?.allObjects[indexPath.row] as? Vaccines
+            cell.vaccine = vaccine?[indexPath.row]
         }
         return cell
     }
@@ -92,16 +100,28 @@ class MedVacViewController: UIViewController, UITableViewDataSource, UITabBarDel
             guard let context = pet?.managedObjectContext else { return }
             switch medVac {
             case .medicine:
-                guard let medicine = pet?.health?.medicine?.allObjects[indexPath.row] as? Medicine else { return }
+                guard let medicine = medicine?[indexPath.row] else { return }
                 if medicine.reminder { NotificationManager.deleteNotication(identifiers: medicine.getNotificationsIDs())}
                 context.delete(medicine)
             case .vaccine:
-                guard let vaccine = pet?.health?.vaccines?.allObjects[indexPath.row] as? Vaccines else { return }
+                guard let vaccine = vaccine?[indexPath.row] else { return }
                 if vaccine.reminder { NotificationManager.deleteNotication(identifiers: vaccine.getNotificationsIDs())}
                 context.delete(vaccine)
             }
             CoreDataManager.shared.saveItem(context: context, saveItem: "Delete medvac item")
             tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch medVac {
+        case .medicine:
+            guard let medicine = medicine?[indexPath.row] else { return }
+            self.performSegue(withIdentifier: "addMedVacVC", sender: medicine)
+        case .vaccine:
+            guard let vaccine = vaccine?[indexPath.row] else { return }
+            self.performSegue(withIdentifier: "addMedVacVC", sender: vaccine)
+
         }
     }
 

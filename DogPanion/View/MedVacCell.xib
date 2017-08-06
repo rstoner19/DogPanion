@@ -94,13 +94,12 @@
                     <constraint firstItem="6bN-k2-LrB" firstAttribute="centerY" secondItem="gr3-sd-q5K" secondAttribute="centerY" id="L1Y-GW-btW"/>
                     <constraint firstItem="CyF-Ib-hcE" firstAttribute="centerY" secondItem="Vzc-jA-N4A" secondAttribute="centerY" id="NZ1-vu-mHs"/>
                     <constraint firstItem="234-eR-mrs" firstAttribute="height" secondItem="vha-Vy-QIK" secondAttribute="height" id="Owx-V4-aYQ"/>
-                    <constraint firstItem="vha-Vy-QIK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="R4F-0M-ABs"/>
                     <constraint firstItem="Vzc-jA-N4A" firstAttribute="top" secondItem="234-eR-mrs" secondAttribute="bottom" constant="8" id="T6G-Ap-MU3"/>
                     <constraint firstItem="Vzc-jA-N4A" firstAttribute="leading" secondItem="CyF-Ib-hcE" secondAttribute="trailing" id="X1A-Ko-OO2"/>
                     <constraint firstAttribute="bottomMargin" secondItem="vz3-59-8yE" secondAttribute="bottom" constant="12" id="Xsc-Ff-QF3"/>
                     <constraint firstItem="gr3-sd-q5K" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="btB-KK-1dc"/>
-                    <constraint firstItem="vha-Vy-QIK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gr3-sd-q5K" secondAttribute="trailing" constant="8" id="dIf-2S-doE"/>
                     <constraint firstItem="CyF-Ib-hcE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vz3-59-8yE" secondAttribute="trailing" constant="8" id="eJQ-03-g52"/>
+                    <constraint firstItem="vha-Vy-QIK" firstAttribute="centerY" secondItem="DvN-f7-n5A" secondAttribute="centerY" id="hEj-tb-fiA"/>
                     <constraint firstItem="vz3-59-8yE" firstAttribute="leading" secondItem="gr3-sd-q5K" secondAttribute="leading" id="kb2-3z-8rh"/>
                     <constraint firstItem="234-eR-mrs" firstAttribute="top" secondItem="vha-Vy-QIK" secondAttribute="bottom" constant="8" id="pOk-pz-Hlx"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Vzc-jA-N4A" secondAttribute="trailing" constant="8" id="rYu-gN-7Y2"/>
