@@ -18,6 +18,8 @@ class AddPetViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var petNameTextField: UITextField!
     @IBOutlet weak var dogBreedTextField: UITextField!
     
+    @IBOutlet weak var blurView: UIVisualEffectView!
+    
     lazy var appDelegate = UIApplication.shared.delegate as! AppDelegate
     weak var delegate: DismissVCDelegate? = nil
     var newPet: Pet? = nil
@@ -87,6 +89,9 @@ class AddPetViewController: UIViewController, UITextFieldDelegate {
     // MARK: - TextField Delegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == self.petNameTextField {
+            self.blurView.isHidden = true
+            self.doneButton.isEnabled = true
+            self.addImageButton.isEnabled = true
             self.dogBreedTextField.isEnabled = true
         }
         return self.view.endEditing(true)
@@ -94,7 +99,6 @@ class AddPetViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == self.petNameTextField {
-            self.petNameLabel.text = ""
             textField.addBarToKeyboard(message: "Enter Pet Name", viewController: self, buttons: false)
         }
     }
