@@ -52,6 +52,7 @@ class AddPetViewController: UIViewController, UITextFieldDelegate {
     @IBAction func editButtonClicked(_ sender: UIButton) {
         self.petNameTextField.becomeFirstResponder()
     }
+    
     @IBAction func nextStepButtonClicked(_ sender: UIButton) {
         let context = appDelegate.persistentContainer.viewContext
         newPet = Pet(context: context)
@@ -68,6 +69,11 @@ class AddPetViewController: UIViewController, UITextFieldDelegate {
         sender == addImageButton ? performSegue(withIdentifier: "addImageVC", sender: nil) : self.delegate?.dismissVC()
         
     }
+    
+    @IBAction func cancelButtonClicked(_ sender: UIButton) {
+        self.delegate?.dismissVC()
+    }
+    
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
