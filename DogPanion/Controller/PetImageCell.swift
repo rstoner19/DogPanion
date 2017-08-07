@@ -9,7 +9,5 @@
 import UIKit
 
 class PetImageCell: UICollectionViewCell {
-    
     @IBOutlet weak var petImage: UIImageView!
-    
 }
