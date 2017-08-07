@@ -21,6 +21,7 @@ class AddMedVacViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var notificationLabel: UILabel!
     
     @IBOutlet weak var frequencyPicker: UIPickerView!
     
@@ -45,6 +46,7 @@ class AddMedVacViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             if !reminders {
                 self.reminderSwitch.isOn = false
                 self.reminderSwitch.isEnabled = false
+                self.notificationLabel.isHidden = false
             }
         }
     }
