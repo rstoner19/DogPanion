@@ -24,7 +24,9 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var imageCollectionView: UICollectionView!
     
     @IBOutlet weak var displayImage: UIImageView!
-
+    
+    @IBOutlet weak var displayImageView: UIView!
+    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
@@ -40,6 +42,8 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
     
     func setup() {
         isAvailable()
+        self.displayImageView.layer.borderColor = UIColor.black.cgColor
+        self.displayImageView.layer.borderWidth = 0.5
         self.petNameLabel.text = petInfo?.name
         self.displayImage.layer.borderWidth = 1
         if let images = petInfo?.images {
@@ -68,14 +72,14 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     func checkAccess() {
-        let authStatus = AVCaptureDevice.authorizationStatus(for: .video)
+        let authStatus = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
         switch  authStatus {
         case .authorized:
             presentImagePicker(.camera)
         case .denied:
             self.alert(message: "Access to Camera Denied. To allow access go to Setting > " + Constants.appName + " allow access to camera.", title: "Access Denied")
         case .notDetermined:
-            AVCaptureDevice.requestAccess(for: .video, completionHandler: { (_) in
+            AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo, completionHandler: { (_) in
                 DispatchQueue.main.async {
                     self.checkAccess()
                 }
@@ -99,9 +103,9 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
     
     // MARK: UICollectionView
     func setupCollectionView() {
-        imageCollectionView.collectionViewLayout = ImageCustomFlowLayout(columns: 4, space: 2)
+        imageCollectionView.collectionViewLayout = ImageCustomFlowLayout(columns: 5, space: 2)
         imageCollectionView.layer.borderColor = UIColor.black.cgColor
-        imageCollectionView.layer.borderWidth = 1
+        imageCollectionView.layer.borderWidth = 0.5
         
     }
     

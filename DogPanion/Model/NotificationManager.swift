@@ -77,12 +77,4 @@ class NotificationManager {
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
     }
     
-     //TODO: Need to delete at some point
-    class func printPendingNotificationRequests() {
-        UNUserNotificationCenter.current().getPendingNotificationRequests { (requests) in
-            for request in requests {
-                print(request.identifier)
-            }
-        }
-    }
 }

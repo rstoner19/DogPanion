@@ -87,7 +87,6 @@ class MedVacCell: UITableViewCell {
     @IBAction func completeButtonPressed(_ sender: UIButton) {
         self.completeButton.isHidden = true
         if let stringDate = self.dueDateLabel.text {
-            
             guard var date = stringDate.toDate() else { return }
             let dateGiven = date
             self.givenDateLabel.text = self.dueDateLabel.text

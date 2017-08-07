@@ -4,11 +4,8 @@
 //
 //  Created by Rick Stoner on 7/4/17.
 //  Copyright © 2017 Rick Stoner. All rights reserved.
-//
 
 import UIKit
-
-
 
 class MainViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, DismissVCDelegate {
     
@@ -25,7 +22,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var rightArrow: UIImageView!
     @IBOutlet weak var arrow: UIImageView!
     
-        lazy var appDelegate = UIApplication.shared.delegate as! AppDelegate
+    lazy var appDelegate = UIApplication.shared.delegate as! AppDelegate
     var petImages: [PetImages] = []
     var currentIndexPath: IndexPath = IndexPath(row: 1, section: 0)
     var reverse: Bool = false
@@ -49,11 +46,6 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         setupCollectionView()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         checkIfPet()
@@ -79,6 +71,9 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
     func checkIfPet() {
         if pet?.count == 0 {
             enableButtons(enabled: false)
+            self.petImages = []
+            self.imageCollectionView.reloadData()
+            self.petCollectionView.reloadData()
             self.animateImage()
         } else {
             enableButtons(enabled: true)
@@ -122,6 +117,20 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
     }
     
+    @IBAction func leftButtonPressed(_ sender: Any) {
+        if !leftArrow.isHidden {
+            let indexPath = IndexPath(row: selectedPet - 1, section: 0)
+            self.petCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        }
+    }
+    
+    @IBAction func rightButtonPressed(_ sender: UIButton) {
+        if !rightArrow.isHidden {
+            let indexPath = IndexPath(row: selectedPet + 1, section: 0)
+            self.petCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        }
+    }
+    
     // MARK: Dismiss Delegate
     func dismissVC() {
         self.pet = CoreDataManager.shared.fetchPets()
@@ -135,18 +144,25 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         self.selectedPet = 0
         self.pet = CoreDataManager.shared.fetchPets()
         self.checkIfPet()
-        self.petCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .centeredHorizontally, animated: false)
+        if self.pet?.count ?? 0 > 0 {
+            self.petCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .centeredHorizontally, animated: false)
+        }
         self.dismiss(animated: true, completion: nil)
     }
     
     // MARK: UICollectionView
     func setupCollectionView() {
         let screen = UIScreen.main.bounds
-        let firstLayout = setLayout(width: screen.width, height: screen.height * 0.5, spacing: 0)
+        let firstLayout: UICollectionViewLayout
+        if screen.width < screen.height {
+            firstLayout = setLayout(width: screen.width, height: screen.height * 0.5, spacing: 0)
+        } else {
+            firstLayout = setLayout(width: screen.width * 0.68, height: screen.height * 0.88, spacing: 0)
+        }
         imageCollectionView.collectionViewLayout = firstLayout
         imageCollectionView.layer.borderColor = UIColor.black.cgColor
         imageCollectionView.layer.borderWidth = 1
-        let secondLayout = setLayout(width: screen.width * 0.39, height: screen.height * 0.1, spacing: 1)
+        let secondLayout = setLayout(width: self.petCollectionView.frame.width, height: screen.height * 0.1, spacing: 1)
         petCollectionView.collectionViewLayout = secondLayout
         scrollImage()
     }
@@ -190,10 +206,16 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
             if self.currentIndexPath.row == petImages.count - 1 { reverse = true }
             if self.currentIndexPath.row == 0 && reverse == true { reverse = false }
             self.currentIndexPath.row = reverse == true ?  self.currentIndexPath.row - 1 : self.currentIndexPath.row + 1
+        } else {
+            loadNewPet(scrollView: scrollView)
         }
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        loadNewPet(scrollView: scrollView)
+    }
+    
+    func loadNewPet(scrollView: UIScrollView) {
         if scrollView == petCollectionView {
             let selectedIndexPath = indexInView(collection: self.petCollectionView)
             if self.selectedPet != selectedIndexPath {
@@ -250,4 +272,3 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
 }
-
