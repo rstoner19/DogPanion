@@ -28,12 +28,10 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
     
     @IBOutlet weak var breedTextField: UITextField!
     @IBOutlet weak var weightTextField: UITextField!
-    // TODO delete print pending
     override func viewDidLoad() {
         super.viewDidLoad()
         notificationAuthorization()
         setup()
-        NotificationManager.printPendingNotificationRequests()
     }
 
     override func didReceiveMemoryWarning() {
@@ -279,6 +277,5 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         let body = Constants.appName + " wishes " + (pet?.name ?? "your pet") + " a happy birthday! 🐶🎂🎈🎁"
         NotificationManager.scheduleNotification(title: title, body: body, identifier: "\(pet?.name ?? "")birthday", dateCompenents: date, repeatNotifcation: true)
     }
-    
     
 }

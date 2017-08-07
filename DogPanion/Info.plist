@@ -22,6 +22,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Take a picture of your pet</string>
+	<key>NSLocationUsageDescription</key>
+	<string>You're location is used to show nearby points of interest for your pet.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This allows DogPanion to display dog parks, vets, or various other pet related locations nearby.</string>
 	<key>NSPhotoLibraryUsageDescription</key>

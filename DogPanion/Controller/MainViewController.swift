@@ -4,11 +4,8 @@
 //
 //  Created by Rick Stoner on 7/4/17.
 //  Copyright © 2017 Rick Stoner. All rights reserved.
-//
 
 import UIKit
-
-
 
 class MainViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, DismissVCDelegate {
     
@@ -49,11 +46,6 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         setupCollectionView()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         checkIfPet()
@@ -161,11 +153,16 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
     // MARK: UICollectionView
     func setupCollectionView() {
         let screen = UIScreen.main.bounds
-        let firstLayout = setLayout(width: screen.width, height: screen.height * 0.5, spacing: 0)
+        let firstLayout: UICollectionViewLayout
+        if screen.width < screen.height {
+            firstLayout = setLayout(width: screen.width, height: screen.height * 0.5, spacing: 0)
+        } else {
+            firstLayout = setLayout(width: screen.width * 0.68, height: screen.height * 0.88, spacing: 0)
+        }
         imageCollectionView.collectionViewLayout = firstLayout
         imageCollectionView.layer.borderColor = UIColor.black.cgColor
         imageCollectionView.layer.borderWidth = 1
-        let secondLayout = setLayout(width: screen.width * 0.39, height: screen.height * 0.1, spacing: 1)
+        let secondLayout = setLayout(width: self.petCollectionView.frame.width, height: screen.height * 0.1, spacing: 1)
         petCollectionView.collectionViewLayout = secondLayout
         scrollImage()
     }
@@ -275,4 +272,3 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
 }
-

@@ -24,7 +24,9 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var imageCollectionView: UICollectionView!
     
     @IBOutlet weak var displayImage: UIImageView!
-
+    
+    @IBOutlet weak var displayImageView: UIView!
+    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
@@ -40,6 +42,8 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
     
     func setup() {
         isAvailable()
+        self.displayImageView.layer.borderColor = UIColor.black.cgColor
+        self.displayImageView.layer.borderWidth = 0.5
         self.petNameLabel.text = petInfo?.name
         self.displayImage.layer.borderWidth = 1
         if let images = petInfo?.images {
@@ -99,9 +103,9 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
     
     // MARK: UICollectionView
     func setupCollectionView() {
-        imageCollectionView.collectionViewLayout = ImageCustomFlowLayout(columns: 4, space: 2)
+        imageCollectionView.collectionViewLayout = ImageCustomFlowLayout(columns: 5, space: 2)
         imageCollectionView.layer.borderColor = UIColor.black.cgColor
-        imageCollectionView.layer.borderWidth = 1
+        imageCollectionView.layer.borderWidth = 0.5
         
     }
     

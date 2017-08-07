@@ -39,9 +39,9 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchB
     }
 
     func setup() {
+        checkAuthorizationStatus()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        checkAuthorizationStatus()
         self.groomingButton.addBorder(color: .black, width: 0.5, radius: nil)
         self.vetButton.addBorder(color: .black, width: 0.5, radius: nil)
         self.dogParkButton.addBorder(color: .black, width: 0.5, radius: nil)

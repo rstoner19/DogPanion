@@ -27,6 +27,7 @@ class ImageCustomFlowLayout: UICollectionViewFlowLayout {
     func setup() {
         self.minimumLineSpacing = self.space
         self.minimumInteritemSpacing = self.space
+        print(self.itemWidth())
         self.itemSize = CGSize(width: self.itemWidth(), height: self.itemWidth())
     }
     
