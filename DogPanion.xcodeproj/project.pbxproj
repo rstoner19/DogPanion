@@ -99,6 +99,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D89C2CA1F392EE500FBB9C6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D70D1C191F1546EE00FFAD15 /* Core Data Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +130,7 @@
 			children = (
 				D7ADB5751F0BFCBB0054F345 /* DogPanion */,
 				D7ADB5741F0BFCBB0054F345 /* Products */,
+				1D89C2CA1F392EE500FBB9C6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -240,6 +248,12 @@
 				TargetAttributes = {
 					D7ADB5721F0BFCBB0054F345 = {
 						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -447,12 +461,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = ABJU8Z7J96;
 				INFOPLIST_FILE = "$(SRCROOT)/DogPanion/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = rstoner.DogPanion;
+				PRODUCT_BUNDLE_IDENTIFIER = rstoner19.DogPanion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -462,12 +478,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = ABJU8Z7J96;
 				INFOPLIST_FILE = "$(SRCROOT)/DogPanion/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = rstoner.DogPanion;
+				PRODUCT_BUNDLE_IDENTIFIER = rstoner19.DogPanion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
