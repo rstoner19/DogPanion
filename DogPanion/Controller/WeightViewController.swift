@@ -45,12 +45,11 @@ class WeightViewController: UIViewController {
         var points: [CGPoint] = []
         if var weights = self.weights {
             if weights.count > 1 {
-                print(weights.count)
+                // TODO: Need to modify time and show either days/months/year based on time difference.
                 Weight.orderWeightByDate(weights: &weights)
                 guard let initialDate = weights.first?.dateMeasured! as Date? else { return }
                 for weight in weights {
                     let days = (weight.dateMeasured! as Date).timeIntervalSince(initialDate as Date)
-                    print(days)
                     let point = CGPoint(x: days, y: weight.weight)
                     points.append(point)
                 }
