@@ -202,9 +202,7 @@ class LineChart: UIView {
         
         let linePath = CGMutablePath()
         linePath.addLines(between: points, transform: chartTransform!)
-        
         lineLayer.path = linePath
-        
         if showPoints {
             circlesLayer.path = circles(atPoints: points, withTransform: chartTransform!)
         }

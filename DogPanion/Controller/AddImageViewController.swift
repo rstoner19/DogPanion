@@ -18,9 +18,11 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
     
     @IBOutlet weak var petNameLabel: UILabel!
     
+    
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var photoLibraryButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var saveTextButton: UIButton!
     @IBOutlet weak var imageCollectionView: UICollectionView!
     
     @IBOutlet weak var displayImage: UIImageView!
@@ -128,6 +130,7 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.saveButton.isEnabled = false
+        self.saveTextButton.isEnabled = false
         self.selectedIndex = indexPath.row
         guard let cell = collectionView.cellForItem(at: indexPath) as? PetImageCell else {return}
         self.displayImage.image = cell.petImage.image
@@ -136,6 +139,7 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
     // MARK: UIImagePickerControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         self.saveButton.isEnabled = true
+        self.saveTextButton.isEnabled = true
         guard let selectedImage = info[UIImagePickerControllerEditedImage] as? UIImage else { return }
         self.displayImage.image = selectedImage
         self.dismiss(animated: true, completion: nil)
@@ -163,6 +167,7 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
             }
             self.petImages.append(images)
             self.saveButton.isEnabled = false
+            self.saveTextButton.isEnabled = false
         }
     }
     
@@ -183,6 +188,8 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
             }
         } else {
             self.displayImage.image = nil
+            self.saveButton.isEnabled = false
+            self.saveTextButton.isEnabled = false
         }
     }
     

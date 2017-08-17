@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="17A315i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="WeightCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="weightCell" id="KGk-i7-Jjw" customClass="WeightCell" customModule="DogPanion" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJd-5b-ORb">
+                        <rect key="frame" x="4" y="23" width="54" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QSe-Oc-rlL">
+                        <rect key="frame" x="252" y="22" width="64" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q6k-X1-ZA5">
+                        <rect key="frame" x="256" y="6" width="56" height="14"/>
+                        <attributedString key="attributedText">
+                            <fragment content="Date Input">
+                                <attributes>
+                                    <font key="NSFont" size="12" name=".SFNSText-Bold"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                    <integer key="NSUnderline" value="1"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tz2-tV-GlZ">
+                        <rect key="frame" x="11" y="5.5" width="40" height="15.5"/>
+                        <attributedString key="attributedText">
+                            <fragment content="Weight">
+                                <attributes>
+                                    <font key="NSFont" size="13" name=".SFNSText-Bold"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                    <integer key="NSUnderline" value="1"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="QSe-Oc-rlL" firstAttribute="top" secondItem="q6k-X1-ZA5" secondAttribute="bottom" constant="2" id="B6L-dG-VU4"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="q6k-X1-ZA5" secondAttribute="trailing" constant="8" id="HcO-xo-tYs"/>
+                    <constraint firstItem="QSe-Oc-rlL" firstAttribute="centerX" secondItem="q6k-X1-ZA5" secondAttribute="centerX" id="MZ4-c1-rSh"/>
+                    <constraint firstItem="GJd-5b-ORb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="4" id="MrN-QD-WvB"/>
+                    <constraint firstItem="GJd-5b-ORb" firstAttribute="centerX" secondItem="tz2-tV-GlZ" secondAttribute="centerX" id="XGF-C0-9te"/>
+                    <constraint firstItem="tz2-tV-GlZ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" multiplier="0.6" id="bEf-mV-loa"/>
+                    <constraint firstItem="q6k-X1-ZA5" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" multiplier="0.6" id="bWn-XR-6lV"/>
+                    <constraint firstItem="GJd-5b-ORb" firstAttribute="top" secondItem="tz2-tV-GlZ" secondAttribute="bottom" constant="2" id="q8f-EO-PS3"/>
+                    <constraint firstAttribute="trailing" secondItem="QSe-Oc-rlL" secondAttribute="trailing" constant="4" id="sMh-5m-41W"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="dateLabel" destination="QSe-Oc-rlL" id="5AX-5A-ERM"/>
+                <outlet property="weightLabel" destination="GJd-5b-ORb" id="NRf-Oo-y4Q"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

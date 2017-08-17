@@ -75,9 +75,9 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         } else if segue.identifier == "weightVC" {
             guard let weightVC = segue.destination as? WeightViewController else {return}
             weightVC.delegate = self
-            if let weights = self.pet?.health?.weight?.allObjects as? [Weight] {
+            if var weights = self.pet?.health?.weight?.allObjects as? [Weight] {
+                Weight.orderWeightByDate(weights: &weights)
                 weightVC.weights = weights
-                
             }
         }
     }

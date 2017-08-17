@@ -19,6 +19,8 @@
 		D70D1C181F1546D600FFAD15 /* GeneralProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70D1C171F1546D600FFAD15 /* GeneralProtocols.swift */; };
 		D71882B61F27C7BC001B94EF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71882B51F27C7BC001B94EF /* Constants.swift */; };
 		D71882BA1F27EACA001B94EF /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71882B91F27EACA001B94EF /* NotificationManager.swift */; };
+		D746B18F1F43D3D7001CC3C2 /* WeightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D746B18D1F43D3D7001CC3C2 /* WeightCell.swift */; };
+		D746B1901F43D3D7001CC3C2 /* WeightCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D746B18E1F43D3D7001CC3C2 /* WeightCell.xib */; };
 		D75E43391F1B26C10053E735 /* PetLocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E43381F1B26C10053E735 /* PetLocationsViewController.swift */; };
 		D76EDDEF1F10935100A8170E /* PetNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76EDDEE1F10935100A8170E /* PetNameCell.swift */; };
 		D77211D41F22CCE7004B4A1E /* Health+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77211C81F22CCE7004B4A1E /* Health+CoreDataClass.swift */; };
@@ -61,6 +63,8 @@
 		D70D1C171F1546D600FFAD15 /* GeneralProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralProtocols.swift; sourceTree = "<group>"; };
 		D71882B51F27C7BC001B94EF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D71882B91F27EACA001B94EF /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		D746B18D1F43D3D7001CC3C2 /* WeightCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightCell.swift; sourceTree = "<group>"; };
+		D746B18E1F43D3D7001CC3C2 /* WeightCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WeightCell.xib; path = ../Controller/WeightCell.xib; sourceTree = "<group>"; };
 		D75E43381F1B26C10053E735 /* PetLocationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetLocationsViewController.swift; sourceTree = "<group>"; };
 		D76EDDEE1F10935100A8170E /* PetNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetNameCell.swift; sourceTree = "<group>"; };
 		D77211C81F22CCE7004B4A1E /* Health+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Health+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -189,6 +193,7 @@
 			children = (
 				D7ADB57A1F0BFCBC0054F345 /* Main.storyboard */,
 				1D3DE1BE1F37B2160068B98A /* MedVacCell.xib */,
+				D746B18E1F43D3D7001CC3C2 /* WeightCell.xib */,
 				D7ADB5801F0BFCBC0054F345 /* Assets.xcassets */,
 				D7ADB5821F0BFCBC0054F345 /* LaunchScreen.storyboard */,
 			);
@@ -215,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				D700BB551F1B2CB600822AD6 /* ImageCustomFlowLayout.swift */,
+				D746B18D1F43D3D7001CC3C2 /* WeightCell.swift */,
 				D7D1691B1F290FED00EAAEB2 /* MedVacCell.swift */,
 				D7ADB58B1F0C0DEF0054F345 /* PetImageCell.swift */,
 				D76EDDEE1F10935100A8170E /* PetNameCell.swift */,
@@ -287,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7ADB5841F0BFCBC0054F345 /* LaunchScreen.storyboard in Resources */,
+				D746B1901F43D3D7001CC3C2 /* WeightCell.xib in Resources */,
 				1D3DE1C01F37B2160068B98A /* MedVacCell.xib in Resources */,
 				D7ADB5811F0BFCBC0054F345 /* Assets.xcassets in Resources */,
 				D7ADB57C1F0BFCBC0054F345 /* Main.storyboard in Resources */,
@@ -327,6 +334,7 @@
 				D7ADB5771F0BFCBC0054F345 /* AppDelegate.swift in Sources */,
 				D77211D71F22CCE7004B4A1E /* Pet+CoreDataProperties.swift in Sources */,
 				D7D169251F291B4900EAAEB2 /* Medicine+CoreDataClass.swift in Sources */,
+				D746B18F1F43D3D7001CC3C2 /* WeightCell.swift in Sources */,
 				1D119CD41F216D0D00CD317D /* PopUpViewController.swift in Sources */,
 				1DA6DAAA1F15C4B500B6FE32 /* AddPetViewController.swift in Sources */,
 				D76EDDEF1F10935100A8170E /* PetNameCell.swift in Sources */,
