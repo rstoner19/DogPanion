@@ -52,6 +52,11 @@ extension Date {
     }
 }
 
+extension CGPoint {
+    func adding(x: CGFloat) -> CGPoint { return CGPoint(x: self.x + x, y: self.y) }
+    func adding(y: CGFloat) -> CGPoint { return CGPoint(x: self.x, y: self.y + y) }
+}
+
 extension PetLocationsViewController : UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         getSearchResults(searchText: searchController.searchBar.text!)
@@ -63,6 +68,10 @@ extension String {
     let formatter = DateFormatter()
     formatter.dateStyle = .medium
     return formatter.date(from: self)
+    }
+    
+    func size(withSystemFontSize pointSize: CGFloat) -> CGSize {
+        return (self as NSString).size(attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: pointSize)])
     }
 }
 

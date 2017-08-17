@@ -11,12 +11,16 @@
 		1D3DE1C01F37B2160068B98A /* MedVacCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D3DE1BE1F37B2160068B98A /* MedVacCell.xib */; };
 		1D8C6DB41F2A7ED900325C55 /* AddMedVac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8C6DB31F2A7ED900325C55 /* AddMedVac.swift */; };
 		1DA6DAAA1F15C4B500B6FE32 /* AddPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA6DAA91F15C4B500B6FE32 /* AddPetViewController.swift */; };
+		1DD9D13B1F3CED6400D0B14C /* WeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD9D13A1F3CED6400D0B14C /* WeightViewController.swift */; };
+		1DD9D13D1F3CF12D00D0B14C /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD9D13C1F3CF12D00D0B14C /* LineChart.swift */; };
 		1DEE8BF71F1F0805001D632F /* HealthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEE8BF61F1F0805001D632F /* HealthViewController.swift */; };
 		D700BB561F1B2CB600822AD6 /* ImageCustomFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D700BB551F1B2CB600822AD6 /* ImageCustomFlowLayout.swift */; };
 		D70D1C141F1440C300FFAD15 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70D1C131F1440C300FFAD15 /* CoreDataManager.swift */; };
 		D70D1C181F1546D600FFAD15 /* GeneralProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70D1C171F1546D600FFAD15 /* GeneralProtocols.swift */; };
 		D71882B61F27C7BC001B94EF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71882B51F27C7BC001B94EF /* Constants.swift */; };
 		D71882BA1F27EACA001B94EF /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71882B91F27EACA001B94EF /* NotificationManager.swift */; };
+		D746B18F1F43D3D7001CC3C2 /* WeightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D746B18D1F43D3D7001CC3C2 /* WeightCell.swift */; };
+		D746B1901F43D3D7001CC3C2 /* WeightCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D746B18E1F43D3D7001CC3C2 /* WeightCell.xib */; };
 		D75E43391F1B26C10053E735 /* PetLocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E43381F1B26C10053E735 /* PetLocationsViewController.swift */; };
 		D76EDDEF1F10935100A8170E /* PetNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76EDDEE1F10935100A8170E /* PetNameCell.swift */; };
 		D77211D41F22CCE7004B4A1E /* Health+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77211C81F22CCE7004B4A1E /* Health+CoreDataClass.swift */; };
@@ -51,12 +55,16 @@
 		1D3DE1BE1F37B2160068B98A /* MedVacCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MedVacCell.xib; sourceTree = "<group>"; };
 		1D8C6DB31F2A7ED900325C55 /* AddMedVac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMedVac.swift; sourceTree = "<group>"; };
 		1DA6DAA91F15C4B500B6FE32 /* AddPetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddPetViewController.swift; path = DogPanion/Controller/AddPetViewController.swift; sourceTree = SOURCE_ROOT; };
+		1DD9D13A1F3CED6400D0B14C /* WeightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeightViewController.swift; path = DogPanion/Controller/WeightViewController.swift; sourceTree = SOURCE_ROOT; };
+		1DD9D13C1F3CF12D00D0B14C /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LineChart.swift; path = DogPanion/Model/LineChart.swift; sourceTree = SOURCE_ROOT; };
 		1DEE8BF61F1F0805001D632F /* HealthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthViewController.swift; sourceTree = "<group>"; };
 		D700BB551F1B2CB600822AD6 /* ImageCustomFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCustomFlowLayout.swift; sourceTree = "<group>"; };
 		D70D1C131F1440C300FFAD15 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		D70D1C171F1546D600FFAD15 /* GeneralProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralProtocols.swift; sourceTree = "<group>"; };
 		D71882B51F27C7BC001B94EF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D71882B91F27EACA001B94EF /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		D746B18D1F43D3D7001CC3C2 /* WeightCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightCell.swift; sourceTree = "<group>"; };
+		D746B18E1F43D3D7001CC3C2 /* WeightCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WeightCell.xib; path = ../Controller/WeightCell.xib; sourceTree = "<group>"; };
 		D75E43381F1B26C10053E735 /* PetLocationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetLocationsViewController.swift; sourceTree = "<group>"; };
 		D76EDDEE1F10935100A8170E /* PetNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetNameCell.swift; sourceTree = "<group>"; };
 		D77211C81F22CCE7004B4A1E /* Health+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Health+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -99,6 +107,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D89C2CA1F392EE500FBB9C6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D70D1C191F1546EE00FFAD15 /* Core Data Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +138,7 @@
 			children = (
 				D7ADB5751F0BFCBB0054F345 /* DogPanion */,
 				D7ADB5741F0BFCBB0054F345 /* Products */,
+				1D89C2CA1F392EE500FBB9C6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -166,6 +182,7 @@
 				D7D169191F28426100EAAEB2 /* MedVacViewController.swift */,
 				D75E43381F1B26C10053E735 /* PetLocationsViewController.swift */,
 				1D119CD31F216D0D00CD317D /* PopUpViewController.swift */,
+				1DD9D13A1F3CED6400D0B14C /* WeightViewController.swift */,
 				D7BF6B031F0C118B000F6C03 /* Xib/Cell Controllers */,
 			);
 			path = Controller;
@@ -176,6 +193,7 @@
 			children = (
 				D7ADB57A1F0BFCBC0054F345 /* Main.storyboard */,
 				1D3DE1BE1F37B2160068B98A /* MedVacCell.xib */,
+				D746B18E1F43D3D7001CC3C2 /* WeightCell.xib */,
 				D7ADB5801F0BFCBC0054F345 /* Assets.xcassets */,
 				D7ADB5821F0BFCBC0054F345 /* LaunchScreen.storyboard */,
 			);
@@ -191,6 +209,7 @@
 				D70D1C131F1440C300FFAD15 /* CoreDataManager.swift */,
 				D79D3A281F12A7EF008CBA69 /* GeneralExtensions.swift */,
 				D70D1C171F1546D600FFAD15 /* GeneralProtocols.swift */,
+				1DD9D13C1F3CF12D00D0B14C /* LineChart.swift */,
 				D7C629961F1D3C37004C45F4 /* MapAnnotation.swift */,
 				D71882B91F27EACA001B94EF /* NotificationManager.swift */,
 			);
@@ -201,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				D700BB551F1B2CB600822AD6 /* ImageCustomFlowLayout.swift */,
+				D746B18D1F43D3D7001CC3C2 /* WeightCell.swift */,
 				D7D1691B1F290FED00EAAEB2 /* MedVacCell.swift */,
 				D7ADB58B1F0C0DEF0054F345 /* PetImageCell.swift */,
 				D76EDDEE1F10935100A8170E /* PetNameCell.swift */,
@@ -240,6 +260,12 @@
 				TargetAttributes = {
 					D7ADB5721F0BFCBB0054F345 = {
 						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -267,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7ADB5841F0BFCBC0054F345 /* LaunchScreen.storyboard in Resources */,
+				D746B1901F43D3D7001CC3C2 /* WeightCell.xib in Resources */,
 				1D3DE1C01F37B2160068B98A /* MedVacCell.xib in Resources */,
 				D7ADB5811F0BFCBC0054F345 /* Assets.xcassets in Resources */,
 				D7ADB57C1F0BFCBC0054F345 /* Main.storyboard in Resources */,
@@ -284,6 +311,8 @@
 				1D8C6DB41F2A7ED900325C55 /* AddMedVac.swift in Sources */,
 				D7ADB57F1F0BFCBC0054F345 /* DogPanion.xcdatamodeld in Sources */,
 				D7ADB58C1F0C0DEF0054F345 /* PetImageCell.swift in Sources */,
+				1DD9D13D1F3CF12D00D0B14C /* LineChart.swift in Sources */,
+				1DD9D13B1F3CED6400D0B14C /* WeightViewController.swift in Sources */,
 				D70D1C181F1546D600FFAD15 /* GeneralProtocols.swift in Sources */,
 				D77211DB1F22CCE7004B4A1E /* PetImages+CoreDataProperties.swift in Sources */,
 				D7D1691D1F290FED00EAAEB2 /* MedVacCell.swift in Sources */,
@@ -305,6 +334,7 @@
 				D7ADB5771F0BFCBC0054F345 /* AppDelegate.swift in Sources */,
 				D77211D71F22CCE7004B4A1E /* Pet+CoreDataProperties.swift in Sources */,
 				D7D169251F291B4900EAAEB2 /* Medicine+CoreDataClass.swift in Sources */,
+				D746B18F1F43D3D7001CC3C2 /* WeightCell.swift in Sources */,
 				1D119CD41F216D0D00CD317D /* PopUpViewController.swift in Sources */,
 				1DA6DAAA1F15C4B500B6FE32 /* AddPetViewController.swift in Sources */,
 				D76EDDEF1F10935100A8170E /* PetNameCell.swift in Sources */,
@@ -447,12 +477,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = ABJU8Z7J96;
 				INFOPLIST_FILE = "$(SRCROOT)/DogPanion/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = rstoner.DogPanion;
+				PRODUCT_BUNDLE_IDENTIFIER = rstoner19.DogPanion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -462,12 +494,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = ABJU8Z7J96;
 				INFOPLIST_FILE = "$(SRCROOT)/DogPanion/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = rstoner.DogPanion;
+				PRODUCT_BUNDLE_IDENTIFIER = rstoner19.DogPanion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -40,8 +40,7 @@ class AddPetViewController: UIViewController, UITextFieldDelegate {
         self.doneButton.addBorder(color: .black, width: 0.5, radius: 3)
         self.addImageButton.addBorder(color: .black, width: 0.5, radius: 3)
     }
-    
-    @IBAction func petNameTextField(_ sender: UITextField) {
+    @IBAction func petNameChanged(_ sender: UITextField) {
         self.petNameLabel.text = sender.text
     }
     
