@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="17A315i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13168.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13147.4"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -53,7 +53,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.60373550649999996" green="0.82722961900000003" blue="0.88634788990000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.76196330785751343" green="0.89807277917861938" blue="0.93189126253128052" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="xWX-LV-PqQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="g0p-hk-M2K" secondAttribute="trailing" constant="8" id="Dn8-Sr-mP2"/>
                                     <constraint firstAttribute="trailing" secondItem="xWX-LV-PqQ" secondAttribute="trailing" constant="8" id="h5q-7L-NWh"/>
@@ -321,7 +321,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Td-YW-ufO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-839.73013493253382" y="884"/>
+            <point key="canvasLocation" x="-739" y="902"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -425,7 +425,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.65086454153060913" green="0.82287794351577759" blue="0.87847030162811279" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.76196330785751343" green="0.89807277917861938" blue="0.93189126253128052" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="1ts-0J-DIP" firstAttribute="width" secondItem="zqI-N1-DW3" secondAttribute="width" multiplier="1.2" id="5K2-Cq-sJa"/>
                                     <constraint firstAttribute="bottom" secondItem="4pa-ui-yZ4" secondAttribute="bottom" id="8Lp-BR-626"/>
@@ -461,7 +461,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottomBG" translatesAutoresizingMaskIntoConstraints="NO" id="IAd-7C-6fl">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottomBG4" translatesAutoresizingMaskIntoConstraints="NO" id="IAd-7C-6fl">
                                 <rect key="frame" x="0.0" y="456.33333333333326" width="414" height="279.66666666666674"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aqx-WY-yt9">
@@ -479,7 +479,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Imc-l8-bsY">
-                                <rect key="frame" x="42.666666666666629" y="526.33333333333337" width="80" height="80"/>
+                                <rect key="frame" x="42.666666666666657" y="526.33333333333337" width="80" height="80"/>
                                 <color key="backgroundColor" red="0.57281793519874924" green="0.84164237175942946" blue="0.89197518377739771" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal">
                                     <string key="title">     Pet
@@ -490,7 +490,7 @@
                                     <segue destination="xQJ-23-ygn" kind="showDetail" identifier="petLocations" id="8gX-ZQ-EDc"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="DSR-yx-Wjs">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="DSR-yx-Wjs">
                                 <rect key="frame" x="291.33333333333331" y="526.33333333333337" width="80" height="80"/>
                                 <color key="backgroundColor" red="0.7443450037175432" green="0.86164295759326981" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -844,7 +844,7 @@ Images</string>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.60373550649999996" green="0.82722961900000003" blue="0.88634788990000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.76196330785751343" green="0.89807277917861938" blue="0.93189126253128052" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="6fq-XD-FYQ" firstAttribute="leading" secondItem="Xnf-yM-mPK" secondAttribute="leading" constant="8" id="3bn-AM-OYZ"/>
                                     <constraint firstItem="Tuc-Az-T6M" firstAttribute="centerX" secondItem="OlS-of-HTr" secondAttribute="centerX" id="9tm-uI-036"/>
@@ -898,7 +898,7 @@ Images</string>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CNv-VZ-86J">
                                 <rect key="frame" x="0.0" y="88.333333333333314" width="414" height="647.66666666666674"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="H9C-Ll-5ik">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="648"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="647.66666666666674"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <blurEffect style="light"/>
@@ -1028,7 +1028,7 @@ Images</string>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.60373550649999996" green="0.82722961900000003" blue="0.88634788990000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.76196330785751343" green="0.89807277917861938" blue="0.93189126253128052" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="q6F-G1-Z5m" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aEd-3G-698" secondAttribute="trailing" constant="8" id="8aQ-6d-YXp"/>
                                     <constraint firstItem="aEd-3G-698" firstAttribute="centerX" secondItem="0nS-Ef-VLF" secondAttribute="centerX" id="NLy-i4-Ju4"/>
@@ -1385,7 +1385,7 @@ Images</string>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.60373550649999996" green="0.82722961900000003" blue="0.88634788990000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.76196330785751343" green="0.89807277917861938" blue="0.93189126253128052" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="Tav-n9-aRG" firstAttribute="leading" secondItem="Bzo-mb-FVn" secondAttribute="leading" constant="8" id="Hk8-hl-Sdf"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oE6-en-cIH" secondAttribute="trailing" constant="8" id="RI4-zg-Xsu"/>
@@ -1431,7 +1431,7 @@ Images</string>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZWB-XH-wPR">
-                                <rect key="frame" x="196.33333333333334" y="470.33333333333331" width="39.333333333333314" height="21"/>
+                                <rect key="frame" x="195.33333333333334" y="470.33333333333331" width="39.333333333333314" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1560,7 +1560,7 @@ Images</string>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.60373550649999996" green="0.82722961900000003" blue="0.88634788990000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.76196330785751343" green="0.89807277917861938" blue="0.93189126253128052" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="IQy-iD-aqT" firstAttribute="top" secondItem="IDE-r3-iDK" secondAttribute="top" constant="8" id="0sT-ci-P1F"/>
                                     <constraint firstItem="X7C-Oa-dui" firstAttribute="centerY" secondItem="IQy-iD-aqT" secondAttribute="centerY" id="FS7-dL-pKW"/>
@@ -1648,7 +1648,7 @@ Images</string>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.60373550649999996" green="0.82722961900000003" blue="0.88634788990000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.76196330785751343" green="0.89807277917861938" blue="0.93189126253128052" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="2ea-Cd-0qL" firstAttribute="top" secondItem="GT4-BY-Q6k" secondAttribute="top" constant="8" id="7h1-q6-JIk"/>
                                     <constraint firstAttribute="bottom" secondItem="2ea-Cd-0qL" secondAttribute="bottom" id="DTB-dT-J1K"/>
@@ -1983,7 +1983,7 @@ Images</string>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.60373550653457642" green="0.82722961902618408" blue="0.88634788990020752" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.76196330785751343" green="0.89807277917861938" blue="0.93189126253128052" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="b6S-kY-Pk7" firstAttribute="centerY" secondItem="fER-jg-z68" secondAttribute="centerY" id="AQe-7N-nqi"/>
                                     <constraint firstAttribute="trailing" secondItem="b6S-kY-Pk7" secondAttribute="trailing" constant="12" id="JFx-pc-zet"/>
@@ -2190,6 +2190,11 @@ Image</string>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="84P-YV-2kS"/>
+                                        <exclude reference="BxC-8Y-K3M"/>
+                                        <exclude reference="ODH-di-8Ha"/>
+                                        <exclude reference="PhY-gd-HEx"/>
+                                        <exclude reference="v0W-es-tF3"/>
                                         <exclude reference="3Jy-la-m9l"/>
                                         <exclude reference="KUV-Ql-J82"/>
                                         <exclude reference="Ld9-7u-yXp"/>
@@ -2199,20 +2204,19 @@ Image</string>
                                         <exclude reference="sug-0z-dOc"/>
                                         <exclude reference="wFM-4m-l8h"/>
                                         <exclude reference="zBs-5h-FQS"/>
+                                        <exclude reference="jQB-V7-HkO"/>
+                                        <exclude reference="pub-cx-vkg"/>
                                         <exclude reference="CfV-Hf-MFc"/>
                                         <exclude reference="IoC-z6-jrM"/>
                                         <exclude reference="NMR-Ac-9jS"/>
-                                        <exclude reference="jQB-V7-HkO"/>
-                                        <exclude reference="pub-cx-vkg"/>
-                                        <exclude reference="84P-YV-2kS"/>
-                                        <exclude reference="BxC-8Y-K3M"/>
-                                        <exclude reference="ODH-di-8Ha"/>
-                                        <exclude reference="PhY-gd-HEx"/>
-                                        <exclude reference="v0W-es-tF3"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=compact-widthClass=compact">
                                     <mask key="constraints">
+                                        <include reference="ODH-di-8Ha"/>
+                                        <exclude reference="PhY-gd-HEx"/>
+                                        <exclude reference="hcD-gb-nBp"/>
+                                        <include reference="v0W-es-tF3"/>
                                         <include reference="3Jy-la-m9l"/>
                                         <exclude reference="3Ow-gk-UD9"/>
                                         <exclude reference="IdI-cb-6KZ"/>
@@ -2222,22 +2226,21 @@ Image</string>
                                         <exclude reference="nZt-gS-DN3"/>
                                         <exclude reference="sug-0z-dOc"/>
                                         <include reference="wFM-4m-l8h"/>
-                                        <exclude reference="3D2-gH-PC2"/>
-                                        <include reference="CfV-Hf-MFc"/>
-                                        <exclude reference="IoC-z6-jrM"/>
-                                        <exclude reference="Yex-SW-3zQ"/>
                                         <exclude reference="HH5-AF-iRo"/>
                                         <include reference="jQB-V7-HkO"/>
                                         <include reference="pub-cx-vkg"/>
                                         <exclude reference="qF6-31-1o1"/>
-                                        <include reference="ODH-di-8Ha"/>
-                                        <exclude reference="PhY-gd-HEx"/>
-                                        <exclude reference="hcD-gb-nBp"/>
-                                        <include reference="v0W-es-tF3"/>
+                                        <exclude reference="3D2-gH-PC2"/>
+                                        <include reference="CfV-Hf-MFc"/>
+                                        <exclude reference="IoC-z6-jrM"/>
+                                        <exclude reference="Yex-SW-3zQ"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=compact-widthClass=regular">
                                     <mask key="constraints">
+                                        <include reference="84P-YV-2kS"/>
+                                        <include reference="BxC-8Y-K3M"/>
+                                        <exclude reference="hcD-gb-nBp"/>
                                         <exclude reference="3Ow-gk-UD9"/>
                                         <exclude reference="Ld9-7u-yXp"/>
                                         <exclude reference="Xhj-6v-G4X"/>
@@ -2248,9 +2251,6 @@ Image</string>
                                         <exclude reference="3D2-gH-PC2"/>
                                         <include reference="NMR-Ac-9jS"/>
                                         <exclude reference="Yex-SW-3zQ"/>
-                                        <include reference="84P-YV-2kS"/>
-                                        <include reference="BxC-8Y-K3M"/>
-                                        <exclude reference="hcD-gb-nBp"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -2359,7 +2359,7 @@ Image</string>
     </scenes>
     <resources>
         <image name="arrow" width="386" height="266"/>
-        <image name="bottomBG" width="632" height="429"/>
+        <image name="bottomBG4" width="632" height="429"/>
         <image name="deleteIcon" width="50" height="50"/>
         <image name="dogPanionLogo" width="500" height="500"/>
         <image name="dogParkBG" width="728" height="200"/>

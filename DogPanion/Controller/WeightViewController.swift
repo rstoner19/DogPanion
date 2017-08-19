@@ -27,11 +27,6 @@ class WeightViewController: UIViewController, UITableViewDelegate, UITableViewDa
         setupTableView()
         setupGraph()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
         self.delegate?.dismissVC(object: true)
@@ -86,7 +81,5 @@ class WeightViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         return cell
     }
-    
-    
     
 }

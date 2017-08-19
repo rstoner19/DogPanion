@@ -96,6 +96,15 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         self.mapButton.isEnabled = enabled
         self.imagesButton.isEnabled = enabled
         self.arrow.isHidden = enabled
+        if enabled {
+            self.healthButton.alpha = 1.0
+            self.mapButton.alpha = 1.0
+            self.imagesButton.alpha = 1.0
+        } else {
+            self.healthButton.alpha = 0.25
+            self.mapButton.alpha = 0.25
+            self.imagesButton.alpha = 0.25
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
