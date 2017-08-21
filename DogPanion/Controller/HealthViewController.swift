@@ -39,6 +39,11 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        getweights()
+    }
+    
     func setup() {
         self.petNameLabel.text = pet?.name
         if let breed = pet?.breed {
@@ -54,14 +59,17 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
             if let birthday = health.birthday as Date? {
                 self.birthdayButton.setTitle(birthday.toString(), for: .normal)
             }
-            if let weight = pet?.health?.weight?.allObjects as? [Weight] {
-                if weight.count > 0 {
-                    let sortedWeight = weight.sorted(by: {($0.dateMeasured)?.compare(($1.dateMeasured! as Date)) == .orderedDescending })
-                    let stringWeight = String(format:"%.1f", (sortedWeight.first?.weight)!)
-                    self.weightLabel.setTitle(stringWeight, for: .normal)
-                }
-            }
             self.notificationSwitch.isOn = health.notifications
+        }
+    }
+    
+    func getweights() {
+        if let weight = pet?.health?.weight?.allObjects as? [Weight] {
+            if weight.count > 0 {
+                let sortedWeight = weight.sorted(by: {($0.dateMeasured)?.compare(($1.dateMeasured! as Date)) == .orderedDescending })
+                let stringWeight = String(format:"%.1f", (sortedWeight.first?.weight)!)
+                self.weightLabel.setTitle(stringWeight, for: .normal)
+            }
         }
     }
     
@@ -78,6 +86,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
             if var weights = self.pet?.health?.weight?.allObjects as? [Weight] {
                 Weight.orderWeightByDate(weights: &weights)
                 weightVC.weights = weights
+                weightVC.petName = self.petNameLabel.text
             }
         }
     }
@@ -212,8 +221,6 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
             self.dismiss(animated: true, completion: nil)
         }
     }
-    
-    
     
     func removeBlurView() {
         if let blurView = blurEffectView {

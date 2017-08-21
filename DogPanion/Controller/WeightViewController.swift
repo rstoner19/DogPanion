@@ -15,6 +15,7 @@ class WeightViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBOutlet weak var weightLineChart: LineChart!
     
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var weightLabel: UILabel!
     @IBOutlet weak var alertLabel: UILabel!
@@ -30,6 +31,12 @@ class WeightViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
         self.delegate?.dismissVC(object: true)
+    }
+    
+    var petName: String? = nil {
+        didSet {
+            self.nameLabel.text = self.petName
+        }
     }
     
     func setup() {
@@ -73,13 +80,28 @@ class WeightViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "weightCell", for: indexPath) as! WeightCell
-        if let weight = weights?[indexPath.row] {
+        guard let count = weights?.count else { return cell }
+        if let weight = weights?[count - 1 - indexPath.row] {
             let measurement = Locale.current.usesMetricSystem ? " kg" : " lbs"
             cell.weight = weight.weight
             cell.dateLabel.text = (weight.dateMeasured! as Date).toString()
             cell.weightLabel.text = String(format:"%.1f", weight.weight) + measurement
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            guard let count = weights?.count else { return }
+            guard let weight = weights?.remove(at: (count - 1 - indexPath.row)) else { return }
+            guard let context = weight.managedObjectContext else { return }
+            context.delete(weight)
+            CoreDataManager.shared.saveItem(context: context, saveItem: "Delete weight item")
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.endUpdates()
+            setupGraph()
+        }
     }
     
 }
