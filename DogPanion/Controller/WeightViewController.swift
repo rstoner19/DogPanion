@@ -12,6 +12,8 @@ class WeightViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var delegate: DismissVCDelegate? = nil
     var weights: [Weight]? = nil
+    var petName: String? = nil
+    var points: [CGPoint] = []
     
     @IBOutlet weak var weightLineChart: LineChart!
     
@@ -33,16 +35,11 @@ class WeightViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.delegate?.dismissVC(object: true)
     }
     
-    var petName: String? = nil {
-        didSet {
-            self.nameLabel.text = self.petName
-        }
-    }
-    
     func setup() {
         let locale = Locale.current
         self.weightLabel.transform = CGAffineTransform.init(rotationAngle: -CGFloat.pi/2)
         self.weightLabel.text = locale.usesMetricSystem ? "Weight: (kg)" : "Weight: (lbs)"
+        self.nameLabel.text = self.petName
     }
     
     func setupTableView() {
@@ -52,10 +49,10 @@ class WeightViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     func setupGraph() {
-        var points: [CGPoint] = []
         if var weights = self.weights {
             if weights.count > 1 {
-                Weight.orderWeightByDate(weights: &weights)
+                if points.isEmpty { Weight.orderWeightByDate(weights: &weights) }
+                points = []
                 let units = Weight.getDayRange(weights: weights)
                 guard let initialDate = weights.first?.dateMeasured! as Date? else { return }
                 for weight in weights {
@@ -100,7 +97,16 @@ class WeightViewController: UIViewController, UITableViewDelegate, UITableViewDa
             tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.endUpdates()
+            self.weightLineChart.chartTransform = nil
+            self.weightLineChart.circlesHighlightLayer.path = nil
             setupGraph()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if !points.isEmpty {
+            let count = points.count
+            self.weightLineChart.circlesHighlightLayer.path = weightLineChart.circles(atPoints: [self.points[count - 1 - indexPath.row]], withTransform: weightLineChart.chartTransform!, circleSize: 12)
         }
     }
     
