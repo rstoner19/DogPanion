@@ -33,11 +33,6 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         notificationAuthorization()
         setup()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -244,7 +239,12 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
             if let context = pet?.managedObjectContext {
                 let weight = Weight(context: context)
                 weight.dateMeasured = Date() as NSDate
+                if self.weightTextField.text == "" { return }
                 weight.weight = Double(self.weightTextField.text!) ?? 0
+                if weight.weight > 350 {
+                    self.alert(message: "With that weight it appears you have a dire wolf on your hands.  You might want to double check that weight.", title: "That Heavy!?!")
+                    return
+                }
                 pet?.health?.addToWeight(weight)
                 CoreDataManager.shared.saveItem(context: context, saveItem: "weight")
             }

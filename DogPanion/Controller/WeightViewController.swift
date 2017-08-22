@@ -89,8 +89,7 @@ class WeightViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            guard let count = weights?.count else { return }
-            guard let weight = weights?.remove(at: (count - 1 - indexPath.row)) else { return }
+            guard let count = weights?.count, let weight = weights?.remove(at: (count - 1 - indexPath.row)) else { return }
             guard let context = weight.managedObjectContext else { return }
             context.delete(weight)
             CoreDataManager.shared.saveItem(context: context, saveItem: "Delete weight item")

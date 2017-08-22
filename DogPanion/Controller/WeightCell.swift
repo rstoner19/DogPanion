@@ -15,17 +15,12 @@ class WeightCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        setup()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
-    
-    func setup() {
-
     }
     
     var weight: Double? = nil {
@@ -40,8 +35,7 @@ class WeightCell: UITableViewCell {
     }
     
     func addImage(height: CGFloat) {
-        // TODO: Need to update image
-        let image = UIImage(named: "carIcon")
+        let image = UIImage(named: "dogIcon")
         let imageView = UIImageView(image: image)
         let x = self.frame.midX - height / 2 - self.frame.midX * 0.4
         imageView.frame = CGRect(x: x, y: 30 - height / 2, width: height, height: height)
