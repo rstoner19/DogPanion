@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate {
+class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate, DismissVCDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var petNameLabel: UILabel!
@@ -31,6 +31,7 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchB
     var searchMapItems: [MKMapItem]? = nil
     var currentLocationItem: MKMapItem? = nil
     var didUpdateLocation: Bool = false
+    var optionsView: LocationOptions? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,10 +47,10 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchB
         self.vetButton.addBorder(color: .black, width: 0.5, radius: nil)
         self.dogParkButton.addBorder(color: .black, width: 0.5, radius: nil)
         self.petStoreButton.addBorder(color: .black, width: 0.5, radius: nil)
-        searchBar.delegate = self
     }
     
     func setupSearch() {
+        searchBar.delegate = self
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.barTintColor = searchBar.barTintColor
@@ -64,11 +65,24 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchB
         delegate?.dismissVC()
     }
     
+    func test() {
+        let width = self.dogParkButton.bounds.width * 0.9
+        let frame = CGRect(x: self.dogParkButton.frame.midX - width / 2, y: self.dogParkButton.frame.maxY + 100, width: width, height: 100)
+        optionsView = UINib(nibName: "LocationOptions", bundle: nil).instantiate(withOwner: nil, options: nil).first as? LocationOptions
+        if let optionsView = optionsView {
+            optionsView.frame = frame
+            optionsView.layer.cornerRadius = 5.0
+            optionsView.delegate = self
+            self.view.addSubview(optionsView)
+        }
+    }
+    
     @IBAction func setSearchButtonPressed(_ sender: UIButton) {
         removeAnnotations()
         switch sender {
         case self.dogParkButton:
             pinType = .dogPark
+            test()
             searchRequest(queryRequest: "dog park")
         case self.groomingButton:
             pinType = .grooming
@@ -101,6 +115,12 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchB
                 print("no items returned")
             }
         }
+    }
+    
+    // MARK: DismissVC Delegate
+    
+    func dismissVC() {
+        self.optionsView?.removeFromSuperview()
     }
     
     // MARK: MapView
@@ -178,6 +198,7 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchB
         let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDefault]
         MKMapItem.openMaps(with: mapItems, launchOptions: launchOptions)
     }
+    
     
     // MARK: Location Manager
     func checkAuthorizationStatus() {

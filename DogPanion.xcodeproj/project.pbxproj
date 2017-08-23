@@ -21,6 +21,8 @@
 		D71882BA1F27EACA001B94EF /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71882B91F27EACA001B94EF /* NotificationManager.swift */; };
 		D746B18F1F43D3D7001CC3C2 /* WeightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D746B18D1F43D3D7001CC3C2 /* WeightCell.swift */; };
 		D746B1901F43D3D7001CC3C2 /* WeightCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D746B18E1F43D3D7001CC3C2 /* WeightCell.xib */; };
+		D74C6C681F4E16890089F73D /* LocationOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C6C661F4E16890089F73D /* LocationOptions.swift */; };
+		D74C6C691F4E16890089F73D /* LocationOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = D74C6C671F4E16890089F73D /* LocationOptions.xib */; };
 		D75E43391F1B26C10053E735 /* PetLocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E43381F1B26C10053E735 /* PetLocationsViewController.swift */; };
 		D76EDDEF1F10935100A8170E /* PetNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76EDDEE1F10935100A8170E /* PetNameCell.swift */; };
 		D77211D41F22CCE7004B4A1E /* Health+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77211C81F22CCE7004B4A1E /* Health+CoreDataClass.swift */; };
@@ -65,6 +67,8 @@
 		D71882B91F27EACA001B94EF /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		D746B18D1F43D3D7001CC3C2 /* WeightCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightCell.swift; sourceTree = "<group>"; };
 		D746B18E1F43D3D7001CC3C2 /* WeightCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WeightCell.xib; path = ../Controller/WeightCell.xib; sourceTree = "<group>"; };
+		D74C6C661F4E16890089F73D /* LocationOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationOptions.swift; sourceTree = "<group>"; };
+		D74C6C671F4E16890089F73D /* LocationOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LocationOptions.xib; path = ../Controller/LocationOptions.xib; sourceTree = "<group>"; };
 		D75E43381F1B26C10053E735 /* PetLocationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetLocationsViewController.swift; sourceTree = "<group>"; };
 		D76EDDEE1F10935100A8170E /* PetNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetNameCell.swift; sourceTree = "<group>"; };
 		D77211C81F22CCE7004B4A1E /* Health+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Health+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -192,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				D7ADB57A1F0BFCBC0054F345 /* Main.storyboard */,
+				D74C6C671F4E16890089F73D /* LocationOptions.xib */,
 				1D3DE1BE1F37B2160068B98A /* MedVacCell.xib */,
 				D746B18E1F43D3D7001CC3C2 /* WeightCell.xib */,
 				D7ADB5801F0BFCBC0054F345 /* Assets.xcassets */,
@@ -221,6 +226,7 @@
 			children = (
 				D700BB551F1B2CB600822AD6 /* ImageCustomFlowLayout.swift */,
 				D746B18D1F43D3D7001CC3C2 /* WeightCell.swift */,
+				D74C6C661F4E16890089F73D /* LocationOptions.swift */,
 				D7D1691B1F290FED00EAAEB2 /* MedVacCell.swift */,
 				D7ADB58B1F0C0DEF0054F345 /* PetImageCell.swift */,
 				D76EDDEE1F10935100A8170E /* PetNameCell.swift */,
@@ -293,6 +299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7ADB5841F0BFCBC0054F345 /* LaunchScreen.storyboard in Resources */,
+				D74C6C691F4E16890089F73D /* LocationOptions.xib in Resources */,
 				D746B1901F43D3D7001CC3C2 /* WeightCell.xib in Resources */,
 				1D3DE1C01F37B2160068B98A /* MedVacCell.xib in Resources */,
 				D7ADB5811F0BFCBC0054F345 /* Assets.xcassets in Resources */,
@@ -315,6 +322,7 @@
 				1DD9D13B1F3CED6400D0B14C /* WeightViewController.swift in Sources */,
 				D70D1C181F1546D600FFAD15 /* GeneralProtocols.swift in Sources */,
 				D77211DB1F22CCE7004B4A1E /* PetImages+CoreDataProperties.swift in Sources */,
+				D74C6C681F4E16890089F73D /* LocationOptions.swift in Sources */,
 				D7D1691D1F290FED00EAAEB2 /* MedVacCell.swift in Sources */,
 				D7F0B0EE1F11579D006FEA6C /* AddImageViewController.swift in Sources */,
 				D7D1691A1F28426100EAAEB2 /* MedVacViewController.swift in Sources */,
