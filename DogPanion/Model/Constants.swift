@@ -10,7 +10,7 @@ import UIKit
 
 class Constants {
     static let appName = "DogPanion"
-    static let frequencyElements  = [["Daily", "Weekly", "Monthly", "Quarterly", "Semi-Annually", "Annually"],["Morning", "Afternoon", "Evening"]]
+    static let frequencyElements  = [["Twice Daily", "Daily", "Weekly", "Monthly", "Quarterly", "Semi-Annually", "Annually"],["Morning", "Afternoon", "Evening"]]
     
     static let blueDateColor = UIColor(red: 1/255, green: 25/255, blue: 147/255, alpha: 1.0)
     static let pastDueColor = UIColor(red: 248/255, green: 198/255, blue: 198/255, alpha: 1.0)

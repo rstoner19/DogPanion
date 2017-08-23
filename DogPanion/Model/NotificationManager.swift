@@ -28,7 +28,7 @@ class NotificationManager {
         
         switch timeofDay {
         case "Morning":
-            components.hour = 9
+            components.hour = 7
         case "Afternoon":
             components.hour = 12
         case "Evening":
@@ -38,6 +38,11 @@ class NotificationManager {
         }
         
         switch frequency {
+        case "Twice Daily":
+            components.hour = 7
+            var newComponent = DateComponents()
+            newComponent.hour = 17
+            dateComponents.append(newComponent)
         case "Daily":
             break
         case "Weekly":
