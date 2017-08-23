@@ -12,6 +12,7 @@ class LineChart: UIView {
     
     let lineLayer = CAShapeLayer()
     let circlesLayer = CAShapeLayer()
+    let circlesHighlightLayer = CAShapeLayer()
     
     var chartTransform: CGAffineTransform?
     
@@ -43,6 +44,12 @@ class LineChart: UIView {
         }
     }
     
+    @IBInspectable var highLightColor: UIColor = UIColor.green {
+        didSet {
+            circlesHighlightLayer.fillColor = highLightColor.cgColor
+        }
+    }
+    
     @IBInspectable var lineColor: UIColor = UIColor.green {
         didSet {
             lineLayer.strokeColor = lineColor.cgColor
@@ -64,7 +71,9 @@ class LineChart: UIView {
         lineLayer.fillColor = UIColor.clear.cgColor
         lineLayer.strokeColor = lineColor.cgColor
         layer.addSublayer(circlesLayer)
+        layer.addSublayer(circlesHighlightLayer)
         circlesLayer.fillColor = circleColor.cgColor
+        circlesHighlightLayer.fillColor = highLightColor.cgColor
         layer.borderWidth = 1
         layer.borderColor = axisColor.cgColor
     }
@@ -73,6 +82,7 @@ class LineChart: UIView {
         super.layoutSubviews()
         lineLayer.frame = bounds
         circlesLayer.frame = bounds
+        circlesHighlightLayer.frame = bounds
         if let d = data{
             setTransform(minX: xMin, maxX: xMax, minY: yMin, maxY: yMax)
             plot(d)
@@ -204,14 +214,14 @@ class LineChart: UIView {
         linePath.addLines(between: points, transform: chartTransform!)
         lineLayer.path = linePath
         if showPoints {
-            circlesLayer.path = circles(atPoints: points, withTransform: chartTransform!)
+            circlesLayer.path = circles(atPoints: points, withTransform: chartTransform!, circleSize: nil)
         }
     }
     
-    func circles(atPoints points: [CGPoint], withTransform t: CGAffineTransform) -> CGPath {
+    func circles(atPoints points: [CGPoint], withTransform t: CGAffineTransform, circleSize: CGFloat?) -> CGPath {
         
         let path = CGMutablePath()
-        let radius = lineLayer.lineWidth * circleSizeMultiplier/2
+        let radius = circleSize == nil ? lineLayer.lineWidth * circleSizeMultiplier/2 : lineLayer.lineWidth * circleSize!/2
         for i in points {
             let p = i.applying(t)
             let rect = CGRect(x: p.x - radius, y: p.y - radius, width: radius * 2, height: radius * 2)

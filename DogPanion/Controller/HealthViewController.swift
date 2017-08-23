@@ -33,10 +33,10 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         notificationAuthorization()
         setup()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        getweights()
     }
     
     func setup() {
@@ -54,14 +54,17 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
             if let birthday = health.birthday as Date? {
                 self.birthdayButton.setTitle(birthday.toString(), for: .normal)
             }
-            if let weight = pet?.health?.weight?.allObjects as? [Weight] {
-                if weight.count > 0 {
-                    let sortedWeight = weight.sorted(by: {($0.dateMeasured)?.compare(($1.dateMeasured! as Date)) == .orderedDescending })
-                    let stringWeight = String(format:"%.1f", (sortedWeight.first?.weight)!)
-                    self.weightLabel.setTitle(stringWeight, for: .normal)
-                }
-            }
             self.notificationSwitch.isOn = health.notifications
+        }
+    }
+    
+    func getweights() {
+        if let weight = pet?.health?.weight?.allObjects as? [Weight] {
+            if weight.count > 0 {
+                let sortedWeight = weight.sorted(by: {($0.dateMeasured)?.compare(($1.dateMeasured! as Date)) == .orderedDescending })
+                let stringWeight = String(format:"%.1f", (sortedWeight.first?.weight)!)
+                self.weightLabel.setTitle(stringWeight, for: .normal)
+            }
         }
     }
     
@@ -78,6 +81,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
             if var weights = self.pet?.health?.weight?.allObjects as? [Weight] {
                 Weight.orderWeightByDate(weights: &weights)
                 weightVC.weights = weights
+                weightVC.petName = self.petNameLabel.text
             }
         }
     }
@@ -213,8 +217,6 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         }
     }
     
-    
-    
     func removeBlurView() {
         if let blurView = blurEffectView {
             blurView.removeFromSuperview()
@@ -237,7 +239,12 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
             if let context = pet?.managedObjectContext {
                 let weight = Weight(context: context)
                 weight.dateMeasured = Date() as NSDate
+                if self.weightTextField.text == "" { return }
                 weight.weight = Double(self.weightTextField.text!) ?? 0
+                if weight.weight > 350 {
+                    self.alert(message: "With that weight it appears you have a dire wolf on your hands.  You might want to double check that weight.", title: "That Heavy!?!")
+                    return
+                }
                 pet?.health?.addToWeight(weight)
                 CoreDataManager.shared.saveItem(context: context, saveItem: "weight")
             }

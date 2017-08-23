@@ -25,6 +25,8 @@ class AddMedVac {
     class func timeToAdd(frequency: String, date: Date) -> Date {
         let dueDate: Date
         switch frequency {
+            case "Twice Daily":
+            dueDate = date.addHalfDay()
             case "Daily":
             dueDate = date.addDay()
             case "Weekly":
@@ -44,18 +46,20 @@ class AddMedVac {
     class func pickerComponents(frequency: String) -> Int {
         let component: Int
         switch frequency {
-        case "Daily":
+        case "Twice Daily":
             component = 0
-        case "Weekly":
+        case "Daily":
             component = 1
-        case "Monthly":
+        case "Weekly":
             component = 2
-        case "Quarterly":
+        case "Monthly":
             component = 3
-        case "Semi-Annually":
+        case "Quarterly":
             component = 4
-        case "Annually":
+        case "Semi-Annually":
             component = 5
+        case "Annually":
+            component = 6
         default:
             component = 0
         }

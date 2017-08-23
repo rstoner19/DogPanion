@@ -15,6 +15,10 @@ extension Date {
         return formatter.string(from: self)
     }
     
+    func addHalfDay() -> Date {
+        return self.addingTimeInterval(43200)
+    }
+    
     func addDay() -> Date {
         return self.addingTimeInterval(86400)
     }

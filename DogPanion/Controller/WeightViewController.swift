@@ -12,9 +12,12 @@ class WeightViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var delegate: DismissVCDelegate? = nil
     var weights: [Weight]? = nil
+    var petName: String? = nil
+    var points: [CGPoint] = []
     
     @IBOutlet weak var weightLineChart: LineChart!
     
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var weightLabel: UILabel!
     @IBOutlet weak var alertLabel: UILabel!
@@ -36,6 +39,7 @@ class WeightViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let locale = Locale.current
         self.weightLabel.transform = CGAffineTransform.init(rotationAngle: -CGFloat.pi/2)
         self.weightLabel.text = locale.usesMetricSystem ? "Weight: (kg)" : "Weight: (lbs)"
+        self.nameLabel.text = self.petName
     }
     
     func setupTableView() {
@@ -45,10 +49,10 @@ class WeightViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     func setupGraph() {
-        var points: [CGPoint] = []
         if var weights = self.weights {
             if weights.count > 1 {
-                Weight.orderWeightByDate(weights: &weights)
+                if points.isEmpty { Weight.orderWeightByDate(weights: &weights) }
+                points = []
                 let units = Weight.getDayRange(weights: weights)
                 guard let initialDate = weights.first?.dateMeasured! as Date? else { return }
                 for weight in weights {
@@ -73,13 +77,36 @@ class WeightViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "weightCell", for: indexPath) as! WeightCell
-        if let weight = weights?[indexPath.row] {
+        guard let count = weights?.count else { return cell }
+        if let weight = weights?[count - 1 - indexPath.row] {
             let measurement = Locale.current.usesMetricSystem ? " kg" : " lbs"
             cell.weight = weight.weight
             cell.dateLabel.text = (weight.dateMeasured! as Date).toString()
             cell.weightLabel.text = String(format:"%.1f", weight.weight) + measurement
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            guard let count = weights?.count, let weight = weights?.remove(at: (count - 1 - indexPath.row)) else { return }
+            guard let context = weight.managedObjectContext else { return }
+            context.delete(weight)
+            CoreDataManager.shared.saveItem(context: context, saveItem: "Delete weight item")
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.endUpdates()
+            self.weightLineChart.chartTransform = nil
+            self.weightLineChart.circlesHighlightLayer.path = nil
+            setupGraph()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if !points.isEmpty {
+            let count = points.count
+            self.weightLineChart.circlesHighlightLayer.path = weightLineChart.circles(atPoints: [self.points[count - 1 - indexPath.row]], withTransform: weightLineChart.chartTransform!, circleSize: 12)
+        }
     }
     
 }
