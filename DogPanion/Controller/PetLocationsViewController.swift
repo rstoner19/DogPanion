@@ -21,6 +21,11 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchB
     @IBOutlet weak var vetButton: UIButton!
     @IBOutlet weak var petStoreButton: UIButton!
     
+    @IBOutlet var dogParkGesture: UILongPressGestureRecognizer!
+    @IBOutlet var petStoreGesture: UILongPressGestureRecognizer!
+    @IBOutlet var groomingGesture: UILongPressGestureRecognizer!
+    @IBOutlet var vetGesture: UILongPressGestureRecognizer!
+    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchTableView: UITableView!
     
@@ -65,24 +70,12 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchB
         delegate?.dismissVC()
     }
     
-    func test() {
-        let width = self.dogParkButton.bounds.width * 0.9
-        let frame = CGRect(x: self.dogParkButton.frame.midX - width / 2, y: self.dogParkButton.frame.maxY + 100, width: width, height: 100)
-        optionsView = UINib(nibName: "LocationOptions", bundle: nil).instantiate(withOwner: nil, options: nil).first as? LocationOptions
-        if let optionsView = optionsView {
-            optionsView.frame = frame
-            optionsView.layer.cornerRadius = 5.0
-            optionsView.delegate = self
-            self.view.addSubview(optionsView)
-        }
-    }
     
     @IBAction func setSearchButtonPressed(_ sender: UIButton) {
         removeAnnotations()
         switch sender {
         case self.dogParkButton:
             pinType = .dogPark
-            test()
             searchRequest(queryRequest: "dog park")
         case self.groomingButton:
             pinType = .grooming
@@ -95,6 +88,17 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchB
             searchRequest(queryRequest: "Pet Stores")
         default:
             break
+        }
+    }
+    
+    @IBAction func dogParkLongPress(_ sender: UILongPressGestureRecognizer) {
+        if sender.state == .began {
+            switch sender {
+            case dogParkGesture:
+                searchOptions(pinType: .dogPark, button: self.dogParkButton)
+            default:
+                break
+            }
         }
     }
     
@@ -117,10 +121,42 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchB
         }
     }
     
+    func searchOptions(pinType: LocationType, button: UIButton) {
+        // TODO: Need to alter buttons options based on pinType
+        self.pinType = pinType
+        let frame = getFrame(button: button)
+        if let optionsView = PetLocations.getOptions(frame: frame) {
+            optionsView.delegate = self
+            self.view.addSubview(optionsView)
+            UIView.animate(withDuration: 0.5, animations: {
+                optionsView.transform = CGAffineTransform(scaleX: 1, y: 1)
+                optionsView.alpha = 1.0
+            })
+        }
+    }
+    
+    func getFrame(button: UIButton) -> CGRect {
+        let width = button.bounds.width * 0.9
+        return CGRect(x: button.frame.midX - width / 2, y: button.frame.maxY + 100, width: width, height: 100)
+    }
+    
     // MARK: DismissVC Delegate
     
     func dismissVC() {
         self.optionsView?.removeFromSuperview()
+    }
+    
+    func dismissVC(object: Any) {
+        if let searchString = object as? String {
+            if searchString != "" {
+                searchRequest(queryRequest: searchString)
+                // TODO: need to get pinType
+                // TODO: Need to add custom pins for additional search
+                // pinType = functionToGetTypeBased on String -> pinType? (put in model)
+            } else { return }
+        }
+        self.optionsView?.removeFromSuperview()
+
     }
     
     // MARK: MapView
@@ -157,7 +193,7 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchB
             pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseID)
             pinView?.canShowCallout = true
             if let pinType = pinType {
-                pinView?.image = setPinImage(pinType: pinType)
+                pinView?.image = PetLocations.setPinImage(pinType: pinType)
             }
             pinView?.centerOffset = CGPoint(x: 0, y: -25)
             let button = UIButton(type: .custom)
@@ -169,21 +205,6 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchB
             pinView?.annotation = annotation
         }
         return pinView
-    }
-    
-    func setPinImage(pinType: LocationType) -> UIImage {
-        let image: UIImage
-        switch pinType {
-        case .petStore:
-            image = UIImage(named: "storePin")!
-        case .dogPark:
-            image = UIImage(named: "parkPin")!
-        case .grooming:
-            image = UIImage(named: "groomingPin")!
-        case .vet:
-            image = UIImage(named: "vetPin")!
-        }
-        return image
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {

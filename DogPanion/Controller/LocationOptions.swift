@@ -12,12 +12,12 @@ class LocationOptions: UIView {
     
     var delegate: DismissVCDelegate? = nil
     
-    @IBAction func firstButtonPressed(_ sender: UIButton) {
-        delegate?.dismissVC()
-    }
+    @IBOutlet weak var firstButton: UIButton!
+    @IBOutlet weak var secondButton: UIButton!
+    @IBOutlet weak var thirdButton: UIButton!
     
-    @IBAction func secondButtonPressed(_ sender: UIButton) {
+    @IBAction func searchButtonPressed(_ sender: UIButton) {
+        delegate?.dismissVC(object: sender.currentTitle ?? "")
     }
-   
 
 }

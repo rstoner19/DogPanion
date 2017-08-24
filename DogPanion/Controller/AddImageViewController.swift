@@ -197,6 +197,4 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
         self.dismiss(animated: true, completion: nil)
     }
 
-    
-
 }

@@ -57,5 +57,4 @@ class PopUpViewController: UIViewController {
             }
         });
     }
-
 }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="17A352a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="17A315i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,22 +19,25 @@
                     <rect key="frame" x="8" y="0.0" width="359" height="33.5"/>
                     <state key="normal" title="Button"/>
                     <connections>
-                        <action selector="firstButtonPressed:" destination="i5M-Pr-FkT" eventType="touchUpInside" id="Bcz-52-yC1"/>
+                        <action selector="searchButtonPressed:" destination="i5M-Pr-FkT" eventType="touchUpInside" id="sRW-4h-qgW"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjK-c9-8ax">
                     <rect key="frame" x="8" y="33.5" width="359" height="33"/>
                     <state key="normal" title="Button"/>
                     <connections>
-                        <action selector="secondButtonPressed:" destination="i5M-Pr-FkT" eventType="touchUpInside" id="4oZ-1F-QpN"/>
+                        <action selector="searchButtonPressed:" destination="-1" eventType="touchUpInside" id="xKU-Sm-EZ7"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="APM-CH-vHn">
                     <rect key="frame" x="8" y="66.5" width="359" height="33.5"/>
                     <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="searchButtonPressed:" destination="-1" eventType="touchUpInside" id="QLy-T2-8pL"/>
+                    </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="0.89740640862944165" green="0.89740640862944165" blue="0.89740640862944165" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.89740640862944165" green="0.89740640862944165" blue="0.89740640862944165" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="cjK-c9-8ax" secondAttribute="trailing" constant="8" id="6HB-ay-LRx"/>
                 <constraint firstItem="cjK-c9-8ax" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="7tZ-VR-KDZ"/>
@@ -53,6 +56,11 @@
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="firstButton" destination="EjI-Kc-Lnz" id="E2M-2A-xiX"/>
+                <outlet property="secondButton" destination="cjK-c9-8ax" id="i55-UX-RPT"/>
+                <outlet property="thirdButton" destination="APM-CH-vHn" id="Vv3-Es-eFc"/>
+            </connections>
         </view>
     </objects>
 </document>

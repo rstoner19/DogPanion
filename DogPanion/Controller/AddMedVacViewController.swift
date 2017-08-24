@@ -184,7 +184,6 @@ class AddMedVacViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         } else { return nil }
     }
     
-    
     // MARK: - DismissVC Delegate
     func dismissVC() {
         removeBlurView()
