@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="17A315i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13168.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13147.4"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -242,7 +242,7 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zoom in/out for unique results*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JeF-QJ-Q5u">
-                                <rect key="frame" x="231" y="713" width="175" height="15"/>
+                                <rect key="frame" x="232.33333333333337" y="713" width="173.66666666666663" height="15"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                 <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -337,9 +337,21 @@
                         <action selector="dogParkLongPress:" destination="xQJ-23-ygn" id="03q-0O-T8H"/>
                     </connections>
                 </pongPressGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="9D9-10-sS5"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="X7Q-9Z-ur8"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="DV2-xj-W64"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="9D9-10-sS5">
+                    <connections>
+                        <action selector="dogParkLongPress:" destination="xQJ-23-ygn" id="a6F-1B-jb8"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="X7Q-9Z-ur8">
+                    <connections>
+                        <action selector="dogParkLongPress:" destination="xQJ-23-ygn" id="Udw-2A-51E"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="DV2-xj-W64">
+                    <connections>
+                        <action selector="dogParkLongPress:" destination="xQJ-23-ygn" id="8ah-wZ-yRZ"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-739" y="902"/>
         </scene>
@@ -389,7 +401,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="petNameCell" id="Tqc-V8-rSv" customClass="PetNameCell" customModule="DogPanion" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="-9" width="131" height="97"/>
+                                                <rect key="frame" x="0.0" y="-8.6666666666666661" width="131" height="97"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="131" height="97"/>
@@ -1420,7 +1432,7 @@ Images</string>
                                 <rect key="frame" x="36" y="96" width="358" height="368"/>
                                 <subviews>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*Not enough data to graph changes yet." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HML-Dm-tNJ">
-                                        <rect key="frame" x="90" y="168" width="179" height="34"/>
+                                        <rect key="frame" x="90" y="167.33333333333331" width="179" height="33.666666666666686"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1491,7 +1503,7 @@ Images</string>
                                 <rect key="frame" x="0.0" y="503" width="414" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weights" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7HD-hb-LVx">
-                                        <rect key="frame" x="177" y="0.0" width="62" height="31"/>
+                                        <rect key="frame" x="176" y="0.0" width="62" height="31"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1689,7 +1701,7 @@ Images</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Given:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BgG-3L-LIJ">
-                                <rect key="frame" x="20" y="159" width="93" height="21"/>
+                                <rect key="frame" x="20" y="159" width="92" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1768,7 +1780,7 @@ Images</string>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BaR-Ki-s0L">
-                                <rect key="frame" x="155" y="103" width="240" height="30"/>
+                                <rect key="frame" x="156" y="103" width="239" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES"/>
@@ -2021,7 +2033,7 @@ Images</string>
                                 <rect key="frame" x="0.0" y="88" width="414" height="74"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WWK-gN-iMm">
-                                        <rect key="frame" x="167" y="8" width="82" height="21"/>
+                                        <rect key="frame" x="166" y="8" width="82" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -2112,7 +2124,7 @@ Images</string>
                                 <rect key="frame" x="0.0" y="162" width="414" height="221"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBH-yr-ibf">
-                                        <rect key="frame" x="175" y="95" width="65" height="29"/>
+                                        <rect key="frame" x="175" y="96.666666666666686" width="65" height="29"/>
                                         <string key="text">Select/Add 
 Image</string>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>

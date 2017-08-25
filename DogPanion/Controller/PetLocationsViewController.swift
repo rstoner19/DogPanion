@@ -70,9 +70,9 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchB
         delegate?.dismissVC()
     }
     
-    
     @IBAction func setSearchButtonPressed(_ sender: UIButton) {
         removeAnnotations()
+        removeOptions()
         switch sender {
         case self.dogParkButton:
             pinType = .dogPark
@@ -93,9 +93,16 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchB
     
     @IBAction func dogParkLongPress(_ sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
+            removeOptions()
             switch sender {
             case dogParkGesture:
                 searchOptions(pinType: .dogPark, button: self.dogParkButton)
+            case vetGesture:
+                searchOptions(pinType: .vet, button: self.vetButton)
+            case petStoreGesture:
+                searchOptions(pinType: .petStore, button: self.petStoreButton)
+            case groomingGesture:
+                searchOptions(pinType: .grooming, button: self.groomingButton)
             default:
                 break
             }
@@ -122,10 +129,10 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchB
     }
     
     func searchOptions(pinType: LocationType, button: UIButton) {
-        // TODO: Need to alter buttons options based on pinType
         self.pinType = pinType
         let frame = getFrame(button: button)
-        if let optionsView = PetLocations.getOptions(frame: frame) {
+        self.optionsView = PetLocations.getOptions(frame: frame, pinType: pinType)
+        if let optionsView = self.optionsView {
             optionsView.delegate = self
             self.view.addSubview(optionsView)
             UIView.animate(withDuration: 0.5, animations: {
@@ -140,6 +147,13 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchB
         return CGRect(x: button.frame.midX - width / 2, y: button.frame.maxY + 100, width: width, height: 100)
     }
     
+    func removeOptions() {
+        if let _ = self.optionsView {
+            self.optionsView?.removeFromSuperview()
+            self.optionsView = nil
+        }
+    }
+    
     // MARK: DismissVC Delegate
     
     func dismissVC() {
@@ -147,6 +161,7 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchB
     }
     
     func dismissVC(object: Any) {
+        removeAnnotations()
         if let searchString = object as? String {
             if searchString != "" {
                 searchRequest(queryRequest: searchString)
@@ -155,8 +170,7 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchB
                 // pinType = functionToGetTypeBased on String -> pinType? (put in model)
             } else { return }
         }
-        self.optionsView?.removeFromSuperview()
-
+        removeOptions()
     }
     
     // MARK: MapView
