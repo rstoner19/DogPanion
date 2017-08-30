@@ -90,6 +90,7 @@
                                             <color key="titleColor" red="0.4872157786407485" green="0.029368533188546264" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
+                                            <action selector="forceTouchCheck:forEvent:" destination="xQJ-23-ygn" eventType="touchDragInside" id="an1-4Z-nfi"/>
                                             <action selector="setSearchButtonPressed:" destination="xQJ-23-ygn" eventType="touchUpInside" id="Cti-CW-0VY"/>
                                             <outletCollection property="gestureRecognizers" destination="X7Q-9Z-ur8" appends="YES" id="SKx-aa-hNg"/>
                                         </connections>
@@ -102,6 +103,7 @@
                                             <color key="titleColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
+                                            <action selector="forceTouchCheck:forEvent:" destination="xQJ-23-ygn" eventType="touchDragInside" id="glZ-Qm-h9D"/>
                                             <action selector="setSearchButtonPressed:" destination="xQJ-23-ygn" eventType="touchUpInside" id="Z0i-Pj-286"/>
                                             <outletCollection property="gestureRecognizers" destination="9D9-10-sS5" appends="YES" id="0z8-c1-zXj"/>
                                         </connections>
@@ -114,6 +116,7 @@
                                             <color key="titleColor" red="0.88600491751269039" green="0.016938284882447186" blue="0.00864332217689112" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
+                                            <action selector="forceTouchCheck:forEvent:" destination="xQJ-23-ygn" eventType="touchDragInside" id="u8N-Mm-rvY"/>
                                             <action selector="setSearchButtonPressed:" destination="xQJ-23-ygn" eventType="touchUpInside" id="gag-fj-f3f"/>
                                             <outletCollection property="gestureRecognizers" destination="DV2-xj-W64" appends="YES" id="x1i-35-ApO"/>
                                         </connections>
@@ -139,6 +142,7 @@
                                             </mask>
                                         </variation>
                                         <connections>
+                                            <action selector="forceTouchCheck:forEvent:" destination="xQJ-23-ygn" eventType="touchDragInside" id="0ml-KC-kue"/>
                                             <action selector="setSearchButtonPressed:" destination="xQJ-23-ygn" eventType="touchUpInside" id="xJX-j1-SYZ"/>
                                             <outletCollection property="gestureRecognizers" destination="iHK-7j-dbg" appends="YES" id="vP6-XL-qnt"/>
                                         </connections>
@@ -247,6 +251,12 @@
                                 <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Force Touch/Long Press buttons for additional options" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ImS-bz-NT7">
+                                <rect key="frame" x="8" y="266" width="398" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -256,7 +266,9 @@
                             <constraint firstItem="GFH-7D-HbF" firstAttribute="top" secondItem="JeF-QJ-Q5u" secondAttribute="bottom" constant="8" id="39D-cS-Etb"/>
                             <constraint firstItem="gXF-ws-v7W" firstAttribute="top" secondItem="X49-oW-QZk" secondAttribute="top" id="3Cz-5N-Auu"/>
                             <constraint firstAttribute="trailing" secondItem="X49-oW-QZk" secondAttribute="trailing" id="6HW-j0-Vn4"/>
+                            <constraint firstItem="ImS-bz-NT7" firstAttribute="leading" secondItem="G0S-2f-FlD" secondAttribute="leading" constant="8" id="ClI-7Y-t01"/>
                             <constraint firstItem="tyY-Wg-B0t" firstAttribute="leading" secondItem="G0S-2f-FlD" secondAttribute="leading" id="D5o-ef-0k3"/>
+                            <constraint firstAttribute="trailing" secondItem="ImS-bz-NT7" secondAttribute="trailing" constant="8" id="ECC-dd-26Z"/>
                             <constraint firstItem="x7y-vM-rz1" firstAttribute="leading" secondItem="tyY-Wg-B0t" secondAttribute="trailing" constant="-0.5" id="Ezv-lH-79B">
                                 <variation key="heightClass=compact-widthClass=compact" constant="0.0"/>
                             </constraint>
@@ -280,6 +292,7 @@
                             <constraint firstItem="x7y-vM-rz1" firstAttribute="height" secondItem="G0S-2f-FlD" secondAttribute="height" multiplier="0.6" id="pd6-my-BDy"/>
                             <constraint firstItem="x7y-vM-rz1" firstAttribute="width" secondItem="G0S-2f-FlD" secondAttribute="width" multiplier="0.75" id="prp-vJ-ooc"/>
                             <constraint firstItem="tyY-Wg-B0t" firstAttribute="top" secondItem="X49-oW-QZk" secondAttribute="bottom" id="qNl-QL-lji"/>
+                            <constraint firstItem="ImS-bz-NT7" firstAttribute="top" secondItem="tyY-Wg-B0t" secondAttribute="bottom" constant="8" id="t4v-w7-aka"/>
                             <constraint firstAttribute="trailing" secondItem="tyY-Wg-B0t" secondAttribute="trailing" id="uJb-8E-QGI"/>
                         </constraints>
                         <variation key="default">
@@ -321,6 +334,7 @@
                         <outlet property="dogParkGesture" destination="iHK-7j-dbg" id="dZU-VH-TPI"/>
                         <outlet property="groomingButton" destination="YCg-ao-nTr" id="kuB-Vm-Nb9"/>
                         <outlet property="groomingGesture" destination="X7Q-9Z-ur8" id="H3n-j8-vgi"/>
+                        <outlet property="instructionLabel" destination="ImS-bz-NT7" id="FKM-aT-GJ3"/>
                         <outlet property="mapView" destination="x7y-vM-rz1" id="e7j-Dw-bjU"/>
                         <outlet property="petNameLabel" destination="g0p-hk-M2K" id="Wdh-WE-i1M"/>
                         <outlet property="petStoreButton" destination="MGw-Vx-tuo" id="Zb3-Ja-I9p"/>
@@ -332,22 +346,22 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Td-YW-ufO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="iHK-7j-dbg">
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.69999999999999996" id="iHK-7j-dbg">
                     <connections>
                         <action selector="dogParkLongPress:" destination="xQJ-23-ygn" id="03q-0O-T8H"/>
                     </connections>
                 </pongPressGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="9D9-10-sS5">
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.69999999999999996" id="9D9-10-sS5">
                     <connections>
                         <action selector="dogParkLongPress:" destination="xQJ-23-ygn" id="a6F-1B-jb8"/>
                     </connections>
                 </pongPressGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="X7Q-9Z-ur8">
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.69999999999999996" id="X7Q-9Z-ur8">
                     <connections>
                         <action selector="dogParkLongPress:" destination="xQJ-23-ygn" id="Udw-2A-51E"/>
                     </connections>
                 </pongPressGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="DV2-xj-W64">
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.69999999999999996" id="DV2-xj-W64">
                     <connections>
                         <action selector="dogParkLongPress:" destination="xQJ-23-ygn" id="8ah-wZ-yRZ"/>
                     </connections>
