@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="17A315i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LocationOptions" customModule="DogPanion" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="LocationOptions" customModule="DogPanion" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EjI-Kc-Lnz">
+                    <rect key="frame" x="8" y="0.0" width="359" height="33.5"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="searchButtonPressed:" destination="i5M-Pr-FkT" eventType="touchUpInside" id="sRW-4h-qgW"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjK-c9-8ax">
+                    <rect key="frame" x="8" y="33.5" width="359" height="33"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="searchButtonPressed:" destination="-1" eventType="touchUpInside" id="xKU-Sm-EZ7"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="APM-CH-vHn">
+                    <rect key="frame" x="8" y="66.5" width="359" height="33.5"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="searchButtonPressed:" destination="-1" eventType="touchUpInside" id="QLy-T2-8pL"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.89740640862944165" green="0.89740640862944165" blue="0.89740640862944165" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="cjK-c9-8ax" secondAttribute="trailing" constant="8" id="6HB-ay-LRx"/>
+                <constraint firstItem="cjK-c9-8ax" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="7tZ-VR-KDZ"/>
+                <constraint firstItem="cjK-c9-8ax" firstAttribute="height" secondItem="EjI-Kc-Lnz" secondAttribute="height" id="9nt-dm-eLV"/>
+                <constraint firstAttribute="trailing" secondItem="APM-CH-vHn" secondAttribute="trailing" constant="8" id="Cpy-Ja-bEh"/>
+                <constraint firstItem="APM-CH-vHn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="EJ9-gR-nhC"/>
+                <constraint firstItem="cjK-c9-8ax" firstAttribute="top" secondItem="EjI-Kc-Lnz" secondAttribute="bottom" id="EK7-4h-2AQ"/>
+                <constraint firstItem="APM-CH-vHn" firstAttribute="top" secondItem="cjK-c9-8ax" secondAttribute="bottom" id="SbY-jm-yBQ"/>
+                <constraint firstItem="APM-CH-vHn" firstAttribute="height" secondItem="EjI-Kc-Lnz" secondAttribute="height" id="dYp-Z3-OaL"/>
+                <constraint firstAttribute="trailing" secondItem="EjI-Kc-Lnz" secondAttribute="trailing" constant="8" id="ddM-Ha-Nis"/>
+                <constraint firstItem="EjI-Kc-Lnz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="gCK-n3-9pJ"/>
+                <constraint firstAttribute="bottom" secondItem="APM-CH-vHn" secondAttribute="bottom" id="o6h-ur-qqd"/>
+                <constraint firstItem="EjI-Kc-Lnz" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="wOP-Fs-SJA"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="firstButton" destination="EjI-Kc-Lnz" id="E2M-2A-xiX"/>
+                <outlet property="secondButton" destination="cjK-c9-8ax" id="i55-UX-RPT"/>
+                <outlet property="thirdButton" destination="APM-CH-vHn" id="Vv3-Es-eFc"/>
+            </connections>
+        </view>
+    </objects>
+</document>

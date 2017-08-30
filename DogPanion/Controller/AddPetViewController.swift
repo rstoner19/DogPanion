@@ -69,7 +69,6 @@ class AddPetViewController: UIViewController, UITextFieldDelegate {
         self.delegate?.dismissVC()
     }
     
-    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addImageVC" {
@@ -95,6 +94,4 @@ class AddPetViewController: UIViewController, UITextFieldDelegate {
             textField.addBarToKeyboard(message: "Enter Pet Name", viewController: self, buttons: false)
         }
     }
-    
-
 }
