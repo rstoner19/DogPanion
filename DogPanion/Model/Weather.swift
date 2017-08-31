@@ -11,4 +11,10 @@ import Foundation
 
 class Weather {
     
+    let currentWeather: CurrentWeather?
+    
+    init(currentWeather: CurrentWeather) {
+        self.currentWeather = currentWeather
+    }
+    
 }

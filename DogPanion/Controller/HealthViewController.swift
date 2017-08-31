@@ -47,6 +47,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
             }
         }
         setHealthItems()
+        API.shared.GET(latitude: "47.6062", longitude: "-122.3321", time: nil)
     }
     
     func setHealthItems() {
