@@ -133,7 +133,7 @@ class LineChart: UIView {
                     .adding(y: 1)
     
                 label.draw(at: labelDrawPoint,
-                           withAttributes: [NSFontAttributeName: UIFont.systemFont(ofSize: labelFontSize), NSForegroundColorAttributeName: axisColor])
+                           withAttributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: labelFontSize), NSAttributedStringKey.foregroundColor: axisColor])
             }
         }
         for y in stride(from: yMin, through: yMax, by: deltaY) {
@@ -154,8 +154,8 @@ class LineChart: UIView {
     
                 label.draw(at: labelDrawPoint,
                            withAttributes:
-                    [NSFontAttributeName: UIFont.systemFont(ofSize: labelFontSize),
-                     NSForegroundColorAttributeName: axisColor])
+                    [NSAttributedStringKey.font: UIFont.systemFont(ofSize: labelFontSize),
+                     NSAttributedStringKey.foregroundColor: axisColor])
             }
         }
         context.setStrokeColor(axisColor.cgColor)
