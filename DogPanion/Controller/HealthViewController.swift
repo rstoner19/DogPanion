@@ -78,6 +78,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
             if var weights = self.pet?.health?.weight?.allObjects as? [Weight] {
                 Weight.orderWeightByDate(weights: &weights)
                 weightVC.weights = weights
+                weightVC.petName = self.pet?.name
             }
         }
     }
