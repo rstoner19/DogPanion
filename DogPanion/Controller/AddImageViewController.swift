@@ -74,14 +74,14 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     func checkAccess() {
-        let authStatus = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
+        let authStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
         switch  authStatus {
         case .authorized:
             presentImagePicker(.camera)
         case .denied:
             self.alert(message: "Access to Camera Denied. To allow access go to Setting > " + Constants.appName + " allow access to camera.", title: "Access Denied")
         case .notDetermined:
-            AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo, completionHandler: { (_) in
+            AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: { (_) in
                 DispatchQueue.main.async {
                     self.checkAccess()
                 }

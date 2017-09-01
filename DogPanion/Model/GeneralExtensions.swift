@@ -75,7 +75,7 @@ extension String {
     }
     
     func size(withSystemFontSize pointSize: CGFloat) -> CGSize {
-        return (self as NSString).size(attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: pointSize)])
+        return (self as NSString).size(withAttributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: pointSize)])
     }
 }
 

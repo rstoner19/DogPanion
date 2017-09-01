@@ -24,14 +24,25 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
     @IBOutlet weak var petNameLabel: UILabel!
     @IBOutlet weak var weightLabel: UIButton!
     
+    @IBOutlet weak var weatherImage: UIImageView!
+    
     @IBOutlet weak var notificationSwitch: UISwitch!
     
     @IBOutlet weak var breedTextField: UITextField!
     @IBOutlet weak var weightTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         notificationAuthorization()
         setup()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        animateSnow()
+        Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { (_) in
+            self.animateSnow()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,6 +58,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
             }
         }
         setHealthItems()
+        API.shared.GET(latitude: "47.6062", longitude: "-122.3321", time: nil)
     }
     
     func setHealthItems() {
@@ -78,6 +90,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
             if var weights = self.pet?.health?.weight?.allObjects as? [Weight] {
                 Weight.orderWeightByDate(weights: &weights)
                 weightVC.weights = weights
+                weightVC.petName = self.pet?.name
             }
         }
     }
@@ -284,4 +297,44 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         let body = Constants.appName + " wishes " + (pet?.name ?? "your pet") + " a happy birthday! 🐶🎂🎈🎁"
         NotificationManager.scheduleNotification(title: title, body: body, identifier: "\(pet?.name ?? "")birthday", dateCompenents: date, repeatNotifcation: true)
     }
+    
+    // MARK: Weather
+    func animateCloud() {
+        let cloud: UIImage?
+        let random = arc4random_uniform(3)
+        switch random {
+        case 0:
+            cloud = UIImage(named: "cloud")
+        case 1:
+            cloud = UIImage(named: "cloudTwo")
+        default:
+            cloud = UIImage(named: "cloudThree")
+        }
+        let y = weatherImage.frame.minY + 60 + CGFloat(arc4random_uniform(40))
+        let frame = CGRect(x: weatherImage.frame.maxX, y: y, width: 350, height: 110)
+        let cloudView = UIImageView(image: cloud)
+        cloudView.frame = frame
+        self.view.addSubview(cloudView)
+        UIView.animate(withDuration: 30.0 - Double(random), delay: 0, options: .curveLinear, animations: {
+            cloudView.transform = CGAffineTransform(translationX: -self.view.frame.maxX - 600, y: 0)
+        }) { (_) in
+           cloudView.removeFromSuperview()
+        }
+    }
+    
+    func animateSnow() {
+        let snow = UIImage(named: "snow")
+        let y: CGFloat = -100
+        let frame = CGRect(x: weatherImage.frame.minX, y: y, width: self.view.frame.width, height: 140)
+        let snowView = UIImageView(image: snow)
+        snowView.frame = frame
+        self.view.addSubview(snowView)
+        UIView.animate(withDuration: 30.0, delay: 0, options: .curveLinear, animations: {
+            snowView.transform = CGAffineTransform(translationX: 0, y: +400)
+            snowView.alpha = 0.3
+        }) { (_) in
+            snowView.removeFromSuperview()
+        }
+    }
+
 }

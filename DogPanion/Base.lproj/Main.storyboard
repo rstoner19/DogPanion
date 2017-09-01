@@ -837,7 +837,7 @@ Images</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.14130434782609" y="137.68115942028987"/>
+            <point key="canvasLocation" x="134" y="-36"/>
         </scene>
         <!--Add Pet View Controller-->
         <scene sceneID="Sqd-Ax-Y2C">
@@ -1052,20 +1052,20 @@ Images</string>
                         <viewControllerLayoutGuide type="bottom" id="tXJ-Xa-nHT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="daK-OQ-eAf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="750"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0nS-Ef-VLF">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Pet Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="aEd-3G-698">
-                                        <rect key="frame" x="123" y="8" width="169" height="80"/>
+                                        <rect key="frame" x="123" y="8" width="169" height="82"/>
                                         <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="32"/>
                                         <color key="textColor" red="0.0003403453156" green="0.32340699429999997" blue="0.29478102919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6F-G1-Z5m">
-                                        <rect key="frame" x="368" y="33" width="38" height="30"/>
+                                        <rect key="frame" x="368" y="34.333333333333329" width="38" height="29.999999999999986"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                         <state key="normal" title="Done"/>
                                         <connections>
@@ -1085,10 +1085,10 @@ Images</string>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JIb-DQ-oe7">
-                                <rect key="frame" x="0.0" y="88" width="414" height="648"/>
+                                <rect key="frame" x="0.0" y="90" width="414" height="660"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="psK-Fe-7O4">
-                                        <rect key="frame" x="0.0" y="60" width="414" height="60"/>
+                                        <rect key="frame" x="0.0" y="280" width="414" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dog Breed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="c2r-BK-pM8">
                                                 <rect key="frame" x="12" y="19" width="86" height="21"/>
@@ -1133,7 +1133,7 @@ Images</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wDi-c3-Cnd">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                        <rect key="frame" x="0.0" y="220" width="414" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birthday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bx3-rW-qZa">
                                                 <rect key="frame" x="12" y="19" width="71" height="21"/>
@@ -1163,7 +1163,7 @@ Images</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CBc-DP-7ES">
-                                        <rect key="frame" x="0.0" y="120" width="414" height="60"/>
+                                        <rect key="frame" x="0.0" y="340" width="414" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Vym-ED-l76">
                                                 <rect key="frame" x="10" y="19" width="58" height="21"/>
@@ -1204,7 +1204,7 @@ Images</string>
                                         </constraints>
                                     </view>
                                     <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d9A-M1-EfI">
-                                        <rect key="frame" x="202" y="135" width="10" height="30"/>
+                                        <rect key="frame" x="202" y="355" width="10" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
@@ -1214,7 +1214,7 @@ Images</string>
                                         </connections>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xAb-GM-poc">
-                                        <rect key="frame" x="0.0" y="180" width="414" height="60"/>
+                                        <rect key="frame" x="0.0" y="400" width="414" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fR8-YK-6W0">
                                                 <rect key="frame" x="12" y="19" width="101" height="21"/>
@@ -1246,7 +1246,7 @@ Images</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yd7-Qo-7Gr">
-                                        <rect key="frame" x="0.0" y="240" width="414" height="60"/>
+                                        <rect key="frame" x="0.0" y="460" width="414" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vaccines" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="isP-Ry-Hlv">
                                                 <rect key="frame" x="10" y="19" width="74" height="21"/>
@@ -1274,7 +1274,7 @@ Images</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ag-Wq-qgw">
-                                        <rect key="frame" x="0.0" y="300" width="414" height="60"/>
+                                        <rect key="frame" x="0.0" y="520" width="414" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifcation Reminders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gmF-24-9WN">
                                                 <rect key="frame" x="12" y="19" width="183" height="21"/>
@@ -1300,7 +1300,7 @@ Images</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CkO-er-ddz">
-                                        <rect key="frame" x="0.0" y="360" width="414" height="60"/>
+                                        <rect key="frame" x="0.0" y="580" width="414" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete All Pet Info." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="r1Y-6t-BHi">
                                                 <rect key="frame" x="12" y="19" width="151" height="21"/>
@@ -1332,13 +1332,19 @@ Images</string>
                                             <constraint firstItem="r1Y-6t-BHi" firstAttribute="centerY" secondItem="CkO-er-ddz" secondAttribute="centerY" id="zAL-mp-dDK"/>
                                         </constraints>
                                     </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottomBG-2" translatesAutoresizingMaskIntoConstraints="NO" id="XMB-We-9vU">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="220"/>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="FKt-Zw-UiE" firstAttribute="trailing" secondItem="qK8-ES-mYo" secondAttribute="trailing" id="2HQ-bl-CLn"/>
+                                    <constraint firstItem="XMB-We-9vU" firstAttribute="leading" secondItem="JIb-DQ-oe7" secondAttribute="leading" id="4Q3-89-ibO"/>
                                     <constraint firstItem="d9A-M1-EfI" firstAttribute="centerY" secondItem="CBc-DP-7ES" secondAttribute="centerY" id="4f7-cq-lD8"/>
+                                    <constraint firstItem="wDi-c3-Cnd" firstAttribute="top" secondItem="XMB-We-9vU" secondAttribute="bottom" id="4w6-sY-LYP"/>
                                     <constraint firstItem="xAb-GM-poc" firstAttribute="leading" secondItem="JIb-DQ-oe7" secondAttribute="leading" id="6Cw-WE-A8K"/>
                                     <constraint firstAttribute="trailing" secondItem="wDi-c3-Cnd" secondAttribute="trailing" id="9RH-js-AJM"/>
                                     <constraint firstItem="vMW-YO-cqp" firstAttribute="height" secondItem="qK8-ES-mYo" secondAttribute="height" id="9Sl-Wc-qKN"/>
+                                    <constraint firstItem="XMB-We-9vU" firstAttribute="top" secondItem="JIb-DQ-oe7" secondAttribute="top" id="LiE-kI-BF1"/>
                                     <constraint firstItem="wDi-c3-Cnd" firstAttribute="leading" secondItem="JIb-DQ-oe7" secondAttribute="leading" id="N8i-Ue-o8T"/>
                                     <constraint firstAttribute="trailing" secondItem="Yd7-Qo-7Gr" secondAttribute="trailing" id="O0C-jg-ZPA"/>
                                     <constraint firstItem="5ag-Wq-qgw" firstAttribute="top" secondItem="Yd7-Qo-7Gr" secondAttribute="bottom" id="QRH-tv-nTq"/>
@@ -1348,13 +1354,14 @@ Images</string>
                                     <constraint firstItem="5ag-Wq-qgw" firstAttribute="leading" secondItem="JIb-DQ-oe7" secondAttribute="leading" id="Teg-QS-Hs6"/>
                                     <constraint firstItem="CkO-er-ddz" firstAttribute="top" secondItem="5ag-Wq-qgw" secondAttribute="bottom" id="WwN-EZ-OLu"/>
                                     <constraint firstAttribute="trailing" secondItem="psK-Fe-7O4" secondAttribute="trailing" id="XkE-9w-JTJ"/>
-                                    <constraint firstItem="wDi-c3-Cnd" firstAttribute="top" secondItem="JIb-DQ-oe7" secondAttribute="top" id="Y5x-NX-KNH"/>
+                                    <constraint firstItem="wDi-c3-Cnd" firstAttribute="top" secondItem="JIb-DQ-oe7" secondAttribute="top" constant="220" id="Y5x-NX-KNH"/>
                                     <constraint firstItem="vMW-YO-cqp" firstAttribute="width" secondItem="qK8-ES-mYo" secondAttribute="width" id="ZhP-cM-XdL"/>
                                     <constraint firstItem="d9A-M1-EfI" firstAttribute="width" secondItem="Cup-f3-WDe" secondAttribute="width" id="aD7-Xd-mA5"/>
                                     <constraint firstItem="CkO-er-ddz" firstAttribute="leading" secondItem="JIb-DQ-oe7" secondAttribute="leading" id="aWu-zl-xKx"/>
                                     <constraint firstItem="psK-Fe-7O4" firstAttribute="top" secondItem="wDi-c3-Cnd" secondAttribute="bottom" id="cmn-gH-A3Z"/>
                                     <constraint firstItem="psK-Fe-7O4" firstAttribute="leading" secondItem="JIb-DQ-oe7" secondAttribute="leading" id="g0t-qG-nhI"/>
                                     <constraint firstItem="Yd7-Qo-7Gr" firstAttribute="top" secondItem="xAb-GM-poc" secondAttribute="bottom" id="gGy-FR-LW9"/>
+                                    <constraint firstAttribute="trailing" secondItem="XMB-We-9vU" secondAttribute="trailing" id="hS9-Bw-2ZE"/>
                                     <constraint firstItem="CBc-DP-7ES" firstAttribute="top" secondItem="psK-Fe-7O4" secondAttribute="bottom" id="jLn-Q7-SGz"/>
                                     <constraint firstItem="Yd7-Qo-7Gr" firstAttribute="leading" secondItem="JIb-DQ-oe7" secondAttribute="leading" id="kQO-yM-hrU"/>
                                     <constraint firstItem="d9A-M1-EfI" firstAttribute="centerX" secondItem="Cup-f3-WDe" secondAttribute="centerX" id="mUA-17-YoU"/>
@@ -1375,12 +1382,14 @@ Images</string>
                             <constraint firstItem="psK-Fe-7O4" firstAttribute="width" secondItem="daK-OQ-eAf" secondAttribute="width" id="IFT-HO-Idw"/>
                             <constraint firstItem="JIb-DQ-oe7" firstAttribute="width" secondItem="daK-OQ-eAf" secondAttribute="width" id="OXW-ee-3QL"/>
                             <constraint firstItem="tXJ-Xa-nHT" firstAttribute="top" secondItem="JIb-DQ-oe7" secondAttribute="bottom" id="Sdb-jo-8UC"/>
+                            <constraint firstAttribute="trailing" secondItem="JIb-DQ-oe7" secondAttribute="trailing" id="Swz-HD-oTn"/>
                             <constraint firstAttribute="trailing" secondItem="0nS-Ef-VLF" secondAttribute="trailing" id="Xhi-Fp-Jfz"/>
                             <constraint firstItem="JIb-DQ-oe7" firstAttribute="leading" secondItem="daK-OQ-eAf" secondAttribute="leading" id="ZWc-ux-HCs"/>
                             <constraint firstItem="0nS-Ef-VLF" firstAttribute="height" secondItem="daK-OQ-eAf" secondAttribute="height" multiplier="0.12" id="kLB-RK-jom"/>
                             <constraint firstAttribute="trailing" secondItem="JIb-DQ-oe7" secondAttribute="trailing" id="w3x-16-0gh"/>
                         </constraints>
                     </view>
+                    <size key="freeformSize" width="414" height="750"/>
                     <connections>
                         <outlet property="birthdayButton" destination="vab-59-kmt" id="T1W-o8-x6l"/>
                         <outlet property="breedLabel" destination="bQk-J2-cPt" id="SQ8-g5-dqX"/>
@@ -1389,6 +1398,7 @@ Images</string>
                         <outlet property="notificationSwitch" destination="hjw-l8-PHC" id="yeR-U2-tg3"/>
                         <outlet property="petNameLabel" destination="aEd-3G-698" id="JRL-LI-OxU"/>
                         <outlet property="vaccineButton" destination="vMW-YO-cqp" id="zoG-Yq-5qc"/>
+                        <outlet property="weatherImage" destination="XMB-We-9vU" id="8nr-a0-CEy"/>
                         <outlet property="weightLabel" destination="qUQ-vv-On9" id="5Ty-7U-DSp"/>
                         <outlet property="weightTextField" destination="d9A-M1-EfI" id="IhJ-nO-hgB"/>
                         <segue destination="3qe-rB-LAA" kind="showDetail" identifier="medVacVC" id="i8d-dj-PBc"/>
@@ -1396,7 +1406,7 @@ Images</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t85-W1-fZe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="901.79910044977521"/>
+            <point key="canvasLocation" x="134.78260869565219" y="842.93478260869574"/>
         </scene>
         <!--Weight View Controller-->
         <scene sceneID="rdr-ki-aIy">
@@ -2409,6 +2419,7 @@ Image</string>
     </scenes>
     <resources>
         <image name="arrow" width="386" height="266"/>
+        <image name="bottomBG-2" width="632" height="429"/>
         <image name="bottomBG4" width="632" height="429"/>
         <image name="deleteIcon" width="50" height="50"/>
         <image name="dogPanionLogo" width="500" height="500"/>
