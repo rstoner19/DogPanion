@@ -23,6 +23,7 @@
 		D70D1C181F1546D600FFAD15 /* GeneralProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70D1C171F1546D600FFAD15 /* GeneralProtocols.swift */; };
 		D71882B61F27C7BC001B94EF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71882B51F27C7BC001B94EF /* Constants.swift */; };
 		D71882BA1F27EACA001B94EF /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71882B91F27EACA001B94EF /* NotificationManager.swift */; };
+		D737C2731F5A1344006C6F51 /* DailyWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = D737C2721F5A1344006C6F51 /* DailyWeather.swift */; };
 		D746B18F1F43D3D7001CC3C2 /* WeightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D746B18D1F43D3D7001CC3C2 /* WeightCell.swift */; };
 		D746B1901F43D3D7001CC3C2 /* WeightCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D746B18E1F43D3D7001CC3C2 /* WeightCell.xib */; };
 		D75E43391F1B26C10053E735 /* PetLocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E43381F1B26C10053E735 /* PetLocationsViewController.swift */; };
@@ -73,6 +74,7 @@
 		D70D1C171F1546D600FFAD15 /* GeneralProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralProtocols.swift; sourceTree = "<group>"; };
 		D71882B51F27C7BC001B94EF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D71882B91F27EACA001B94EF /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		D737C2721F5A1344006C6F51 /* DailyWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWeather.swift; sourceTree = "<group>"; };
 		D746B18D1F43D3D7001CC3C2 /* WeightCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightCell.swift; sourceTree = "<group>"; };
 		D746B18E1F43D3D7001CC3C2 /* WeightCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WeightCell.xib; path = ../Controller/WeightCell.xib; sourceTree = "<group>"; };
 		D75E43381F1B26C10053E735 /* PetLocationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetLocationsViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +145,16 @@
 				D7D169201F291B4900EAAEB2 /* Vaccines+CoreDataProperties.swift */,
 			);
 			name = "Core Data Classes";
+			sourceTree = "<group>";
+		};
+		D737C2741F5A1359006C6F51 /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				1D5382371F58AD470096205B /* CurrentWeather.swift */,
+				D737C2721F5A1344006C6F51 /* DailyWeather.swift */,
+				D7E49B841F57B74000272F17 /* Weather.swift */,
+			);
+			path = Weather;
 			sourceTree = "<group>";
 		};
 		D7ADB56A1F0BFCBB0054F345 = {
@@ -227,8 +239,7 @@
 				D7C629961F1D3C37004C45F4 /* MapAnnotation.swift */,
 				D71882B91F27EACA001B94EF /* NotificationManager.swift */,
 				1DFF62E61F4F71C100D51EC7 /* PetLocations.swift */,
-				D7E49B841F57B74000272F17 /* Weather.swift */,
-				1D5382371F58AD470096205B /* CurrentWeather.swift */,
+				D737C2741F5A1359006C6F51 /* Weather */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -335,6 +346,7 @@
 				1DD9D13B1F3CED6400D0B14C /* WeightViewController.swift in Sources */,
 				D70D1C181F1546D600FFAD15 /* GeneralProtocols.swift in Sources */,
 				D77211DB1F22CCE7004B4A1E /* PetImages+CoreDataProperties.swift in Sources */,
+				D737C2731F5A1344006C6F51 /* DailyWeather.swift in Sources */,
 				1DFF62E41F4F635C00D51EC7 /* LocationOptions.swift in Sources */,
 				D7D1691D1F290FED00EAAEB2 /* MedVacCell.swift in Sources */,
 				D7F0B0EE1F11579D006FEA6C /* AddImageViewController.swift in Sources */,

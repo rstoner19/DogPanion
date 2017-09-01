@@ -30,9 +30,22 @@ class API {
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions()) as? [String : AnyObject] {
                         let currentWeather: CurrentWeather?
+                        var currentDayWeather: [CurrentWeather] = []
                         if let currentjson = json["currently"] as? [String : AnyObject] {
                             currentWeather = CurrentWeather(json: currentjson)
                         }
+                        if let currentDay = json["hourly"] as? [String: AnyObject], let hourly = currentDay["data"] as? [[String: AnyObject]] {
+                            
+                            for hour in hourly {
+                                guard let hourWeather = CurrentWeather(json: hour) else { break }
+                                currentDayWeather.append(hourWeather)
+                                let time = Date(timeIntervalSince1970: hourWeather.forecastTime)
+                                print(TimeZone.current.secondsFromGMT())
+                                print(time)
+                                
+                            }
+                        }
+                        
                     }
                 } catch {
                     DispatchQueue.main.async {

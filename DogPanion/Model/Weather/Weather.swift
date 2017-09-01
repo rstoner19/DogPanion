@@ -12,9 +12,11 @@ import Foundation
 class Weather {
     
     let currentWeather: CurrentWeather?
+    let currentDayWeather: [CurrentWeather]?
     
-    init(currentWeather: CurrentWeather) {
+    init(currentWeather: CurrentWeather, currentDay: [CurrentWeather]) {
         self.currentWeather = currentWeather
+        self.currentDayWeather = currentDay
     }
     
 }
