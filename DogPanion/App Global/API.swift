@@ -40,8 +40,9 @@ class API {
                                 guard let hourWeather = CurrentWeather(json: hour) else { break }
                                 currentDayWeather.append(hourWeather)
                                 let time = Date(timeIntervalSince1970: hourWeather.forecastTime)
-                                print(TimeZone.current.secondsFromGMT())
-                                print(time)
+                                //print(TimeZone.current.secondsFromGMT())
+                                //print(time)
+                                //print( )
                                 
                             }
                         }

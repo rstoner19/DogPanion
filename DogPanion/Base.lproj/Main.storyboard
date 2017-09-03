@@ -1335,6 +1335,18 @@ Images</string>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottomBG-2" translatesAutoresizingMaskIntoConstraints="NO" id="XMB-We-9vU">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="220"/>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currently:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9T-a0-c2e">
+                                        <rect key="frame" x="8" y="8" width="89.666666666666671" height="26"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="32°, Snow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKj-2x-hMP">
+                                        <rect key="frame" x="104.99999999999999" y="8.3333333333333286" width="93.666666666666643" height="26"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="FKt-Zw-UiE" firstAttribute="trailing" secondItem="qK8-ES-mYo" secondAttribute="trailing" id="2HQ-bl-CLn"/>
@@ -1347,11 +1359,13 @@ Images</string>
                                     <constraint firstItem="XMB-We-9vU" firstAttribute="top" secondItem="JIb-DQ-oe7" secondAttribute="top" id="LiE-kI-BF1"/>
                                     <constraint firstItem="wDi-c3-Cnd" firstAttribute="leading" secondItem="JIb-DQ-oe7" secondAttribute="leading" id="N8i-Ue-o8T"/>
                                     <constraint firstAttribute="trailing" secondItem="Yd7-Qo-7Gr" secondAttribute="trailing" id="O0C-jg-ZPA"/>
+                                    <constraint firstItem="Z9T-a0-c2e" firstAttribute="leading" secondItem="JIb-DQ-oe7" secondAttribute="leading" constant="8" id="QGW-5P-UK8"/>
                                     <constraint firstItem="5ag-Wq-qgw" firstAttribute="top" secondItem="Yd7-Qo-7Gr" secondAttribute="bottom" id="QRH-tv-nTq"/>
                                     <constraint firstAttribute="trailing" secondItem="CBc-DP-7ES" secondAttribute="trailing" id="QVC-RF-8Cf"/>
                                     <constraint firstItem="wDi-c3-Cnd" firstAttribute="width" secondItem="psK-Fe-7O4" secondAttribute="width" id="QiP-Ad-vJY"/>
                                     <constraint firstItem="CBc-DP-7ES" firstAttribute="width" secondItem="psK-Fe-7O4" secondAttribute="width" id="S8s-vK-fsc"/>
                                     <constraint firstItem="5ag-Wq-qgw" firstAttribute="leading" secondItem="JIb-DQ-oe7" secondAttribute="leading" id="Teg-QS-Hs6"/>
+                                    <constraint firstItem="MKj-2x-hMP" firstAttribute="centerY" secondItem="Z9T-a0-c2e" secondAttribute="centerY" id="WIg-nX-QDa"/>
                                     <constraint firstItem="CkO-er-ddz" firstAttribute="top" secondItem="5ag-Wq-qgw" secondAttribute="bottom" id="WwN-EZ-OLu"/>
                                     <constraint firstAttribute="trailing" secondItem="psK-Fe-7O4" secondAttribute="trailing" id="XkE-9w-JTJ"/>
                                     <constraint firstItem="wDi-c3-Cnd" firstAttribute="top" secondItem="JIb-DQ-oe7" secondAttribute="top" constant="220" id="Y5x-NX-KNH"/>
@@ -1359,6 +1373,7 @@ Images</string>
                                     <constraint firstItem="d9A-M1-EfI" firstAttribute="width" secondItem="Cup-f3-WDe" secondAttribute="width" id="aD7-Xd-mA5"/>
                                     <constraint firstItem="CkO-er-ddz" firstAttribute="leading" secondItem="JIb-DQ-oe7" secondAttribute="leading" id="aWu-zl-xKx"/>
                                     <constraint firstItem="psK-Fe-7O4" firstAttribute="top" secondItem="wDi-c3-Cnd" secondAttribute="bottom" id="cmn-gH-A3Z"/>
+                                    <constraint firstItem="MKj-2x-hMP" firstAttribute="leading" secondItem="Z9T-a0-c2e" secondAttribute="trailing" constant="8" id="ftw-VL-B7l"/>
                                     <constraint firstItem="psK-Fe-7O4" firstAttribute="leading" secondItem="JIb-DQ-oe7" secondAttribute="leading" id="g0t-qG-nhI"/>
                                     <constraint firstItem="Yd7-Qo-7Gr" firstAttribute="top" secondItem="xAb-GM-poc" secondAttribute="bottom" id="gGy-FR-LW9"/>
                                     <constraint firstAttribute="trailing" secondItem="XMB-We-9vU" secondAttribute="trailing" id="hS9-Bw-2ZE"/>
@@ -1371,6 +1386,7 @@ Images</string>
                                     <constraint firstAttribute="bottom" secondItem="psK-Fe-7O4" secondAttribute="bottom" constant="467" id="tj9-xy-4fw"/>
                                     <constraint firstItem="CBc-DP-7ES" firstAttribute="leading" secondItem="JIb-DQ-oe7" secondAttribute="leading" id="tyL-Ak-ZPC"/>
                                     <constraint firstAttribute="trailing" secondItem="xAb-GM-poc" secondAttribute="trailing" id="uoH-rs-MgY"/>
+                                    <constraint firstItem="Z9T-a0-c2e" firstAttribute="top" secondItem="JIb-DQ-oe7" secondAttribute="top" constant="8" id="wUN-eW-6Vt"/>
                                 </constraints>
                             </scrollView>
                         </subviews>

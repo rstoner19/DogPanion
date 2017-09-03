@@ -35,13 +35,20 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         super.viewDidLoad()
         notificationAuthorization()
         setup()
+        self.weatherImage.image = UIImage(named: "sunset")
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: Date())
+        print(hour)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        animateSnow()
+        animatePartlyCloudy()
+        // Snow at about 8 seconds
+        // Cloud at about 10 seconds
+        // Rain at about 3 seconds
         Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { (_) in
-            self.animateSnow()
+            self.animatePartlyCloudy()
         }
     }
 
@@ -314,6 +321,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         let frame = CGRect(x: weatherImage.frame.maxX, y: y, width: 350, height: 110)
         let cloudView = UIImageView(image: cloud)
         cloudView.frame = frame
+        cloudView.alpha = 0.5
         self.view.addSubview(cloudView)
         UIView.animate(withDuration: 30.0 - Double(random), delay: 0, options: .curveLinear, animations: {
             cloudView.transform = CGAffineTransform(translationX: -self.view.frame.maxX - 600, y: 0)
@@ -323,17 +331,47 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
     }
     
     func animateSnow() {
-        let snow = UIImage(named: "snow")
-        let y: CGFloat = -100
+        let snow = UIImage(named: "snow2")
+        let y: CGFloat = -140
         let frame = CGRect(x: weatherImage.frame.minX, y: y, width: self.view.frame.width, height: 140)
         let snowView = UIImageView(image: snow)
         snowView.frame = frame
         self.view.addSubview(snowView)
         UIView.animate(withDuration: 30.0, delay: 0, options: .curveLinear, animations: {
             snowView.transform = CGAffineTransform(translationX: 0, y: +400)
-            snowView.alpha = 0.3
+            snowView.alpha = 0.05
         }) { (_) in
             snowView.removeFromSuperview()
+        }
+    }
+    
+    func animateRain() {
+        let rain = UIImage(named: "rain")
+        let y: CGFloat = -140
+        let frame = CGRect(x: weatherImage.frame.minX, y: y, width: self.view.frame.width, height: 140)
+        let snowView = UIImageView(image: rain)
+        snowView.frame = frame
+        self.view.addSubview(snowView)
+        UIView.animate(withDuration: 10, delay: 0, options: .curveLinear, animations: {
+            snowView.transform = CGAffineTransform(translationX: 0, y: +400)
+            snowView.alpha = 0.05
+        }) { (_) in
+            snowView.removeFromSuperview()
+        }
+    }
+    
+    func animatePartlyCloudy() {
+        let cloud = UIImage(named: "partlyCloudy")
+        let y = weatherImage.frame.minY + 60 + CGFloat(arc4random_uniform(40))
+        let frame = CGRect(x: weatherImage.frame.maxX, y: y, width: 350, height: 110)
+        let cloudView = UIImageView(image: cloud)
+        cloudView.frame = frame
+        cloudView.alpha = 0.5
+        self.view.addSubview(cloudView)
+        UIView.animate(withDuration: 28.0, delay: 0, options: .curveLinear, animations: {
+            cloudView.transform = CGAffineTransform(translationX: -self.view.frame.maxX - 600, y: 0)
+        }) { (_) in
+            cloudView.removeFromSuperview()
         }
     }
 
