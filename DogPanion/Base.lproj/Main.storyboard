@@ -1088,7 +1088,7 @@ Images</string>
                                 <rect key="frame" x="0.0" y="90" width="414" height="660"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="psK-Fe-7O4">
-                                        <rect key="frame" x="0.0" y="280" width="414" height="60"/>
+                                        <rect key="frame" x="0.0" y="300" width="414" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dog Breed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="c2r-BK-pM8">
                                                 <rect key="frame" x="12" y="19" width="86" height="21"/>
@@ -1133,7 +1133,7 @@ Images</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wDi-c3-Cnd">
-                                        <rect key="frame" x="0.0" y="220" width="414" height="60"/>
+                                        <rect key="frame" x="0.0" y="240" width="414" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birthday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bx3-rW-qZa">
                                                 <rect key="frame" x="12" y="19" width="71" height="21"/>
@@ -1163,7 +1163,7 @@ Images</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CBc-DP-7ES">
-                                        <rect key="frame" x="0.0" y="340" width="414" height="60"/>
+                                        <rect key="frame" x="0.0" y="360" width="414" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Vym-ED-l76">
                                                 <rect key="frame" x="10" y="19" width="58" height="21"/>
@@ -1204,7 +1204,7 @@ Images</string>
                                         </constraints>
                                     </view>
                                     <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d9A-M1-EfI">
-                                        <rect key="frame" x="202" y="355" width="10" height="30"/>
+                                        <rect key="frame" x="202" y="375" width="10" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
@@ -1214,7 +1214,7 @@ Images</string>
                                         </connections>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xAb-GM-poc">
-                                        <rect key="frame" x="0.0" y="400" width="414" height="60"/>
+                                        <rect key="frame" x="0.0" y="420" width="414" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fR8-YK-6W0">
                                                 <rect key="frame" x="12" y="19" width="101" height="21"/>
@@ -1246,7 +1246,7 @@ Images</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yd7-Qo-7Gr">
-                                        <rect key="frame" x="0.0" y="460" width="414" height="60"/>
+                                        <rect key="frame" x="0.0" y="480" width="414" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vaccines" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="isP-Ry-Hlv">
                                                 <rect key="frame" x="10" y="19" width="74" height="21"/>
@@ -1274,7 +1274,7 @@ Images</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ag-Wq-qgw">
-                                        <rect key="frame" x="0.0" y="520" width="414" height="60"/>
+                                        <rect key="frame" x="0.0" y="540" width="414" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifcation Reminders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gmF-24-9WN">
                                                 <rect key="frame" x="12" y="19" width="183" height="21"/>
@@ -1300,7 +1300,7 @@ Images</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CkO-er-ddz">
-                                        <rect key="frame" x="0.0" y="580" width="414" height="60"/>
+                                        <rect key="frame" x="0.0" y="600" width="414" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete All Pet Info." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="r1Y-6t-BHi">
                                                 <rect key="frame" x="12" y="19" width="151" height="21"/>
@@ -1333,7 +1333,7 @@ Images</string>
                                         </constraints>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottomBG-2" translatesAutoresizingMaskIntoConstraints="NO" id="XMB-We-9vU">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="220"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="240"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currently:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9T-a0-c2e">
                                         <rect key="frame" x="8" y="8" width="89.666666666666671" height="26"/>
@@ -1341,12 +1341,22 @@ Images</string>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="32°, Snow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKj-2x-hMP">
-                                        <rect key="frame" x="104.99999999999999" y="8.3333333333333286" width="93.666666666666643" height="26"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-°, -" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKj-2x-hMP">
+                                        <rect key="frame" x="105" y="8.3333333333333286" width="36" height="26"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dfj-iI-LmP">
+                                        <rect key="frame" x="8" y="213" width="171" height="27"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <state key="normal" title="Weather Powered by Dark Sky">
+                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="darkSkyButtonPressed:" destination="eyY-L1-k6d" eventType="touchUpInside" id="3zl-Yd-flf"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="FKt-Zw-UiE" firstAttribute="trailing" secondItem="qK8-ES-mYo" secondAttribute="trailing" id="2HQ-bl-CLn"/>
@@ -1356,9 +1366,11 @@ Images</string>
                                     <constraint firstItem="xAb-GM-poc" firstAttribute="leading" secondItem="JIb-DQ-oe7" secondAttribute="leading" id="6Cw-WE-A8K"/>
                                     <constraint firstAttribute="trailing" secondItem="wDi-c3-Cnd" secondAttribute="trailing" id="9RH-js-AJM"/>
                                     <constraint firstItem="vMW-YO-cqp" firstAttribute="height" secondItem="qK8-ES-mYo" secondAttribute="height" id="9Sl-Wc-qKN"/>
+                                    <constraint firstItem="wDi-c3-Cnd" firstAttribute="top" secondItem="Dfj-iI-LmP" secondAttribute="bottom" id="KqG-ql-qQB"/>
                                     <constraint firstItem="XMB-We-9vU" firstAttribute="top" secondItem="JIb-DQ-oe7" secondAttribute="top" id="LiE-kI-BF1"/>
                                     <constraint firstItem="wDi-c3-Cnd" firstAttribute="leading" secondItem="JIb-DQ-oe7" secondAttribute="leading" id="N8i-Ue-o8T"/>
                                     <constraint firstAttribute="trailing" secondItem="Yd7-Qo-7Gr" secondAttribute="trailing" id="O0C-jg-ZPA"/>
+                                    <constraint firstItem="Dfj-iI-LmP" firstAttribute="leading" secondItem="JIb-DQ-oe7" secondAttribute="leading" constant="8" id="OH6-Ib-OMy"/>
                                     <constraint firstItem="Z9T-a0-c2e" firstAttribute="leading" secondItem="JIb-DQ-oe7" secondAttribute="leading" constant="8" id="QGW-5P-UK8"/>
                                     <constraint firstItem="5ag-Wq-qgw" firstAttribute="top" secondItem="Yd7-Qo-7Gr" secondAttribute="bottom" id="QRH-tv-nTq"/>
                                     <constraint firstAttribute="trailing" secondItem="CBc-DP-7ES" secondAttribute="trailing" id="QVC-RF-8Cf"/>
@@ -1368,7 +1380,7 @@ Images</string>
                                     <constraint firstItem="MKj-2x-hMP" firstAttribute="centerY" secondItem="Z9T-a0-c2e" secondAttribute="centerY" id="WIg-nX-QDa"/>
                                     <constraint firstItem="CkO-er-ddz" firstAttribute="top" secondItem="5ag-Wq-qgw" secondAttribute="bottom" id="WwN-EZ-OLu"/>
                                     <constraint firstAttribute="trailing" secondItem="psK-Fe-7O4" secondAttribute="trailing" id="XkE-9w-JTJ"/>
-                                    <constraint firstItem="wDi-c3-Cnd" firstAttribute="top" secondItem="JIb-DQ-oe7" secondAttribute="top" constant="220" id="Y5x-NX-KNH"/>
+                                    <constraint firstItem="wDi-c3-Cnd" firstAttribute="top" secondItem="JIb-DQ-oe7" secondAttribute="top" constant="240" id="Y5x-NX-KNH"/>
                                     <constraint firstItem="vMW-YO-cqp" firstAttribute="width" secondItem="qK8-ES-mYo" secondAttribute="width" id="ZhP-cM-XdL"/>
                                     <constraint firstItem="d9A-M1-EfI" firstAttribute="width" secondItem="Cup-f3-WDe" secondAttribute="width" id="aD7-Xd-mA5"/>
                                     <constraint firstItem="CkO-er-ddz" firstAttribute="leading" secondItem="JIb-DQ-oe7" secondAttribute="leading" id="aWu-zl-xKx"/>
@@ -1383,7 +1395,7 @@ Images</string>
                                     <constraint firstAttribute="trailing" secondItem="5ag-Wq-qgw" secondAttribute="trailing" id="oVJ-sL-60g"/>
                                     <constraint firstItem="xAb-GM-poc" firstAttribute="top" secondItem="CBc-DP-7ES" secondAttribute="bottom" id="orf-mR-Nbb"/>
                                     <constraint firstAttribute="trailing" secondItem="CkO-er-ddz" secondAttribute="trailing" id="p21-kw-ys3"/>
-                                    <constraint firstAttribute="bottom" secondItem="psK-Fe-7O4" secondAttribute="bottom" constant="467" id="tj9-xy-4fw"/>
+                                    <constraint firstAttribute="bottom" secondItem="psK-Fe-7O4" secondAttribute="bottom" constant="300" id="tj9-xy-4fw"/>
                                     <constraint firstItem="CBc-DP-7ES" firstAttribute="leading" secondItem="JIb-DQ-oe7" secondAttribute="leading" id="tyL-Ak-ZPC"/>
                                     <constraint firstAttribute="trailing" secondItem="xAb-GM-poc" secondAttribute="trailing" id="uoH-rs-MgY"/>
                                     <constraint firstItem="Z9T-a0-c2e" firstAttribute="top" secondItem="JIb-DQ-oe7" secondAttribute="top" constant="8" id="wUN-eW-6Vt"/>
@@ -1410,6 +1422,7 @@ Images</string>
                         <outlet property="birthdayButton" destination="vab-59-kmt" id="T1W-o8-x6l"/>
                         <outlet property="breedLabel" destination="bQk-J2-cPt" id="SQ8-g5-dqX"/>
                         <outlet property="breedTextField" destination="Cup-f3-WDe" id="zZX-GR-6ZW"/>
+                        <outlet property="currentWeatherLabel" destination="MKj-2x-hMP" id="ZFA-xF-NFt"/>
                         <outlet property="medicationButton" destination="qK8-ES-mYo" id="ngq-TL-uLR"/>
                         <outlet property="notificationSwitch" destination="hjw-l8-PHC" id="yeR-U2-tg3"/>
                         <outlet property="petNameLabel" destination="aEd-3G-698" id="JRL-LI-OxU"/>

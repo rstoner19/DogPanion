@@ -26,6 +26,8 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
     
     @IBOutlet weak var weatherImage: UIImageView!
     
+    @IBOutlet weak var currentWeatherLabel: UILabel!
+    
     @IBOutlet weak var notificationSwitch: UISwitch!
     
     @IBOutlet weak var breedTextField: UITextField!
@@ -35,21 +37,11 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         super.viewDidLoad()
         notificationAuthorization()
         setup()
-        self.weatherImage.image = UIImage(named: "sunset")
-        let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: Date())
-        print(hour)
+        self.weatherImage.image = UIImage(named: "night")
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        animatePartlyCloudy()
-        // Snow at about 8 seconds
-        // Cloud at about 10 seconds
-        // Rain at about 3 seconds
-        Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { (_) in
-            self.animatePartlyCloudy()
-        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,8 +56,18 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
                 self.breedLabel.setTitle(breed, for: .normal)
             }
         }
+        timeOfDay()
         setHealthItems()
-        API.shared.GET(latitude: "47.6062", longitude: "-122.3321", time: nil)
+        //TODO: Need to get user's location
+        API.shared.GET(latitude: "47.6062", longitude: "-122.3321", time: nil) { (weather) in
+            if let weather = weather, let currentWeather = weather.currentWeather {
+                print(Date(timeIntervalSince1970: currentWeather.forecastTime))
+                self.currentWeatherLabel.text = weather.currentWeatherText()
+                self.currentWeather(weather: currentWeather.icon)
+                
+              //  self.animateWeatherChange(weatherType: weather.currentWeather!.icon)
+            }
+        }
     }
     
     func setHealthItems() {
@@ -123,6 +125,12 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
             if let birthday = pet?.health?.birthday as Date? {
                 viewController.datePicker.date = birthday
             }
+        }
+    }
+    
+    @IBAction func darkSkyButtonPressed(_ sender: UIButton) {
+        if let url = URL(string: "https://darksky.net/forecast/47.7205,-122.2067/us12/en") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
     
@@ -306,6 +314,77 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
     }
     
     // MARK: Weather
+    
+    func timeOfDay() {
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: Date())
+        switch hour {
+        case 7..<10:
+            self.weatherImage.image = UIImage(named: "sunset") // TODO: NEED TO UPDATE TO SUNRISE
+        case 10..<19:
+            self.weatherImage.image = UIImage(named: "day")
+        case 19..<21:
+            self.weatherImage.image = UIImage(named: "sunset")
+        default:
+            self.weatherImage.image = UIImage(named: "night")
+        }
+    }
+    
+    func currentWeather(weather: String) {
+        switch weather {
+        case "clear-day", "clear-night":
+            break
+        case "rain":
+            animateRain()
+            Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { (_) in
+                self.animatePartlyCloudy()
+            }
+        case "snow":
+            animateSnow()
+            Timer.scheduledTimer(withTimeInterval: 8, repeats: true) { (_) in
+                self.animateSnow()
+            }
+        case "sleet":
+            break // TODO NEED SLEET ANIMATION.. SNow and rain??
+        case "wind":
+            break // TODO: NEED WIND ANIMATION
+        case "fog":
+            animateFog()
+            Timer.scheduledTimer(withTimeInterval: 12, repeats: true) { (_) in
+                self.animateFog()
+            }
+        case "cloudy":
+            animateCloud()
+            Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { (_) in
+                self.animateCloud()
+            }
+        default:
+            animatePartlyCloudy()
+            Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { (_) in
+                self.animatePartlyCloudy()
+            }
+        }
+    }
+    
+    func timer(timeValue: TimeInterval, method: ()) {
+        Timer.scheduledTimer(withTimeInterval: timeValue, repeats: true) { (_) in
+            method
+        }
+    }
+    
+    func animateWeatherChange(weatherType: String) {
+        if weatherType == "clear-day" {
+            UIView.animate(withDuration: 1.5, animations: {
+                self.weatherImage.alpha = 0.2
+            }, completion: { (_) in
+                self.weatherImage.image = UIImage(named: "cloudyDay")
+                UIView.animate(withDuration: 2.0, animations: {
+                    self.weatherImage.alpha = 1.0
+                })
+            })
+        }
+    }
+    
     func animateCloud() {
         let cloud: UIImage?
         let random = arc4random_uniform(3)
@@ -370,6 +449,20 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         self.view.addSubview(cloudView)
         UIView.animate(withDuration: 28.0, delay: 0, options: .curveLinear, animations: {
             cloudView.transform = CGAffineTransform(translationX: -self.view.frame.maxX - 600, y: 0)
+        }) { (_) in
+            cloudView.removeFromSuperview()
+        }
+    }
+    
+    func animateFog() {
+        let fog = UIImage(named: "fog-1")
+        let y = weatherImage.frame.minY + 55
+        let frame = CGRect(x: weatherImage.frame.maxX, y: y, width: 350, height: self.weatherImage.frame.height * 1.5)
+        let cloudView = UIImageView(image: fog)
+        cloudView.frame = frame
+        self.view.addSubview(cloudView)
+        UIView.animate(withDuration: 40.0, delay: 0, options: .curveLinear, animations: {
+            cloudView.transform = CGAffineTransform(translationX: -self.view.frame.maxX - 700, y: 0)
         }) { (_) in
             cloudView.removeFromSuperview()
         }
