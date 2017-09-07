@@ -8,14 +8,17 @@
 
 import UIKit
 import UserNotifications
+import CoreLocation
 
-class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, UIPopoverPresentationControllerDelegate, UITextFieldDelegate, DismissVCDelegate {
+
+class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, UIPopoverPresentationControllerDelegate, UITextFieldDelegate, CLLocationManagerDelegate, DismissVCDelegate {
     
     var pet: Pet? = nil
     var delegate: DismissVCDelegate? = nil
     lazy var blurEffectView: UIVisualEffectView? = nil
     lazy var popUpView: PopUpViewController? = nil
 
+    @IBOutlet weak var locationAccessButton: UIButton!
     @IBOutlet weak var birthdayButton: UIButton!
     @IBOutlet weak var medicationButton: UIButton!
     @IBOutlet weak var vaccineButton: UIButton!
@@ -34,10 +37,17 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
     @IBOutlet weak var breedTextField: UITextField!
     @IBOutlet weak var weightTextField: UITextField!
     
+    let locationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         notificationAuthorization()
         setup()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        updateWeather()
     }
     
     func setup() {
@@ -45,23 +55,10 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         if let breed = pet?.breed {
             if !breed.isEmpty { self.breedLabel.setTitle(breed, for: .normal) }
         }
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         timeOfDay()
         setHealthItems()
-        //TODO: Need to get user's location
-        API.shared.GET(latitude: "47.6062", longitude: "-122.3321", time: nil) { (weather) in
-            if let weather = weather, let currentWeather = weather.currentWeather {
-                print(Date(timeIntervalSince1970: currentWeather.forecastTime))
-                self.currentWeatherLabel.text = weather.currentWeatherText()
-                self.maxMinTempLabel.text = weather.currentMaxMinTemp()
-                self.currentWeather(weather: currentWeather.icon)
-                
-               // self.animateWind()
-               // Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (_) in
-                 //   self.animateWind()
-               // })
-              //  self.animateWeatherChange(weatherType: weather.currentWeather!.icon)
-            }
-        }
     }
     
     func setHealthItems() {
@@ -155,6 +152,15 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         self.present(alertController, animated: true, completion: nil)
     }
     
+    @IBAction func locationAccessButtonPressed(_ sender: Any) {
+        guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+            return
+        }
+        if UIApplication.shared.canOpenURL(settingsUrl) {
+            UIApplication.shared.open(settingsUrl, completionHandler: nil)
+        }
+    }
+    
     @IBAction func medVacButtonPressed(_ sender: UIButton) {
         let type: MedVac
         if sender == self.medicationButton {
@@ -241,6 +247,30 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         }
     }
     
+    // MARK: Location Manager
+    func getLocation() -> CLLocationCoordinate2D? {
+        let status = CLLocationManager.authorizationStatus()
+        if status == .authorizedWhenInUse {
+            locationManager.startUpdatingLocation()
+            let coordinate = locationManager.location?.coordinate
+            locationManager.stopUpdatingLocation()
+            return coordinate
+        } else if status == .denied {
+            self.locationAccessButton.isHidden = false
+        }
+        else {
+            self.locationManager.requestWhenInUseAuthorization()
+        }
+        return nil
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            self.locationAccessButton.isHidden = true
+            updateWeather()
+        }
+    }
+    
     // MARK: Text Delegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == breedTextField {
@@ -298,6 +328,26 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
     }
     
     // MARK: Weather
+    
+    func updateWeather() {
+        if let coordinate = getLocation() {
+            let lat = String(format: "%.4f", coordinate.latitude); let long = String(format: "%.4f", coordinate.longitude)
+            API.shared.GET(latitude: lat, longitude: long, time: nil) { (weather) in
+                if let weather = weather, let currentWeather = weather.currentWeather {
+                    print(Date(timeIntervalSince1970: currentWeather.forecastTime))
+                    self.currentWeatherLabel.text = weather.currentWeatherText()
+                    self.maxMinTempLabel.text = weather.currentMaxMinTemp()
+                    self.currentWeather(weather: currentWeather.icon)
+                    
+                    // self.animateWind()
+                    // Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (_) in
+                    //   self.animateWind()
+                    // })
+                    //  self.animateWeatherChange(weatherType: weather.currentWeather!.icon)
+                }
+            }
+        }
+    }
     
     func timeOfDay() {
         let calendar = Calendar.current

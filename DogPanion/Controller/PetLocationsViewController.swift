@@ -297,8 +297,8 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchB
     
     // MARK: Location Manager
     func checkAuthorizationStatus() {
-        locationManager.startUpdatingLocation()
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            locationManager.startUpdatingLocation()
             self.currentLocationItem = MKMapItem.forCurrentLocation()
             mapView.showsUserLocation = true
             if let location = locationManager.location {
@@ -306,6 +306,12 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchB
             }
         } else {
             locationManager.requestWhenInUseAuthorization()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            checkAuthorizationStatus()
         }
     }
     

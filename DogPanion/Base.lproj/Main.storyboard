@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13168.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.19" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13147.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.16"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -1363,6 +1363,15 @@ Images</string>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Xh-zB-KKW">
+                                        <rect key="frame" x="66" y="115" width="282" height="30"/>
+                                        <state key="normal" title="Location Access Required for this feature">
+                                            <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="locationAccessButtonPressed:" destination="eyY-L1-k6d" eventType="touchUpInside" id="bcm-iy-R5r"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="nXd-Dx-gm7" firstAttribute="top" secondItem="Z9T-a0-c2e" secondAttribute="bottom" constant="2" id="0jS-7r-bxJ"/>
@@ -1392,6 +1401,7 @@ Images</string>
                                     <constraint firstItem="vMW-YO-cqp" firstAttribute="width" secondItem="qK8-ES-mYo" secondAttribute="width" id="ZhP-cM-XdL"/>
                                     <constraint firstItem="d9A-M1-EfI" firstAttribute="width" secondItem="Cup-f3-WDe" secondAttribute="width" id="aD7-Xd-mA5"/>
                                     <constraint firstItem="CkO-er-ddz" firstAttribute="leading" secondItem="JIb-DQ-oe7" secondAttribute="leading" id="aWu-zl-xKx"/>
+                                    <constraint firstItem="5Xh-zB-KKW" firstAttribute="centerX" secondItem="XMB-We-9vU" secondAttribute="centerX" id="amB-2h-cRJ"/>
                                     <constraint firstItem="psK-Fe-7O4" firstAttribute="top" secondItem="wDi-c3-Cnd" secondAttribute="bottom" id="cmn-gH-A3Z"/>
                                     <constraint firstItem="MKj-2x-hMP" firstAttribute="leading" secondItem="Z9T-a0-c2e" secondAttribute="trailing" constant="8" id="ftw-VL-B7l"/>
                                     <constraint firstItem="psK-Fe-7O4" firstAttribute="leading" secondItem="JIb-DQ-oe7" secondAttribute="leading" id="g0t-qG-nhI"/>
@@ -1402,6 +1412,7 @@ Images</string>
                                     <constraint firstItem="d9A-M1-EfI" firstAttribute="centerX" secondItem="Cup-f3-WDe" secondAttribute="centerX" id="mUA-17-YoU"/>
                                     <constraint firstAttribute="trailing" secondItem="5ag-Wq-qgw" secondAttribute="trailing" id="oVJ-sL-60g"/>
                                     <constraint firstItem="xAb-GM-poc" firstAttribute="top" secondItem="CBc-DP-7ES" secondAttribute="bottom" id="orf-mR-Nbb"/>
+                                    <constraint firstItem="5Xh-zB-KKW" firstAttribute="centerY" secondItem="XMB-We-9vU" secondAttribute="centerY" id="oxu-kP-Jf8"/>
                                     <constraint firstAttribute="trailing" secondItem="CkO-er-ddz" secondAttribute="trailing" id="p21-kw-ys3"/>
                                     <constraint firstAttribute="bottom" secondItem="psK-Fe-7O4" secondAttribute="bottom" constant="300" id="tj9-xy-4fw"/>
                                     <constraint firstItem="CBc-DP-7ES" firstAttribute="leading" secondItem="JIb-DQ-oe7" secondAttribute="leading" id="tyL-Ak-ZPC"/>
@@ -1431,6 +1442,7 @@ Images</string>
                         <outlet property="breedLabel" destination="bQk-J2-cPt" id="SQ8-g5-dqX"/>
                         <outlet property="breedTextField" destination="Cup-f3-WDe" id="zZX-GR-6ZW"/>
                         <outlet property="currentWeatherLabel" destination="MKj-2x-hMP" id="ZFA-xF-NFt"/>
+                        <outlet property="locationAccessButton" destination="5Xh-zB-KKW" id="qU9-oK-Y5Z"/>
                         <outlet property="maxMinTempLabel" destination="nXd-Dx-gm7" id="tQ9-Vm-gzK"/>
                         <outlet property="medicationButton" destination="qK8-ES-mYo" id="ngq-TL-uLR"/>
                         <outlet property="notificationSwitch" destination="hjw-l8-PHC" id="yeR-U2-tg3"/>
