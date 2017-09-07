@@ -27,4 +27,12 @@ class Weather {
         } else { return "Sorry, error retrieving data" }
     }
     
+    func currentMaxMinTemp() -> String {
+        if let currentDay = self.forecast.first {
+            return "High: " + String(format: "%.0f", currentDay.maxTemp) + "°, Low: " + String(format: "%.0f", currentDay.minTemp) + "°"
+        } else {
+            return "High: - , Low: -"
+        }
+    }
+    
 }

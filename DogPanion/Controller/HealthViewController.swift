@@ -27,6 +27,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
     @IBOutlet weak var weatherImage: UIImageView!
     
     @IBOutlet weak var currentWeatherLabel: UILabel!
+    @IBOutlet weak var maxMinTempLabel: UILabel!
     
     @IBOutlet weak var notificationSwitch: UISwitch!
     
@@ -37,24 +38,12 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         super.viewDidLoad()
         notificationAuthorization()
         setup()
-        self.weatherImage.image = UIImage(named: "night")
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func setup() {
         self.petNameLabel.text = pet?.name
         if let breed = pet?.breed {
-            if !breed.isEmpty {
-                self.breedLabel.setTitle(breed, for: .normal)
-            }
+            if !breed.isEmpty { self.breedLabel.setTitle(breed, for: .normal) }
         }
         timeOfDay()
         setHealthItems()
@@ -63,8 +52,13 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
             if let weather = weather, let currentWeather = weather.currentWeather {
                 print(Date(timeIntervalSince1970: currentWeather.forecastTime))
                 self.currentWeatherLabel.text = weather.currentWeatherText()
+                self.maxMinTempLabel.text = weather.currentMaxMinTemp()
                 self.currentWeather(weather: currentWeather.icon)
                 
+               // self.animateWind()
+               // Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (_) in
+                 //   self.animateWind()
+               // })
               //  self.animateWeatherChange(weatherType: weather.currentWeather!.icon)
             }
         }
@@ -291,16 +285,6 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         }
     }
     
-    func scheduleNotification(title: String, body: String, identifier: String, dateCompenents: DateComponents, repeatNotifcation: Bool) {
-        let content = UNMutableNotificationContent()
-        content.title = NSString.localizedUserNotificationString(forKey: title, arguments: nil)
-        content.body = NSString.localizedUserNotificationString(forKey: body, arguments: nil)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateCompenents, repeats: repeatNotifcation)
-        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
-        let center = UNUserNotificationCenter.current()
-        center.add(request, withCompletionHandler: nil)
-    }
-    
     func birthdayReminder(birthday: Date) {
         let calendar = Calendar.current
         let components = calendar.dateComponents([.day, .month], from: birthday)
@@ -320,11 +304,11 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         let hour = calendar.component(.hour, from: Date())
         switch hour {
         case 7..<10:
-            self.weatherImage.image = UIImage(named: "sunset") // TODO: NEED TO UPDATE TO SUNRISE
+            self.weatherImage.image = UIImage(named: "sunrise")
         case 10..<19:
-            self.weatherImage.image = UIImage(named: "day")
+            self.weatherImage.image = UIImage(named: "clearDay")
         case 19..<21:
-            self.weatherImage.image = UIImage(named: "sunset")
+            self.weatherImage.image = UIImage(named: "sunset2")
         default:
             self.weatherImage.image = UIImage(named: "night")
         }
@@ -345,12 +329,15 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
                 self.animateSnow()
             }
         case "sleet":
-            break // TODO NEED SLEET ANIMATION.. SNow and rain??
+            self.animateSleet()
+            Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: { (_) in
+                self.animateSleet()
+            })
         case "wind":
             break // TODO: NEED WIND ANIMATION
         case "fog":
             animateFog()
-            Timer.scheduledTimer(withTimeInterval: 12, repeats: true) { (_) in
+            Timer.scheduledTimer(withTimeInterval: 20, repeats: true) { (_) in
                 self.animateFog()
             }
         case "cloudy":
@@ -365,13 +352,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
             }
         }
     }
-    
-    func timer(timeValue: TimeInterval, method: ()) {
-        Timer.scheduledTimer(withTimeInterval: timeValue, repeats: true) { (_) in
-            method
-        }
-    }
-    
+    //TODO: Need to Implement
     func animateWeatherChange(weatherType: String) {
         if weatherType == "clear-day" {
             UIView.animate(withDuration: 1.5, animations: {
@@ -409,33 +390,18 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         }
     }
     
-    func animateSnow() {
-        let snow = UIImage(named: "snow2")
-        let y: CGFloat = -140
-        let frame = CGRect(x: weatherImage.frame.minX, y: y, width: self.view.frame.width, height: 140)
-        let snowView = UIImageView(image: snow)
-        snowView.frame = frame
-        self.view.addSubview(snowView)
-        UIView.animate(withDuration: 30.0, delay: 0, options: .curveLinear, animations: {
-            snowView.transform = CGAffineTransform(translationX: 0, y: +400)
-            snowView.alpha = 0.05
+    func animateFog() {
+        let fog = UIImage(named: "fog")
+        let y = weatherImage.frame.minY + 45
+        let frame = CGRect(x: weatherImage.frame.maxX, y: y, width: 600, height: self.weatherImage.frame.height * 1.4)
+        let cloudView = UIImageView(image: fog)
+        cloudView.frame = frame
+        cloudView.alpha = 0.5
+        self.view.addSubview(cloudView)
+        UIView.animate(withDuration: 40.0, delay: 0, options: .curveLinear, animations: {
+            cloudView.transform = CGAffineTransform(translationX: -self.view.frame.maxX - 700, y: 0)
         }) { (_) in
-            snowView.removeFromSuperview()
-        }
-    }
-    
-    func animateRain() {
-        let rain = UIImage(named: "rain")
-        let y: CGFloat = -140
-        let frame = CGRect(x: weatherImage.frame.minX, y: y, width: self.view.frame.width, height: 140)
-        let snowView = UIImageView(image: rain)
-        snowView.frame = frame
-        self.view.addSubview(snowView)
-        UIView.animate(withDuration: 10, delay: 0, options: .curveLinear, animations: {
-            snowView.transform = CGAffineTransform(translationX: 0, y: +400)
-            snowView.alpha = 0.05
-        }) { (_) in
-            snowView.removeFromSuperview()
+            cloudView.removeFromSuperview()
         }
     }
     
@@ -454,17 +420,64 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         }
     }
     
-    func animateFog() {
-        let fog = UIImage(named: "fog-1")
-        let y = weatherImage.frame.minY + 55
-        let frame = CGRect(x: weatherImage.frame.maxX, y: y, width: 350, height: self.weatherImage.frame.height * 1.5)
-        let cloudView = UIImageView(image: fog)
-        cloudView.frame = frame
-        self.view.addSubview(cloudView)
-        UIView.animate(withDuration: 40.0, delay: 0, options: .curveLinear, animations: {
-            cloudView.transform = CGAffineTransform(translationX: -self.view.frame.maxX - 700, y: 0)
+    func animateRain() {
+        let rain = UIImage(named: "rain")
+        let y: CGFloat = -140
+        let frame = CGRect(x: weatherImage.frame.minX, y: y, width: self.view.frame.width, height: 140)
+        let rainView = UIImageView(image: rain)
+        rainView.frame = frame
+        self.view.addSubview(rainView)
+        UIView.animate(withDuration: 10, delay: 0, options: .curveLinear, animations: {
+            rainView.transform = CGAffineTransform(translationX: 0, y: +400)
+            rainView.alpha = 0.05
         }) { (_) in
-            cloudView.removeFromSuperview()
+            rainView.removeFromSuperview()
+        }
+    }
+    
+    func animateSleet() {
+        let sleet = UIImage(named: "sleet")
+        let y: CGFloat = -140
+        let frame = CGRect(x: weatherImage.frame.minX, y: y, width: self.view.frame.width, height: 140)
+        let sleetView = UIImageView(image: sleet)
+        sleetView.frame = frame
+        self.view.addSubview(sleetView)
+        UIView.animate(withDuration: 10.0, delay: 0, options: .curveLinear, animations: {
+            sleetView.transform = CGAffineTransform(translationX: 0, y: +400)
+            sleetView.alpha = 0.15
+        }) { (_) in
+            sleetView.removeFromSuperview()
+        }
+    }
+    
+    func animateSnow() {
+        let snow = UIImage(named: "snow2")
+        let y: CGFloat = -140
+        let frame = CGRect(x: weatherImage.frame.minX, y: y, width: self.view.frame.width, height: 140)
+        let snowView = UIImageView(image: snow)
+        snowView.frame = frame
+        self.view.addSubview(snowView)
+        UIView.animate(withDuration: 30.0, delay: 0, options: .curveLinear, animations: {
+            snowView.transform = CGAffineTransform(translationX: 0, y: +400)
+            snowView.alpha = 0.05
+        }) { (_) in
+            snowView.removeFromSuperview()
+        }
+    }
+    
+    func animateWind() {
+        let wind = UIImage(named: "wind")
+        let y = weatherImage.frame.minY + 60 + CGFloat(arc4random_uniform(40))
+        let frame = CGRect(x: weatherImage.frame.maxX, y: y, width: 350, height: 110)
+        // TODO: need another wind option
+        let windView = UIImageView(image: wind)
+        windView.frame = frame
+        windView.alpha = 0.5
+        self.view.addSubview(windView)
+        UIView.animate(withDuration: 4.0, delay: 0, options: .curveLinear, animations: {
+            windView.transform = CGAffineTransform(translationX: -self.view.frame.maxX - 600, y: 0)
+        }) { (_) in
+            windView.removeFromSuperview()
         }
     }
 
