@@ -31,6 +31,12 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
     
     @IBOutlet weak var currentWeatherLabel: UILabel!
     @IBOutlet weak var maxMinTempLabel: UILabel!
+    @IBOutlet weak var timeOne: UILabel!
+    @IBOutlet weak var timeTwoLabel: UILabel!
+    @IBOutlet weak var timeThreeLabel: UILabel!
+    @IBOutlet weak var timeFourLabel: UILabel!
+    
+    
     
     @IBOutlet weak var notificationSwitch: UISwitch!
     
@@ -47,7 +53,6 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        updateWeather()
     }
     
     func setup() {
@@ -248,26 +253,17 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
     }
     
     // MARK: Location Manager
-    func getLocation() -> CLLocationCoordinate2D? {
-        let status = CLLocationManager.authorizationStatus()
-        if status == .authorizedWhenInUse {
-            locationManager.startUpdatingLocation()
-            let coordinate = locationManager.location?.coordinate
-            locationManager.stopUpdatingLocation()
-            return coordinate
-        } else if status == .denied {
-            self.locationAccessButton.isHidden = false
-        }
-        else {
-            self.locationManager.requestWhenInUseAuthorization()
-        }
-        return nil
-    }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse {
-            self.locationAccessButton.isHidden = true
-            updateWeather()
+        switch status {
+        case .authorizedWhenInUse:
+            if let coordinate = self.locationManager.location?.coordinate {
+                updateWeather(coordinate: coordinate)
+            }
+        case .denied:
+            self.locationAccessButton.isHidden = false
+        default:
+            self.locationManager.requestWhenInUseAuthorization()
         }
     }
     
@@ -329,8 +325,8 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
     
     // MARK: Weather
     
-    func updateWeather() {
-        if let coordinate = getLocation() {
+    func updateWeather(coordinate: CLLocationCoordinate2D?) {
+        if let coordinate = coordinate {
             let lat = String(format: "%.4f", coordinate.latitude); let long = String(format: "%.4f", coordinate.longitude)
             API.shared.GET(latitude: lat, longitude: long, time: nil) { (weather) in
                 if let weather = weather, let currentWeather = weather.currentWeather {
