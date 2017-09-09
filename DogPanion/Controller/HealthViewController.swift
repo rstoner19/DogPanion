@@ -15,6 +15,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
     
     var pet: Pet? = nil
     var delegate: DismissVCDelegate? = nil
+    var dayTime: String? = nil
     lazy var blurEffectView: UIVisualEffectView? = nil
     lazy var popUpView: PopUpViewController? = nil
 
@@ -62,7 +63,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         }
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        timeOfDay()
+        self.dayTime = timeOfDay()
         setHealthItems()
     }
     
@@ -253,7 +254,6 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
     }
     
     // MARK: Location Manager
-    
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .authorizedWhenInUse:
@@ -345,19 +345,22 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         }
     }
     
-    func timeOfDay() {
+    func timeOfDay() -> String {
         let calendar = Calendar.current
         let hour = calendar.component(.hour, from: Date())
+        let timeOfDay: String
         switch hour {
         case 7..<10:
-            self.weatherImage.image = UIImage(named: "sunrise")
+            timeOfDay = "sunrise"
         case 10..<19:
-            self.weatherImage.image = UIImage(named: "clearDay")
+            timeOfDay = "clearDay"
         case 19..<21:
-            self.weatherImage.image = UIImage(named: "sunset2")
+            timeOfDay = "sunset"
         default:
-            self.weatherImage.image = UIImage(named: "night")
+            timeOfDay = "night"
         }
+        self.weatherImage.image = UIImage(named: timeOfDay)
+        return timeOfDay
     }
     
     func currentWeather(weather: String) {
@@ -367,7 +370,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         case "rain":
             animateRain()
             Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { (_) in
-                self.animatePartlyCloudy()
+                self.animateRain()
             }
         case "snow":
             animateSnow()
@@ -388,9 +391,10 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
             }
         case "cloudy":
             animateCloud()
-            Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { (_) in
+            Timer.scheduledTimer(withTimeInterval: 8, repeats: true) { (_) in
                 self.animateCloud()
             }
+            //animateWeatherChange(weatherType: self.dayTime)
         default:
             animatePartlyCloudy()
             Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { (_) in
@@ -399,8 +403,10 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         }
     }
     //TODO: Need to Implement
-    func animateWeatherChange(weatherType: String) {
-        if weatherType == "clear-day" {
+    func animateWeatherChange(weatherType: String?) {
+        if let dayTime = self.dayTime {
+            let weatherImage = dayTime + "Cloud"
+            //TODO: NEED to update imagename with weather Image and add images for seperate times.
             UIView.animate(withDuration: 1.5, animations: {
                 self.weatherImage.alpha = 0.2
             }, completion: { (_) in
@@ -427,7 +433,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         let frame = CGRect(x: weatherImage.frame.maxX, y: y, width: 350, height: 110)
         let cloudView = UIImageView(image: cloud)
         cloudView.frame = frame
-        cloudView.alpha = 0.5
+        cloudView.alpha = 0.6
         self.view.addSubview(cloudView)
         UIView.animate(withDuration: 30.0 - Double(random), delay: 0, options: .curveLinear, animations: {
             cloudView.transform = CGAffineTransform(translationX: -self.view.frame.maxX - 600, y: 0)
