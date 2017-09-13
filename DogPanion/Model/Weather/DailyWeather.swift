@@ -27,4 +27,12 @@ class DailyWeather {
             self.minTemp = minTemp
         } else { return nil }
     }
+    
+    func forecastDay() -> String {
+        let time = Date(timeIntervalSince1970: self.forecastTime)
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar.current
+        formatter.dateFormat = "EEE"
+        return formatter.string(from: time)
+    }
 }

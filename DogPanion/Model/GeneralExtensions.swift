@@ -56,6 +56,13 @@ extension Date {
     }
 }
 
+extension Double {
+    
+    func toString() -> String {
+        return String(format: "%.0f", self)
+    }
+}
+
 extension CGPoint {
     func adding(x: CGFloat) -> CGPoint { return CGPoint(x: self.x + x, y: self.y) }
     func adding(y: CGFloat) -> CGPoint { return CGPoint(x: self.x, y: self.y + y) }

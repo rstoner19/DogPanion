@@ -11,7 +11,7 @@ import UserNotifications
 import CoreLocation
 
 
-class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, UIPopoverPresentationControllerDelegate, UITextFieldDelegate, CLLocationManagerDelegate, DismissVCDelegate {
+class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, UIPopoverPresentationControllerDelegate, UITextFieldDelegate, CLLocationManagerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, DismissVCDelegate {
     
     var pet: Pet? = nil
     var delegate: DismissVCDelegate? = nil
@@ -28,16 +28,12 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
     @IBOutlet weak var petNameLabel: UILabel!
     @IBOutlet weak var weightLabel: UIButton!
     
+    @IBOutlet weak var weatherCollectionView: UICollectionView!
+    
     @IBOutlet weak var weatherImage: UIImageView!
     
     @IBOutlet weak var currentWeatherLabel: UILabel!
     @IBOutlet weak var maxMinTempLabel: UILabel!
-    @IBOutlet weak var timeOne: UILabel!
-    @IBOutlet weak var timeTwoLabel: UILabel!
-    @IBOutlet weak var timeThreeLabel: UILabel!
-    @IBOutlet weak var timeFourLabel: UILabel!
-    
-    
     
     @IBOutlet weak var notificationSwitch: UISwitch!
     
@@ -46,10 +42,17 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
     
     let locationManager = CLLocationManager()
     
+    var weatherForecast = [DailyWeather]() {
+        didSet {
+            self.weatherCollectionView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         notificationAuthorization()
         setup()
+        setupCollectionView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -298,6 +301,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         }
     }
     
+    
     //Mark: UserNotification Center
     func notificationAuthorization() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge]) { (granted, error) in
@@ -323,8 +327,43 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         NotificationManager.scheduleNotification(title: title, body: body, identifier: "\(pet?.name ?? "")birthday", dateCompenents: date, repeatNotifcation: true)
     }
     
-    // MARK: Weather
+    // MARK: Collection View
     
+    func setupCollectionView() {
+        self.weatherCollectionView.layer.backgroundColor = UIColor.clear.cgColor
+        let nib = UINib(nibName: "WeatherCell", bundle: nil)
+        self.weatherCollectionView.register(nib, forCellWithReuseIdentifier: "weatherCell")
+        let cellLayout = setLayout(width: 80, height: 110, spacing: 10)
+
+        self.weatherCollectionView.collectionViewLayout = cellLayout
+    }
+    
+    func setLayout(width: CGFloat, height: CGFloat, spacing: CGFloat) -> UICollectionViewFlowLayout {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.itemSize = CGSize(width: width, height: height)
+        layout.minimumLineSpacing = spacing
+        layout.minimumInteritemSpacing = 0
+        return layout
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.weatherForecast.count
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "weatherCell", for: indexPath) as! WeatherCell
+        cell.weather = self.weatherForecast[indexPath.row]
+            return cell
+     
+    }
+    
+    // MARK: Weather
     func updateWeather(coordinate: CLLocationCoordinate2D?) {
         if let coordinate = coordinate {
             let lat = String(format: "%.4f", coordinate.latitude); let long = String(format: "%.4f", coordinate.longitude)
@@ -334,7 +373,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
                     self.currentWeatherLabel.text = weather.currentWeatherText()
                     self.maxMinTempLabel.text = weather.currentMaxMinTemp()
                     self.currentWeather(weather: currentWeather.icon)
-                    
+                    self.weatherForecast = weather.forecast
                     // self.animateWind()
                     // Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (_) in
                     //   self.animateWind()
@@ -352,9 +391,9 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         switch hour {
         case 7..<10:
             timeOfDay = "sunrise"
-        case 10..<19:
+        case 10..<18:
             timeOfDay = "clearDay"
-        case 19..<21:
+        case 18..<21:
             timeOfDay = "sunset"
         default:
             timeOfDay = "night"
