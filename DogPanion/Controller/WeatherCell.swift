@@ -31,8 +31,9 @@ class WeatherCell: UICollectionViewCell {
                 self.highLabel.text = "H:" + weather.maxTemp.toString() + "°"
                 self.lowLabel.text = "L:" + weather.minTemp.toString() + "°"
                 self.precipLabel.text = "Precip: " + (weather.precipProbability * 100).toString() + "%"
-                self.iconImage.image = UIImage(named: "clearIcon")
+                self.iconImage.image = weather.weatherIcon()
                 print(weather.icon)
+                //TODO: Need to highlight best days
                 if weather.icon == "clear-day" {
                     self.clearView.layer.borderColor = UIColor.green.withAlphaComponent(0.7).cgColor
                     self.clearView.layer.borderWidth = 1.5

@@ -34,6 +34,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
     
     @IBOutlet weak var currentWeatherLabel: UILabel!
     @IBOutlet weak var maxMinTempLabel: UILabel!
+    @IBOutlet weak var precipChanceLabel: UILabel!
     
     @IBOutlet weak var notificationSwitch: UISwitch!
     
@@ -207,7 +208,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
             }))
         self.present(alertController, animated: true, completion: nil)
     }
-    
+    // TODO: Move to model? Have pet.heatlh be input
     func deleteNotifications() {
         if let vaccines = pet?.health?.vaccines?.allObjects as? [Vaccines] {
             for vaccine in vaccines {
@@ -301,7 +302,6 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         }
     }
     
-    
     //Mark: UserNotification Center
     func notificationAuthorization() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge]) { (granted, error) in
@@ -314,7 +314,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
             }
         }
     }
-    
+    // TODO, place in Notifcation Class
     func birthdayReminder(birthday: Date) {
         let calendar = Calendar.current
         let components = calendar.dateComponents([.day, .month], from: birthday)
@@ -374,6 +374,12 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
                     self.maxMinTempLabel.text = weather.currentMaxMinTemp()
                     self.currentWeather(weather: currentWeather.icon)
                     self.weatherForecast = weather.forecast
+                    self.precipChanceLabel.text = (currentWeather.precipProbability * 100).toString() + "%"
+                    for hour in weather.currentDayWeather! {
+                        print(Date(timeIntervalSince1970: hour.forecastTime), hour.precipProbability, hour.temperature)
+                    }
+                    print(currentWeather.cloudCover)
+                    // TODO: Adjust Background based on cloudcover.. currently printing
                     // self.animateWind()
                     // Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (_) in
                     //   self.animateWind()

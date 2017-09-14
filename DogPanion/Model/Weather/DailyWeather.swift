@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class DailyWeather {
     
@@ -34,5 +35,28 @@ class DailyWeather {
         formatter.calendar = Calendar.current
         formatter.dateFormat = "EEE"
         return formatter.string(from: time)
+    }
+    
+    func weatherIcon() -> UIImage? {
+        let imageName: String
+        switch self.icon {
+        case "clear-day", "clear-night":
+            imageName = "clearIcon"
+        case "rain":
+            imageName = "rainIcon"
+        case "snow":
+            imageName = "snowIcon"
+        case "sleet":
+            imageName = "sleetIcon"
+        case "wind":
+            imageName = "windIcon"
+        case "partly-cloudy-day":
+            imageName = "partlyCloudyIcon"
+        case "partly-cloudy-night":
+            imageName = "partlyCloudNightIcon"
+        default:
+            imageName = "cloudyIcon"
+        }
+        return UIImage(named: imageName)
     }
 }

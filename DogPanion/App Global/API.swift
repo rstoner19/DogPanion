@@ -20,7 +20,7 @@ class API {
     }
     
     func GET(latitude: String, longitude: String, time: String?, completion: @escaping (_ weather: Weather?) -> ()) {
-        let baseURL = "https://api.darksky.net/forecast/" + Constants.key + "/" + latitude + "," + longitude
+        let baseURL = "https://api.darksky.net/forecast/" + Constants.key + "/" + latitude + "," + longitude + "?exclude=minutely,flags"
         guard let url = URL(string: baseURL) else { return }
         let urlRequest = URLRequest(url: url)
         let task = self.session.dataTask(with: urlRequest) { (data, response, error) in
