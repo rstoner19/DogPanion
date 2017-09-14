@@ -68,7 +68,15 @@ class DailyWeather {
     
     func weatherMeasurment() -> Double {
         let temperatureElement: Double
-        
+        if self.maxTemp >= 70 && self.minTemp <= 70 {
+            temperatureElement = 0.0
+        } else {
+            if self.minTemp > 70 {
+                temperatureElement = (self.minTemp - 70)/10
+            } else {
+                temperatureElement = (70 - maxTemp)/10
+            }
+        }
         let precipElement = self.precipIntensity * 25.4 * self.precipProbability
         let windElement = self.windSpeed < 30 ? 0.0 : (self.windSpeed - 30)/10
         return temperatureElement + precipElement + windElement

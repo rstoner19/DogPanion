@@ -33,18 +33,22 @@ class WeatherCell: UICollectionViewCell {
                 self.lowLabel.text = "L:" + weather.minTemp.toString() + "°"
                 self.precipLabel.text = "Precip: " + (weather.precipProbability * 100).toString() + "%"
                 self.iconImage.image = weather.weatherIcon()
-                print(weather.icon)
-                //TODO: Need to highlight best days
-                if weather.icon == "clear-day" {
-                    
-                    let dogIcon = UIImage(named: "walkDogIcon")
-                    let templateImage = dogIcon?.withRenderingMode(.alwaysTemplate)
-                    self.dogWalkIcon.image = templateImage
-                    self.dogWalkIcon.tintColor = UIColor.green
-                    self.clearView.layer.borderColor = UIColor.green.withAlphaComponent(0.7).cgColor
-                    self.clearView.layer.borderWidth = 1.5
-                }
+                print(weather.icon)                
             }
+        }
+    }
+    
+    var highlight: Bool? = nil {
+        didSet {
+            if highlight == true {
+                let dogIcon = UIImage(named: "walkDogIcon")
+                let templateImage = dogIcon?.withRenderingMode(.alwaysTemplate)
+                self.dogWalkIcon.image = templateImage
+                self.dogWalkIcon.tintColor = UIColor.green
+                self.clearView.layer.borderColor = UIColor.green.withAlphaComponent(0.7).cgColor
+                self.clearView.layer.borderWidth = 1.5
+            }
+ 
         }
     }
     

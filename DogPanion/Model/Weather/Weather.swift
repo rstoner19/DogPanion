@@ -42,7 +42,6 @@ class Weather {
             let count = min(16, dayWeather.count)
             for index in 1..<count {
                 let currentValue = dayWeather[index].weatherMeasurment()
-                print(Date(timeIntervalSince1970: dayWeather[index].forecastTime).getHour(), currentValue, dayWeather[index].temperature, dayWeather[index].precipProbability, dayWeather[index].precipIntensity)
                 if currentValue < minValue {
                     minValue = currentValue
                     bestTime = dayWeather[index]
@@ -55,6 +54,28 @@ class Weather {
             return timeString + temp + precip + windString
         }
         return ""
+    }
+    
+    func idealDays() -> [Int:Bool] {
+        var bestDaysIndex: [Int:Bool] = [:]
+        var weatherValues: [Double] = []
+        var avgValue = 0.0; var minValue = 100.0
+        for index in 0..<forecast.count {
+            let currentValue = self.forecast[index].weatherMeasurment()
+            weatherValues.append(currentValue)
+            if currentValue < minValue { minValue = currentValue }
+            if currentValue <= 0.5 { bestDaysIndex[index] = true }
+        }
+        if bestDaysIndex.isEmpty {
+            avgValue = avgValue / Double(forecast.count)
+            for index in 0..<weatherValues.count {
+                if weatherValues[index] < avgValue && weatherValues[index] < minValue * 2 {
+                    bestDaysIndex[index] = true
+                }
+            }
+            
+        }
+        return bestDaysIndex
     }
     
 }

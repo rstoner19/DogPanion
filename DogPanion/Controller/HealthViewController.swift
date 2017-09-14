@@ -43,6 +43,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
     @IBOutlet weak var weightTextField: UITextField!
     
     let locationManager = CLLocationManager()
+    var bestDayToWalk: [Int:Bool]? = nil
     
     var weatherForecast = [DailyWeather]() {
         didSet {
@@ -360,7 +361,13 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "weatherCell", for: indexPath) as! WeatherCell
         cell.weather = self.weatherForecast[indexPath.row]
-            return cell
+        
+        if let bestDays = bestDayToWalk {
+            let highlight = bestDays[indexPath.row] ?? false
+            print(highlight)
+            cell.highlight = highlight
+        }
+        return cell
      
     }
     
@@ -374,6 +381,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
                     self.currentWeatherLabel.text = weather.currentWeatherText()
                     self.maxMinTempLabel.text = weather.currentMaxMinTemp()
                     self.currentWeather(weather: currentWeather.icon)
+                    self.bestDayToWalk = weather.idealDays()
                     self.weatherForecast = weather.forecast
                     self.precipChanceLabel.text = (currentWeather.precipProbability * 100).toString() + "%"
                     self.idealTimeLabel.text = weather.idealCurrentTime()
