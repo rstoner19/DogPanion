@@ -14,18 +14,24 @@ class DailyWeather {
     let forecastTime: TimeInterval
     let icon: String
     let precipProbability: Double
+    let precipIntensity: Double
+    let precipMaxIntensity: Double
     let summary: String
     let maxTemp: Double
     let minTemp: Double
+    let windSpeed: Double
     
     init?(json: [String : AnyObject]) {
-        if let minTemp = json["temperatureMin"] as? Double, let maxTemp = json["temperatureMax"] as? Double, let precipProbability = json["precipProbability"] as? Double, let summary = json["summary"] as? String, let icon = json["icon"] as? String, let forecastTime = json["time"] as? TimeInterval {
+        if let minTemp = json["temperatureMin"] as? Double, let maxTemp = json["temperatureMax"] as? Double, let precipProbability = json["precipProbability"] as? Double, let summary = json["summary"] as? String, let icon = json["icon"] as? String, let forecastTime = json["time"] as? TimeInterval, let precipIntensity = json["precipIntensity"] as? Double, let precipMaxIntensity = json["precipIntensityMax"] as? Double, let windSpeed = json["windSpeed"] as? Double {
             self.forecastTime = forecastTime
             self.icon = icon
             self.precipProbability = precipProbability
             self.summary = summary
             self.maxTemp = maxTemp
             self.minTemp = minTemp
+            self.precipIntensity = precipIntensity
+            self.precipMaxIntensity = precipMaxIntensity
+            self.windSpeed = windSpeed
         } else { return nil }
     }
     
@@ -58,5 +64,13 @@ class DailyWeather {
             imageName = "cloudyIcon"
         }
         return UIImage(named: imageName)
+    }
+    
+    func weatherMeasurment() -> Double {
+        let temperatureElement: Double
+        
+        let precipElement = self.precipIntensity * 25.4 * self.precipProbability
+        let windElement = self.windSpeed < 30 ? 0.0 : (self.windSpeed - 30)/10
+        return temperatureElement + precipElement + windElement
     }
 }

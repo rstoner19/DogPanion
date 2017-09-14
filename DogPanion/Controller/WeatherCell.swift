@@ -15,6 +15,7 @@ class WeatherCell: UICollectionViewCell {
     @IBOutlet weak var precipLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     
+    @IBOutlet weak var dogWalkIcon: UIImageView!
     @IBOutlet weak var iconImage: UIImageView!
     
     @IBOutlet weak var clearView: UIView!
@@ -35,6 +36,11 @@ class WeatherCell: UICollectionViewCell {
                 print(weather.icon)
                 //TODO: Need to highlight best days
                 if weather.icon == "clear-day" {
+                    
+                    let dogIcon = UIImage(named: "walkDogIcon")
+                    let templateImage = dogIcon?.withRenderingMode(.alwaysTemplate)
+                    self.dogWalkIcon.image = templateImage
+                    self.dogWalkIcon.tintColor = UIColor.green
                     self.clearView.layer.borderColor = UIColor.green.withAlphaComponent(0.7).cgColor
                     self.clearView.layer.borderWidth = 1.5
                 }

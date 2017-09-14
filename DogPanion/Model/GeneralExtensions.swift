@@ -15,6 +15,13 @@ extension Date {
         return formatter.string(from: self)
     }
     
+    func getHour() -> String {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar.current
+        formatter.dateFormat = "h a"
+        return formatter.string(from: self)
+    }
+    
     func addHalfDay() -> Date {
         return self.addingTimeInterval(43200)
     }

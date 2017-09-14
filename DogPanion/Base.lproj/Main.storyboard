@@ -940,7 +940,7 @@ Images</string>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CNv-VZ-86J">
                                 <rect key="frame" x="0.0" y="97.333333333333314" width="375" height="714.66666666666674"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="H9C-Ll-5ik">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="714.66666666666674"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="715"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <blurEffect style="light"/>
@@ -1332,12 +1332,13 @@ Images</string>
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="260"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KYU-1H-QVs">
-                                        <rect key="frame" x="8" y="76" width="206.66666666666666" height="20.666666666666657"/>
+                                        <rect key="frame" x="8" y="76" width="162" height="21"/>
                                         <attributedString key="attributedText">
-                                            <fragment content="Ideal Time to Take Dog Out">
+                                            <fragment content="Today's Ideal Time to">
                                                 <attributes>
                                                     <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <font key="NSFont" metaFont="system" size="17"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
                                         </attributedString>
@@ -1412,8 +1413,8 @@ Images</string>
                                             <action selector="locationAccessButtonPressed:" destination="eyY-L1-k6d" eventType="touchUpInside" id="bcm-iy-R5r"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ideal Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7HG-k1-vdj">
-                                        <rect key="frame" x="8" y="99" width="67" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7HG-k1-vdj">
+                                        <rect key="frame" x="8" y="99" width="7" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1425,10 +1426,19 @@ Images</string>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="walkDogIcon" translatesAutoresizingMaskIntoConstraints="NO" id="C8z-RS-X55">
+                                        <rect key="frame" x="172" y="75.666666666666657" width="21" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="O31-my-jYn"/>
+                                            <constraint firstAttribute="height" constant="21" id="vud-BC-RDh"/>
+                                            <constraint firstAttribute="width" secondItem="C8z-RS-X55" secondAttribute="height" multiplier="1:1" id="xrV-Zs-vKR"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="nXd-Dx-gm7" firstAttribute="top" secondItem="Z9T-a0-c2e" secondAttribute="bottom" constant="2" id="0jS-7r-bxJ"/>
                                     <constraint firstItem="FKt-Zw-UiE" firstAttribute="trailing" secondItem="qK8-ES-mYo" secondAttribute="trailing" id="2HQ-bl-CLn"/>
+                                    <constraint firstItem="C8z-RS-X55" firstAttribute="centerY" secondItem="KYU-1H-QVs" secondAttribute="centerY" id="3e5-Dk-NlB"/>
                                     <constraint firstItem="XMB-We-9vU" firstAttribute="leading" secondItem="JIb-DQ-oe7" secondAttribute="leading" id="4Q3-89-ibO"/>
                                     <constraint firstItem="d9A-M1-EfI" firstAttribute="centerY" secondItem="CBc-DP-7ES" secondAttribute="centerY" id="4f7-cq-lD8"/>
                                     <constraint firstItem="wDi-c3-Cnd" firstAttribute="top" secondItem="XMB-We-9vU" secondAttribute="bottom" id="4w6-sY-LYP"/>
@@ -1444,6 +1454,7 @@ Images</string>
                                     <constraint firstAttribute="trailing" secondItem="Yd7-Qo-7Gr" secondAttribute="trailing" id="O0C-jg-ZPA"/>
                                     <constraint firstItem="Dfj-iI-LmP" firstAttribute="leading" secondItem="JIb-DQ-oe7" secondAttribute="leading" constant="8" id="OH6-Ib-OMy"/>
                                     <constraint firstItem="nXd-Dx-gm7" firstAttribute="leading" secondItem="JIb-DQ-oe7" secondAttribute="leading" constant="8" id="Pc3-aN-jpi"/>
+                                    <constraint firstItem="C8z-RS-X55" firstAttribute="leading" secondItem="KYU-1H-QVs" secondAttribute="trailing" constant="2" id="Q3g-Mh-8Ou"/>
                                     <constraint firstItem="Z9T-a0-c2e" firstAttribute="leading" secondItem="JIb-DQ-oe7" secondAttribute="leading" constant="8" id="QGW-5P-UK8"/>
                                     <constraint firstItem="5ag-Wq-qgw" firstAttribute="top" secondItem="Yd7-Qo-7Gr" secondAttribute="bottom" id="QRH-tv-nTq"/>
                                     <constraint firstAttribute="trailing" secondItem="CBc-DP-7ES" secondAttribute="trailing" id="QVC-RF-8Cf"/>
@@ -1505,6 +1516,7 @@ Images</string>
                         <outlet property="breedLabel" destination="bQk-J2-cPt" id="SQ8-g5-dqX"/>
                         <outlet property="breedTextField" destination="Cup-f3-WDe" id="zZX-GR-6ZW"/>
                         <outlet property="currentWeatherLabel" destination="MKj-2x-hMP" id="ZFA-xF-NFt"/>
+                        <outlet property="idealTimeLabel" destination="7HG-k1-vdj" id="71m-q3-yZP"/>
                         <outlet property="locationAccessButton" destination="5Xh-zB-KKW" id="qU9-oK-Y5Z"/>
                         <outlet property="maxMinTempLabel" destination="nXd-Dx-gm7" id="tQ9-Vm-gzK"/>
                         <outlet property="medicationButton" destination="qK8-ES-mYo" id="ngq-TL-uLR"/>
@@ -1984,8 +1996,8 @@ Images</string>
                                 <exclude reference="vyk-it-XQZ"/>
                                 <include reference="9KE-IA-6eB"/>
                                 <exclude reference="gdU-uS-Smh"/>
-                                <include reference="vrg-GJ-XpD"/>
                                 <exclude reference="v7t-e9-A5O"/>
+                                <include reference="vrg-GJ-XpD"/>
                             </mask>
                         </variation>
                     </view>
@@ -2545,6 +2557,7 @@ Image</string>
         <image name="rightArrow" width="40" height="40"/>
         <image name="saveIcon" width="500" height="500"/>
         <image name="vetBG" width="728" height="200"/>
+        <image name="walkDogIcon" width="80" height="80"/>
         <image name="welcomeBG" width="1242" height="883"/>
     </resources>
     <inferredMetricsTieBreakers>

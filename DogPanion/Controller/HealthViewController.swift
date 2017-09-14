@@ -33,6 +33,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
     @IBOutlet weak var weatherImage: UIImageView!
     
     @IBOutlet weak var currentWeatherLabel: UILabel!
+    @IBOutlet weak var idealTimeLabel: UILabel!
     @IBOutlet weak var maxMinTempLabel: UILabel!
     @IBOutlet weak var precipChanceLabel: UILabel!
     
@@ -375,9 +376,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
                     self.currentWeather(weather: currentWeather.icon)
                     self.weatherForecast = weather.forecast
                     self.precipChanceLabel.text = (currentWeather.precipProbability * 100).toString() + "%"
-                    for hour in weather.currentDayWeather! {
-                        print(Date(timeIntervalSince1970: hour.forecastTime), hour.precipProbability, hour.temperature)
-                    }
+                    self.idealTimeLabel.text = weather.idealCurrentTime()
                     print(currentWeather.cloudCover)
                     // TODO: Adjust Background based on cloudcover.. currently printing
                     // self.animateWind()

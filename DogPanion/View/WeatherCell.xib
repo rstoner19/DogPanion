@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -63,17 +63,27 @@
                             <constraint firstAttribute="trailing" secondItem="EUs-wR-rE8" secondAttribute="trailing" constant="8" id="zzM-V4-R8k"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G0T-IY-pRZ">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="G0T-IY-pRZ">
                         <rect key="frame" x="24" y="1" width="30" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="shR-7f-LYA">
+                        <rect key="frame" x="56" y="1" width="21" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="IPm-kH-c0F"/>
+                            <constraint firstAttribute="width" constant="21" id="XVV-3l-jTd"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="shR-7f-LYA" firstAttribute="centerY" secondItem="G0T-IY-pRZ" secondAttribute="centerY" id="0rS-uO-Mlk"/>
                 <constraint firstItem="lvx-Tq-pZS" firstAttribute="top" secondItem="G0T-IY-pRZ" secondAttribute="bottom" id="28p-hS-p0I"/>
                 <constraint firstAttribute="bottom" secondItem="lvx-Tq-pZS" secondAttribute="bottom" id="2bF-XV-YCh"/>
+                <constraint firstAttribute="trailing" secondItem="shR-7f-LYA" secondAttribute="trailing" constant="1" id="85P-oH-3z0"/>
+                <constraint firstItem="shR-7f-LYA" firstAttribute="leading" secondItem="G0T-IY-pRZ" secondAttribute="trailing" constant="2" id="HiK-on-G6e"/>
                 <constraint firstItem="G0T-IY-pRZ" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="TeO-CL-wvi"/>
                 <constraint firstAttribute="trailing" secondItem="lvx-Tq-pZS" secondAttribute="trailing" id="gkU-wD-YY3"/>
                 <constraint firstItem="lvx-Tq-pZS" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="jXN-vS-SzG"/>
@@ -82,6 +92,7 @@
             <size key="customSize" width="150" height="139"/>
             <connections>
                 <outlet property="clearView" destination="lvx-Tq-pZS" id="5H8-pg-PC2"/>
+                <outlet property="dogWalkIcon" destination="shR-7f-LYA" id="SLt-kY-V3f"/>
                 <outlet property="highLabel" destination="weK-mf-H4l" id="o7a-kd-OMu"/>
                 <outlet property="iconImage" destination="8hM-dq-Sz4" id="0XX-K2-Uqz"/>
                 <outlet property="lowLabel" destination="EUs-wR-rE8" id="6XU-CI-zvg"/>
