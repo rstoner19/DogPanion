@@ -61,7 +61,7 @@ class API {
                     }
                 } catch {
                     DispatchQueue.main.async {
-                        return
+                        return 
                     }
                 }
                 

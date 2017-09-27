@@ -49,7 +49,7 @@ class Weather {
             }
             let timeString = Date(timeIntervalSince1970: bestTime.forecastTime).getHour() + " " + bestTime.summary
             let temp = " (" + bestTime.temperature.toString() + "°, "
-            let precip = "Precip: " + (bestTime.precipProbability * 100).toString() + "% " + bestTime.precipIntensity.toString() + "in/hr, "
+            let precip = "Precip: " + (bestTime.precipProbability * 100).toString() + "% " + bestTime.precipIntensity.toString(hundredths: true) + "in/hr, "
             let windString = "Wind: " + bestTime.windSpeed.toString() + "mph)"
             return timeString + temp + precip + windString
         }

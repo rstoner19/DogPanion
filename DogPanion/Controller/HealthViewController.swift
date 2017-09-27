@@ -10,8 +10,7 @@ import UIKit
 import UserNotifications
 import CoreLocation
 
-
-class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, UIPopoverPresentationControllerDelegate, UITextFieldDelegate, CLLocationManagerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, DismissVCDelegate {
+class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, UIPopoverPresentationControllerDelegate, UITextFieldDelegate, CLLocationManagerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, DismissVCDelegate, WeatherAnimations {
     
     var pet: Pet? = nil
     var delegate: DismissVCDelegate? = nil
@@ -376,6 +375,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         if let coordinate = coordinate {
             let lat = String(format: "%.4f", coordinate.latitude); let long = String(format: "%.4f", coordinate.longitude)
             API.shared.GET(latitude: lat, longitude: long, time: nil) { (weather) in
+                
                 if let weather = weather, let currentWeather = weather.currentWeather {
                     print(Date(timeIntervalSince1970: currentWeather.forecastTime))
                     self.currentWeatherLabel.text = weather.currentWeatherText()
@@ -385,13 +385,20 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
                     self.weatherForecast = weather.forecast
                     self.precipChanceLabel.text = (currentWeather.precipProbability * 100).toString() + "%"
                     self.idealTimeLabel.text = weather.idealCurrentTime()
+                    if let backgroundImage = currentWeather.isCloudyWeather(timeOfDay: self.dayTime) {
+                        self.animateWeatherChange(backgroundImage: backgroundImage)
+                    }
                     print(currentWeather.cloudCover)
-                    // TODO: Adjust Background based on cloudcover.. currently printing
+                    // TODO: Adjust Background based on cloudcover.. verify .75 is good!
                     // self.animateWind()
-                    // Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (_) in
-                    //   self.animateWind()
+                    //self.animateRain()
+                     //Timer.scheduledTimer(withTimeInterval: 3, repeats: true, block: { (_) in
+                      // self.animateWind()
+                     //   self.animateRain()
                     // })
                     //  self.animateWeatherChange(weatherType: weather.currentWeather!.icon)
+                } else {
+                    self.idealTimeLabel.text = "Error getting information, please try again later"
                 }
             }
         }
@@ -420,7 +427,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         case "clear-day", "clear-night":
             break
         case "rain":
-            animateRain()
+            self.animateRain()
             Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { (_) in
                 self.animateRain()
             }
@@ -446,7 +453,6 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
             Timer.scheduledTimer(withTimeInterval: 8, repeats: true) { (_) in
                 self.animateCloud()
             }
-            //animateWeatherChange(weatherType: self.dayTime)
         default:
             animatePartlyCloudy()
             Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { (_) in
@@ -454,119 +460,16 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
             }
         }
     }
-    //TODO: Need to Implement
-    func animateWeatherChange(weatherType: String?) {
-        if let dayTime = self.dayTime {
-            let weatherImage = dayTime + "Cloud"
-            //TODO: NEED to update imagename with weather Image and add images for seperate times.
-            UIView.animate(withDuration: 1.5, animations: {
-                self.weatherImage.alpha = 0.2
-            }, completion: { (_) in
-                self.weatherImage.image = UIImage(named: "cloudyDay")
-                UIView.animate(withDuration: 2.0, animations: {
-                    self.weatherImage.alpha = 1.0
-                })
+    
+    func animateWeatherChange(backgroundImage: UIImage) {
+        UIView.animate(withDuration: 1.5, animations: {
+            self.weatherImage.alpha = 0.2
+        }, completion: { (_) in
+            self.weatherImage.image = backgroundImage
+            UIView.animate(withDuration: 2.0, animations: {
+                self.weatherImage.alpha = 1.0
             })
-        }
-    }
-    
-    func animateCloud() {
-        let cloud: UIImage?
-        let random = arc4random_uniform(3)
-        switch random {
-        case 0:
-            cloud = UIImage(named: "cloud")
-        case 1:
-            cloud = UIImage(named: "cloudTwo")
-        default:
-            cloud = UIImage(named: "cloudThree")
-        }
-        let y = weatherImage.frame.minY + 60 + CGFloat(arc4random_uniform(40))
-        let frame = CGRect(x: weatherImage.frame.maxX, y: y, width: 350, height: 110)
-        let cloudView = UIImageView(image: cloud)
-        cloudView.frame = frame
-        cloudView.alpha = 0.6
-        self.view.addSubview(cloudView)
-        UIView.animate(withDuration: 30.0 - Double(random), delay: 0, options: .curveLinear, animations: {
-            cloudView.transform = CGAffineTransform(translationX: -self.view.frame.maxX - 600, y: 0)
-        }) { (_) in
-           cloudView.removeFromSuperview()
-        }
-    }
-    
-    func animateFog() {
-        let fog = UIImage(named: "fog")
-        let y = weatherImage.frame.minY + 45
-        let frame = CGRect(x: weatherImage.frame.maxX, y: y, width: 600, height: self.weatherImage.frame.height * 1.4)
-        let cloudView = UIImageView(image: fog)
-        cloudView.frame = frame
-        cloudView.alpha = 0.5
-        self.view.addSubview(cloudView)
-        UIView.animate(withDuration: 40.0, delay: 0, options: .curveLinear, animations: {
-            cloudView.transform = CGAffineTransform(translationX: -self.view.frame.maxX - 700, y: 0)
-        }) { (_) in
-            cloudView.removeFromSuperview()
-        }
-    }
-    
-    func animatePartlyCloudy() {
-        let cloud = UIImage(named: "partlyCloudy")
-        let y = weatherImage.frame.minY + 60 + CGFloat(arc4random_uniform(40))
-        let frame = CGRect(x: weatherImage.frame.maxX, y: y, width: 350, height: 110)
-        let cloudView = UIImageView(image: cloud)
-        cloudView.frame = frame
-        cloudView.alpha = 0.5
-        self.view.addSubview(cloudView)
-        UIView.animate(withDuration: 28.0, delay: 0, options: .curveLinear, animations: {
-            cloudView.transform = CGAffineTransform(translationX: -self.view.frame.maxX - 600, y: 0)
-        }) { (_) in
-            cloudView.removeFromSuperview()
-        }
-    }
-    
-    func animateRain() {
-        let rain = UIImage(named: "rain")
-        let y: CGFloat = -140
-        let frame = CGRect(x: weatherImage.frame.minX, y: y, width: self.view.frame.width, height: 140)
-        let rainView = UIImageView(image: rain)
-        rainView.frame = frame
-        self.view.addSubview(rainView)
-        UIView.animate(withDuration: 10, delay: 0, options: .curveLinear, animations: {
-            rainView.transform = CGAffineTransform(translationX: 0, y: +400)
-            rainView.alpha = 0.05
-        }) { (_) in
-            rainView.removeFromSuperview()
-        }
-    }
-    
-    func animateSleet() {
-        let sleet = UIImage(named: "sleet")
-        let y: CGFloat = -140
-        let frame = CGRect(x: weatherImage.frame.minX, y: y, width: self.view.frame.width, height: 140)
-        let sleetView = UIImageView(image: sleet)
-        sleetView.frame = frame
-        self.view.addSubview(sleetView)
-        UIView.animate(withDuration: 10.0, delay: 0, options: .curveLinear, animations: {
-            sleetView.transform = CGAffineTransform(translationX: 0, y: +400)
-            sleetView.alpha = 0.15
-        }) { (_) in
-            sleetView.removeFromSuperview()
-        }
-    }
-    
-    func animateSnow() {
-        let snow = UIImage(named: "snow2")
-        let y: CGFloat = -140
-        let frame = CGRect(x: weatherImage.frame.minX, y: y, width: self.view.frame.width, height: 140)
-        let snowView = UIImageView(image: snow)
-        snowView.frame = frame
-        self.view.addSubview(snowView)
-        UIView.animate(withDuration: 30.0, delay: 0, options: .curveLinear, animations: {
-            snowView.transform = CGAffineTransform(translationX: 0, y: +400)
-            snowView.alpha = 0.05
-        }) { (_) in
-            snowView.removeFromSuperview()
-        }
+        })
     }
     
     func animateWind() {

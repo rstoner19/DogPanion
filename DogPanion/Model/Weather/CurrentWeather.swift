@@ -6,7 +6,7 @@
 //  Copyright © 2017 Rick Stoner. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class CurrentWeather {
     
@@ -34,11 +34,22 @@ class CurrentWeather {
         } else { return nil }
     }
     
+    func isCloudyWeather(timeOfDay: String?) -> UIImage? {
+        if self.cloudCover > 0.75 {
+            if let timeOfDay = timeOfDay {
+                let weatherImage = timeOfDay + "Cloudy"
+                return UIImage(named: weatherImage)
+            }
+        }
+        return nil
+    }
+    
     // Create's 'comparble' weather scale to find out best weather times
     func weatherMeasurment() -> Double {
         let temperatureElement = abs(self.temperature - 70.0)/10
         let precipElement = self.precipIntensity * 25.4 * self.precipProbability
         let windElement = self.windSpeed < 30 ? 0.0 : (self.windSpeed - 30)/10
+        print("Temp: ", temperatureElement, " Precip: ", precipElement, " Wind: ", windElement) // TODO: Need to delete
         return temperatureElement + precipElement + windElement
     }
     

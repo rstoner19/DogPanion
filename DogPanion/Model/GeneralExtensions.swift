@@ -68,6 +68,13 @@ extension Double {
     func toString() -> String {
         return String(format: "%.0f", self)
     }
+    
+    func toString(hundredths: Bool) -> String {
+        if hundredths == true {
+            return String(format: "%.2f", self)
+        } else {
+            return String(format: "%.0f", self) }
+    }
 }
 
 extension CGPoint {
