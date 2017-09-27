@@ -8,14 +8,17 @@
 
 import UIKit
 import UserNotifications
+import CoreLocation
 
-class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, UIPopoverPresentationControllerDelegate, UITextFieldDelegate, DismissVCDelegate {
+class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, UIPopoverPresentationControllerDelegate, UITextFieldDelegate, CLLocationManagerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, DismissVCDelegate, WeatherAnimations {
     
     var pet: Pet? = nil
     var delegate: DismissVCDelegate? = nil
+    var dayTime: String? = nil
     lazy var blurEffectView: UIVisualEffectView? = nil
     lazy var popUpView: PopUpViewController? = nil
 
+    @IBOutlet weak var locationAccessButton: UIButton!
     @IBOutlet weak var birthdayButton: UIButton!
     @IBOutlet weak var medicationButton: UIButton!
     @IBOutlet weak var vaccineButton: UIButton!
@@ -24,41 +27,49 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
     @IBOutlet weak var petNameLabel: UILabel!
     @IBOutlet weak var weightLabel: UIButton!
     
+    @IBOutlet weak var weatherCollectionView: UICollectionView!
+    
     @IBOutlet weak var weatherImage: UIImageView!
+    
+    @IBOutlet weak var currentWeatherLabel: UILabel!
+    @IBOutlet weak var idealTimeLabel: UILabel!
+    @IBOutlet weak var maxMinTempLabel: UILabel!
+    @IBOutlet weak var precipChanceLabel: UILabel!
     
     @IBOutlet weak var notificationSwitch: UISwitch!
     
     @IBOutlet weak var breedTextField: UITextField!
     @IBOutlet weak var weightTextField: UITextField!
     
+    let locationManager = CLLocationManager()
+    var bestDayToWalk: [Int:Bool]? = nil
+    
+    var weatherForecast = [DailyWeather]() {
+        didSet {
+            self.weatherCollectionView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         notificationAuthorization()
         setup()
+        setupCollectionView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        animateSnow()
-        Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { (_) in
-            self.animateSnow()
-        }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func setup() {
         self.petNameLabel.text = pet?.name
         if let breed = pet?.breed {
-            if !breed.isEmpty {
-                self.breedLabel.setTitle(breed, for: .normal)
-            }
+            if !breed.isEmpty { self.breedLabel.setTitle(breed, for: .normal) }
         }
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        self.dayTime = timeOfDay()
         setHealthItems()
-        API.shared.GET(latitude: "47.6062", longitude: "-122.3321", time: nil)
     }
     
     func setHealthItems() {
@@ -119,6 +130,12 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         }
     }
     
+    @IBAction func darkSkyButtonPressed(_ sender: UIButton) {
+        if let url = URL(string: "https://darksky.net/forecast/47.7205,-122.2067/us12/en") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
+    
     @IBAction func breedButtonPressed(_ sender: UIButton) {
         self.breedTextField.becomeFirstResponder()
     }
@@ -144,6 +161,15 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         }))
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    @IBAction func locationAccessButtonPressed(_ sender: Any) {
+        guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+            return
+        }
+        if UIApplication.shared.canOpenURL(settingsUrl) {
+            UIApplication.shared.open(settingsUrl, completionHandler: nil)
+        }
     }
     
     @IBAction func medVacButtonPressed(_ sender: UIButton) {
@@ -183,7 +209,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
             }))
         self.present(alertController, animated: true, completion: nil)
     }
-    
+    // TODO: Move to model? Have pet.heatlh be input
     func deleteNotifications() {
         if let vaccines = pet?.health?.vaccines?.allObjects as? [Vaccines] {
             for vaccine in vaccines {
@@ -232,6 +258,20 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         }
     }
     
+    // MARK: Location Manager
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedWhenInUse:
+            if let coordinate = self.locationManager.location?.coordinate {
+                updateWeather(coordinate: coordinate)
+            }
+        case .denied:
+            self.locationAccessButton.isHidden = false
+        default:
+            self.locationManager.requestWhenInUseAuthorization()
+        }
+    }
+    
     // MARK: Text Delegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == breedTextField {
@@ -275,17 +315,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
             }
         }
     }
-    
-    func scheduleNotification(title: String, body: String, identifier: String, dateCompenents: DateComponents, repeatNotifcation: Bool) {
-        let content = UNMutableNotificationContent()
-        content.title = NSString.localizedUserNotificationString(forKey: title, arguments: nil)
-        content.body = NSString.localizedUserNotificationString(forKey: body, arguments: nil)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateCompenents, repeats: repeatNotifcation)
-        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
-        let center = UNUserNotificationCenter.current()
-        center.add(request, withCompletionHandler: nil)
-    }
-    
+    // TODO, place in Notifcation Class
     func birthdayReminder(birthday: Date) {
         let calendar = Calendar.current
         let components = calendar.dateComponents([.day, .month], from: birthday)
@@ -298,42 +328,163 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         NotificationManager.scheduleNotification(title: title, body: body, identifier: "\(pet?.name ?? "")birthday", dateCompenents: date, repeatNotifcation: true)
     }
     
-    // MARK: Weather
-    func animateCloud() {
-        let cloud: UIImage?
-        let random = arc4random_uniform(3)
-        switch random {
-        case 0:
-            cloud = UIImage(named: "cloud")
-        case 1:
-            cloud = UIImage(named: "cloudTwo")
-        default:
-            cloud = UIImage(named: "cloudThree")
+    // MARK: Collection View
+    
+    func setupCollectionView() {
+        self.weatherCollectionView.layer.backgroundColor = UIColor.clear.cgColor
+        let nib = UINib(nibName: "WeatherCell", bundle: nil)
+        self.weatherCollectionView.register(nib, forCellWithReuseIdentifier: "weatherCell")
+        let cellLayout = setLayout(width: 80, height: 110, spacing: 10)
+
+        self.weatherCollectionView.collectionViewLayout = cellLayout
+    }
+    
+    func setLayout(width: CGFloat, height: CGFloat, spacing: CGFloat) -> UICollectionViewFlowLayout {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.itemSize = CGSize(width: width, height: height)
+        layout.minimumLineSpacing = spacing
+        layout.minimumInteritemSpacing = 0
+        return layout
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.weatherForecast.count
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "weatherCell", for: indexPath) as! WeatherCell
+        cell.weather = self.weatherForecast[indexPath.row]
+        
+        if let bestDays = bestDayToWalk {
+            let highlight = bestDays[indexPath.row] ?? false
+            print(highlight)
+            cell.highlight = highlight
         }
-        let y = weatherImage.frame.minY + 60 + CGFloat(arc4random_uniform(40))
-        let frame = CGRect(x: weatherImage.frame.maxX, y: y, width: 350, height: 110)
-        let cloudView = UIImageView(image: cloud)
-        cloudView.frame = frame
-        self.view.addSubview(cloudView)
-        UIView.animate(withDuration: 30.0 - Double(random), delay: 0, options: .curveLinear, animations: {
-            cloudView.transform = CGAffineTransform(translationX: -self.view.frame.maxX - 600, y: 0)
-        }) { (_) in
-           cloudView.removeFromSuperview()
+        return cell
+     
+    }
+    
+    // MARK: Weather
+    func updateWeather(coordinate: CLLocationCoordinate2D?) {
+        if let coordinate = coordinate {
+            let lat = String(format: "%.4f", coordinate.latitude); let long = String(format: "%.4f", coordinate.longitude)
+            API.shared.GET(latitude: lat, longitude: long, time: nil) { (weather) in
+                
+                if let weather = weather, let currentWeather = weather.currentWeather {
+                    print(Date(timeIntervalSince1970: currentWeather.forecastTime))
+                    self.currentWeatherLabel.text = weather.currentWeatherText()
+                    self.maxMinTempLabel.text = weather.currentMaxMinTemp()
+                    self.currentWeather(weather: currentWeather.icon)
+                    self.bestDayToWalk = weather.idealDays()
+                    self.weatherForecast = weather.forecast
+                    self.precipChanceLabel.text = (currentWeather.precipProbability * 100).toString() + "%"
+                    self.idealTimeLabel.text = weather.idealCurrentTime()
+                    if let backgroundImage = currentWeather.isCloudyWeather(timeOfDay: self.dayTime) {
+                        self.animateWeatherChange(backgroundImage: backgroundImage)
+                    }
+                    print(currentWeather.cloudCover)
+                    // TODO: Adjust Background based on cloudcover.. verify .75 is good!
+                    // self.animateWind()
+                    //self.animateRain()
+                     //Timer.scheduledTimer(withTimeInterval: 3, repeats: true, block: { (_) in
+                      // self.animateWind()
+                     //   self.animateRain()
+                    // })
+                    //  self.animateWeatherChange(weatherType: weather.currentWeather!.icon)
+                } else {
+                    self.idealTimeLabel.text = "Error getting information, please try again later"
+                }
+            }
         }
     }
     
-    func animateSnow() {
-        let snow = UIImage(named: "snow")
-        let y: CGFloat = -100
-        let frame = CGRect(x: weatherImage.frame.minX, y: y, width: self.view.frame.width, height: 140)
-        let snowView = UIImageView(image: snow)
-        snowView.frame = frame
-        self.view.addSubview(snowView)
-        UIView.animate(withDuration: 30.0, delay: 0, options: .curveLinear, animations: {
-            snowView.transform = CGAffineTransform(translationX: 0, y: +400)
-            snowView.alpha = 0.3
+    func timeOfDay() -> String {
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: Date())
+        let timeOfDay: String
+        switch hour {
+        case 7..<10:
+            timeOfDay = "sunrise"
+        case 10..<18:
+            timeOfDay = "clearDay"
+        case 18..<21:
+            timeOfDay = "sunset"
+        default:
+            timeOfDay = "night"
+        }
+        self.weatherImage.image = UIImage(named: timeOfDay)
+        return timeOfDay
+    }
+    
+    func currentWeather(weather: String) {
+        switch weather {
+        case "clear-day", "clear-night":
+            break
+        case "rain":
+            self.animateRain()
+            Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { (_) in
+                self.animateRain()
+            }
+        case "snow":
+            animateSnow()
+            Timer.scheduledTimer(withTimeInterval: 8, repeats: true) { (_) in
+                self.animateSnow()
+            }
+        case "sleet":
+            self.animateSleet()
+            Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: { (_) in
+                self.animateSleet()
+            })
+        case "wind":
+            break // TODO: NEED WIND ANIMATION
+        case "fog":
+            animateFog()
+            Timer.scheduledTimer(withTimeInterval: 20, repeats: true) { (_) in
+                self.animateFog()
+            }
+        case "cloudy":
+            animateCloud()
+            Timer.scheduledTimer(withTimeInterval: 8, repeats: true) { (_) in
+                self.animateCloud()
+            }
+        default:
+            animatePartlyCloudy()
+            Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { (_) in
+                self.animatePartlyCloudy()
+            }
+        }
+    }
+    
+    func animateWeatherChange(backgroundImage: UIImage) {
+        UIView.animate(withDuration: 1.5, animations: {
+            self.weatherImage.alpha = 0.2
+        }, completion: { (_) in
+            self.weatherImage.image = backgroundImage
+            UIView.animate(withDuration: 2.0, animations: {
+                self.weatherImage.alpha = 1.0
+            })
+        })
+    }
+    
+    func animateWind() {
+        let wind = UIImage(named: "wind")
+        let y = weatherImage.frame.minY + 60 + CGFloat(arc4random_uniform(40))
+        let frame = CGRect(x: weatherImage.frame.maxX, y: y, width: 350, height: 110)
+        // TODO: need another wind option
+        let windView = UIImageView(image: wind)
+        windView.frame = frame
+        windView.alpha = 0.5
+        self.view.addSubview(windView)
+        UIView.animate(withDuration: 4.0, delay: 0, options: .curveLinear, animations: {
+            windView.transform = CGAffineTransform(translationX: -self.view.frame.maxX - 600, y: 0)
         }) { (_) in
-            snowView.removeFromSuperview()
+            windView.removeFromSuperview()
         }
     }
 

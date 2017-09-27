@@ -15,6 +15,13 @@ extension Date {
         return formatter.string(from: self)
     }
     
+    func getHour() -> String {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar.current
+        formatter.dateFormat = "h a"
+        return formatter.string(from: self)
+    }
+    
     func addHalfDay() -> Date {
         return self.addingTimeInterval(43200)
     }
@@ -53,6 +60,20 @@ extension Date {
         components.setValue(1, for: .year)
         let calendar = Calendar.current
         return calendar.date(byAdding: components, to: self)!
+    }
+}
+
+extension Double {
+    
+    func toString() -> String {
+        return String(format: "%.0f", self)
+    }
+    
+    func toString(hundredths: Bool) -> String {
+        if hundredths == true {
+            return String(format: "%.2f", self)
+        } else {
+            return String(format: "%.0f", self) }
     }
 }
 

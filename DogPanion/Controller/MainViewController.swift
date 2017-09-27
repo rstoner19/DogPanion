@@ -241,7 +241,9 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func scrollImage() {
-        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(MainViewController.switchImage), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { (_) in
+            self.switchImage()
+        }
     }
     
     func adjustArrows(index: Int) {
@@ -271,7 +273,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         return  collection.indexPathForItem(at: visiblePoint)?.row ?? 0
     }
     
-    @objc func switchImage() {
+    func switchImage() {
         if petImages.count > 1 {
             if indexInView(collection: imageCollectionView) == self.currentIndexPath.row {self.currentIndexPath.row = 1 }
             self.imageCollectionView.scrollToItem(at: self.currentIndexPath, at: .centeredHorizontally, animated: true)
