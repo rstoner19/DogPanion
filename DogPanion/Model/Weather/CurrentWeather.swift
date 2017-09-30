@@ -35,21 +35,21 @@ class CurrentWeather {
     }
     
     func isCloudyWeather(timeOfDay: String?) -> UIImage? {
-        if self.cloudCover > 0.75 {
+        if self.cloudCover > 0.65 || self.icon == "rain" || self.icon == "snow" || self.icon == "sleet" {
             if let timeOfDay = timeOfDay {
                 let weatherImage = timeOfDay + "Cloudy"
                 return UIImage(named: weatherImage)
             }
-        }
+        } 
         return nil
     }
     
-    // Create's 'comparble' weather scale to find out best weather times
+    // Create's 'comparable' weather scale to find out best weather times
     func weatherMeasurment() -> Double {
-        let temperatureElement = abs(self.temperature - 70.0)/10
-        let precipElement = self.precipIntensity * 25.4 * self.precipProbability
+        let temperatureElement = abs(self.temperature - 70.0)/20
+        let precipElement = self.precipIntensity * 25.4 * self.precipProbability * 10
         let windElement = self.windSpeed < 30 ? 0.0 : (self.windSpeed - 30)/10
-        print("Temp: ", temperatureElement, " Precip: ", precipElement, " Wind: ", windElement) // TODO: Need to delete
+        print("Temp: ", temperatureElement, " Precip: ", precipElement, " Wind: ", windElement, " Inten: ", self.precipIntensity, " Prob: ", self.precipProbability) // TODO: Need to delete
         return temperatureElement + precipElement + windElement
     }
     

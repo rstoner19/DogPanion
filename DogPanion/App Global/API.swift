@@ -37,15 +37,9 @@ class API {
                             currentWeather = CurrentWeather(json: currentjson)
                         } else { return }
                         if let currentDay = json["hourly"] as? [String: AnyObject], let hourly = currentDay["data"] as? [[String: AnyObject]] {
-                            
                             for hour in hourly {
                                 guard let hourWeather = CurrentWeather(json: hour) else { break }
                                 currentDayWeather.append(hourWeather)
-                                let time = Date(timeIntervalSince1970: hourWeather.forecastTime)
-                                //print(TimeZone.current.secondsFromGMT())
-                                //print(time)
-                                //print( )
-                                
                             }
                         }
                         if let week =  json["daily"] as? [String: AnyObject], let daily = week["data"] as? [[String: AnyObject]]{

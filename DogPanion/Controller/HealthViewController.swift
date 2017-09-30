@@ -191,7 +191,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
             CoreDataManager.shared.saveItem(context: context, saveItem: "notifications")
             if pet?.health?.birthday != nil {
                 guard let birthday = pet?.health?.birthday as Date? else { return }
-                birthdayReminder(birthday: birthday)
+                NotificationManager.birthdayReminder(birthday: birthday, petName: pet?.name)
             }
         }
     }
@@ -201,32 +201,13 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         alertController.addAction(UIAlertAction(title: "Turn Off", style: .destructive, handler: { (action: UIAlertAction!) in
             self.pet?.health?.notifications = false
             guard let context = self.pet?.managedObjectContext else { return }
-            self.deleteNotifications()
+            self.pet?.health?.deleteNotifications()
             CoreDataManager.shared.saveItem(context: context, saveItem: "Delete notifications")
         }))
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
                 self.notificationSwitch.isOn = true
             }))
         self.present(alertController, animated: true, completion: nil)
-    }
-    // TODO: Move to model? Have pet.heatlh be input
-    func deleteNotifications() {
-        if let vaccines = pet?.health?.vaccines?.allObjects as? [Vaccines] {
-            for vaccine in vaccines {
-                if vaccine.reminder {
-                    vaccine.reminder = false
-                    NotificationManager.deleteNotication(identifiers: vaccine.getNotificationsIDs())
-                }
-            }
-        }
-        if let medicines = pet?.health?.medicine?.allObjects as? [Medicine] {
-            for medicine in medicines {
-                if medicine.reminder {
-                    medicine.reminder = false
-                    NotificationManager.deleteNotication(identifiers: medicine.getNotificationsIDs())
-                }
-            }
-        }
     }
     
     // MARK: Dismiss Delegate
@@ -238,7 +219,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
         removeBlurView()
         if let date = object as? NSDate {
             self.birthdayButton.setTitle((date as Date).toString(), for: .normal)
-            birthdayReminder(birthday: (date as Date))
+            NotificationManager.birthdayReminder(birthday: (date as Date), petName: pet?.name)
             pet?.health?.birthday = date
             let context = pet?.managedObjectContext
             do {
@@ -315,21 +296,8 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
             }
         }
     }
-    // TODO, place in Notifcation Class
-    func birthdayReminder(birthday: Date) {
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.day, .month], from: birthday)
-        var date = DateComponents()
-        date.hour = 12
-        date.day = components.day
-        date.month = components.month
-        let title = "Happy Birthday to " + (pet?.name ?? "your pet")
-        let body = Constants.appName + " wishes " + (pet?.name ?? "your pet") + " a happy birthday! 🐶🎂🎈🎁"
-        NotificationManager.scheduleNotification(title: title, body: body, identifier: "\(pet?.name ?? "")birthday", dateCompenents: date, repeatNotifcation: true)
-    }
     
     // MARK: Collection View
-    
     func setupCollectionView() {
         self.weatherCollectionView.layer.backgroundColor = UIColor.clear.cgColor
         let nib = UINib(nibName: "WeatherCell", bundle: nil)
@@ -360,10 +328,8 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "weatherCell", for: indexPath) as! WeatherCell
         cell.weather = self.weatherForecast[indexPath.row]
-        
         if let bestDays = bestDayToWalk {
             let highlight = bestDays[indexPath.row] ?? false
-            print(highlight)
             cell.highlight = highlight
         }
         return cell
@@ -377,7 +343,9 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
             API.shared.GET(latitude: lat, longitude: long, time: nil) { (weather) in
                 
                 if let weather = weather, let currentWeather = weather.currentWeather {
-                    print(Date(timeIntervalSince1970: currentWeather.forecastTime))
+                    if let backgroundImage = currentWeather.isCloudyWeather(timeOfDay: self.dayTime) {
+                        self.animateWeatherChange(backgroundImage: backgroundImage)
+                    }
                     self.currentWeatherLabel.text = weather.currentWeatherText()
                     self.maxMinTempLabel.text = weather.currentMaxMinTemp()
                     self.currentWeather(weather: currentWeather.icon)
@@ -385,18 +353,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
                     self.weatherForecast = weather.forecast
                     self.precipChanceLabel.text = (currentWeather.precipProbability * 100).toString() + "%"
                     self.idealTimeLabel.text = weather.idealCurrentTime()
-                    if let backgroundImage = currentWeather.isCloudyWeather(timeOfDay: self.dayTime) {
-                        self.animateWeatherChange(backgroundImage: backgroundImage)
-                    }
-                    print(currentWeather.cloudCover)
-                    // TODO: Adjust Background based on cloudcover.. verify .75 is good!
-                    // self.animateWind()
-                    //self.animateRain()
-                     //Timer.scheduledTimer(withTimeInterval: 3, repeats: true, block: { (_) in
-                      // self.animateWind()
-                     //   self.animateRain()
-                    // })
-                    //  self.animateWeatherChange(weatherType: weather.currentWeather!.icon)
+                    print("Cloudcover: ", currentWeather.cloudCover)
                 } else {
                     self.idealTimeLabel.text = "Error getting information, please try again later"
                 }
@@ -405,8 +362,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
     }
     
     func timeOfDay() -> String {
-        let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: Date())
+        let hour = Date().getHourComponent()
         let timeOfDay: String
         switch hour {
         case 7..<10:
@@ -428,7 +384,7 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
             break
         case "rain":
             self.animateRain()
-            Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { (_) in
+            Timer.scheduledTimer(withTimeInterval: 0.75, repeats: true) { (_) in
                 self.animateRain()
             }
         case "snow":
@@ -442,7 +398,10 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
                 self.animateSleet()
             })
         case "wind":
-            break // TODO: NEED WIND ANIMATION
+            self.animateWind()
+            Timer.scheduledTimer(withTimeInterval: 1.25, repeats: true, block: { (_) in
+                self.animateWind()
+            })
         case "fog":
             animateFog()
             Timer.scheduledTimer(withTimeInterval: 20, repeats: true) { (_) in
@@ -462,30 +421,14 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
     }
     
     func animateWeatherChange(backgroundImage: UIImage) {
-        UIView.animate(withDuration: 1.5, animations: {
-            self.weatherImage.alpha = 0.2
+        UIView.animate(withDuration: 1.0, animations: {
+            self.weatherImage.alpha = 0.25
         }, completion: { (_) in
             self.weatherImage.image = backgroundImage
-            UIView.animate(withDuration: 2.0, animations: {
+            UIView.animate(withDuration: 1.5, animations: {
                 self.weatherImage.alpha = 1.0
             })
         })
-    }
-    
-    func animateWind() {
-        let wind = UIImage(named: "wind")
-        let y = weatherImage.frame.minY + 60 + CGFloat(arc4random_uniform(40))
-        let frame = CGRect(x: weatherImage.frame.maxX, y: y, width: 350, height: 110)
-        // TODO: need another wind option
-        let windView = UIImageView(image: wind)
-        windView.frame = frame
-        windView.alpha = 0.5
-        self.view.addSubview(windView)
-        UIView.animate(withDuration: 4.0, delay: 0, options: .curveLinear, animations: {
-            windView.transform = CGAffineTransform(translationX: -self.view.frame.maxX - 600, y: 0)
-        }) { (_) in
-            windView.removeFromSuperview()
-        }
     }
 
 }

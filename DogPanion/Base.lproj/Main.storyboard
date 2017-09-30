@@ -1419,9 +1419,8 @@ Images</string>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Precipitation %:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bJ6-es-A0z">
-                                        <rect key="frame" x="116" y="55" width="100" height="17"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Precipitation %:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bJ6-es-A0z">
+                                        <rect key="frame" x="102" y="55" width="100" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1446,6 +1445,7 @@ Images</string>
                                     <constraint firstAttribute="trailing" secondItem="wDi-c3-Cnd" secondAttribute="trailing" id="9RH-js-AJM"/>
                                     <constraint firstItem="vMW-YO-cqp" firstAttribute="height" secondItem="qK8-ES-mYo" secondAttribute="height" id="9Sl-Wc-qKN"/>
                                     <constraint firstItem="KYU-1H-QVs" firstAttribute="leading" secondItem="JIb-DQ-oe7" secondAttribute="leading" constant="8" id="Adw-ZI-C1i"/>
+                                    <constraint firstItem="bJ6-es-A0z" firstAttribute="centerY" secondItem="k4O-Yp-D83" secondAttribute="centerY" id="B18-g1-VhQ"/>
                                     <constraint firstItem="7HG-k1-vdj" firstAttribute="top" secondItem="KYU-1H-QVs" secondAttribute="bottom" constant="2" id="DXt-Sd-xrF"/>
                                     <constraint firstItem="7HG-k1-vdj" firstAttribute="leading" secondItem="JIb-DQ-oe7" secondAttribute="leading" constant="8" id="GnW-y5-r1Z"/>
                                     <constraint firstItem="wDi-c3-Cnd" firstAttribute="top" secondItem="Dfj-iI-LmP" secondAttribute="bottom" id="KqG-ql-qQB"/>
@@ -1491,6 +1491,7 @@ Images</string>
                                     <constraint firstAttribute="bottom" secondItem="psK-Fe-7O4" secondAttribute="bottom" constant="300" id="tj9-xy-4fw"/>
                                     <constraint firstItem="CBc-DP-7ES" firstAttribute="leading" secondItem="JIb-DQ-oe7" secondAttribute="leading" id="tyL-Ak-ZPC"/>
                                     <constraint firstAttribute="trailing" secondItem="xAb-GM-poc" secondAttribute="trailing" id="uoH-rs-MgY"/>
+                                    <constraint firstItem="bJ6-es-A0z" firstAttribute="leading" secondItem="k4O-Yp-D83" secondAttribute="trailing" constant="8" id="w0J-Wd-ueZ"/>
                                     <constraint firstItem="Z9T-a0-c2e" firstAttribute="top" secondItem="JIb-DQ-oe7" secondAttribute="top" constant="8" id="wUN-eW-6Vt"/>
                                     <constraint firstAttribute="trailing" secondItem="NOd-lH-lxd" secondAttribute="trailing" constant="8" id="yAa-9o-M1Q"/>
                                 </constraints>

@@ -21,6 +21,18 @@ class NotificationManager {
         center.add(request, withCompletionHandler: nil)
     }
     
+    class func birthdayReminder(birthday: Date, petName: String?) {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.day, .month], from: birthday)
+        var date = DateComponents()
+        date.hour = 12
+        date.day = components.day
+        date.month = components.month
+        let title = "Happy Birthday to " + (petName ?? "your pet")
+        let body = Constants.appName + " wishes " + (petName ?? "your pet") + " a happy birthday! 🐶🎂🎈🎁"
+        NotificationManager.scheduleNotification(title: title, body: body, identifier: "\(petName ?? "")birthday", dateCompenents: date, repeatNotifcation: true)
+    }
+    
     class func getDateComponents(startDate: Date, frequency: String, timeofDay: String) -> [DateComponents] {
         var dateComponents: [DateComponents] = []
         var components = DateComponents()

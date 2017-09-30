@@ -22,6 +22,11 @@ extension Date {
         return formatter.string(from: self)
     }
     
+    func getHourComponent() -> Int {
+        let calendar = Calendar.current
+        return calendar.component(.hour, from: self)
+    }
+    
     func addHalfDay() -> Date {
         return self.addingTimeInterval(43200)
     }

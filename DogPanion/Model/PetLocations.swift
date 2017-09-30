@@ -31,7 +31,7 @@ class PetLocations {
         optionView.alpha = 0.1
         optionView.layer.cornerRadius = 5.0
         optionView.transform = CGAffineTransform(scaleX: 0.2, y: 0.2)
-        switch pinType { //TODO Need to update search strings
+        switch pinType {
         case .dogPark:
             optionView.firstButton.setTitle("Parks", for: .normal)
             optionView.secondButton.setTitle("Hiking Nearby", for: .normal)
