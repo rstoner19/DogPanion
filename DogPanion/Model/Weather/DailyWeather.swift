@@ -77,7 +77,7 @@ class DailyWeather {
                 temperatureElement = (70 - maxTemp)/10
             }
         }
-        let precipElement = self.precipIntensity * 25.4 * self.precipProbability
+        let precipElement = self.precipIntensity * 25.4 * self.precipProbability * 7.5
         let windElement = self.windSpeed < 30 ? 0.0 : (self.windSpeed - 30)/10
         return temperatureElement + precipElement + windElement
     }
