@@ -225,9 +225,6 @@ class PetLocationsViewController: UIViewController, MKMapViewDelegate, UISearchB
         if let searchString = object as? String {
             if searchString != "" {
                 searchRequest(queryRequest: searchString)
-                // TODO: need to get pinType
-                // TODO: Need to add custom pins for additional search
-                // pinType = functionToGetTypeBased on String -> pinType? (put in model)
             } else { return }
         }
         removeOptions()
