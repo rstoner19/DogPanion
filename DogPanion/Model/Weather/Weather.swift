@@ -41,8 +41,6 @@ class Weather {
             var minValue = firstTime.weatherMeasurment()
             let count = min(16, dayWeather.count)
             for index in 1..<count {
-                let time = Date(timeIntervalSince1970: dayWeather[index].forecastTime).getHourComponent()
-                print(time)
                 let currentValue = dayWeather[index].weatherMeasurment()
                 if currentValue < minValue && time >= 5 {
                     minValue = currentValue

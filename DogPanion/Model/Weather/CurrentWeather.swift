@@ -49,7 +49,6 @@ class CurrentWeather {
         let temperatureElement = abs(self.temperature - 70.0)/20
         let precipElement = self.precipIntensity * 25.4 * self.precipProbability * 10
         let windElement = self.windSpeed < 30 ? 0.0 : (self.windSpeed - 30)/10
-        print("Temp: ", temperatureElement, " Precip: ", precipElement, " Wind: ", windElement, " Inten: ", self.precipIntensity, " Prob: ", self.precipProbability) // TODO: Need to delete
         return temperatureElement + precipElement + windElement
     }
     

@@ -33,7 +33,6 @@ class WeatherCell: UICollectionViewCell {
                 self.lowLabel.text = "L:" + weather.minTemp.toString() + "°"
                 self.precipLabel.text = "Precip: " + (weather.precipProbability * 100).toString() + "%"
                 self.iconImage.image = weather.weatherIcon()
-                print(weather.icon)                
             }
         }
     }

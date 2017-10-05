@@ -354,7 +354,6 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
                     self.weatherForecast = weather.forecast
                     self.precipChanceLabel.text = (currentWeather.precipProbability * 100).toString() + "%"
                     self.idealTimeLabel.text = weather.idealCurrentTime()
-                    print("Cloudcover: ", currentWeather.cloudCover)
                 } else {
                     self.idealTimeLabel.text = "Error getting information, please try again later"
                 }
