@@ -41,8 +41,9 @@ class Weather {
             var minValue = firstTime.weatherMeasurment()
             let count = min(16, dayWeather.count)
             for index in 1..<count {
+                let hour = Date(timeIntervalSince1970: dayWeather[index].forecastTime).getHourComponent()
                 let currentValue = dayWeather[index].weatherMeasurment()
-                if currentValue < minValue && time >= 5 {
+                if currentValue < minValue && hour >= 5 {
                     minValue = currentValue
                     bestTime = dayWeather[index]
                 }
@@ -62,6 +63,7 @@ class Weather {
         var avgValue = 0.0; var minValue = 100.0
         for index in 0..<forecast.count {
             let currentValue = self.forecast[index].weatherMeasurment()
+            avgValue += currentValue
             weatherValues.append(currentValue)
             if currentValue < minValue { minValue = currentValue }
             if currentValue <= 0.5 { bestDaysIndex[index] = true }

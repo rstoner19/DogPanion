@@ -340,7 +340,6 @@ class HealthViewController: UIViewController, UNUserNotificationCenterDelegate, 
     func updateWeather(coordinate: CLLocationCoordinate2D?) {
         if let coordinate = coordinate {
             let lat = String(format: "%.4f", coordinate.latitude); let long = String(format: "%.4f", coordinate.longitude)
-            print(lat, long)
             API.shared.GET(latitude: lat, longitude: long, time: nil) { (weather) in
                 
                 if let weather = weather, let currentWeather = weather.currentWeather {

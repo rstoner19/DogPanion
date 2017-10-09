@@ -23,7 +23,6 @@
 		1DFF62E51F4F635C00D51EC7 /* LocationOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DFF62E31F4F635C00D51EC7 /* LocationOptions.xib */; };
 		1DFF62E71F4F71C100D51EC7 /* PetLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFF62E61F4F71C100D51EC7 /* PetLocations.swift */; };
 		D700BB561F1B2CB600822AD6 /* ImageCustomFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D700BB551F1B2CB600822AD6 /* ImageCustomFlowLayout.swift */; };
-		D704F9711F7B6BC700C6DB01 /* WeatherAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D704F9701F7B6BC700C6DB01 /* WeatherAnimations.swift */; };
 		D70D1C141F1440C300FFAD15 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70D1C131F1440C300FFAD15 /* CoreDataManager.swift */; };
 		D70D1C181F1546D600FFAD15 /* GeneralProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70D1C171F1546D600FFAD15 /* GeneralProtocols.swift */; };
 		D71882B61F27C7BC001B94EF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71882B51F27C7BC001B94EF /* Constants.swift */; };
@@ -48,6 +47,7 @@
 		D7ADB5811F0BFCBC0054F345 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7ADB5801F0BFCBC0054F345 /* Assets.xcassets */; };
 		D7ADB5841F0BFCBC0054F345 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7ADB5821F0BFCBC0054F345 /* LaunchScreen.storyboard */; };
 		D7ADB58C1F0C0DEF0054F345 /* PetImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ADB58B1F0C0DEF0054F345 /* PetImageCell.swift */; };
+		D7B915821F881DC1000E9BA8 /* WeatherAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B915811F881DC1000E9BA8 /* WeatherAnimations.swift */; };
 		D7C629971F1D3C37004C45F4 /* MapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C629961F1D3C37004C45F4 /* MapAnnotation.swift */; };
 		D7D1691A1F28426100EAAEB2 /* MedVacViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D169191F28426100EAAEB2 /* MedVacViewController.swift */; };
 		D7D1691D1F290FED00EAAEB2 /* MedVacCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D1691B1F290FED00EAAEB2 /* MedVacCell.swift */; };
@@ -77,7 +77,6 @@
 		1DFF62E31F4F635C00D51EC7 /* LocationOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LocationOptions.xib; path = ../Controller/LocationOptions.xib; sourceTree = "<group>"; };
 		1DFF62E61F4F71C100D51EC7 /* PetLocations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetLocations.swift; sourceTree = "<group>"; };
 		D700BB551F1B2CB600822AD6 /* ImageCustomFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCustomFlowLayout.swift; sourceTree = "<group>"; };
-		D704F9701F7B6BC700C6DB01 /* WeatherAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAnimations.swift; sourceTree = "<group>"; };
 		D70D1C131F1440C300FFAD15 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		D70D1C171F1546D600FFAD15 /* GeneralProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralProtocols.swift; sourceTree = "<group>"; };
 		D71882B51F27C7BC001B94EF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -104,6 +103,7 @@
 		D7ADB5831F0BFCBC0054F345 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D7ADB5851F0BFCBC0054F345 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7ADB58B1F0C0DEF0054F345 /* PetImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetImageCell.swift; sourceTree = "<group>"; };
+		D7B915811F881DC1000E9BA8 /* WeatherAnimations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherAnimations.swift; sourceTree = "<group>"; };
 		D7C629961F1D3C37004C45F4 /* MapAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotation.swift; sourceTree = "<group>"; };
 		D7D169191F28426100EAAEB2 /* MedVacViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedVacViewController.swift; sourceTree = "<group>"; };
 		D7D1691B1F290FED00EAAEB2 /* MedVacCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedVacCell.swift; sourceTree = "<group>"; };
@@ -246,7 +246,7 @@
 				D7C629961F1D3C37004C45F4 /* MapAnnotation.swift */,
 				D71882B91F27EACA001B94EF /* NotificationManager.swift */,
 				1DFF62E61F4F71C100D51EC7 /* PetLocations.swift */,
-				D704F9701F7B6BC700C6DB01 /* WeatherAnimations.swift */,
+				D7B915811F881DC1000E9BA8 /* WeatherAnimations.swift */,
 				1D16CC731F5F9A1E00AD6474 /* Weather */,
 			);
 			path = Model;
@@ -357,7 +357,7 @@
 				1DD9D13D1F3CF12D00D0B14C /* LineChart.swift in Sources */,
 				1DD9D13B1F3CED6400D0B14C /* WeightViewController.swift in Sources */,
 				D70D1C181F1546D600FFAD15 /* GeneralProtocols.swift in Sources */,
-				D704F9711F7B6BC700C6DB01 /* WeatherAnimations.swift in Sources */,
+				D7B915821F881DC1000E9BA8 /* WeatherAnimations.swift in Sources */,
 				D77211DB1F22CCE7004B4A1E /* PetImages+CoreDataProperties.swift in Sources */,
 				1DC519761F5F9C0C00CF69DE /* CurrentWeather.swift in Sources */,
 				1DFF62E41F4F635C00D51EC7 /* LocationOptions.swift in Sources */,
